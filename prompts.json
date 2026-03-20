@@ -1,0 +1,12 @@
+[
+    {
+        "level": 0,
+        "prompt": "Hallo",
+        "tools": []
+    },
+    {
+        "level": 1,
+        "prompt": "Gib mir eine Prognose",
+        "tools": ["get_forecast"]
+    }
+]
