@@ -1,3 +1,10 @@
+def get_metering_points():
+    return ["cp1", "cp2", "cp3"]
+
+def get_participation_factor(metering_point):
+    pass
+
+
 def get_astronomical_sun_hours(start, end): # h
     pass
 
