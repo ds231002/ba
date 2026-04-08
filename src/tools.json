@@ -1,0 +1,28 @@
+{
+  "generate_energy_series": {
+      "description": "Generate synthetic energy data",
+      "parameters": {
+          "type": {
+              "type": "string",
+              "enum": ["consumption", "production"],
+              "required": true
+          },
+          "start": {
+              "type": "string",
+              "format": "datetime",
+              "required": true
+          },
+          "end": {
+              "type": "string",
+              "format": "datetime",
+              "required": true
+          },
+          "pattern": {
+              "type": "string",
+              "enum": ["residential", "industrial"],
+              "required": false,
+              "default": "residential"
+          }
+      }
+  }
+}
