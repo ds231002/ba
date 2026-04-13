@@ -38,6 +38,8 @@ def get_predicted_generation(timestamp): # kWh
 def get_surplus_generation(start, end): # kWh
     pass
 
+# weighted
+
 def get_weighted_measured_consumption(start, end): # kWh
     pass
 
