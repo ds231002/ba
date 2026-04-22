@@ -1,0 +1,103 @@
+it:
+  short: IT
+  long: Information Technology
+  # description: TODO
+
+jpeg:
+  short: JPEG
+  long: Joint Photographic Experts Group
+
+png:
+  short: PNG
+  long: Portable Network Graphics
+
+pdf:
+  short: PDF
+  long: Portable Document Format
+
+ps:
+  short: PS
+  long: PostScript
+
+eps:
+  short: EPS
+  long: Encapsulated PostScript
+
+llm:
+  short: LLM
+  long: Large Language Model
+
+dry:
+  short: DRY
+  long: Don't Repeat Yourself
+
+oss:
+  short: OSS
+  long: Open Source Software
+
+ctf:
+  short: CTF
+  long: Capture The Flag
+
+
+aes:
+  short: AES
+  long: Advanced Encryption Standard
+
+des:
+  short: DES
+  long: Data Encryption Standard
+
+os:
+  short: OS
+  long: Operating System
+
+ide:
+  short: IDE
+  long: Integrated Development Environment
+
+poc:
+  short: PoC
+  long: Proof of Concept
+
+api:
+  short: API
+  long: Application Programming Interface
+
+gui:
+  short: GUI
+  long: Graphical User Interface
+
+io:
+  short: I/O
+  long: Input/Output
+
+cots:
+  short: COTS
+  long: Commercial-Of-The-Shelf
+
+gcc:
+  short: GCC
+  long: GNU Compiler Collection
+
+gnu:
+  short: GNU
+  long: GNU's Not Unix
+
+json:
+  short: JSON
+  long: JavaScript Object Notation
+
+ascii:
+  short: ASCII
+  long: American Standard Code for Information Interchange
+
+mw:
+  short: MW
+  long: Malware
+  description: Malicious computer software
+
+ransomware:
+  short: Ransomware
+  description: Malware, preventing user from accessing system or files, demanding ransom money
+

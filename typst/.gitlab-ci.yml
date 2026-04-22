@@ -1,0 +1,63 @@
+
+default:
+    tags:
+        - shared
+
+stages:
+    - linting
+    - generate
+
+# Pre-script
+before_script:
+    - uname -a
+
+# Export the artifacts
+make:
+    stage: generate
+    image:
+        name: "ghcr.io/typst/typst:latest"
+        entrypoint: [""]
+    script:
+        - ./compile_thesis.sh
+    artifacts:
+        paths:
+            # Documents
+            - "out/*.pdf"
+    needs: []
+
+shellcheck:
+    stage: linting
+    image: registry.gitlab.com/pipeline-components/shellcheck:latest
+    allow_failure: true
+    script:
+      - |
+        find . -name .git -type d -prune -o -type f -name \*.sh -print0 |
+        xargs -0 -r -n1 shellcheck
+
+flake8:
+    stage: linting
+    image: python:latest
+    allow_failure: true
+    script:
+        - |
+          find . -name "*.py" |
+          xargs -I {} python -m flake8 {}
+
+mypy:
+    stage: linting
+    image: python:latest
+    allow_failure: true
+    script:
+        - |
+          find . -name "*.py" |
+          xargs -I {} python -m mypy {}
+
+chktex:
+    stage: linting
+    image: "raabf/latex-versions:texlive2021"
+    allow_failure: true
+    script:
+        - |
+          find . -name "*.tex" |
+          xargs -I {} chktex {}
+

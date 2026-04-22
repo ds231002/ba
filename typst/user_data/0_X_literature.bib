@@ -1,0 +1,468 @@
+% google scholar, since 2022, 05.03.2026:
+% allintitle: (tool OR tools) use ("large language model" OR "large language models") (64 results)
+
+@misc{paranjape2023artautomaticmultistepreasoning,
+      title={ART: Automatic multi-step reasoning and tool-use for large language models}, 
+      author={Bhargavi Paranjape and Scott Lundberg and Sameer Singh and Hannaneh Hajishirzi and Luke Zettlemoyer and Marco Tulio Ribeiro},
+      year={2023},
+      eprint={2303.09014},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2303.09014}, 
+}
+
+@inproceedings{chen-etal-2024-towards-tool,
+    title = "Towards Tool Use Alignment of Large Language Models",
+    author = "Chen, Zhi-Yuan  and
+      Shen, Shiqi  and
+      Shen, Guangyao  and
+      Zhi, Gong  and
+      Chen, Xu  and
+      Lin, Yankai",
+    editor = "Al-Onaizan, Yaser  and
+      Bansal, Mohit  and
+      Chen, Yun-Nung",
+    booktitle = "Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing",
+    month = nov,
+    year = "2024",
+    address = "Miami, Florida, USA",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.emnlp-main.82/",
+    doi = "10.18653/v1/2024.emnlp-main.82",
+    pages = "1382--1400",
+    abstract = "Recently, tool use with LLMs has become one of the primary research topics as it can help LLM generate truthful and helpful responses. Existing studies on tool use with LLMs primarily focus on enhancing the tool-calling ability of LLMs. In practice, like chat assistants, LLMs are also required to align with human values in the context of tool use. Specifically, LLMs should refuse to answer unsafe tool use relevant instructions and insecure tool responses to ensure their reliability and harmlessness. At the same time, LLMs should demonstrate autonomy in tool use to reduce the costs associated with tool calling. To tackle this issue, we first introduce the principle that LLMs should follow in tool use scenarios: H2A. The goal of H2A is to align LLMs with **helpfulness**, **harmlessness**, and **autonomy**. In addition, we propose ToolAlign, a dataset comprising instruction-tuning data and preference data to align LLMs with the H2A principle for tool use. Based on ToolAlign, we develop LLMs by supervised fine-tuning and preference learning, and experimental results demonstrate that the LLMs exhibit remarkable tool-calling capabilities, while also refusing to engage with harmful content, and displaying a high degree of autonomy in tool utilization. The code and datasets are available at: https://github.com/zhiyuanc2001/ToolAlign."
+}
+
+@misc{huang2024metatoolbenchmarklargelanguage,
+      title={MetaTool Benchmark for Large Language Models: Deciding Whether to Use Tools and Which to Use}, 
+      author={Yue Huang and Jiawen Shi and Yuan Li and Chenrui Fan and Siyuan Wu and Qihui Zhang and Yixin Liu and Pan Zhou and Yao Wan and Neil Zhenqiang Gong and Lichao Sun},
+      year={2024},
+      eprint={2310.03128},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2310.03128}, 
+}
+
+@article{ZHANG2025104312,
+title = {Geospatial large language model trained with a simulated environment for generating tool-use chains autonomously},
+journal = {International Journal of Applied Earth Observation and Geoinformation},
+volume = {136},
+pages = {104312},
+year = {2025},
+issn = {1569-8432},
+doi = {https://doi.org/10.1016/j.jag.2024.104312},
+url = {https://www.sciencedirect.com/science/article/pii/S1569843224006708},
+author = {Yifan Zhang and Jingxuan Li and Zhiyun Wang and Zhengting He and Qingfeng Guan and Jianfeng Lin and Wenhao Yu},
+keywords = {GIS, Large language model, Tool-use chain},
+abstract = {Solving geospatial tasks generally requires multiple geospatial tools and steps, i.e., tool-use chains. Automating the geospatial task solving process can effectively enhance the efficiency of GIS users. Traditionally, researchers tend to design rule-based systems to autonomously solve similar geospatial tasks, which is inflexible and difficult to adapt to different tasks. With the development of Large Language Models (LLMs), some research suggests that LLMs have the potential for intelligent task solving with their tool-use ability, which means LLMs can invoke externally provided tools for specific tasks. However, most studies rely on closed-source commercial LLMs like ChatGPT and GPT-4, whose limited API accessibility restricts their deployment on local private devices. Some researchers in the general domain proposed using instruction tuning to improve the tool-use ability of open-source LLMs. However, the requirement of tool-use chains to solve geospatial tasks, including multiple data input and output processes, poses challenges for collecting effective instruction tuning data. To solve these challenges, we propose a framework for training a Geospatial large language model to generate Tool-use Chains autonomously (GTChain). Specifically, we design a seed task-guided self-instruct strategy to generate a geospatial tool-use instruction tuning dataset within a simulated environment, encompassing diverse geospatial task production and corresponding tool-use chain generation. Subsequently, an open-source general-domain LLM, LLaMA-2-7B, is fine-tuned on the collected instruction data to understand geospatial tasks and learn how to generate geospatial tool-use chains. Finally, we also collect an evaluation dataset to serve as a benchmark for assessing the geospatial tool-use ability of LLMs. Experimental results on the evaluation dataset demonstrate that the fine-tuned GTChain can effectively solve geospatial tasks using the provided tools, achieving 32.5% and 27.5% higher accuracy in the percentage of correctly solved tasks compared to GPT-4 and Gemini 1.5 Pro, respectively.}
+}
+
+@inproceedings{NEURIPS2023_e3936777,
+ author = {Yang, Rui and Song, Lin and Li, Yanwei and Zhao, Sijie and Ge, Yixiao and Li, Xiu and Shan, Ying},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {A. Oh and T. Naumann and A. Globerson and K. Saenko and M. Hardt and S. Levine},
+ pages = {71995--72007},
+ publisher = {Curran Associates, Inc.},
+ title = {GPT4Tools: Teaching Large Language Model to Use Tools via Self-instruction},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2023/file/e393677793767624f2821cec8bdd02f1-Paper-Conference.pdf},
+ volume = {36},
+ year = {2023}
+}
+
+% Einheitliche Tool use Bewertung - relevanz sehr hoch
+@inproceedings{
+patil2025the,
+title={The Berkeley Function Calling Leaderboard ({BFCL}): From Tool Use to Agentic Evaluation of Large Language Models},
+author={Shishir G Patil and Huanzhi Mao and Fanjia Yan and Charlie Cheng-Jie Ji and Vishnu Suresh and Ion Stoica and Joseph E. Gonzalez},
+booktitle={Forty-second International Conference on Machine Learning},
+year={2025},
+url={https://openreview.net/forum?id=2GmDdhBdDk}
+}
+
+% Tool use Bewertung
+@misc{gao2025mcpradarmultidimensionalbenchmarkevaluating,
+      title={MCP-RADAR: A Multi-Dimensional Benchmark for Evaluating Tool Use Capabilities in Large Language Models}, 
+      author={Xuanqi Gao and Siyi Xie and Juan Zhai and Shiqing Ma and Chao Shen},
+      year={2025},
+      eprint={2505.16700},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2505.16700}, 
+}
+
+
+@misc{li2026rethinkingroleentropyoptimizing,
+      title={Rethinking the Role of Entropy in Optimizing Tool-Use Behaviors for Large Language Model Agents}, 
+      author={Zeping Li and Hongru Wang and Yiwen Zhao and Guanhua Chen and Yixia Li and Keyang Chen and Yixin Cao and Guangnan Ye and Hongfeng Chai and Zhenfei Yin},
+      year={2026},
+      eprint={2602.02050},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2602.02050},
+}
+
+@misc{wang2024mtubenchmultigranularitytoolusebenchmark,
+      title={MTU-Bench: A Multi-granularity Tool-Use Benchmark for Large Language Models}, 
+      author={Pei Wang and Yanan Wu and Zekun Wang and Jiaheng Liu and Xiaoshuai Song and Zhongyuan Peng and Ken Deng and Chenchen Zhang and Jiakai Wang and Junran Peng and Ge Zhang and Hangyu Guo and Zhaoxiang Zhang and Wenbo Su and Bo Zheng},
+      year={2024},
+      eprint={2410.11710},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2410.11710},
+}
+
+@inproceedings{chen2024fortify,
+  title={Fortify the shortest stave in attention: Enhancing context awareness of large language models for effective tool use},
+  author={Chen, Yuhan and Lv, Ang and Lin, Ting-En and Chen, Changyu and Wu, Yuchuan and Huang, Fei and Li, Yongbin and Yan, Rui},
+  booktitle={Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={11160--11174},
+  year={2024}
+}
+
+@inproceedings{alazraki-rei-2025-meta,
+    title = "Meta-Reasoning Improves Tool Use in Large Language Models",
+    author = "Alazraki, Lisa  and
+      Rei, Marek",
+    editor = "Chiruzzo, Luis  and
+      Ritter, Alan  and
+      Wang, Lu",
+    booktitle = "Findings of the Association for Computational Linguistics: NAACL 2025",
+    month = apr,
+    year = "2025",
+    address = "Albuquerque, New Mexico",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.findings-naacl.440/",
+    doi = "10.18653/v1/2025.findings-naacl.440",
+    pages = "7900--7912",
+    ISBN = "979-8-89176-195-7",
+    abstract = "External tools help large language models succeed at tasks where they would otherwise typically fail. In existing frameworks, choosing tools at test time relies on naive greedy decoding, regardless of whether the model has been fine-tuned on tool-annotated data or prompted with in-context examples. In contrast, we find that gathering and choosing among a suitable set of candidate tools has greater potential to lead to an optimal selection. We present Tool selECTion via meta-reasONing (TECTON), a two-phase system that first *reasons* over a task and outputs candidate tools using a custom fine-tuned language modelling head. Then, with the custom head disabled, it *meta-reasons* (i.e., it reasons over the previous reasoning process) to make a final choice. We show that TECTON results in substantial gains{---}both in-distribution and out-of-distribution{---}on a range of math reasoning datasets."
+}
+
+@inproceedings{hernandez2025react,
+  title={ReAct Modular Agent: Orchestrating Tool-Use and Retrieval for Financial Workflows},
+  author={Hernandez, Armando and Sabbia, Victor and Perez, Santiago},
+  booktitle={Proceedings of International Conference on Intelligent Systems and New Applications},
+  volume={3},
+  pages={41--50},
+  year={2025}
+}
+
+
+% IEEE, since 2022, 10.03.2026
+% ("Document Title":large language model) AND ("Document Title":tool) AND ("All Metadata":use) (37 results)
+
+@INPROCEEDINGS{10907522,
+  author={Liu, Jin and Fu, Tianyu and Zhou, Fengyu and Wang, Chaoqun},
+  booktitle={2024 IEEE International Conference on Robotics and Biomimetics (ROBIO)}, 
+  title={Think Before Execute: Embodied Reasoning of Supportive Tools for Robot Service with Large Language Models}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1251-1256},
+  keywords={Large language models;Biomimetics;Cognition;Complexity theory;Robots},
+  doi={10.1109/ROBIO64047.2024.10907522}}
+
+% relevanz sehr hoch, tool nutzung vlt sogar schlechter, niveau von chatgpt am besten
+@INPROCEEDINGS{10889153,
+  author={Liu, Jian and Ning, Kangyun and Su, Yisong and Han, Wenjuan and Xu, Jinan and Zhang, Yuanzhe},
+  booktitle={ICASSP 2025 - 2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={WTU-EVAL: A Whether-or-Not Tool Usage Evaluation Benchmark for Large Language Models}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-5},
+  keywords={Large language models;Benchmark testing;Signal processing;Chatbots;Acoustics;Speech processing;Large Language Models;Tool Usage;Evaluation;Ability Boundary},
+  doi={10.1109/ICASSP49660.2025.10889153}}
+
+% relevanz mittel - hoch, bsp.: Mehrere Arbeiten zeigen, dass die Kombination von Large Language Models mit externen Tools die Leistungsfähigkeit bei komplexen Aufgaben verbessern kann. Beispielsweise schlagen Autoren ein Framework vor, das verschiedene spezialisierte Tools wie Berechnungs-, Code- und Reasoning-Tools kombiniert, um mathematische Probleme effizienter zu lösen.
+@INPROCEEDINGS{10629085,
+  author={Duan, Zhihua and Wang, Jialin},
+  booktitle={2024 IEEE 10th International Conference on Edge Computing and Scalable Cloud (EdgeCom)}, 
+  title={Multi-tool Integration Application for Math Reasoning Using Large Language Model},
+  year={2024},
+  volume={},
+  number={},
+  pages={106-109},
+  keywords={Codes;Accuracy;Large language models;Syntactics;Cognition;Iterative methods;Reliability;ERNIE-4.0;FewShot;CoT;Large Language Model},
+  doi={10.1109/EdgeCom62867.2024.00024}}
+
+% bsp.: Studien zeigen, dass Large Language Models bei allgemeinen technischen Fragestellungen häufig brauchbare Ergebnisse liefern, während ihre Zuverlässigkeit bei spezifischen ingenieurtechnischen Aufgaben deutlich geringer sein kann. Eine Fallstudie im Bereich der Elektrotechnik zeigt beispielsweise, dass generative KI-Systeme zwar allgemeine Fragen zufriedenstellend beantworten, jedoch bei komplexeren Aufgaben wie Schaltungsdesign häufig unzuverlässige Ergebnisse liefern.
+@INPROCEEDINGS{10814860,
+  author={Tafferner, Zoltán and Géczy, Attila},
+  booktitle={2024 IEEE 30th International Symposium for Design and Technology in Electronic Packaging (SIITME)}, 
+  title={Comparing large language model artificial intelligence tools in aid of electrical engineering}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={9-14},
+  keywords={Electrical engineering;Codes;Generative AI;Bibliographies;Large language models;Cognition;Internet;Circuit synthesis;Artificial intelligence;Integrated circuit modeling;ChatGPT;large language model;generative AI;electrical engineering},
+  doi={10.1109/SIITME63973.2024.10814860}}
+
+% bsp.: LLMs funktionieren gut als Ergänzung zu bestehenden Tools, aber nicht als alleinige Lösung.
+@INPROCEEDINGS{11197422,
+  author={Perkusich, Mirko and Silva, Izabella and Albuquerque, Danyllo and Gorgônio, Kyller and Perkusich, Angelo},
+  booktitle={2025 International Conference on Software, Telecommunications and Computer Networks (SoftCOM)}, 
+  title={Evaluating the Quality of User Stories: A Comparative Study of Large Language Models and Rule-Based Tool}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-6},
+  keywords={Large language models;Software;Computer networks;Telecommunications;Software reliability;Quality assessment;Planning;Stakeholders;Requirements engineering;Pragmatics;User Stories;Quality Assessment;Agile Requirements Engineering;Large Language Models;AQUSA Tool;QUS Framework},
+  doi={10.23919/SoftCOM66362.2025.11197422}}
+
+
+% OTHER
+
+@online{energiegemeinschaften_definition,
+  author  = {Next Kraftwerke AT GmbH},
+  title   = {Was sind Energiegemeinschaften und wie funktionieren sie?},
+  url     = {https://www.next-kraftwerke.at/wissen/energiegemeinschaften},
+  urldate = {2026-03-10}
+}
+
+@online{energiegemeinschaften_rechtsgrundlagen,
+  author  = {Österreichische Koordinationsstelle für Energiegemeinschaften},
+  title   = {Rechtsgrundlagen für Energiegemeinschaften},
+  url     = {https://energiegemeinschaften.gv.at/rechtsgrundlagen/},
+  urldate = {2026-03-10}
+}
+
+
+
+
+
+
+
+
+% Literature about Program Analysis, Symbolic Execution, Control Flow Graphs,...
+
+@misc{fhstp_website,
+    title = {St. Pölten University of Applied Sciences Website},
+    author = {{St. Pölten University of Applied Sciences}},
+    note = {Last accessed: 2025-03-13 1200.},
+}
+
+% Software principles
+@book{pragmaticprog,
+	title = {The Pragmatic Programmer: From Journeyman to Master},
+	author = {Hunt, Andy and Thomas, Dave},
+	isbn = {9780132119177},
+	url = {https://books.google.at/books?id=5wBQEp6ruIAC},
+	year = {1999},
+	publisher = {Pearson Education}
+}
+
+% Cryptography
+@book{2009understanding_crypto,
+	title={Understanding Cryptography: A Textbook for Students and Practitioners},
+	author={Paar, Christof and Pelzl, Jan},
+	isbn={9783642041013},
+	lccn={2009940447},
+	url={https://books.google.at/books?id=f24wFELSzkoC},
+	year={2009},
+	publisher={Springer Berlin Heidelberg}
+}
+@book{2015_schneier_secretsandlies,
+	title = {Secrets and Lies: Digital Security in a Networked World},
+	author = {Schneier, Bruce},
+	isbn = {9781119092438},
+	edition = {15th Anniversary Edition},
+	year = {2015},
+	publisher = {John Wiley \& Sons Inc}
+}
+
+
+
+% Intro - Introduction - Halting problem
+@article{turing_halting_prob,
+	author = {Turing, Alan Mathison},
+	title = {On Computable Numbers, with an Application to the Entscheidungsproblem},
+	journal = {Proceedings of the London Mathematical Society},
+	volume = {s2-42},
+	number = {1},
+	publisher = {Oxford University Press},
+	issn = {1460-244X},
+	url = {http://dx.doi.org/10.1112/plms/s2-42.1.230},
+	doi = {10.1112/plms/s2-42.1.230},
+	pages = {230--265},
+	year = {1937}
+}
+@article{turing_halting_prob_correction,
+	author = {Turing, Alan Mathison},
+	title = {On Computable Numbers, with an Application to the Entscheidungsproblem. A Correction},
+	journal = {Proceedings of the London Mathematical Society},
+	volume = {s2-43},
+	number = {1},
+	publisher = {Oxford University Press},
+	issn = {1460-244X},
+	url = {http://dx.doi.org/10.1112/plms/s2-43.6.544},
+	doi = {10.1112/plms/s2-43.6.544},
+	pages = {544--546},
+	year = {1938}
+}
+
+@ARTICLE{shannon_theory_of_communication,
+	author={Claude E. Shannon},
+	journal={The Bell System Technical Journal},
+	title={A Mathematical Theory of Communication},
+	year={1948},
+	volume={27},
+	number={3},
+	pages={379-423},
+	doi={10.1002/j.1538-7305.1948.tb01338.x},
+	ISSN={0005-8580},
+	month={07}
+}
+
+
+% Compilers
+@book{compilers_ptt_2nd,
+	author = {Aho, Alfred V. and Lam, Monica S. and Sethi, Ravi and Ullman, Jeffrey D.},
+	title = {Compilers: Principles, Techniques, and Tools (2nd Edition)},
+	year = {2006},
+	isbn = {0321486811},
+	publisher = {Addison-Wesley Longman Publishing Co., Inc.},
+	Edition = {2nd Edition}
+}
+
+
+@article{hevner_design_2004,
+	title = {Design science in information systems research},
+	volume = {28},
+	issn = {0276-7783},
+	abstract = {Two paradigms characterize much of the research in the Information Systems discipline: behavioral science and design science. The behavioral-science paradigm seeks to develop and verify theories that explain or predict human or organizational behavior. The design-science paradigm seeks to extend the boundaries of human and organizational capabilities by creating new and innovative artifacts. Both paradigms are foundational to the {IS} discipline, positioned as it is at the confluence of people, organizations, and technology. Our objective is to describe the performance of design-science research in Information Systems via a concise conceptual framework and clear guidelines for understanding, executing, and evaluating the research. In the design-science paradigm, knowledge and understanding of a problem domain and its solution are achieved in the building and application of the designed artifact. Three recent exemplars in the research literature are used to demonstrate the application of these guidelines. We conclude with an analysis of the challenges of performing high-quality design-science research in the context of the broader {IS} community.},
+	pages = {75--105},
+	number = {1},
+	journaltitle = {{MIS} Quarterly},
+	shortjournal = {{MIS} Q.},
+	author = {Hevner, Alan R. and March, Salvatore T. and Park, Jinsoo and Ram, Sudha},
+	date = {2004},
+	keywords = {guidelines, evaluation, design principles, information systems, creativity, search strategies, implementation, artifacts, Design science, evaluation methods, knowledge processes, organizational design, research rigor, technology-based solutions, behavioral science, business environment, conceptual framework, design artifact, design science, research methodologies, technology infrastructure, experimental methods, information systems research methodologies},
+	file = {Hevner et al. - 2004 - Design science in information systems research.pdf:/Users/lbhaindlp/Zotero/storage/2BA9LJJE/Hevner et al. - 2004 - Design science in information systems research.pdf:application/pdf},
+}
+
+@article{ivarsson_method_2011,
+	title = {A method for evaluating rigor and industrial relevance of technology evaluations},
+	volume = {16},
+	issn = {1382-3256},
+	url = {https://doi.org/10.1007/s10664-010-9146-4},
+	doi = {10.1007/s10664-010-9146-4},
+	abstract = {One of the main goals of an applied research field such as software engineering is the transfer and widespread use of research results in industry. To impact industry, researchers developing technologies in academia need to provide tangible evidence of the advantages of using them. This can be done trough step-wise validation, enabling researchers to gradually test and evaluate technologies to finally try them in real settings with real users and applications. The evidence obtained, together with detailed information on how the validation was conducted, offers rich decision support material for industry practitioners seeking to adopt new technologies and researchers looking for an empirical basis on which to build new or refined technologies. This paper presents model for evaluating the rigor and industrial relevance of technology evaluations in software engineering. The model is applied and validated in a comprehensive systematic literature review of evaluations of requirements engineering technologies published in software engineering journals. The aim is to show the applicability of the model and to characterize how evaluations are carried out and reported to evaluate the state-of-research. The review shows that the model can be applied to characterize evaluations in requirements engineering. The findings from applying the model also show that the majority of technology evaluations in requirements engineering lack both industrial relevance and rigor. In addition, the research field does not show any improvements in terms of industrial relevance over time.},
+	pages = {365--395},
+	number = {3},
+	journaltitle = {Empirical Softw. Engg.},
+	author = {Ivarsson, Martin and Gorschek, Tony},
+	date = {2011},
+	keywords = {requirements engineering, Requirements engineering, software engineering, Software engineering, validation, Systematic review, systematic review, rigor, Research methods, empirical evaluation, model, Industrial relevance, Rigor, Technology evaluation, Technology transfer, Empirical evaluation, Model validation, industrial relevance, research methods, technology evaluation},
+	file = {Ivarsson and Gorschek - 2011 - A method for evaluating rigor and industrial relev.pdf:/Users/lbhaindlp/Zotero/storage/Z5YF7S9V/Ivarsson and Gorschek - 2011 - A method for evaluating rigor and industrial relev.pdf:application/pdf},
+}
+
+@book{johannesson_introduction_2021,
+	location = {Cham},
+	title = {An Introduction to Design Science},
+	rights = {https://www.springer.com/tdm},
+	isbn = {978-3-030-78131-6 978-3-030-78132-3},
+	publisher = {Springer International Publishing},
+	author = {Johannesson, Paul and Perjons, Erik},
+	date = {2021},
+	langid = {english},
+	keywords = {Requirements Engineering, Design Science, Evaluation, Experimentation, Case Studies, Empirical Studies, Research Ethics, Research Methodologies, Research Paradigms, Software Design Engineering, Validation},
+}
+
+@book{wohlin_experimentation_2024,
+	location = {Berlin, Heidelberg},
+	title = {Experimentation in Software Engineering},
+	rights = {https://www.springernature.com/gp/researchers/text-and-data-mining},
+	isbn = {978-3-662-69305-6 978-3-662-69306-3},
+	publisher = {Springer},
+	author = {Wohlin, Claes and Runeson, Per and Höst, Martin and Ohlsson, Magnus C. and Regnell, Björn and Wesslén, Anders},
+	date = {2024},
+	langid = {english},
+	keywords = {case study design, empirical software engineering, experiment analysis, experiment design, experiment process, experimentation, measurement},
+}
+
+@book{creswell_research_2018,
+	location = {Los Angeles London New Delhi Singapore Washington {DC} Melbourne},
+	edition = {5},
+	title = {Research Design: Qualitative, Quantitative, and Mixed Methods Approaches},
+	isbn = {978-1-5063-8670-6},
+	shorttitle = {Research Design},
+	abstract = {This bestselling text pioneered the comparison of qualitative, quantitative, and mixed methods research design. For all three approaches, John W. Creswell and new co-author J. David Creswell include a preliminary consideration of philosophical assumptions; key elements of the research process; a review of the literature; an assessment of the use of theory in research applications, and reflections about the importance of writing and ethics in scholarly inquiry.New to this {EditionUpdated} discussion on designing a proposal for a research project and on the steps in designing a research study.  Additional content on epistemological and ontological positioning in relation to the research question and chosen methodology and method. Additional updates on the transformative worldview. Expanded coverage on specific approaches such as case studies, participatory action research, and visual methods. Additional information about social media, online qualitative methods, and mentoring and reflexivity in qualitative methods. Incorporation of action research and program evaluation in mixed methods and coverage of the latest advances in the mixed methods {fieldAdditional} coverage on qualitative and quantitative data analysis software in the respective methods chapters. Additional information about causality and its relationship to statistics in quantitative methods. Incorporation of writing discussion sections into each of the three methodologies. Current references and additional readings are included in this new edition.},
+	pagetotal = {275},
+	publisher = {Sage Pubns},
+	author = {Creswell, John W. and Creswell, J. David},
+	date = {2018},
+}
+
+@article{peffers_design_2007,
+	title = {A Design Science Research Methodology for Information Systems Research},
+	volume = {24},
+	issn = {0742-1222},
+	url = {https://doi.org/10.2753/MIS0742-1222240302},
+	doi = {10.2753/MIS0742-1222240302},
+	abstract = {The paper motivates, presents, demonstrates in use, and evaluates a methodology for conducting design science ({DS}) research in information systems ({IS}). {DS} is of importance in a discipline oriented to the creation of successful artifacts. Several researchers have pioneered {DS} research in {IS}, yet over the past 15 years, little {DS} research has been done within the discipline. The lack of a methodology to serve as a commonly accepted framework for {DS} research and of a template for its presentation may have contributed to its slow adoption. The design science research methodology ({DSRM}) presented here incorporates principles, practices, and procedures required to carry out such research and meets three objectives: it is consistent with prior literature, it provides a nominal process model for doing {DS} research, and it provides a mental model for presenting and evaluating {DS} research in {IS}. The {DS} process includes six steps: problem identification and motivation, definition of the objectives for a solution, design and development, demonstration, evaluation, and communication. We demonstrate and evaluate the methodology by presenting four case studies in terms of the {DSRM}, including cases that present the design of a database to support health assessment methods, a software reuse measure, an Internet video telephony application, and an {IS} planning method. The designed methodology effectively satisfies the three objectives and has the potential to help aid the acceptance of {DS} research in the {IS} discipline.},
+	pages = {45--77},
+	number = {3},
+	journaltitle = {J. Manage. Inf. Syst.},
+	author = {Peffers, Ken and Tuunanen, Tuure and Rothenberger, Marcus and Chatterjee, Samir},
+	date = {2007},
+}
+
+@article{naeem_step-by-step_2023,
+	title = {A Step-by-Step Process of Thematic Analysis to Develop a Conceptual Model in Qualitative Research},
+	volume = {22},
+	issn = {1609-4069},
+	url = {https://doi.org/10.1177/16094069231205789},
+	doi = {10.1177/16094069231205789},
+	abstract = {Thematic analysis is a highly popular technique among qualitative researchers for analyzing qualitative data, which usually comprises thick descriptive data. However, the application and use of thematic analysis has also involved complications due to confusion regarding the final outcome’s presentation as a conceptual model. This paper develops a systematic thematic analysis process for creating a conceptual model from qualitative research findings. It explores the adaptability of the proposed process across various research methodologies, including constructivist methodologies, positivist methodologies, grounded theory, and interpretive phenomenology, and justifies their application. The paper distinguishes between inductive and deductive coding approaches and emphasizes the merits of each. It suggests that the derived systematic thematic analysis model is valuable across multiple disciplines, particularly in grounded theory, ethnographic approaches, and narrative approaches, while also being adaptable to more descriptive, positivist-based methodologies. By providing a methodological roadmap, this study enhances the rigor and replicability of thematic analysis and offers a comprehensive strategy for theoretical conceptualization in qualitative research. The contribution of this paper is a systematic six-step thematic analysis process that leads to the development of a conceptual model; each step is described in detail and examples are given.},
+	pages = {16094069231205789},
+	journaltitle = {International Journal of Qualitative Methods},
+	author = {Naeem, Muhammad and Ozuem, Wilson and Howell, Kerry and Ranfagni, Silvia},
+	date = {2023},
+}
+
+@article{chun_tie_grounded_2019,
+	title = {Grounded theory research: A design framework for novice researchers},
+	volume = {7},
+	issn = {2050-3121},
+	url = {https://doi.org/10.1177/2050312118822927},
+	doi = {10.1177/2050312118822927},
+	shorttitle = {Grounded theory research},
+	abstract = {Background: Grounded theory is a well-known methodology employed in many research studies. Qualitative and quantitative data generation techniques can be used in a grounded theory study. Grounded theory sets out to discover or construct theory from data, systematically obtained and analysed using comparative analysis. While grounded theory is inherently flexible, it is a complex methodology. Thus, novice researchers strive to understand the discourse and the practical application of grounded theory concepts and processes.
+Objective: The aim of this article is to provide a contemporary research framework suitable to inform a grounded theory study.
+Result: This article provides an overview of grounded theory illustrated through a graphic representation of the processes and methods employed in conducting research using this methodology. The framework is presented as a diagrammatic representation of a research design and acts as a visual guide for the novice grounded theory researcher.
+Discussion: As grounded theory is not a linear process, the framework illustrates the interplay between the essential grounded theory methods and iterative and comparative actions involved. Each of the essential methods and processes that underpin grounded theory are defined in this article.
+Conclusion: Rather than an engagement in philosophical discussion or a debate of the different genres that can be used in grounded theory, this article illustrates how a framework for a research study design can be used to guide and inform the novice nurse researcher undertaking a study using grounded theory. Research findings and recommendations can contribute to policy or knowledge development, service provision and can reform thinking to initiate change in the substantive area of inquiry.},
+	pages = {2050312118822927},
+	journaltitle = {{SAGE} Open Medicine},
+	author = {Chun Tie, Ylona and Birks, Melanie and Francis, Karen},
+	date = {2019},
+}
+
+@inproceedings{knauss_constructive_2021,
+	title = {Constructive Master's Thesis Work in Industry: Guidelines for Applying Design Science Research},
+	url = {https://ieeexplore.ieee.org/document/9402189},
+	doi = {10.1109/ICSE-SEET52601.2021.00021},
+	shorttitle = {Constructive Master's Thesis Work in Industry},
+	abstract = {[Context:] Software engineering researchers and practitioners rely on empirical evidence from the field. Thus, education of software engineers must include strong and applied education in empirical research methods. For most students, the master's thesis is the last, but also most applied form of this education in their studies. [Problem:] Especially thesis work in collaboration with industry requires that concerns of stakeholders from academia and practice are carefully balanced. It is possible, yet difficult to do high-impact empirical work within the timeframe of a typical thesis. In particular, if this research aims to provide practical value to industry, academic quality can suffer. Even though constructive research methods such as Design Science Research ({DSR}) exist, thesis projects repeatably struggle to apply them. [Principle solution idea:] {DSR} enables balancing such concerns by providing room both for knowledge questions and design work. Yet, only limited experience exists in our field on how to make this research method work within the context of a master's thesis. To enable running design science master's theses in collaboration with industry, this paper complements existing method descriptions and guidelines. It offers experience and pragmatic advice to students, examiners, and supervisors in academia and industry. [Method:] This paper itself is based on {DSR}. Based on 12 design science theses over the last seven years, common pitfalls and good practices are collected from analysing the theses, the student-supervisor interaction, the supervisor-industry interaction, the examiner feedback, and, where available, reviewer comments on publications that are based on such theses. [Results:] This paper provides concrete advise for framing research questions, structuring a report, as well as for planning and conducting design science research with practitioners.},
+	eventtitle = {2021 {IEEE}/{ACM} 43rd International Conference on Software Engineering: Software Engineering Education and Training ({ICSE}-{SEET})},
+	pages = {110--121},
+	booktitle = {2021 {IEEE}/{ACM} 43rd International Conference on Software Engineering: Software Engineering Education and Training ({ICSE}-{SEET})},
+	author = {Knauss, Eric},
+	date = {2021},
+	keywords = {Software, Industries, Training, software engineering, Software engineering, Stakeholders, Collaboration, Guidelines, design science, master's thesis},
+}
+
+@inproceedings{jaakkola_practices_2022,
+	title = {Practices for Supervising Master’s Theses in Company Context: An Anti-Pattern Approach},
+	url = {https://ieeexplore.ieee.org/document/9803528},
+	doi = {10.23919/MIPRO55190.2022.9803528},
+	shorttitle = {Practices for Supervising Master’s Theses in Company Context},
+	abstract = {Software Engineering ({SE}) university students often work part-time during their studies. In this setup the students can reform the practices of companies by transferring what they have learned to companies and correspondingly utilize what they have experienced at work in their studies. This symbiosis often continues as the students begin to work towards their thesis. The topic of the thesis relates to the problems in the company. These topics often solve a practical problem, which are not always in a perfect match with academic expectations. On the one hand the employer has certain expectations in terms of working for the company, whereas the supervising professor needs to follow the university guidelines. In this paper, we study this tension by focusing on the problems appearing in {MSc} thesis process in company context. We propose ways to act so that the different stakeholders – the student, the professor, and the company – reach the best possible results. We have analyzed the problems and their root causes. We have also taken the first steps toward anti-patterns for analysis and salvaging of the problems. The study is based on the authors’ collective supervision experience, which covers over 1000 {MSc} theses, with the combined supervision experience of over 100 years.},
+	eventtitle = {2022 45th Jubilee International Convention on Information, Communication and Electronic Technology ({MIPRO})},
+	pages = {609--614},
+	booktitle = {2022 45th Jubilee International Convention on Information, Communication and Electronic Technology ({MIPRO})},
+	author = {Jaakkola, Hannu and Mikkonen, Tommi and Systä, Kari and Henno, Jaak},
+	date = {2022},
+	keywords = {Software engineering, Stakeholders, Companies, Guidelines, Focusing, industry-academy collaboration, Software engineering education, Symbiosis, thesis supervision},
+}
