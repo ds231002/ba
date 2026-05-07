@@ -50,10 +50,45 @@ Zunächst wurde untersucht, inwieweit aktuelle LLMs relative Zeitangaben selbsts
 Auf Basis dieser Ergebnisse wurde auf die Implementierung eines separaten Tools zur Zeitauflösung verzichtet, um die Systemkomplexität zu reduzieren.
 
 
-== Testdatensatz
-- consumption
+== Testdaten
+
+=== Energiedaten
+- ausgehend von einer Energiegemeinschaft
+- Testdaten: 01.01.2026 - 31.03.2026 (inklusive)
+- Referencetime: 02.04.2026
+
+// *users.csv*
+// - user_id
+// - note (beschreibung für mich und nicht fürs llm)
+
+*meters.csv*
+- meter_id
+- meter_name (meist nur bei vielen Zählpunkten vorhanden)
+- user_id
+- direction
+- location
+- note
+
+*timeseries.csv* (15min)
+- meter_id
+- timestamp
+- value
+- unit
+
+*forecast.csv* (1h)
+- timestamp
 - generation
-- 
+- consumption
+
+*spotmarket.csv* (1h)
+- timestamp
+- value (kann auch negativ sein)
+
+*Characteristics*
+- normal: actual bis gestern 0 Uhr danach forecast
+- missing values: forecast über längeren Zeitraum (llm soll auf prognostizierte Werte aufmerksam machen)
+- missing values: auch kein forecast
+- missing values: vereinzelte actuals (llm soll auf fehlende Werte aufmerksam machen)
 
 == Warum vergleichender Ansatz
 == Orchestrierungsstrategien
