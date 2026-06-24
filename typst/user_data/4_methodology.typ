@@ -20,9 +20,16 @@ In IEEE wurde am 10.03.2026 mit folgendem Suchbegriff gesucht: "("Document Title
 
 Nach einem groben Überblick über Titel und Zusammenfassungen und anschließender detaillierten Prüfung der Inhalte wurden 17 Puplikationen ausgewählt, die sich direkt mit Tool Use, Tool Selection oder Orchestrierung von Large Language Models beschäftigen.
 
-= Notiz
 
-== Zeitauflösung (Methodik, Herangehensweise, Ergebnisse)
+
+== Voruntersuchungen und Designentscheidungen
+
+=== Zeitauflösung (Methodik, Herangehensweise, Ergebnisse)
+
+- Zeitreihendaten fix generieren
+- Tools definieren: inkl start, excl end
+- extra Tools vs nur llm (Test)
+
 
 Anfragen können zeitliche Angaben wie "gestern", "letzte Woche" oder "vorletztes Monat" enthalten. Auch komplexere Angaben wie "Wie ist mein Verbrauch der ersten 3 Tage der Woche vor dem 10. Januar?" sind möglich. Diese müssen richtig interpretiert und entsprechend in Parameter aufgelöst werden, um einen korrekten Toolaufruf zu ermöglichen. 
 Daher ist zu beachten, wie die Parameter übergeben werden müssen. Ein Datum wird automatisch auf 0 Uhr des selben Tages gesetzt. Das bedeutet das Ende der Zeitreihe ist exkludiert, also nicht enthalten. Wenn man nun die Zeitreihe eines Tages abfragen möchte ist es notwendig den darauffolgenden Tag als Ende anzugeben oder die Funktion anzupassen, dass sie beim Ende automatisch einen Tag dazurechnet.
@@ -33,7 +40,7 @@ Anfangs hatte ich die Testdaten bei jeder Nutzung neu erstellt. Die Daten waren 
 
 Zusammengefasst habe ich mich gegen extra Tools für die Zeitauflösung entschieden. Die Testdaten wurden einmal für einen fixen Zeitraum generiert und dem LLM eine fixe Referenzzeit vorgegeben. So ist gewährleistet, dass der Testdatensatz nachvollziebar und konsistent bleibt und das Vorgehen sauber und reproduzierbar ist.
 
-== Zeitauflösung (Methodik)
+=== Zeitauflösung (Methodik)
 
 Anfragen können relative Zeitangaben wie „gestern“, „letzte Woche“ oder „vorletztes Monat“ sowie komplexere Formulierungen enthalten. Diese müssen in konkrete Zeitintervalle überführt werden, um korrekte Toolaufrufe zu ermöglichen.
 
@@ -43,12 +50,20 @@ Für die Experimente wird ein fixer Testdatensatz für einen definierten Zeitrau
 
 Durch diese Festlegung wird sichergestellt, dass identische Anfragen unabhängig vom tatsächlichen Ausführungszeitpunkt stets zu denselben Zeitintervallen führen.
 
-== Zeitfauflösung (Herangehensweise)
+- Wochentag erwähnen
+- Nicht nur Datum sondern auch Uhrzeit als jetzigen Zeitpunkt definieren um "vor 3 Stunden" ebenfalls einzugrenzen
+- alles in Methodik, nicht aufteilen, aber auch nicht zu sehr ins Detail gehen
+- Am Ende von Voruntersuchungen und Desingentscheidungen: „Diese Designentscheidungen isolieren gezielt die Orchestrierungslogik von anderen Einflussfaktoren (z. B. Parsing von Zeitangaben), um eine vergleichbare Evaluation zu ermöglichen.“
+
+=== Zeitfauflösung (Herangehensweise)
 
 Zunächst wurde untersucht, inwieweit aktuelle LLMs relative Zeitangaben selbstständig auflösen können. Dabei zeigte sich, dass mit geeigneten Instruktionen sowohl einfache als auch komplexe Zeitangaben zuverlässig in konkrete Zeitintervalle überführt werden können.
 
 Auf Basis dieser Ergebnisse wurde auf die Implementierung eines separaten Tools zur Zeitauflösung verzichtet, um die Systemkomplexität zu reduzieren.
 
+=== Zeitreihendaten interpretieren
+
+- plot vs json
 
 == Testdaten
 
