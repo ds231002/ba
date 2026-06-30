@@ -20,10 +20,6 @@ In IEEE wurde am 10.03.2026 mit folgendem Suchbegriff gesucht: "("Document Title
 
 Nach einem groben Überblick über Titel und Zusammenfassungen und anschließender detaillierten Prüfung der Inhalte wurden 17 Puplikationen ausgewählt, die sich direkt mit Tool Use, Tool Selection oder Orchestrierung von Large Language Models beschäftigen.
 
-
-
-== Voruntersuchungen und Designentscheidungen
-
 === Zeitauflösung (Methodik, Herangehensweise, Ergebnisse)
 
 - Zeitreihendaten fix generieren
@@ -105,7 +101,6 @@ Auf Basis dieser Ergebnisse wurde auf die Implementierung eines separaten Tools 
 - missing values: auch kein forecast
 - missing values: vereinzelte actuals (llm soll auf fehlende Werte aufmerksam machen)
 
-== Warum vergleichender Ansatz
 == Orchestrierungsstrategien
 == Bewertungskrieterien
 
