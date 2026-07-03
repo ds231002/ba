@@ -84,7 +84,7 @@
 
 #include "user_data/4_methodology.typ"
 
-#include "user_data/5_approach.typ"
+// #include "user_data/5_approach.typ"
 
 #include "user_data/6_results.typ"
 

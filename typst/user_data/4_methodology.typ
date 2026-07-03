@@ -1,14 +1,22 @@
 #import "../globals.typ": *
 
 #context if text.lang == "de" [
-    = Methodik
+    = Methodik (4-6 Seiten)
     <sec:methodology>
 ] else [
     = Methodology
     <sec:methodology>
 ]
 
-- 4-6 Seiten
+== Forschungsdesign
+
+- vergleichende Studie
+- kontrollierte Experimente
+- gleiche Testbedingungen
+- synthetische Daten
+- Fokus auf Reproduzierbarkeit
+
+Sämtliche Voruntersuchungen sowie die anschließende Evaluation wurden mit den Modellen GPT-5.4 und GPT-5.4-mini durchgeführt. Sofern nicht anders angegeben, beziehen sich alle im Folgenden beschriebenen Beobachtungen und Designentscheidungen auf diese Modelle.
 
 == Literaturrecherche
 
@@ -18,52 +26,44 @@ In Google Scholar wurde am 05.03.2026 mit fogledem Suchbegriff gesucht: "allinti
 
 In IEEE wurde am 10.03.2026 mit folgendem Suchbegriff gesucht: "("Document Title":large language model) AND ("Document Title":tool) AND ("All Metadata":use)" und ergab 37 Treffer.
 
-Nach einem groben Überblick über Titel und Zusammenfassungen und anschließender detaillierten Prüfung der Inhalte wurden 17 Puplikationen ausgewählt, die sich direkt mit Tool Use, Tool Selection oder Orchestrierung von Large Language Models beschäftigen.
+Nach einem groben Überblick über Titel und Zusammenfassungen und anschließender detaillierten Prüfung der Inhalte wurden 17 Puplikationen ausgewählt, die sich direkt mit Tool Use, Tool Selection oder Orchestrierung von Large Language Models beschäftigen. Diese dienten als Grundlage für die Recherche.
 
-=== Zeitauflösung (Methodik, Herangehensweise, Ergebnisse)
+== Tooldesign
 
-- Zeitreihendaten fix generieren
-- Tools definieren: inkl start, excl end
-- extra Tools vs nur llm (Test)
+- tools gpt api nicht genommen um Vergleichbarkeit mit anderen Modellen zu gewährleisten (Architektur wäre unklar, nicht nur gpt testen sondern Strategie)
 
+*Zielsetzung*
+*Werkzeuge*
+*Parameter*
 
-Anfragen können zeitliche Angaben wie "gestern", "letzte Woche" oder "vorletztes Monat" enthalten. Auch komplexere Angaben wie "Wie ist mein Verbrauch der ersten 3 Tage der Woche vor dem 10. Januar?" sind möglich. Diese müssen richtig interpretiert und entsprechend in Parameter aufgelöst werden, um einen korrekten Toolaufruf zu ermöglichen. 
-Daher ist zu beachten, wie die Parameter übergeben werden müssen. Ein Datum wird automatisch auf 0 Uhr des selben Tages gesetzt. Das bedeutet das Ende der Zeitreihe ist exkludiert, also nicht enthalten. Wenn man nun die Zeitreihe eines Tages abfragen möchte ist es notwendig den darauffolgenden Tag als Ende anzugeben oder die Funktion anzupassen, dass sie beim Ende automatisch einen Tag dazurechnet.
+=== Zeitauflösung
 
-Daher war die Idee dem LLM auch Tools für die Zeitauflösung zur Verfügung zu stellen, um die Parameterauswahl besser zu steuern und weniger fehleranfällig zu machen. Zuvor wurde erst getestet wie gut aktuelle Modelle Zeitangaben selbstständig auflösen können. Getestet wurden gpt-5.4 und gpt-5.4-mini. Ohne Erklärung waren die Toolaufrufe nicht immer korrekt. Speziell ob das Ende der Zeitreihe exklusiv oder inklusiv war konnte das LLM nicht wissen. Mit entsprechenden Instruktionen war die Zeitauflösung aber sehr zuverlässig. Auch kompliziertere Beispiele wie zuvor genannt wurden problemlos aufgelöst. Bei zweideutigen Angaben wird teilweise nachgefragt oder eine der beiden Varianten angenommen und ausgeführt. Das lässt sich aber gut mit Promptentgineering steuern. Da die Zeitauflösung nur mit den LLMs sowohl bei einfachen als auch komplexen Zeitabfragen sehr zuverlässig funktionierte habe ich mich dagegen entschieden extra Tools zu entwickeln zumal ich damit ohnehin nicht jede erdenkliche Kombination abgedeckt hätte.
+Zeitangaben in Benutzeranfragen müssen vor einem Toolaufruf eindeutig in konkrete Zeitintervalle überführt werden. Da Anfragen sowohl relative als auch komplex formulierte Zeitangaben enthalten können und sich diese auf unterschiedliche zeitliche Granularitäten beispielsweise Tage oder Stunden beziehen, stellt die zuverlässige Parametrisierung der Werkzeuge eine grundlegende Voraussetzung für eine reproduzierbare Evaluation dar.
 
-Anfangs hatte ich die Testdaten bei jeder Nutzung neu erstellt. Die Daten waren immer die gleichen, aber immer von heute ausgehend zum Beispiel die letzten 3 Monate. So sollte das LLM immer mit den gleichen Daten ausgehend vom heutigen Tag arbeiten. Das Problem war nur, dass "letzte Woche" immer etwas anderes bedeutete je nachdem welcher Wochentag gerade war und die Ergebnisse von Tests an verschiedenen Wochentagen nicht sauber vergleichbar und reproduzierbar waren. Die sauberere Lösung war es einen fixen Testdatensatz für einen bestimmten Zeitraum zu generieren der sich nicht mehr verändert und die Referenzzeit für das LLM vorzugeben und zu fixieren. Das bedeutet ich gebe dem LLM in den Systeminformationen ein fixes Datum innerhalb dieses Zeitraums an von dem es ausgehen sollte, dass dieses heute ist. Das wollte ich anfangs vermeiden, weil unklar war wie zuverlässig das ist und ob dadurch neue Komplikationen in der Zeitauflösung auftreten die nicht praxisnah sind. Die Bedenken sind, dass das LLM über die API ebenfalls weiß welcher Tag heute wirklich ist und bei viel Kontext möglicherweise die vorgegebene Referenzzeit untergehen könnte. Aber in den Tests ist auch dieser Fall nicht eingetreten und alle Berechnungen gingen zuverlässig von der vorgegebenen Referenzzeit aus.
+Im System werden Zeitintervalle durch einen Start- und Endzeitpunkt im Format [start, end) beschrieben, wobei der Startzeitpunkt inkludiert und der Endzeitpunkt exkludiert ist. Ein einzelner Kalendertag wird daher durch den Beginn dieses Tages sowie den Beginn des Folgetages beschrieben.
 
-Zusammengefasst habe ich mich gegen extra Tools für die Zeitauflösung entschieden. Die Testdaten wurden einmal für einen fixen Zeitraum generiert und dem LLM eine fixe Referenzzeit vorgegeben. So ist gewährleistet, dass der Testdatensatz nachvollziebar und konsistent bleibt und das Vorgehen sauber und reproduzierbar ist.
+Für die Zeitauflösung wurden zwei Ansätze betrachtet: die Verwendung eines dedizierten Werkzeugs zur Interpretation natürlicher Zeitangaben sowie die direkte Parametrisierung durch das LLM. Zur Bewertung beider Ansätze wurde eine Voruntersuchung mit aktuellen Sprachmodellen durchgeführt. Hierbei wurden repräsentative Anfragen mit relativen und komplexen Zeitangaben formuliert und die erzeugten Toolparameter analysiert.
 
-=== Zeitauflösung (Methodik)
+Die Untersuchung zeigte, dass aktuelle Modelle mit geeigneten Instruktionen Zeitangaben zuverlässig in korrekte Zeitintervalle überführen können. Auf die Implementierung eines separaten Zeitauflösungswerkzeugs wurde daher verzichtet, wodurch die Komplexität der Werkzeuglandschaft reduziert werden konnte.
+ 
+=== Bereitstellung und Interpretation von Zeitreihendaten
 
-Anfragen können relative Zeitangaben wie „gestern“, „letzte Woche“ oder „vorletztes Monat“ sowie komplexere Formulierungen enthalten. Diese müssen in konkrete Zeitintervalle überführt werden, um korrekte Toolaufrufe zu ermöglichen.
+Zeitreihendaten stellen besondere Anforderungen an die Interaktion zwischen LLM und Werkzeugen. Während Energiedaten häufig aus mehreren hundert bis tausend Messwerten bestehen, sind Large Language Models primär für die Verarbeitung natürlicher Sprache optimiert. Die direkte Übergabe vollständiger Zeitreihen als JSON oder Array erhöht den Tokenverbrauch erheblich und erschwert gleichzeitig die Identifikation relevanter Muster innerhalb langer Zahlenfolgen.
 
-Zeitintervalle werden im System im Format [start, end) definiert, wobei der Startzeitpunkt inkludiert und der Endzeitpunkt exkludiert ist. Ein Datum wird dabei automatisch auf 00:00 Uhr gesetzt. Soll ein einzelner Tag abgefragt werden, muss daher als Endzeitpunkt der darauffolgende Tag verwendet werden.
+Grundsätzlich bestehen zwei Möglichkeiten, Zeitreihendaten für ein LLM bereitzustellen. Der erste Ansatz besteht darin, die Rohdaten direkt als strukturierte Werte zu übergeben und die Interpretation vollständig dem Sprachmodell zu überlassen. Alternativ können Zeitreihen vor der Übergabe aufbereitet werden, beispielsweise durch externe Analysewerkzeuge oder durch eine visuelle Darstellung in Form von Diagrammen. In der Literatur konnte bereits gezeigt werden, dass insbesondere Visualisierungen die Verarbeitung von Zeitreihen durch LLMs verbessern und gleichzeitig den Tokenverbrauch deutlich reduzieren können.
 
-Für die Experimente wird ein fixer Testdatensatz für einen definierten Zeitraum verwendet. Um konsistente und reproduzierbare Ergebnisse zu gewährleisten, wird dem LLM eine feste Referenzzeit vorgegeben, die als „heutiges Datum“ interpretiert werden soll. Alle relativen Zeitangaben beziehen sich auf diese Referenzzeit.
+Zur Bewertung dieser Ansätze wurde eine Voruntersuchung im Kontext synthetischer Energiedaten durchgeführt. Hierbei wurden Zeitreihen unterschiedlicher Länge sowohl als strukturierte JSON-Daten als auch als Liniendiagramme an das Modell übergeben und hinsichtlich Antwortqualität, Tokenverbrauch und Bearbeitungszeit verglichen. Zusätzlich wurde untersucht, inwieweit mehrere Zeitreihen gleichzeitig verarbeitet werden können.
 
-Durch diese Festlegung wird sichergestellt, dass identische Anfragen unabhängig vom tatsächlichen Ausführungszeitpunkt stets zu denselben Zeitintervallen führen.
+Die Ergebnisse zeigten, dass beide Darstellungsformen eine korrekte Interpretation einfacher Verbrauchsmuster ermöglichen. Mit zunehmender Länge der Zeitreihen erwiesen sich Visualisierungen jedoch als deutlich effizienter hinsichtlich Tokenverbrauch und Verarbeitungszeit. Gleichzeitig zeigte sich, dass die eigentliche Mustererkennung nicht zwangsläufig durch das LLM erfolgen muss. Wiederkehrende Analysen, wie beispielsweise die Erkennung von Lastspitzen oder die Berechnung statistischer Kennwerte, können konsistenter und ressourcenschonender durch spezialisierte Analysewerkzeuge durchgeführt werden.
 
-- Wochentag erwähnen
-- Nicht nur Datum sondern auch Uhrzeit als jetzigen Zeitpunkt definieren um "vor 3 Stunden" ebenfalls einzugrenzen
-- alles in Methodik, nicht aufteilen, aber auch nicht zu sehr ins Detail gehen
-- Am Ende von Voruntersuchungen und Desingentscheidungen: „Diese Designentscheidungen isolieren gezielt die Orchestrierungslogik von anderen Einflussfaktoren (z. B. Parsing von Zeitangaben), um eine vergleichbare Evaluation zu ermöglichen.“
-
-=== Zeitfauflösung (Herangehensweise)
-
-Zunächst wurde untersucht, inwieweit aktuelle LLMs relative Zeitangaben selbstständig auflösen können. Dabei zeigte sich, dass mit geeigneten Instruktionen sowohl einfache als auch komplexe Zeitangaben zuverlässig in konkrete Zeitintervalle überführt werden können.
-
-Auf Basis dieser Ergebnisse wurde auf die Implementierung eines separaten Tools zur Zeitauflösung verzichtet, um die Systemkomplexität zu reduzieren.
-
-=== Zeitreihendaten interpretieren
-
-- plot vs json
+Auf Basis dieser Erkenntnisse wurde das Tooldesign so gewählt, dass das LLM Zeitreihen nicht grundsätzlich selbst interpretieren muss. Stattdessen stellen Werkzeuge je nach Anwendungsfall entweder aufbereitete Visualisierungen oder bereits analysierte Informationen bereit. Das LLM übernimmt damit primär die Orchestrierung sowie die sprachliche Interpretation der Ergebnisse, während rechenintensive oder wiederkehrende Zeitreihenanalysen an spezialisierte Werkzeuge ausgelagert werden.
 
 == Testdaten
 
-=== Energiedaten
+=== Szenarien
+
+=== Datengenerierung
+
 - ausgehend von einer Energiegemeinschaft
 - Testdaten: 01.01.2026 - 31.03.2026 (inklusive)
 - Referencetime: 02.04.2026
@@ -101,8 +101,31 @@ Auf Basis dieser Ergebnisse wurde auf die Implementierung eines separaten Tools 
 - missing values: auch kein forecast
 - missing values: vereinzelte actuals (llm soll auf fehlende Werte aufmerksam machen)
 
+=== Referenzzeit
+
+Es wurde die Verwendung dynamisch generierter Testdaten untersucht. Da relative Zeitangaben abhängig vom tatsächlichen Ausführungszeitpunkt unterschiedliche Ergebnisse liefern würden, wurde stattdessen ein fester Testdatensatz mit einer vollständig definierten Referenzzeit verwendet. Diese umfasst neben dem Datum auch die Uhrzeit sowie die zugehörige Zeitzone und wird vom LLM als aktueller Zeitpunkt interpretiert. Dadurch können neben tagesbasierten auch stundenbasierte Zeitangaben, beispielsweise „vor drei Stunden“ oder „seit heute Morgen“, eindeutig aufgelöst werden. Gleichzeitig wird sichergestellt, dass identische Anfragen unabhängig vom tatsächlichen Zeitpunkt der Versuchsdurchführung stets zu denselben Zeitintervallen und damit zu identischen Toolparametern führen.
+
+Diese Entscheidungen stellen sicher, dass Unterschiede zwischen den Orchestrierungsmethoden nicht durch die Verarbeitung natürlicher Zeitangaben beeinflusst werden und die Evaluation reproduzierbar durchgeführt werden kann.
+
 == Orchestrierungsstrategien
 == Bewertungskrieterien
+
+- Tool Selection Accuracy
+- unnötige/redundante Toolaufrufe
+- Schrittanzahl
+- Antwortqualität
+- Laufzeit
+- Tokenverbrauch
+
+== Versuchsablauf
+
+- Eine Testanfrage wird ausgewählt.
+- Eine Orchestrierungsmethode wird gestartet.
+- Das LLM ruft Tools auf.
+- Die Tool-Rückgaben werden verarbeitet.
+- Die finale Antwort wird erzeugt.
+- Die Bewertungskriterien werden berechnet.
+- Der Vorgang wird für alle Methoden wiederholt.
 
 
 // Typically, the methodology section addresses the "what" and "how" questions.

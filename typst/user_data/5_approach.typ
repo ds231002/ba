@@ -8,11 +8,9 @@
     <sec:approach>
 ]
 
+- optional, Großteil Methodik
 - 6-8 Seiten
-- Szenario (EGs)
-- mögliche Anfragen
-- Orchestrierungsstrategien
-
+- Wie wurde dieses Experiment praktisch durchgeführt?
 
 // The structure of the primary content chapter(s) varies depending on the nature of the work.
 // These chapters (or chapter) serve as repositories for new insights, documenting the work you have undertaken and the achievements you have realized.
