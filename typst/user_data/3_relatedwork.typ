@@ -11,24 +11,16 @@
 - 7-10 Seiten
 
 == Tool-Use Ansätze
-#cite(<paranjape2023artautomaticmultistepreasoning>) // ART
-#cite(<NEURIPS2023_e3936777>) // gpt4tools
-#cite(<alazraki-rei-2025-meta>) //meta reasoning
+@paranjapeARTAutomaticMultistep2023
+@yangGPT4ToolsTeachingLarge2023
+@alazrakiMetaReasoningImprovesTool2025
 
 == Tool Auswahl
-#cite(<huang2024metatoolbenchmarklargelanguage>) // metatool benchmark
-#cite(<10889153>) // wtu-eval
+@huangMetaToolBenchmarkLarge2024
+@liuWTUEVALWhetherorNotTool2025
 
 - wie Autonomie untersucht wird
 - welche Benchmarks existieren
-
-
-
-
-
-
-
-
 
 
 // #ref(<sec:relatedwork>) contains the publications related to your work.

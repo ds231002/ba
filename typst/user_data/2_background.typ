@@ -18,11 +18,11 @@
 
 == Energiegemeinschaften
 
-#cite(<paranjape2023artautomaticmultistepreasoning>)
-#cite(<NEURIPS2023_e3936777>) // GPT4Tools
-#cite(<alazraki-rei-2025-meta>)
-#cite(<10629085>)
-#cite(<chen2024fortify>)
+@paranjapeARTAutomaticMultistep2023
+@yangGPT4ToolsTeachingLarge2023
+@alazrakiMetaReasoningImprovesTool2025
+@duanMultitoolIntegrationApplication2024
+@chenFortifyShortestStave2024
 
 
 
