@@ -20,18 +20,7 @@ Sämtliche Voruntersuchungen sowie die anschließende Evaluation wurden mit den 
 
 == Literaturrecherche
 
-Anfangs wurde eine strukturierte Literaturrecherche durchgeführt. Hierfür wurden die Datenbanken Google Scholar und IEEE verwendet. Als Suchbegriffe wurden verschiedene Konstelationen von "large language model", "Large language models", "tool", "tools" und "use" verwendet. Es wurde jeweils nach Ergebnissen nach 2022 gefiltert.
-
-In Google Scholar wurde am 05.03.2026 mit fogledem Suchbegriff gesucht: "allintitle: (tool OR tools) use ("large language model" OR "large language models")" und ergab 64 Treffer.
-
-In IEEE wurde am 10.03.2026 mit folgendem Suchbegriff gesucht: "("Document Title":large language model) AND ("Document Title":tool) AND ("All Metadata":use)" und ergab 37 Treffer.
-
-Nach einem groben Überblick über Titel und Zusammenfassungen und anschließender detaillierten Prüfung der Inhalte wurden 17 Puplikationen ausgewählt, die sich direkt mit Tool Use, Tool Selection oder Orchestrierung von Large Language Models beschäftigen. Diese dienten als Grundlage für die Recherche.
-
-== Tooldesign
-
-- tools gpt api nicht genommen um Vergleichbarkeit mit anderen Modellen zu gewährleisten (Architektur wäre unklar, nicht nur gpt testen sondern Strategie)
-
+Anfangs wurde eine strukturierte Literaturrecherche durchgeführt. Hierfür wurden die Datenbanken Google Scholar und IEEE verwendet. Als Suchbegriffe wurden verschiedene Konstelationen von "large language model", "Large language models", "tool", "tools" und "use" verwendet. Es wurde jeweils nach Ergebnissen nach 2022 gefiltert. In Google Scholar wurde am 05.03.2026 mit fogledem Suchbegriff gesucht: "allintitle: (tool OR tools) use ("large language model" OR "large language models")" und ergab 64 Treffer. In IEEE wurde am 10.03.2026 mit folgendem Suchbegriff gesucht: "("Document Title":large language model) AND ("Document Title":tool) AND ("All Metadata":use)" und ergab 37 Treffer. Nach einem groben Überblick über Titel und Zusammenfassungen und anschließender detaillierten Prüfung der Inhalte wurden 17 Puplikationen ausgewählt, die sich direkt mit Tool Use, Tool Selection oder Orchestrierung von Large Language Models beschäftigen. Diese dienten als Grundlage für die Recherche. == Tooldesign - tools gpt api nicht genommen um Vergleichbarkeit mit anderen Modellen zu gewährleisten (Architektur wäre unklar, nicht nur gpt testen sondern Strategie)
 *Zielsetzung*
 *Werkzeuge*
 *Parameter*
