@@ -1,14 +1,46 @@
 #import "../globals.typ": *
 
 #context if text.lang == "de" [
-    = Stand der Forschung
+    = Stand der Forschung (7-10 Seiten)
     <sec:relatedwork>
 ] else [
     = Related Work
     <sec:relatedwork>
 ]
 
-- 7-10 Seiten
+== Large Language Models
+- Grundlagen
+- Tool Use (GPT-API)
+- Function Calling
+
+== LLM Orchestration
+- Sequential Workflows
+- Router
+- Planner
+- Multi-Agent Systems
+- Agentic Workflows
+
+== Evaluation von LLM-Systemen
+- Accuracy
+- Kosten
+- Laufzeit
+- Robustheit
+- Reproduzierbarkeit
+
+== Energiegemeinschaften
+- Domäne
+- typische Aufgaben
+- vorhandene Datensätze
+
+== Verwendete LLM-Systemen
+- Papers, die ähnliche Framworks entwickeln
+- Vergleich der Ansätze
+
+
+
+
+
+
 
 == Tool-Use Ansätze
 @paranjapeARTAutomaticMultistep2023
@@ -21,7 +53,6 @@
 
 - wie Autonomie untersucht wird
 - welche Benchmarks existieren
-
 
 // #ref(<sec:relatedwork>) contains the publications related to your work.
 
