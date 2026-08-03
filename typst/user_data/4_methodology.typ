@@ -26,6 +26,17 @@ Anfangs wurde eine strukturierte Literaturrecherche durchgeführt. Hierfür wurd
 
 === Szenarien
 
+*Datensätze*
+- 365 Tage (für längere Zeitreihenabfragen)
+- vollständig, keine Auffälligkeiten
+- mehrere Anomalien (defekter ZP)
+- fehlende Werte (Ausfälle)
+- Verbrauchsvorhersage?
+
+*Nutzer*
+- Nutzer mit einem Zählpunkt für isolierte Problembehandlung
+- Nutzer mit mehreren Zählpunkten und teils bewusst mehrdeutigen Situationen
+
 === Datengenerierung
 
 - ausgehend von einer Energiegemeinschaft
@@ -73,9 +84,15 @@ Diese Entscheidungen stellen sicher, dass Unterschiede zwischen den Orchestrieru
 
 == Tooldesign
 
-- tools gpt api nicht genommen um Vergleichbarkeit mit anderen Modellen zu gewährleisten 
+- tools gpt api nicht genommen um Vergleichbarkeit mit anderen Modellen zu gewährleisten @UsingToolsOpenAI
 - (Architektur wäre unklar, nicht nur gpt testen sondern Strategie)
 - Zielsetzung, Werkzuge, Parameter
+
+=== Tools
+- Zeitabschnitt abfragen (Tage, Stunden?) und interpretieren (Plot?)
+- Zeitpunkt abfragen
+- Statistische Werte abfragen (einzeln oder gesammelt um Komplexität zu reduzieren)
+- Plot erzeugen und darstellen (mehrere)
 
 === Zeitauflösung
 
@@ -91,7 +108,7 @@ Die Untersuchung zeigte, dass aktuelle Modelle mit geeigneten Instruktionen Zeit
 
 Zeitreihendaten stellen besondere Anforderungen an die Interaktion zwischen LLM und Werkzeugen. Während Energiedaten häufig aus mehreren hundert bis tausend Messwerten bestehen, sind Large Language Models primär für die Verarbeitung natürlicher Sprache optimiert. Die direkte Übergabe vollständiger Zeitreihen als JSON oder Array erhöht den Tokenverbrauch erheblich und erschwert gleichzeitig die Identifikation relevanter Muster innerhalb langer Zahlenfolgen.
 
-Grundsätzlich bestehen zwei Möglichkeiten, Zeitreihendaten für ein LLM bereitzustellen. Der erste Ansatz besteht darin, die Rohdaten direkt als strukturierte Werte zu übergeben und die Interpretation vollständig dem Sprachmodell zu überlassen. Alternativ können Zeitreihen vor der Übergabe aufbereitet werden, beispielsweise durch externe Analysewerkzeuge oder durch eine visuelle Darstellung in Form von Diagrammen. In der Literatur konnte bereits gezeigt werden, dass insbesondere Visualisierungen die Verarbeitung von Zeitreihen durch LLMs verbessern und gleichzeitig den Tokenverbrauch deutlich reduzieren können @liuPictureWorthThousand. 
+Grundsätzlich bestehen zwei Möglichkeiten, Zeitreihendaten für ein LLM bereitzustellen. Der erste Ansatz besteht darin, die Rohdaten direkt als strukturierte Werte zu übergeben und die Interpretation vollständig dem Sprachmodell zu überlassen. Alternativ können Zeitreihen vor der Übergabe aufbereitet werden, beispielsweise durch externe Analysewerkzeuge oder durch eine visuelle Darstellung in Form von Diagrammen. In der Literatur konnte bereits gezeigt werden, dass insbesondere Visualisierungen die Verarbeitung von Zeitreihen durch LLMs verbessern und gleichzeitig den Tokenverbrauch deutlich reduzieren können @liuPictureWorthThousand.
 
 Zur Bewertung dieser Ansätze wurde eine Voruntersuchung im Kontext synthetischer Energiedaten durchgeführt. Hierbei wurden Zeitreihen unterschiedlicher Länge sowohl als strukturierte JSON-Daten als auch als Liniendiagramme an das Modell übergeben und hinsichtlich Antwortqualität, Tokenverbrauch und Bearbeitungszeit verglichen. Zusätzlich wurde untersucht, inwieweit mehrere Zeitreihen gleichzeitig verarbeitet werden können.
 
@@ -109,6 +126,11 @@ Auf Basis dieser Erkenntnisse wurde das Tooldesign so gewählt, dass das LLM Zei
 - Antwortqualität
 - Laufzeit
 - Tokenverbrauch
+
+== Prompts
+
+- nur Toolbeschreibung
+- Mit System-Prompts: Nachfragen bei Mehrdeutigkeit, Umfang mit fehlenden Daten, usw.
 
 == Versuchsablauf
 
