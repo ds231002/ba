@@ -27,7 +27,9 @@ Kontrollierbarkeit ist deshalb wichtig, weil davon die Richtigkeit der Daten abh
 
 == Forschungsfrage
 
-Wie beeinflusst der Grad an Autonomie in der Orchestrierung von Large Language Models die Qualität der Toolauswahl, Effizienz der Systemausführung und Kontrollierbarkeit des Systems im Kontext von Energiegemeinschaften?
+// Wie beeinflusst der Grad an Autonomie in der Orchestrierung von Large Language Models die Qualität der Toolauswahl, Effizienz der Systemausführung und Kontrollierbarkeit des Systems im Kontext von Energiegemeinschaften?
+
+Wie beeinflusst der Grad an Autonomie in der Tool-Orchestrierung von Large Language Models die Effizienz, Genauigkeit und Kontrollierbarkeit bei der Analyse von Zeitreihendaten in Energiegemeinschaften?
 
 == Ziel der Arbeit
 
