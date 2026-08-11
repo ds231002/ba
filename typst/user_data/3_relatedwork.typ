@@ -8,51 +8,67 @@
     <sec:relatedwork>
 ]
 
-== Large Language Models
-- Grundlagen
-- Tool Use (GPT-API)
-- Function Calling
+== Tooldesign
 
-== LLM Orchestration
-- Sequential Workflows
-- Router
-- Planner
-- Multi-Agent Systems
-- Agentic Workflows
+Was ist Tool Use / Function Calling?
+Wie werden Tools beschrieben und bereitgestellt?
+Toolauswahl
+Parameter-/Argumentgenerierung
+strukturierte Tooldefinitionen
+Toolergebnisse
+gegebenenfalls besondere Anforderungen deiner Zeitreihendaten
+relevante Arbeiten wie Toolformer
+Während ein einzelner Tool-Aufruf vergleichsweise einfach ist, entstehen bei Aufgaben, die mehrere Werkzeuge erfordern, zusätzliche Anforderungen ... -> Übergang zu Orchestrierung
 
-== Evaluation von LLM-Systemen
-- Accuracy
-- Kosten
-- Laufzeit
-- Robustheit
-- Reproduzierbarkeit
-
-== Energiegemeinschaften
-- Domäne
-- typische Aufgaben
-- vorhandene Datensätze
-
-== Verwendete LLM-Systemen
-- Papers, die ähnliche Framworks entwickeln
-- Vergleich der Ansätze
-
-
-
-
-
-
-
-== Tool-Use Ansätze
+Tool-Use Ansätze
 @paranjapeARTAutomaticMultistep2023
 @yangGPT4ToolsTeachingLarge2023
 @alazrakiMetaReasoningImprovesTool2025
 
-== Tool Auswahl
+Tool Auswahl
 @huangMetaToolBenchmarkLarge2024
 @liuWTUEVALWhetherorNotTool2025
 
-- wie Autonomie untersucht wird
-- welche Benchmarks existieren
+=== Zeitreihendaten
+
+Zeitreihendaten stellen besondere Anforderungen an die Interaktion zwischen LLM und Werkzeugen. Während Energiedaten häufig aus mehreren hundert bis tausend Messwerten bestehen, sind Large Language Models primär für die Verarbeitung natürlicher Sprache optimiert. Die direkte Übergabe vollständiger Zeitreihen als JSON oder Array erhöht den Tokenverbrauch erheblich und erschwert gleichzeitig die Identifikation relevanter Muster innerhalb langer Zahlenfolgen.
+
+Grundsätzlich bestehen zwei Möglichkeiten, Zeitreihendaten für ein LLM bereitzustellen. Der erste Ansatz besteht darin, die Rohdaten direkt als strukturierte Werte zu übergeben und die Interpretation vollständig dem Sprachmodell zu überlassen. Alternativ können Zeitreihen vor der Übergabe aufbereitet werden, beispielsweise durch externe Analysewerkzeuge oder durch eine visuelle Darstellung in Form von Diagrammen. In der Literatur konnte bereits gezeigt werden, dass insbesondere Visualisierungen die Verarbeitung von Zeitreihen durch LLMs verbessern und gleichzeitig den Tokenverbrauch deutlich reduzieren können @liuPictureWorthThousand.
+
+Zur Bewertung dieser Ansätze wurde eine Voruntersuchung im Kontext synthetischer Energiedaten durchgeführt. Hierbei wurden Zeitreihen unterschiedlicher Länge sowohl als strukturierte JSON-Daten als auch als Liniendiagramme an das Modell übergeben und hinsichtlich Antwortqualität, Tokenverbrauch und Bearbeitungszeit verglichen. Zusätzlich wurde untersucht, inwieweit mehrere Zeitreihen gleichzeitig verarbeitet werden können.
+
+Die Ergebnisse zeigten, dass beide Darstellungsformen eine korrekte Interpretation einfacher Verbrauchsmuster ermöglichen. Mit zunehmender Länge der Zeitreihen erwiesen sich Visualisierungen jedoch als deutlich effizienter hinsichtlich Tokenverbrauch und Verarbeitungszeit. Gleichzeitig zeigte sich, dass die eigentliche Mustererkennung nicht zwangsläufig durch das LLM erfolgen muss. Wiederkehrende Analysen, wie beispielsweise die Erkennung von Lastspitzen oder die Berechnung statistischer Kennwerte, können konsistenter und ressourcenschonender durch spezialisierte Analysewerkzeuge durchgeführt werden.
+
+== Orchestrierung
+
+Was bedeutet Orchestrierung?
+Warum ist sie bei mehreren Tools notwendig?
+Tool Chains
+Reihenfolge von Tool-Aufrufen
+Abhängigkeiten und Zwischenresultate
+State / Artefakte
+Planung
+iterative Ausführung
+Re-Planning
+unterschiedliche Grade der Entscheidungsfreiheit
+existierende Orchestrierungsansätze
+
+== Evaluation
+
+Was wird bei Tool-Use-Systemen gemessen?
+Task Success
+Tool Selection
+Parameter Correctness
+Multi-Step Success
+Effizienz
+Umgang mit Fehlern
+State/Dependency Correctness
+bestehende Benchmarks und Evaluationsansätze
+
+== Zwischenfazit
+...
+
+
 
 // #ref(<sec:relatedwork>) contains the publications related to your work.
 
