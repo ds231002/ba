@@ -1,40 +1,96 @@
 #import "../globals.typ": *
 
 #context if text.lang == "de" [
-    = Methodik (4-6 Seiten)
+    = Methodik
     <sec:methodology>
 ] else [
     = Methodology
     <sec:methodology>
 ]
 
+// 4-6 Seiten
+
 == Forschungsdesign
 
-- vergleichende Studie
-- kontrollierte Experimente
-- gleiche Testbedingungen
-- synthetische Daten
-- Fokus auf Reproduzierbarkeit
+// vergleichende Studie → Was für ein Untersuchungsansatz?
+// kontrollierte Experimente → Wie werden die Vergleiche durchgeführt?
+// gleiche Testbedingungen → Was wird kontrolliert?
+// synthetische Daten → Welche Art von Testdaten?
+// Fokus auf Reproduzierbarkeit → Welches methodische Ziel bzw. welche Anforderungen gelten?
 
-Sämtliche Voruntersuchungen sowie die anschließende Evaluation wurden mit den Modellen GPT-5.4 und GPT-5.4-mini durchgeführt. Sofern nicht anders angegeben, beziehen sich alle im Folgenden beschriebenen Beobachtungen und Designentscheidungen auf diese Modelle.
+// vergleichende experimentelle Studie
+// kontrollierte Experimente
+// verschiedene Orchestrierungsansätze als Vergleichsbedingungen
+// identische Aufgaben/Testfälle
+// kontrollierte Rahmenbedingungen
+// synthetische bzw. kontrolliert erzeugte Testdaten
+// wiederholbare/reproduzierbare Durchführung
+
+Die Untersuchung wird als vergleichende experimentelle Studie durchgeführt. Ziel ist es, unterschiedliche Ansätze zur Orchestrierung von Tool-Aufrufen unter kontrollierten Bedingungen miteinander zu vergleichen und hinsichtlich ihrer Eignung für die Bearbeitung mehrstufiger Aufgaben zu bewerten. Hierzu werden definierte Testaufgaben verwendet, deren Bearbeitung die Auswahl und gegebenenfalls aufeinander aufbauende Nutzung mehrerer Werkzeuge erfordert.
+
+Für die Vergleichbarkeit der Ergebnisse werden die Versuchsbedingungen soweit möglich konstant gehalten. Insbesondere werden für die zu vergleichenden Ansätze dieselben Testaufgaben, Eingangsdaten und verfügbaren Werkzeuge verwendet. Unterschiede in den Ergebnissen sollen damit möglichst auf die jeweils untersuchte Orchestrierungsstrategie beziehungsweise die betrachtete Modellkonfiguration zurückzuführen sein.
+// Die Experimente werden wiederholt durchgeführt, um zufällige Schwankungen zu reduzieren und eine reproduzierbare Bewertung zu ermöglichen.
+
+Die verwendeten Testdaten werden kontrolliert beziehungsweise synthetisch erzeugt. Dadurch können relevante Eigenschaften der Aufgaben gezielt variiert und bekannte erwartete Ergebnisse definiert werden. Dies ermöglicht insbesondere die systematische Untersuchung unterschiedlicher Schwierigkeitsgrade und Tool-Abhängigkeiten, ohne von den Eigenschaften eines einzelnen realen Datensatzes abhängig zu sein.
+
+Die Bewertung erfolgt anhand von Kriterien, die sowohl die Korrektheit der Aufgabenbearbeitung als auch die Effizienz der Ausführung berücksichtigen. Neben dem letztendlichen Erfolg einer Aufgabe werden daher auch Eigenschaften der zugrunde liegenden Tool-Aufrufsequenz betrachtet. Dazu gehören insbesondere die korrekte Auswahl und Parametrisierung von Werkzeugen sowie die erfolgreiche Ausführung mehrstufiger Abläufe. Ergänzend werden Laufzeit und gegebenenfalls weitere Ausführungsmerkmale betrachtet.
+
+Vor der eigentlichen Hauptuntersuchung werden ausgewählte technische und methodische Fragestellungen in Voruntersuchungen betrachtet. Diese dienen dazu, geeignete Rahmenbedingungen für die Hauptuntersuchung zu bestimmen und mögliche Einflussfaktoren auf die Ergebnisse zu identifizieren. Aus den Ergebnissen dieser Voruntersuchungen werden, sofern erforderlich, konkrete Designentscheidungen für die anschließenden Experimente abgeleitet.
 
 == Literaturrecherche
 
-// Anfangs wurde eine strukturierte Literaturrecherche durchgeführt. Hierfür wurden die Datenbanken Google Scholar und IEEE verwendet. Als Suchbegriffe wurden verschiedene Konstelationen von "large language model", "Large language models", "tool", "tools" und "use" verwendet. Es wurde jeweils nach Ergebnissen nach 2022 gefiltert. In Google Scholar wurde am 05.03.2026 mit fogledem Suchbegriff gesucht: "allintitle: (tool OR tools) use ("large language model" OR "large language models")" und ergab 64 Treffer. In IEEE wurde am 10.03.2026 mit folgendem Suchbegriff gesucht: "("Document Title":large language model) AND ("Document Title":tool) AND ("All Metadata":use)" und ergab 37 Treffer. Nach einem groben Überblick über Titel und Zusammenfassungen und anschließender detaillierten Prüfung der Inhalte wurden 17 Puplikationen ausgewählt, die sich direkt mit Tool Use, Tool Selection oder Orchestrierung von Large Language Models beschäftigen.
+Zu Beginn wurde eine strukturierte Literaturrecherche durchgeführt. Hierfür wurden die Datenbanken Google Scholar und IEEE Xplore verwendet. Als Suchbegriffe wurden verschiedene Kombinationen der Begriffe „large language model“, „large language models“, „tool“, „tools“ und „use“ verwendet. Die Ergebnisse wurden jeweils auf Publikationen ab dem Jahr 2022 eingeschränkt. In Google Scholar wurde am 05.03.2026 mit folgendem Suchbegriff gesucht: `allintitle: (tool OR tools) use ("large language model" OR "large language models")`. Dabei wurden 64 Treffer erzielt. In IEEE Xplore wurde am 10.03.2026 mit folgendem Suchbegriff gesucht: `("Document Title":large language model) AND ("Document Title":tool) AND ("All Metadata":use)`. Dabei wurden 37 Treffer erzielt. Auf Basis einer ersten Sichtung der Titel und Zusammenfassungen sowie einer anschließenden detaillierten Prüfung der relevanten Publikationen wurden 17 Publikationen ausgewählt, die sich unmittelbar mit Tool Use, Tool Selection oder der Orchestrierung von Large Language Models beschäftigen. Im weiteren Verlauf der Arbeit wurde die Literaturbasis durch einzelne zusätzliche Publikationen ergänzt. Diese wurden insbesondere über Referenzen bereits identifizierter Arbeiten sowie durch gezielte Recherchen zu offenen Fragestellungen und thematischen Lücken identifiziert.
 
-// Zusätzlich wurden vereinzelt passende Paper hinzugefügt die beispielsweise referenziert waren oder durch gezielte Suche für Lücken gesucht wurden.
+== Technische Rahmenbedingungen
 
-Zu Beginn wurde eine strukturierte Literaturrecherche durchgeführt. Hierfür wurden die Datenbanken Google Scholar und IEEE Xplore verwendet. Als Suchbegriffe wurden verschiedene Kombinationen der Begriffe „large language model“, „large language models“, „tool“, „tools“ und „use“ verwendet. Die Ergebnisse wurden jeweils auf Publikationen ab dem Jahr 2022 eingeschränkt.
+=== Hardware
 
-In Google Scholar wurde am 05.03.2026 mit folgendem Suchbegriff gesucht: `allintitle: (tool OR tools) use ("large language model" OR "large language models")`. Dabei wurden 64 Treffer erzielt. In IEEE Xplore wurde am 10.03.2026 mit folgendem Suchbegriff gesucht: `("Document Title":large language model) AND ("Document Title":tool) AND ("All Metadata":use)`. Dabei wurden 37 Treffer erzielt.
+- GPU: NVIDIA RTX 3090, 24 GB VRAM
+- CPU: Intel Core i5-13600K
+- RAM: 32 GB DDR5
 
-Auf Basis einer ersten Sichtung der Titel und Zusammenfassungen sowie einer anschließenden detaillierten Prüfung der relevanten Publikationen wurden 17 Publikationen ausgewählt, die sich unmittelbar mit Tool Use, Tool Selection oder der Orchestrierung von Large Language Models beschäftigen.
+=== Software
 
-Im weiteren Verlauf der Arbeit wurde die Literaturbasis durch einzelne zusätzliche Publikationen ergänzt. Diese wurden insbesondere über Referenzen bereits identifizierter Arbeiten sowie durch gezielte Recherchen zu offenen Fragestellungen und thematischen Lücken identifiziert.
+- Betriebssystem: Microsoft Windows 11 Pro, 64-Bit, Version 25H2
+- NVIDIA-Treiber: Version 610.88
+- Python: Version 3.11.14
+- Ollama: Version 0.32.9
+- OpenAI-Python-Paket: Version 2.30.0
+
+=== Ausführungsbedingungen
+
+// Ollama, OpenAI-Python-Bibliothek
+Die Sprachmodelle werden über eine in Python implementierte Schnittstelle angesprochen. Für die lokale Inferenz wird Ollama verwendet. Sowohl die lokalen Modelle als auch das externe API-Modell werden über die OpenAI-Python-Bibliothek angesprochen, wodurch für beide Varianten eine weitgehend einheitliche Schnittstelle verwendet werden kann.
+
+// Modelle vollständig in VRAM
+Für die lokalen Modelle wird sichergestellt, dass diese vollständig im GPU-Speicher ausgeführt werden. Dadurch soll CPU-Offloading als zusätzlicher Einflussfaktor auf die Inferenzzeit ausgeschlossen werden @HandlingBigModels.
+
+// GPU-Powerlimit
+Für die Messungen wurde das Powerlimit der GPU auf 70 % des Standardwerts begrenzt. In vorbereitenden Tests mit identischen Eingaben zeigte sich unter den verwendeten Bedingungen kein nennenswerter Einfluss dieser Begrenzung auf die Inferenzzeit. Gleichzeitig wurde dadurch die thermische Belastung der GPU reduziert, wodurch mögliche thermisch bedingte Schwankungen der Taktfrequenz begrenzt werden sollten. Diese Einstellung wurde daher für die nachfolgenden Messungen beibehalten @HardwareSoftwareEnvironment.
+
+// Warmup
+Vor den eigentlichen Messungen werden zunächst Warm-up-Durchläufe durchgeführt, um mögliche Einflüsse der Initialisierung der Inferenzumgebung auf die gemessenen Laufzeiten zu reduzieren.
+
+== Modelle
+
+=== Lokale Modelle
+
+// Auwahlkriterien
+// Ein weiteres Auswahlkriterium war die vollständige Ausführbarkeit der Modelle im verfügbaren GPU-Speicher.
+// Modellgrößen
+// Quantisierung
+// Spezialisierungen?
 
 
-== Voruntersuchungen und Designentscheidungen
+=== API-Modell // Modell(e): ein großes oder zusätzlich ein kleineres das immer noch viel größer ist als die lokalen?
 
+Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht direkt vergleichbar:
+- Netzwerk
+- Serverauslastung
+- API-Latenz
+- möglicherweise Queueing
+- unbekannte Hardware
+- unbekannte Modellimplementierung
 
 == Testdaten
 
@@ -90,7 +146,7 @@ Im weiteren Verlauf der Arbeit wurde die Literaturbasis durch einzelne zusätzli
 - missing values: auch kein forecast
 - missing values: vereinzelte actuals (llm soll auf fehlende Werte aufmerksam machen)
 
-=== Referenzzeit
+=== Referenzzeit // festes Zeifenster für Zeitreihendaten - Referenzzeit -> Tools
 
 Es wurde die Verwendung dynamisch generierter Testdaten untersucht. Da relative Zeitangaben abhängig vom tatsächlichen Ausführungszeitpunkt unterschiedliche Ergebnisse liefern würden, wurde stattdessen ein fester Testdatensatz mit einer vollständig definierten Referenzzeit verwendet. Diese umfasst neben dem Datum auch die Uhrzeit sowie die zugehörige Zeitzone und wird vom LLM als aktueller Zeitpunkt interpretiert. Dadurch können neben tagesbasierten auch stundenbasierte Zeitangaben, beispielsweise „vor drei Stunden“ oder „seit heute Morgen“, eindeutig aufgelöst werden. Gleichzeitig wird sichergestellt, dass identische Anfragen unabhängig vom tatsächlichen Zeitpunkt der Versuchsdurchführung stets zu denselben Zeitintervallen und damit zu identischen Toolparametern führen.
 
@@ -98,26 +154,23 @@ Diese Entscheidungen stellen sicher, dass Unterschiede zwischen den Orchestrieru
 
 == Tooldesign
 
-Für die Nutzung externer Werkzeuge durch ein Large Language Model müssen die verfügbaren Funktionen in einer für das Modell verständlichen und eindeutig interpretierbaren Form bereitgestellt werden. Dabei ist insbesondere eine klare Beschreibung der verfügbaren Werkzeuge sowie der von ihnen erwarteten Eingaben erforderlich. Ansätze zur Tool-Nutzung durch Large Language Models zeigen, dass das Modell neben der Auswahl eines geeigneten Werkzeugs auch die für dessen Aufruf erforderlichen Argumente bestimmen muss @schickToolformerLanguageModels2023, @UsingToolsOpenAI. Toolformer beschreibt beispielsweise die Auswahl und Ausführung externer Werkzeuge als Bestandteil der Modellentscheidung und unterscheidet dabei zwischen der Auswahl einer API und der Erzeugung der zugehörigen Eingabe @schickToolformerLanguageModels2023.
+Tools werden als strukturierte Schnittstellen mit einer eindeutigen Bezeichnung, Beschreibung sowie einer formalisierten Parameterdefinition bereitgestellt. Diese Darstellung orientiert sich an etablierten Ansätzen zur Tool-Nutzung durch Large Language Models, bei denen das Modell sowohl die Auswahl geeigneter Tools als auch die Generierung korrekter Argumente übernehmen muss. 
 
-Diese strukturierte Bereitstellung der Werkzeuge bildet zugleich eine Grundlage für die Koordination mehrerer Werkzeuge innerhalb einer Aufgabe. Während bei einer einfachen Tool-Nutzung lediglich ein einzelner Funktionsaufruf erforderlich sein kann, müssen bei komplexeren Aufgaben mehrere spezialisierte Werkzeuge ausgewählt und in geeigneter Weise miteinander kombiniert werden. Aktuelle Arbeiten zur Entwicklung von Tool-Use-Systemen betrachten daher insbesondere die Koordination mehrerer Werkzeuge sowie die Planung und Ausführung aufeinanderfolgender Tool-Aufrufe als zentrale Bestandteile solcher Systeme @xuEvolutionToolUse2026.
+Orientiert an "OpenAI Developers Using Tools" @UsingToolsOpenAI
 
 In dieser Arbeit werden die verfügbaren Werkzeuge daher als strukturierte Funktionsdefinitionen bereitgestellt. Für jedes Werkzeug werden unter anderem eine eindeutige Bezeichnung, eine Beschreibung seiner Funktion sowie die erwarteten Parameter und deren Eigenschaften definiert. Die konkrete Darstellung dieser Informationen wird im Folgenden festgelegt und bildet die Grundlage für die anschließende Toolauswahl und -ausführung durch das LLM.
 
+=== OpenAI Tool Search // Anwendungsbeispiel strukturierter Umstetzung
+
+Mit der OpenAI API gibt es die Möglichkeit tools als Json zu übergeben. Auf openai.com findet man die Dokumentation die unter anderem beschreibt wie genau die Json strukturiert sein muss. Auf genau diese Struktur wurde das zugrundeliegende Modell trainiert. Sobald man tools auf diese Weise übergibt verändert sich der Output und man bekommt falls notwendig eine Toolauswahl und Reasoning zurück. Man kann aber auch direkt Content generieren lassen den man als Antwort verwenden kann. Zum Beispiel wird dann nachgefragt wenn Informationen fehlen um ein Tool auszuführen.Ich habe ein Notebook erstellt um zu verstehen wie genau das funktioniert und wie gut das tatsächlich funktioniert. Dafür habe ich zwei Funktionen erstellt die Zeitreihen für Stromverbrauch und Stromproduktion erzeugen. Als Parameter habe ich Startzeit, Endzeit und Pattern definiert. Pattern definiert einfach nur ob es einen Haushalt oder eine Industrieanlage simulieren soll. Fragt
+man nun nach dem Verbrauch der letzten Woche gibt das LLM die strukturiert den entsprechenden Funktionsnamen mit den notwendigen Parametern zurück. Mit diesen kann man dann den Funktionsaufruf starten und den Output wieder in das LLM einspeisen. Fehlt beim Input ein Zeitraum gibt das LLM keine Funktion zurück und fragt nach den Informationen die ihm noch fehlen. In diesem Fall wäre das der Zeitraum. Dieses Vorgehen sollte besser und zuverlässiger funktionieren als die Tools nur in der Message einzubinden, weil es auch speziell darauf trainiert wurde. Allerdings ist diese Anwendung sehr spezifisch und nicht so auf andere LLMs übertragbar. Es ist quasi schon eine fertige Lösung. Leider scheint diese Funktion nur auf den API-Zugriff beschränkt zu sein und ist somit nicht lokal nutzbar. Aber es kann als Inspiration dienen wie wir das selbst umsetzen wollen @UsingToolsOpenAI.
+
 === Tools
 
-Tools werden als strukturierte Schnittstellen mit einer eindeutigen Bezeichnung, Beschreibung sowie einer formalisierten Parameterdefinition bereitgestellt. Diese Darstellung orientiert sich an etablierten Ansätzen zur Tool-Nutzung durch Large Language Models, bei denen das Modell sowohl die Auswahl geeigneter APIs als auch die Generierung korrekter Argumente übernehmen muss @UsingToolsOpenAI. 
-
-wie ein LLM mehrere spezialisierte Tools zur Bearbeitung einer Aufgabe koordiniert @xuEvolutionToolUse2026
-
-@schickToolformerLanguageModels2023
-
-
-
-- Zeitabschnitt abfragen (Tage, Stunden?) und interpretieren (Plot?)
-- Zeitpunkt abfragen
-- Statistische Werte abfragen (einzeln oder gesammelt um Komplexität zu reduzieren)
-- Plot erzeugen und darstellen (mehrere)
+// - Zeitabschnitt abfragen (Tage, Stunden?) und interpretieren (Plot?)
+// - Zeitpunkt abfragen
+// - Statistische Werte abfragen (einzeln oder gesammelt um Komplexität zu reduzieren)
+// - Plot erzeugen und darstellen (mehrere)
 
 === Zeitauflösung
 
@@ -129,15 +182,18 @@ Für die Zeitauflösung wurden zwei Ansätze betrachtet: die Verwendung eines de
 
 Die Untersuchung zeigte, dass aktuelle Modelle mit geeigneten Instruktionen Zeitangaben zuverlässig in korrekte Zeitintervalle überführen können. Auf die Implementierung eines separaten Zeitauflösungswerkzeugs wurde daher verzichtet, wodurch die Komplexität der Werkzeuglandschaft reduziert werden konnte.
  
-=== Bereitstellung und Interpretation von Zeitreihendaten
+=== Bereitstellung und Interpretation von Zeitreihendaten // Bezug zu "Stand der Forschung - Zeitreihendaten" herstellen
 
-// Zeitreihendaten stellen besondere Anforderungen an die Interaktion zwischen LLM und Werkzeugen. Während Energiedaten häufig aus mehreren hundert bis tausend Messwerten bestehen, sind Large Language Models primär für die Verarbeitung natürlicher Sprache optimiert. Die direkte Übergabe vollständiger Zeitreihen als JSON oder Array erhöht den Tokenverbrauch erheblich und erschwert gleichzeitig die Identifikation relevanter Muster innerhalb langer Zahlenfolgen.
+Zeitreihendaten stellen besondere Anforderungen an die Interaktion zwischen LLM und Werkzeugen. Während Energiedaten häufig aus mehreren hundert bis tausend Messwerten bestehen, sind Large Language Models primär für die Verarbeitung natürlicher Sprache optimiert. Die direkte Übergabe vollständiger Zeitreihen als JSON oder Array erhöht den Tokenverbrauch erheblich und erschwert gleichzeitig die Identifikation relevanter Muster innerhalb langer Zahlenfolgen.
 
-// Grundsätzlich bestehen zwei Möglichkeiten, Zeitreihendaten für ein LLM bereitzustellen. Der erste Ansatz besteht darin, die Rohdaten direkt als strukturierte Werte zu übergeben und die Interpretation vollständig dem Sprachmodell zu überlassen. Alternativ können Zeitreihen vor der Übergabe aufbereitet werden, beispielsweise durch externe Analysewerkzeuge oder durch eine visuelle Darstellung in Form von Diagrammen. In der Literatur konnte bereits gezeigt werden, dass insbesondere Visualisierungen die Verarbeitung von Zeitreihen durch LLMs verbessern und gleichzeitig den Tokenverbrauch deutlich reduzieren können @liuPictureWorthThousand.
+Grundsätzlich bestehen zwei Möglichkeiten, Zeitreihendaten für ein LLM bereitzustellen. Der erste Ansatz besteht darin, die Rohdaten direkt als strukturierte Werte zu übergeben und die Interpretation vollständig dem Sprachmodell zu überlassen. Alternativ können Zeitreihen vor der Übergabe aufbereitet werden, beispielsweise durch externe Analysewerkzeuge oder durch eine visuelle Darstellung in Form von Diagrammen. In der Literatur konnte bereits gezeigt werden, dass insbesondere Visualisierungen die Verarbeitung von Zeitreihen durch LLMs verbessern und gleichzeitig den Tokenverbrauch deutlich reduzieren können @liuPictureWorthThousand.
 
-// Zur Bewertung dieser Ansätze wurde eine Voruntersuchung im Kontext synthetischer Energiedaten durchgeführt. Hierbei wurden Zeitreihen unterschiedlicher Länge sowohl als strukturierte JSON-Daten als auch als Liniendiagramme an das Modell übergeben und hinsichtlich Antwortqualität, Tokenverbrauch und Bearbeitungszeit verglichen. Zusätzlich wurde untersucht, inwieweit mehrere Zeitreihen gleichzeitig verarbeitet werden können.
+// Testergebnisse: Zeitreihendaten aus Stand der Forschung (vl-time_png_vs_array.ipynb, multiagent_energydata.pdf - 3.3. Eigener Test 1 ... und 3.4. Eigener Test 2 ...)
+// Testergebnisse: Referenzzeit (resolve_time.ipynb)
 
-// Die Ergebnisse zeigten, dass beide Darstellungsformen eine korrekte Interpretation einfacher Verbrauchsmuster ermöglichen. Mit zunehmender Länge der Zeitreihen erwiesen sich Visualisierungen jedoch als deutlich effizienter hinsichtlich Tokenverbrauch und Verarbeitungszeit. Gleichzeitig zeigte sich, dass die eigentliche Mustererkennung nicht zwangsläufig durch das LLM erfolgen muss. Wiederkehrende Analysen, wie beispielsweise die Erkennung von Lastspitzen oder die Berechnung statistischer Kennwerte, können konsistenter und ressourcenschonender durch spezialisierte Analysewerkzeuge durchgeführt werden.
+Zur Bewertung dieser Ansätze wurde eine Voruntersuchung im Kontext synthetischer Energiedaten durchgeführt. Hierbei wurden Zeitreihen unterschiedlicher Länge sowohl als strukturierte JSON-Daten als auch als Liniendiagramme an das Modell übergeben und hinsichtlich Antwortqualität, Tokenverbrauch und Bearbeitungszeit verglichen. Zusätzlich wurde untersucht, inwieweit mehrere Zeitreihen gleichzeitig verarbeitet werden können.
+
+Die Ergebnisse zeigten, dass beide Darstellungsformen eine korrekte Interpretation einfacher Verbrauchsmuster ermöglichen. Mit zunehmender Länge der Zeitreihen erwiesen sich Visualisierungen jedoch als deutlich effizienter hinsichtlich Tokenverbrauch und Verarbeitungszeit. Gleichzeitig zeigte sich, dass die eigentliche Mustererkennung nicht zwangsläufig durch das LLM erfolgen muss. Wiederkehrende Analysen, wie beispielsweise die Erkennung von Lastspitzen oder die Berechnung statistischer Kennwerte, können konsistenter und ressourcenschonender durch spezialisierte Analysewerkzeuge durchgeführt werden.
 
 Auf Basis der Erkenntnisse aus dem Kapitel "Stand der Forschung" (2.x) wurde das Tooldesign so gewählt, dass das LLM Zeitreihen nicht grundsätzlich selbst interpretieren muss. Stattdessen stellen Werkzeuge je nach Anwendungsfall entweder aufbereitete Visualisierungen oder bereits analysierte Informationen bereit. Das LLM übernimmt damit primär die Orchestrierung sowie die sprachliche Interpretation der Ergebnisse, während rechenintensive oder wiederkehrende Zeitreihenanalysen an spezialisierte Werkzeuge ausgelagert werden.
 

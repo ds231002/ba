@@ -8,24 +8,32 @@
     <sec:background>
 ]
 
-- 4-5 Seiten
+// 4-5 Seiten
 
 == Large Language Models
 
 == Tool-Augmented LLMs
 
-== Tool-Orchestrierunhg
+== Tool-Orchestrierung
 
-== Energiegemeinschaften
+*Energiegemeinschaft* // copy from introduction
 
-@paranjapeARTAutomaticMultistep2023
-@yangGPT4ToolsTeachingLarge2023
-@alazrakiMetaReasoningImprovesTool2025
-@duanMultitoolIntegrationApplication2024
-@chenFortifyShortestStave2024
+Energiegemeinschaften sind Zusammenschlüsse von Teilnehmenden die Privatpersonen, Gemeinden oder Unternehmen sein können. Diese verwalten gemeinsam die Produktion, Speicherung und Nutzung von Energie, um diese effizient zu nutzen @gmbhWasSindEnergiegemeinschaften, @energiegemeinschaftenRechtsgrundlagenFurEnergiegemeinschaften.
+// In diesem Kontext können Anfragen darin bestehen Analysen von Energiedaten oder Prognosen zu erstellen oder bei Entscheidungsfragen zu unterstützen.
 
+*Inferenz* // Inferenzzeit ebenfalls beschreiben? - Laufzeit vs Inferenzzeit
 
+Inferenz bedeutet im Zusammenhang mit KI, dass ein bereits trainiertes Modell der künstlichen Intelligenz neue, unbekannte Daten verarbeitet. Es nutzt das während der Lernphase angeeignete Wissen, um eigenständig Vorhersagen, Entscheidungen oder Antworten zu erzeugen @WasIstKIInferenz.
 
+*Autonomie*
+// Paper
+
+// planed references old:
+// @paranjapeARTAutomaticMultistep2023
+// @yangGPT4ToolsTeachingLarge2023
+// @alazrakiMetaReasoningImprovesTool2025
+// @duanMultitoolIntegrationApplication2024
+// @chenFortifyShortestStave2024
 
 
 // This chapter serves as an essential foundation for comprehending the subsequent content of this work.
