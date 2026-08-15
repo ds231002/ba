@@ -607,7 +607,6 @@
             title: none,
             style: "ieee",
             "user_data/0_X_literature.bib"
-            // "user_data/refs.bib"
         )
     ]
     set page(..emptypagestyle)

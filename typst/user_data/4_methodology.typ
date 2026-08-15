@@ -41,6 +41,16 @@ Vor der eigentlichen Hauptuntersuchung werden ausgewählte technische und method
 
 Zu Beginn wurde eine strukturierte Literaturrecherche durchgeführt. Hierfür wurden die Datenbanken Google Scholar und IEEE Xplore verwendet. Als Suchbegriffe wurden verschiedene Kombinationen der Begriffe „large language model“, „large language models“, „tool“, „tools“ und „use“ verwendet. Die Ergebnisse wurden jeweils auf Publikationen ab dem Jahr 2022 eingeschränkt. In Google Scholar wurde am 05.03.2026 mit folgendem Suchbegriff gesucht: `allintitle: (tool OR tools) use ("large language model" OR "large language models")`. Dabei wurden 64 Treffer erzielt. In IEEE Xplore wurde am 10.03.2026 mit folgendem Suchbegriff gesucht: `("Document Title":large language model) AND ("Document Title":tool) AND ("All Metadata":use)`. Dabei wurden 37 Treffer erzielt. Auf Basis einer ersten Sichtung der Titel und Zusammenfassungen sowie einer anschließenden detaillierten Prüfung der relevanten Publikationen wurden 17 Publikationen ausgewählt, die sich unmittelbar mit Tool Use, Tool Selection oder der Orchestrierung von Large Language Models beschäftigen. Im weiteren Verlauf der Arbeit wurde die Literaturbasis durch einzelne zusätzliche Publikationen ergänzt. Diese wurden insbesondere über Referenzen bereits identifizierter Arbeiten sowie durch gezielte Recherchen zu offenen Fragestellungen und thematischen Lücken identifiziert.
 
+// 15.08.2026 - Google Scholar
+
+// llm database sql - ab 2025 - 14200 Treffer
+// Next-generation database interfaces: A survey of llm-based text-to-sql - 358 Zitate, 2025
+// Querying large language models with SQL - 70 mal zitiert, 2026
+
+// llm database function calling - ab 2025 - 17300 Treffer
+// Enhancing Accuracy and Maintainability in Nuclear Plant Data Retrieval: A Function-Calling LLM Approach Over NL-to-SQL 
+
+
 == Technische Rahmenbedingungen
 
 === Hardware
@@ -160,17 +170,16 @@ Orientiert an "OpenAI Developers Using Tools" @UsingToolsOpenAI
 
 In dieser Arbeit werden die verfügbaren Werkzeuge daher als strukturierte Funktionsdefinitionen bereitgestellt. Für jedes Werkzeug werden unter anderem eine eindeutige Bezeichnung, eine Beschreibung seiner Funktion sowie die erwarteten Parameter und deren Eigenschaften definiert. Die konkrete Darstellung dieser Informationen wird im Folgenden festgelegt und bildet die Grundlage für die anschließende Toolauswahl und -ausführung durch das LLM.
 
+
+
 === OpenAI Tool Search // Anwendungsbeispiel strukturierter Umstetzung
 
 Mit der OpenAI API gibt es die Möglichkeit tools als Json zu übergeben. Auf openai.com findet man die Dokumentation die unter anderem beschreibt wie genau die Json strukturiert sein muss. Auf genau diese Struktur wurde das zugrundeliegende Modell trainiert. Sobald man tools auf diese Weise übergibt verändert sich der Output und man bekommt falls notwendig eine Toolauswahl und Reasoning zurück. Man kann aber auch direkt Content generieren lassen den man als Antwort verwenden kann. Zum Beispiel wird dann nachgefragt wenn Informationen fehlen um ein Tool auszuführen.Ich habe ein Notebook erstellt um zu verstehen wie genau das funktioniert und wie gut das tatsächlich funktioniert. Dafür habe ich zwei Funktionen erstellt die Zeitreihen für Stromverbrauch und Stromproduktion erzeugen. Als Parameter habe ich Startzeit, Endzeit und Pattern definiert. Pattern definiert einfach nur ob es einen Haushalt oder eine Industrieanlage simulieren soll. Fragt
 man nun nach dem Verbrauch der letzten Woche gibt das LLM die strukturiert den entsprechenden Funktionsnamen mit den notwendigen Parametern zurück. Mit diesen kann man dann den Funktionsaufruf starten und den Output wieder in das LLM einspeisen. Fehlt beim Input ein Zeitraum gibt das LLM keine Funktion zurück und fragt nach den Informationen die ihm noch fehlen. In diesem Fall wäre das der Zeitraum. Dieses Vorgehen sollte besser und zuverlässiger funktionieren als die Tools nur in der Message einzubinden, weil es auch speziell darauf trainiert wurde. Allerdings ist diese Anwendung sehr spezifisch und nicht so auf andere LLMs übertragbar. Es ist quasi schon eine fertige Lösung. Leider scheint diese Funktion nur auf den API-Zugriff beschränkt zu sein und ist somit nicht lokal nutzbar. Aber es kann als Inspiration dienen wie wir das selbst umsetzen wollen @UsingToolsOpenAI.
 
-=== Tools
+=== Datenbankzugriff
 
-// - Zeitabschnitt abfragen (Tage, Stunden?) und interpretieren (Plot?)
-// - Zeitpunkt abfragen
-// - Statistische Werte abfragen (einzeln oder gesammelt um Komplexität zu reduzieren)
-// - Plot erzeugen und darstellen (mehrere)
+Für den Datenzugriff werden vordefinierte Funktionen verwendet, die dem Sprachmodell über eine strukturierte Schnittstelle zur Verfügung gestellt werden. Die Funktionen kapseln die konkrete Implementierung des jeweiligen Datenzugriffs und definieren die vom Modell bereitstellbaren Operationen sowie deren Parameter. Dadurch wird die Datenzugriffsschnittstelle auf zuvor festgelegte Operationen beschränkt, während die konkrete Datenhaltung von der Entscheidungslogik des Sprachmodells entkoppelt wird. Die Funktionen werden so gestaltet, dass sie die für die jeweiligen Testfälle benötigten Daten zuverlässig und in einer definierten Struktur zurückgeben @costaEnhancingAccuracyMaintainability2025.
 
 === Zeitauflösung
 
@@ -196,6 +205,13 @@ Zur Bewertung dieser Ansätze wurde eine Voruntersuchung im Kontext synthetische
 Die Ergebnisse zeigten, dass beide Darstellungsformen eine korrekte Interpretation einfacher Verbrauchsmuster ermöglichen. Mit zunehmender Länge der Zeitreihen erwiesen sich Visualisierungen jedoch als deutlich effizienter hinsichtlich Tokenverbrauch und Verarbeitungszeit. Gleichzeitig zeigte sich, dass die eigentliche Mustererkennung nicht zwangsläufig durch das LLM erfolgen muss. Wiederkehrende Analysen, wie beispielsweise die Erkennung von Lastspitzen oder die Berechnung statistischer Kennwerte, können konsistenter und ressourcenschonender durch spezialisierte Analysewerkzeuge durchgeführt werden.
 
 Auf Basis der Erkenntnisse aus dem Kapitel "Stand der Forschung" (2.x) wurde das Tooldesign so gewählt, dass das LLM Zeitreihen nicht grundsätzlich selbst interpretieren muss. Stattdessen stellen Werkzeuge je nach Anwendungsfall entweder aufbereitete Visualisierungen oder bereits analysierte Informationen bereit. Das LLM übernimmt damit primär die Orchestrierung sowie die sprachliche Interpretation der Ergebnisse, während rechenintensive oder wiederkehrende Zeitreihenanalysen an spezialisierte Werkzeuge ausgelagert werden.
+
+=== Tools
+
+// - Zeitabschnitt abfragen (Tage, Stunden?) und interpretieren (Plot?)
+// - Zeitpunkt abfragen
+// - Statistische Werte abfragen (einzeln oder gesammelt um Komplexität zu reduzieren)
+// - Plot erzeugen und darstellen (mehrere)
 
 == Orchestrierungsstrategien
 

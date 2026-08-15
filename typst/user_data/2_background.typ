@@ -10,11 +10,13 @@
 
 // 4-5 Seiten
 
-== Large Language Models
-
-== Tool-Augmented LLMs
-
-== Tool-Orchestrierung
+// LLMs
+// Autonomie @fengLevelsAutonomyAI2025
+// Tokens
+// Autoregressive Generierung
+// Kontextfenster
+// Orchestrierung
+// API?
 
 *Energiegemeinschaft* // copy from introduction
 
@@ -25,8 +27,13 @@ Energiegemeinschaften sind Zusammenschlüsse von Teilnehmenden die Privatpersone
 
 Inferenz bedeutet im Zusammenhang mit KI, dass ein bereits trainiertes Modell der künstlichen Intelligenz neue, unbekannte Daten verarbeitet. Es nutzt das während der Lernphase angeeignete Wissen, um eigenständig Vorhersagen, Entscheidungen oder Antworten zu erzeugen @WasIstKIInferenz.
 
-*Autonomie*
-// Paper
+*Tool Calling / Function Calling*
+
+Das Modell erhält eine Menge definierter Tools.
+Jedes Tool besitzt einen Namen und definierte Parameter.
+Das Modell erzeugt strukturiert, welches Tool mit welchen Parametern aufgerufen werden soll.
+Die eigentliche Funktion wird anschließend von der Anwendung ausgeführt.
+
 
 // planed references old:
 // @paranjapeARTAutomaticMultistep2023

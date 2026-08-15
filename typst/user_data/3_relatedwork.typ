@@ -12,78 +12,9 @@
 
 == Tooldesign
 
-// STRUCUTRE 20260811:
-// Was ist Tool Use / Function Calling?
-// Wie werden Tools beschrieben und bereitgestellt?
-// Toolauswahl
-// Parameter-/Argumentgenerierung
-// strukturierte Tooldefinitionen
-// Toolergebnisse
-// gegebenenfalls besondere Anforderungen deiner Zeitreihendaten
-// relevante Arbeiten wie Toolformer
-// Während ein einzelner Tool-Aufruf vergleichsweise einfach ist, entstehen bei Aufgaben, die mehrere Werkzeuge erfordern, zusätzliche Anforderungen ... -> Übergang zu Orchestrierung
-
-// STRUCTURE 20260812:
-// Tool Use / Function Calling
-// Toolbeschreibung
-// Toolauswahl
-// Argumente
-// Toolergebnisse
-// ggf. Zeitreihendaten
-
-// Einleitung Tooldesign Methodik
 Für die Nutzung externer Werkzeuge durch ein Large Language Model müssen die verfügbaren Funktionen in einer für das Modell verständlichen und eindeutig interpretierbaren Form bereitgestellt werden. Dabei ist insbesondere eine klare Beschreibung der verfügbaren Werkzeuge sowie der von ihnen erwarteten Eingaben erforderlich. Ansätze zur Tool-Nutzung durch Large Language Models zeigen, dass das Modell neben der Auswahl eines geeigneten Werkzeugs auch die für dessen Aufruf erforderlichen Argumente bestimmen muss. Toolformer beschreibt beispielsweise die Auswahl und Ausführung externer Werkzeuge als Bestandteil der Modellentscheidung und unterscheidet dabei zwischen der Auswahl einer API und der Erzeugung der zugehörigen Eingabe @schickToolformerLanguageModels2023.
 
 Diese strukturierte Bereitstellung der Werkzeuge bildet zugleich eine Grundlage für die Koordination mehrerer Werkzeuge innerhalb einer Aufgabe. Während bei einer einfachen Tool-Nutzung lediglich ein einzelner Funktionsaufruf erforderlich sein kann, müssen bei komplexeren Aufgaben mehrere spezialisierte Werkzeuge ausgewählt und in geeigneter Weise miteinander kombiniert werden. Aktuelle Arbeiten zur Entwicklung von Tool-Use-Systemen betrachten daher insbesondere die Koordination mehrerer Werkzeuge sowie die Planung und Ausführung aufeinanderfolgender Tool-Aufrufe als zentrale Bestandteile solcher Systeme @xuEvolutionToolUse2026.
-
-wie ein LLM mehrere spezialisierte Tools zur Bearbeitung einer Aufgabe koordiniert @xuEvolutionToolUse2026
-
-=== Datenbankabfrage // Quellen finden, wichtige Grundlage für Orchestrierung - Methodik: Warum Funktionen gewählt?
-
-*Text to SQL:* Wie der Name schon sagt wird hier ein Inputtext in eine SQL-Query übersetzt mit der dann auf eine Datenbank zugegriffen wird. Tabellennamen sind teilweise nicht selbsterklärend und müssen definiert werden.
-
-// API: mögliche Authentifizierung und Berechtigungsbeschränkungen, klar strukturierte Abfrage
-
-*Funktionen:* Man kann ebenso fixe SQL Abfragen in Funktionen verpacken. Dann kann man Funktions- und Parameternamen selbsterklärend definieren und so weniger Erklärungsbedarf notwendig ist. Meine These ist, dass dieses vorgehen mit guter Struktur weniger Token verbraucht, effizienter und schneller sowie kontrollierter läuft. Aber das könnte man noch vergleichen.
-
-=== Zeitreihendaten
-
-Energiedaten bestehen oft aus Zeitreihen. Diese direkt im Kontext zu übergeben würde relativ viele Token verbrauchen und den begrenzten Kontext schnell füllen wodurch auch der Fokus auf das wesentliche verloren geht. Außerdem ist ein LLM auf Sprachverständnis optimiert und nicht unbedingt auf Mustererkennung von langen Zahlenreihen. Im Optimalfall hat man Analysemodelle auf die das LLM zugreifen kann die relevante Informationen aus Zeitreihen herausfiltern oder beschreiben ohne, dass das LLM selbst diese analysieren muss. Wenn man das richtig umsetzt ist das effizienter sowie konsistenter. Ein ganz einfaches Beispiel wäre das Herausfiltern von statistischen Werten wie Maximum, Minimum, Durchschnitt usw. Bei Mustererkennung wird das ganze schon etwas komplexer. Hier muss man sich überlegen welche Fragestellungen man beantworten möchte und entsprechende Modelle dafür entwickeln. Das kann aber aufwendig und unflexibel sein.
-
-Das Paper „A Picture is Worth A Thousand Numbers: Enabling LLMs Reason about Time Series via Visualization“ beschäftigt sich unter anderem damit wie man Zeitreihen besser mit LLMs verarbeiten kann. Grob zusammengefasst werden die Zeitreihen nicht direkt als Array bzw. Json übergeben sondern es wird erst ein Plot erzeugt welcher anschließend übergeben wird. Nutzt man optional noch ICL (In Context Learning) kann man Beispielplots von verschiedenen Mustern und dessen Beschreibung als Vorlage für den zu analysierenden Plot zum Kontext hinzufügen. Vor allem bei spezifischen Domänen auf die das LLM nicht oder nur wenig trainiert ist kann das sehr Hilfreich sein. Laut Testergebnissen soll durch diese Methode eine Performancesteigerung von 140% und eine Tokenersparnis von 99% erreicht worden sein. Außerdem soll die Mustererkennung von Bildern deutlich besser sein @liuPictureWorthThousand.
-
-=== MCP (Model Context Protocol) // gängige Umsetzung -> in Methodik begründen warum einfacher umgesetzt
-
-Das Model Context Protocol (MCP) ist ein Standard zur strukturierten Integration von Tools und Datenquellen in LLM-basierte Systeme. Es definiert, wie externe Funktionen beschrieben, entdeckt und aufgerufen werden können. Im Gegensatz zu Orchestrierungsstrategien wie deterministischen Pipelines, plan-basierten
-Ansätzen oder iterativen Verfahren (z. B. ReAct), beschreibt MCP nicht die Entscheidungslogik, sondern die Schnittstelle zwischen Modell und Tools.
-
-*Vorteile*
-• Einheitliche Tool-Schnittstelle (ähnlich wie eine API-Norm)
-• Wiederverwendbarkeit von Tool-Integrationen
-• Reduzierter Implementierungsaufwand
-• Bessere Interoperabilität zwischen verschiedenen Modellen und Systemen
-
-*Einschränkungen*
-• MCP löst keine Probleme der Entscheidungslogik oder Planung
-• Qualität hängt weiterhin stark von Prompting und Agent-Design ab
-• Zusätzliche Abstraktion kann Overhead erzeugen
-
-*Sinnvoll*
-• bei komplexen Systemen mit vielen Tools
-• bei modularen oder skalierbaren Architekturen
-• wenn mehrere Modelle oder Teams beteiligt sind
-
-*weniger sinnvoll*
-• bei sehr kleinen, festen Pipelines
-• wenn nur wenige, statische Tool-Aufrufe benötigt werden
-• bei extrem latency-kritischen Anwendungen
-
-*Fazit* // -> Zwischenfazit?
-In frühen Prototypenphasen ist der Einsatz von MCP oft nicht erforderlich, da der Fokus hier auf schneller Iteration, Validierung von Konzepten und minimalem Implementierungsaufwand liegt. Direkte Tool-Integrationen ohne zusätzliche Abstraktionsschicht sind in diesem Kontext meist einfacher umzusetzen, leichter zu debuggen und verursachen weniger Overhead.
-
-Mit zunehmender Systemkomplexität ändern sich jedoch die Anforderungen: Die Anzahl an Tools, Agenten und Schnittstellen wächst, wodurch individuelle Integrationen schnell unübersichtlich und schwer wartbar werden. An diesem Punkt bietet MCP einen entscheidenden Vorteil, da es eine standardisierte und konsistente Struktur für Toolzugriffe schafft.
-
-In produktiven Systemen trägt MCP somit wesentlich zur Skalierbarkeit, Wartbarkeit und Erweiterbarkeit bei. Insbesondere in modularen Architekturen mit mehreren spezialisierten Agenten oder bei der Zusammenarbeit mehrerer Teams ermöglicht es eine klare Trennung von Verantwortlichkeiten und reduziert langfristig die Komplexität des Gesamtsystems.
 
 == Orchestrierung
 
@@ -168,6 +99,34 @@ GPT4Tools ermöglicht es LLMs auf multi-modal tools zuzugreifen. Aber für den p
 
 Im Paper „Proactive Agent: Shifting LLM Agents from Reactive Responses to Active Assistance“ wird versucht einen Agenten zu entwickeln der nicht nur auf explizite Nutzeranfragen reagiert sondern proaktiv Hilfe anbietet. Er soll die Bedrüfnisse des Nutzers basierend auf User-Aktivitäten (z. B. Maus, Tastatur, Browser) implizit erkennen. Behandelt wurden unter anderem die Szenarien Programmieren und Schreiben. Ein LLM neigt dazu zu häufig Hilfe anzubieten was schnell nervig werden kann. Daher werden Vorschläge von Menschen gelabelt und zum Training verwendet. Das führt zu einer deutlichen Verbesserung aber der Agent bietet trotzdem noch unnötige Hilfe an. Außerdem ist das Timing schwer wann Hilfe angeboten wird. Zu früh ist nervig, zu spät ist nutzlos. Und es ist sehr schwierig automatisch zu erkenne was der Nutzer wirklich möchte. Außerdem braucht es viel Kontext den man oft nicht hat. Zusätzlich sind Datenschutz und Privatsphäre kritisch. Das Paper zeigt, dass es theoretisch geht, aber es noch nicht zuverlässig genug für eichen
 praktischen Einsatz funktioniert. Wählt man ein sehr kontrolliertes Setting wie Coding oder Schreibtools kann es schon sinnvoll eingesetzt werden da der Kontext stark strukturiert vorliegt @luProactiveAgentShifting2024.
+
+== Datenbankabfrage // final
+
+// Text to SQL
+Eine Möglichkeit, Datenbanken über natürliche Sprache zugänglich zu machen, ist Text-to-SQL. Dabei wird eine natürlichsprachliche Anfrage in eine ausführbare SQL-Abfrage übersetzt @singhComprehensiveReviewLLMbased2026.
+
+Die Generierung einer geeigneten SQL-Abfrage erfordert neben der Interpretation der natürlichsprachlichen Anfrage auch ein Verständnis des zugrunde liegenden Datenbankschemas. Moderne Text-to-SQL-Systeme beziehen daher Schemainformationen ein und verwenden unter anderem Verfahren zum Schema Linking, um relevante Tabellen und weitere Datenbankelemente für die Abfragegenerierung zu bestimmen @singhComprehensiveReviewLLMbased2026.
+
+Mit zunehmender Komplexität der Datenbank entstehen dabei zusätzliche Herausforderungen. Komplexe Schemata, Beziehungen zwischen Tabellen, mehrdeutige Anfragen sowie die korrekte Generierung komplexer SQL-Konstruktionen können die Zuverlässigkeit der erzeugten Abfragen beeinträchtigen. Entsprechend sind Schemaverständnis, robuste SQL-Generierung und die Behandlung komplexer Anfragen weiterhin zentrale Herausforderungen der Text-to-SQL-Forschung @hongNextGenerationDatabaseInterfaces2025.
+
+// Function Calling
+Eine alternative Möglichkeit besteht darin, Datenbankoperationen über vordefinierte Funktionen bereitzustellen. Dabei wird die für eine Operation benötigte Abfragelogik innerhalb einer Funktion gekapselt, während das Sprachmodell lediglich aus den verfügbaren Funktionen auswählt und deren definierte Parameter bestimmt. De Costa et al. verwenden einen solchen Ansatz, bei dem zweckgebundene Funktionen vorab definierte und validierte SQL-Abfragen kapseln. Dadurch wird die Generierung der eigentlichen SQL-Logik aus dem direkten Einflussbereich des Sprachmodells genommen und die zulässige Interaktion mit der Datenbank auf die bereitgestellten Operationen beschränkt @costaEnhancingAccuracyMaintainability2025.
+
+Der Ansatz bietet insbesondere dort Vorteile, wo die Kontrollierbarkeit und Nachvollziehbarkeit der Datenabfragen relevant sind. De Costa et al. berichten in ihrem konkreten Anwendungskontext zudem eine höhere durch Experten bewertete Korrektheit sowie Vorteile hinsichtlich der Wartbarkeit gegenüber einem direkten NL-to-SQL-Ansatz. Gleichzeitig entsteht durch die Entwicklung und Pflege der Funktionsbibliothek ein zusätzlicher Aufwand @costaEnhancingAccuracyMaintainability2025.
+
+== Zeitreihendaten // final
+
+Energiedaten liegen häufig in Form von Zeitreihen vor. Eine direkte Übergabe längerer Zeitreihen an ein LLM kann problematisch sein. Bei der numerischen Repräsentation entstehen einerseits hohe Tokenkosten, andererseits können relevante zeitliche, dimensionale oder frequenzbezogene Merkmale nur schwer aus der Folge numerischer Werte extrahiert werden. Liu et al. zeigen beispielsweise, dass ein einzelnes Zeitreihenbeispiel im untersuchten RCW-Datensatz bei GPT-4o bis zu 60.000 Input-Tokens benötigen kann. Die Autoren identifizieren die direkte numerische Modellierung daher als eine wesentliche Ursache für die beobachteten Schwierigkeiten von LLMs beim Reasoning über Zeitreihen @liuPictureWorthThousand.
+
+Eine Möglichkeit besteht darin, Zeitreihen zunächst durch spezialisierte Verfahren zu analysieren und dem LLM lediglich relevante Merkmale oder Ergebnisse bereitzustellen. Dies kann beispielsweise die Berechnung statistischer Kennwerte umfassen. Für komplexere Fragestellungen sind jedoch spezifische Verfahren zur Merkmalsextraktion oder Mustererkennung erforderlich, wodurch die Lösung stärker auf die jeweils vorgesehenen Fragestellungen zugeschnitten werden muss @liuPictureWorthThousand.
+
+Einen alternativen Ansatz untersuchen Liu et al. mit VL-Time. Anstatt die Zeitreihen direkt als numerische Daten an das LLM zu übergeben, werden diese visualisiert und anschließend von einem multimodalen LLM verarbeitet. Die Methode umfasst zunächst eine Planungsphase, in der unter anderem eine geeignete Visualisierung im Zeit- oder Frequenzbereich sowie relevante Merkmale bestimmt werden. In der anschließenden Lösungsphase wird die visualisierte Zeitreihe zusammen mit sprachlichen Hinweisen verarbeitet @liuPictureWorthThousand.
+
+Die Visualisierung dient dabei nicht nur der Darstellung, sondern gleichzeitig als Kompromiss zwischen Informationsgehalt und Kontextgröße. Im untersuchten RCW-Beispiel reduziert sich die Repräsentation eines Zeitreihenbeispiels von bis zu 60.000 Tokens bei numerischer Modellierung auf 85 Tokens bei visueller Modellierung. Zusätzlich untersuchen Liu et al. Few-Shot In-Context Learning, bei dem Beispiele zur jeweiligen Aufgabe in den Kontext aufgenommen werden. Im Vergleich zur numerischen Modellierung erzielt VL-Time dabei eine durchschnittliche relative Leistungssteigerung von 140 % und reduziert die durchschnittlichen Tokenkosten um 99 % @liuPictureWorthThousand.
+
+// Energiedaten bestehen oft aus Zeitreihen. Diese direkt im Kontext zu übergeben würde relativ viele Token verbrauchen und den begrenzten Kontext schnell füllen wodurch auch der Fokus auf das wesentliche verloren geht. Außerdem ist ein LLM auf Sprachverständnis optimiert und nicht unbedingt auf Mustererkennung von langen Zahlenreihen. Im Optimalfall hat man Analysemodelle auf die das LLM zugreifen kann die relevante Informationen aus Zeitreihen herausfiltern oder beschreiben ohne, dass das LLM selbst diese analysieren muss. Wenn man das richtig umsetzt ist das effizienter sowie konsistenter. Ein ganz einfaches Beispiel wäre das Herausfiltern von statistischen Werten wie Maximum, Minimum, Durchschnitt usw. Bei Mustererkennung wird das ganze schon etwas komplexer. Hier muss man sich überlegen welche Fragestellungen man beantworten möchte und entsprechende Modelle dafür entwickeln. Das kann aber aufwendig und unflexibel sein.
+
+// Das Paper „A Picture is Worth A Thousand Numbers: Enabling LLMs Reason about Time Series via Visualization“ beschäftigt sich unter anderem damit wie man Zeitreihen besser mit LLMs verarbeiten kann. Grob zusammengefasst werden die Zeitreihen nicht direkt als Array bzw. Json übergeben sondern es wird erst ein Plot erzeugt welcher anschließend übergeben wird. Nutzt man optional noch ICL (In Context Learning) kann man Beispielplots von verschiedenen Mustern und dessen Beschreibung als Vorlage für den zu analysierenden Plot zum Kontext hinzufügen. Vor allem bei spezifischen Domänen auf die das LLM nicht oder nur wenig trainiert ist kann das sehr Hilfreich sein. Laut Testergebnissen soll durch diese Methode eine Performancesteigerung von 140% und eine Tokenersparnis von 99% erreicht worden sein. Außerdem soll die Mustererkennung von Bildern deutlich besser sein @liuPictureWorthThousand.
 
 == Evaluation
 
