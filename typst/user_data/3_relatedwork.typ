@@ -12,13 +12,75 @@
 
 == Toolnutzung
 
+Large Language Models können durch die Anbindung externer Werkzeuge auf Informationen und Funktionen zugreifen, die nicht allein durch das im Modell gespeicherte Wissen bereitgestellt werden können. Frühe Arbeiten untersuchten dabei zunächst die grundlegende Fähigkeit, geeignete Werkzeuge auszuwählen und korrekte API-Aufrufe zu erzeugen. Xu et al. ordnen unter anderem Toolformer und ReAct dieser frühen Entwicklung zu, in der insbesondere die Auswahl eines Werkzeugs und die korrekte Formatierung eines API-Aufrufs im Vordergrund stehen @xuEvolutionToolUse2026.
+
+=== Tool Calling und Toolauswahl
+
 // Toolformer
-Ein früher Ansatz zur systematischen Nutzung externer Werkzeuge durch Sprachmodelle ist Toolformer von Schick et al. Dabei wird untersucht, wie Sprachmodelle lernen können, externe Werkzeuge über APIs selbstständig einzusetzen. Das Modell lernt dabei nicht nur, welches Werkzeug verwendet werden soll, sondern auch, wann ein Aufruf sinnvoll ist und welche Argumente dafür erzeugt werden müssen. Hierzu werden potenzielle API-Aufrufe automatisch erzeugt, ausgeführt und anhand ihres Beitrags zur Vorhersage zukünftiger Tokens gefiltert. Die verbleibenden Beispiele werden anschließend zur Feinabstimmung des Modells verwendet @schickToolformerLanguageModels2023.
+Ein früher Ansatz zur systematischen Nutzung externer Werkzeuge durch Sprachmodelle ist Toolformer. Dabei wird untersucht, wie ein Sprachmodell selbstständig lernen kann, externe Werkzeuge über APIs einzusetzen. Das Modell soll dabei nicht nur geeignete Werkzeuge auswählen, sondern auch entscheiden, wann ein API-Aufruf sinnvoll ist und welche Argumente dafür erzeugt werden müssen. Dazu werden zunächst potenzielle API-Aufrufe in Texte eingefügt, ausgeführt und anschließend anhand ihres Beitrags zur Vorhersage zukünftiger Tokens gefiltert. Die verbleibenden Beispiele werden für die Feinabstimmung des Modells verwendet. Toolformer zeigt damit, dass Toolnutzung nicht zwingend durch eine explizite Vorgabe des verwendeten Werkzeugs erfolgen muss. Das Modell kann vielmehr lernen, selbst zu entscheiden, ob und wann externe Informationen benötigt werden. In den Experimenten führte dies unter anderem bei wissensintensiven Aufgaben zu deutlichen Verbesserungen gegenüber vergleichbaren Modellen ohne Toolnutzung @schickToolformerLanguageModels2023.
 
-Toolformer zeigt damit bereits die grundlegende Fähigkeit eines LLM, externe Werkzeuge nicht nur auf explizite Vorgabe hin aufzurufen, sondern deren Verwendung selbst in die Modellentscheidung einzubeziehen. Gleichzeitig ist der Ansatz auf einzelne bzw. unabhängig erzeugte API-Aufrufe beschränkt; insbesondere verkettete Aufrufe, bei denen das Ergebnis eines Werkzeugs als Eingabe für ein weiteres Werkzeug dient, werden von der vorgestellten Methode nicht unterstützt @schickToolformerLanguageModels2023.
+// MetaTool
+Die Frage der Toolauswahl wird auch unabhängig von der konkreten Ausführung eines Tool Calls untersucht. Huang et al. führen mit MetaTool einen Benchmark ein, der bewertet, ob ein Sprachmodell erkennt, wann ein externes Werkzeug benötigt wird und welches Werkzeug für eine Anfrage geeignet ist. Dabei werden sowohl einzelne Werkzeuge als auch Szenarien mit mehreren Werkzeugen betrachtet. Die Ergebnisse zeigen, dass selbst leistungsfähige Sprachmodelle weiterhin Schwierigkeiten bei der zuverlässigen Toolauswahl aufweisen @huangMetaToolBenchmarkLarge2024.
 
-// Überleitung zu Orchestrierung
-Damit liegt der Schwerpunkt von Toolformer auf der Fähigkeit eines einzelnen Sprachmodells, geeignete Werkzeuge zu identifizieren und einzusetzen, während die explizite Koordination voneinander abhängiger Werkzeugaufrufe nicht im Mittelpunkt steht.
+Damit verschiebt sich der Fokus von der reinen Fähigkeit, einen einzelnen API-Aufruf korrekt zu erzeugen, zunehmend auf die Frage, welches Werkzeug für eine konkrete Aufgabe geeignet ist. Das Xu-Survey beschreibt diese Entwicklung als Übergang von einer einfachen Toolauswahl hin zu komplexeren Entscheidungen über mehrere voneinander abhängige Werkzeuge @xuEvolutionToolUse2026.
+
+=== Tool Learning und Training
+
+// GPT4Tools - Grundlagen
+Neben Ansätzen, die Toolnutzung während der Ausführung ermöglichen, wurde untersucht, Toolnutzung gezielt in den Parametern eines Sprachmodells zu verankern. Ein Beispiel hierfür ist GPT4Tools. Der Ansatz verfolgt das Ziel, kleinere Open-Source-Modelle mithilfe von Trainingsdaten eines leistungsfähigeren Sprachmodells zur Nutzung von Werkzeugen zu befähigen. Hierzu erzeugt GPT-3.5 anhand von Toolbeschreibungen und visuellen Kontexten zunächst ein instruktionales Trainingsdatenset. Die daraus erzeugten Beispiele werden anschließend verwendet, um Modelle wie OPT-13B, LLaMA-13B und Vicuna-13B mittels LoRA anzupassen @yangGPT4ToolsTeachingLarge2023.
+
+// GPT4Tools - Evaluation
+Die erzeugten Trainingsbeispiele enthalten unter anderem die Entscheidung, ob ein Werkzeug benötigt wird, den Namen des aufzurufenden Werkzeugs und die entsprechenden Argumente. GPT4Tools evaluiert diese Fähigkeiten getrennt über die Successful Rate of Thought (SRt), die Successful Rate of Action (SRact) und die Successful Rate of Arguments (SRargs). Die zusammengefasste Successful Rate berücksichtigt dabei nur Aufrufe, bei denen alle drei Komponenten korrekt sind. Die Ergebnisse zeigen deutliche Verbesserungen durch das Fine-Tuning. Beispielsweise steigt die Successful Rate von OPT-13B von 0 % auf 93,2 % und die von Vicuna-13B von 12,4 % auf 94,1 %. Auch bei Werkzeugen, die nicht im Training enthalten waren, erreichen die angepassten Modelle deutlich bessere Ergebnisse. Vicuna-13B erzielt auf diesen unbekannten Werkzeugen beispielsweise eine Successful Rate von 90,6 % @yangGPT4ToolsTeachingLarge2023.
+
+// GPT4Tools - Schlussfolgerung
+GPT4Tools zeigt damit, dass Toolnutzung nicht ausschließlich durch Laufzeit-Prompting oder eine externe Steuerung realisiert werden muss, sondern auch als erlernte Fähigkeit eines Sprachmodells betrachtet werden kann. Gleichzeitig unterscheidet sich dieser Ansatz von Toolformer dadurch, dass GPT4Tools gezielt kleinere Open-Source-Modelle mittels selbstgenerierter Instruktionsdaten anpasst und insbesondere auch multimodale Werkzeuge berücksichtigt @yangGPT4ToolsTeachingLarge2023. Das Xu-Survey ordnet GPT4Tools entsprechend als frühen Ansatz des Supervised Fine-Tunings für Toolnutzung ein. Während frühe Fine-Tuning-Verfahren insbesondere die syntaktische Korrektheit von Toolaufrufen sowie die Zuordnung von Anfragen zu APIs verbessern, verschiebt sich der Fokus neuerer Verfahren zunehmend auf große Toolmengen und die Planung von Abhängigkeiten zwischen Werkzeugen @xuEvolutionToolUse2026.
+
+=== Mehrstufige Toolnutzung
+
+// Grenzen bei mehrstufiger Toolnutzung
+Mit der Nutzung mehrerer Werkzeuge entsteht eine zusätzliche Herausforderung: Ein Werkzeugaufruf kann von den Ergebnissen eines vorherigen Aufrufs abhängen. Damit reicht es nicht mehr aus, einzelne Tool Calls unabhängig voneinander korrekt zu erzeugen. Stattdessen müssen Informationen aus vorherigen Aufrufen aufgenommen und für nachfolgende Aktionen verwendet werden.
+
+Diese Grenze zeigt sich bereits bei Toolformer. Das Verfahren beschränkt sich bei der Erzeugung und Nutzung von API-Aufrufen auf einzelne Aufrufe pro Beispiel. Dadurch kann es keine verketteten Toolaufrufe erlernen, bei denen beispielsweise die Ausgabe eines Werkzeugs als Eingabe für ein weiteres Werkzeug dient. Auch eine interaktive Nutzung eines Werkzeugs, bei der beispielsweise eine Suchanfrage auf Grundlage zuvor erhaltener Ergebnisse angepasst wird, wird vom ursprünglichen Ansatz nicht unterstützt @schickToolformerLanguageModels2023.
+
+ART greift diese Herausforderung auf und erweitert die Toolnutzung um eine explizite mehrstufige Struktur. Das Framework zerlegt Aufgaben in mehrere aufeinanderfolgende Schritte und kann die Generierung an einem Tool Call unterbrechen, dessen Ausgabe in den weiteren Ablauf integrieren und anschließend die Generierung fortsetzen. Dadurch können beispielsweise zunächst Informationen über eine Suche beschafft und anschließend mit einem Codewerkzeug verarbeitet werden @paranjapeARTAutomaticMultistep2023.
+
+Damit wird eine Grenze zwischen der Nutzung einzelner Werkzeuge und der Koordination mehrerer Werkzeuge sichtbar. Während bei einzelnen Aufrufen vor allem Toolauswahl und korrekte Parametrisierung relevant sind, entstehen bei mehreren voneinander abhängigen Aufrufen zusätzliche Anforderungen wie die Modellierung von Abhängigkeiten, die Bestimmung der Ausführungsreihenfolge, Parallelisierung, Fehlerbehandlung und erneute Planung @xuEvolutionToolUse2026.
+
+// Überleitung zur Orchestrierung
+Damit liegt der Schwerpunkt der beschriebenen Ansätze zunächst auf der Fähigkeit des Sprachmodells, Werkzeuge zu verwenden: Es muss erkennen, wann ein Werkzeug benötigt wird, ein geeignetes Werkzeug auswählen und einen korrekten Aufruf mit passenden Argumenten erzeugen können. Bei mehreren aufeinander aufbauenden Werkzeugaufrufen reicht diese Fähigkeit jedoch nicht mehr aus. Es muss zusätzlich entschieden werden, welche Aktionen in welcher Reihenfolge ausgeführt werden, wie mit den Ergebnissen vorheriger Aktionen umgegangen wird und wann die Ausführung beendet oder angepasst werden sollte. Diese übergeordnete Steuerung wird im Folgenden als Tool-Orchestrierung betrachtet @xuEvolutionToolUse2026.
+
+// == Toolnutzung
+
+// Large Language Models können durch die Anbindung externer Werkzeuge auf Informationen und Funktionen zugreifen, die nicht allein durch das im Modell gespeicherte Wissen bereitgestellt werden können. Frühe Arbeiten untersuchten dabei zunächst die grundlegende Fähigkeit, geeignete Werkzeuge auszuwählen und korrekte API-Aufrufe zu erzeugen. Xu et al. ordnen unter anderem Toolformer und ReAct dieser frühen Entwicklung zu, in der insbesondere die Auswahl eines Werkzeugs und die korrekte Formatierung eines API-Aufrufs im Vordergrund stehen @xuEvolutionToolUse2026.
+
+// === Tool Calling und Toolauswahl
+
+// // Toolformer
+// Ein früher Ansatz zur systematischen Nutzung externer Werkzeuge durch Sprachmodelle ist Toolformer. Dabei wird untersucht, wie ein Sprachmodell selbstständig lernen kann, externe Werkzeuge über APIs einzusetzen. Das Modell soll dabei nicht nur geeignete Werkzeuge auswählen, sondern auch entscheiden, wann ein API-Aufruf sinnvoll ist und welche Argumente dafür erzeugt werden müssen. Dazu werden zunächst potenzielle API-Aufrufe in Texte eingefügt, ausgeführt und anschließend anhand ihres Beitrags zur Vorhersage zukünftiger Tokens gefiltert. Die verbleibenden Beispiele werden für die Feinabstimmung des Modells verwendet. Toolformer zeigt damit, dass Toolnutzung nicht zwingend durch eine explizite Vorgabe des verwendeten Werkzeugs erfolgen muss. Das Modell kann vielmehr lernen, selbst zu entscheiden, ob und wann externe Informationen benötigt werden. In den Experimenten führte dies unter anderem bei wissensintensiven Aufgaben zu deutlichen Verbesserungen gegenüber vergleichbaren Modellen ohne Toolnutzung @schickToolformerLanguageModels2023.
+
+// // Gorilla
+// Ein weiterer Forschungszweig beschäftigt sich stärker mit der Auswahl aus großen Mengen verfügbarer Werkzeuge. Gorilla untersucht API-zentrierte Toolnutzung und legt dabei besonderen Wert auf die korrekte Auswahl von APIs unter realistischen Schnittstellenbedingungen. ToolLLM erweitert diese Perspektive auf sehr große Toolmengen und untersucht unter anderem Toolauswahl und Interaktion mit mehr als 16.000 realen APIs. Damit verschiebt sich der Fokus von der reinen Fähigkeit, einen einzelnen API-Aufruf korrekt zu erzeugen, zunehmend auf die Frage, welches Werkzeug aus einer größeren Menge verfügbarer Werkzeuge für eine konkrete Aufgabe geeignet ist. Das Xu-Survey beschreibt diese Entwicklung als Übergang von einer einfachen Toolauswahl hin zu komplexeren Entscheidungen über mehrere voneinander abhängige Werkzeuge @xuEvolutionToolUse2026.
+
+// === Tool Learning und Training
+
+// // GPT4Tools - Grundlagen
+// Neben Ansätzen, die Toolnutzung während der Ausführung ermöglichen, wurde untersucht, Toolnutzung gezielt in den Parametern eines Sprachmodells zu verankern. Ein Beispiel hierfür ist GPT4Tools. Der Ansatz verfolgt das Ziel, kleinere Open-Source-Modelle mithilfe von Trainingsdaten eines leistungsfähigeren Sprachmodells zur Nutzung von Werkzeugen zu befähigen. Hierzu erzeugt GPT-3.5 anhand von Toolbeschreibungen und visuellen Kontexten zunächst ein instruktionales Trainingsdatenset. Die daraus erzeugten Beispiele werden anschließend verwendet, um Modelle wie OPT-13B, LLaMA-13B und Vicuna-13B mittels LoRA anzupassen @yangGPT4ToolsTeachingLarge2023.
+
+// // GPT4Tools - Evaluation
+// Die erzeugten Trainingsbeispiele enthalten unter anderem die Entscheidung, ob ein Werkzeug benötigt wird, den Namen des aufzurufenden Werkzeugs und die entsprechenden Argumente. GPT4Tools evaluiert diese Fähigkeiten getrennt über die Successful Rate of Thought (SRt), die Successful Rate of Action (SRact) und die Successful Rate of Arguments (SRargs). Die zusammengefasste Successful Rate berücksichtigt dabei nur Aufrufe, bei denen alle drei Komponenten korrekt sind. Die Ergebnisse zeigen deutliche Verbesserungen durch das Fine-Tuning. Beispielsweise steigt die Successful Rate von OPT-13B von 0 % auf 93,2 % und die von Vicuna-13B von 12,4 % auf 94,1 %. Auch bei Werkzeugen, die nicht im Training enthalten waren, erreichen die angepassten Modelle deutlich bessere Ergebnisse. Vicuna-13B erzielt auf diesen unbekannten Werkzeugen beispielsweise eine Successful Rate von 90,6 % @yangGPT4ToolsTeachingLarge2023.
+
+// // GPT4Tools - Schlussfolgerung
+// GPT4Tools zeigt damit, dass Toolnutzung nicht ausschließlich durch Laufzeit-Prompting oder eine externe Steuerung realisiert werden muss, sondern auch als erlernte Fähigkeit eines Sprachmodells betrachtet werden kann. Gleichzeitig unterscheidet sich dieser Ansatz von Toolformer dadurch, dass GPT4Tools gezielt kleinere Open-Source-Modelle mittels selbstgenerierter Instruktionsdaten anpasst und insbesondere auch multimodale Werkzeuge berücksichtigt @yangGPT4ToolsTeachingLarge2023. Das Xu-Survey ordnet GPT4Tools entsprechend als frühen Ansatz des Supervised Fine-Tunings für Toolnutzung ein. Während frühe Fine-Tuning-Verfahren insbesondere die syntaktische Korrektheit von Toolaufrufen sowie die Zuordnung von Anfragen zu APIs verbessern, verschiebt sich der Fokus neuerer Verfahren zunehmend auf große Toolmengen und die Planung von Abhängigkeiten zwischen Werkzeugen @liuUtilityGuidedAgentOrchestration2026.
+
+// === Mehrstufige Toolnutzung
+
+// // Grenzen bei mehrstufige Toolnutzung
+// Mit der Nutzung mehrerer Werkzeuge entsteht eine zusätzliche Herausforderung: Ein Werkzeugaufruf kann von den Ergebnissen eines vorherigen Aufrufs abhängen. Damit reicht es nicht mehr aus, einzelne Tool Calls unabhängig voneinander korrekt zu erzeugen. Stattdessen müssen Informationen aus vorherigen Aufrufen aufgenommen und für nachfolgende Aktionen verwendet werden.
+// Diese Grenze zeigt sich bereits bei Toolformer. Die API-Aufrufe werden dort unabhängig voneinander erzeugt, sodass das Modell keine verketteten Toolaufrufe erlernen kann, bei denen beispielsweise die Ausgabe eines Werkzeugs als Eingabe für ein weiteres Werkzeug dient. Auch eine interaktive Nutzung eines Werkzeugs, bei der beispielsweise eine Suchanfrage auf Grundlage zuvor erhaltener Ergebnisse angepasst wird, wird vom ursprünglichen Ansatz nicht unterstützt.
+// Damit wird eine Grenze zwischen der Nutzung einzelner Werkzeuge und der Koordination mehrerer Werkzeuge sichtbar. Die Entwicklung wird als Übergang von einzelnen Tool Calls zu Multi-Tool-Orchestrierung beschrieben. Während bei einzelnen Aufrufen vor allem Toolauswahl und korrekte Parametrisierung relevant sind, entstehen bei mehreren voneinander abhängigen Aufrufen zusätzliche Anforderungen wie die Modellierung von Abhängigkeiten, die Bestimmung der Ausführungsreihenfolge, Parallelisierung, Fehlerbehandlung und erneute Planung @xuEvolutionToolUse2026.
+
+// // Überleitung zur Orchestrierung
+// Damit liegt der Schwerpunkt der beschriebenen Ansätze zunächst auf der Fähigkeit des Sprachmodells, Werkzeuge zu verwenden: Es muss erkennen, wann ein Werkzeug benötigt wird, ein geeignetes Werkzeug auswählen und einen korrekten Aufruf mit passenden Argumenten erzeugen können. Bei mehreren aufeinander aufbauenden Werkzeugaufrufen reicht diese Fähigkeit jedoch nicht mehr aus. Es muss zusätzlich entschieden werden, welche Aktionen in welcher Reihenfolge ausgeführt werden, wie mit den Ergebnissen vorheriger Aktionen umgegangen wird und wann die Ausführung beendet oder angepasst werden sollte. Diese übergeordnete Steuerung wird im Folgenden als Tool-Orchestrierung betrachtet @xuEvolutionToolUse2026.
 
 == Orchestrierung
 
@@ -48,8 +110,18 @@ Während bei der Nutzung eines einzelnen Werkzeugs die Auswahl und Ausführung e
 // verschiedene Freiheitsgrade
 // konkrete Orchestrierungsansätze
 
-// -> Toolnutzung?
-Tool-Use Ansätze @paranjapeARTAutomaticMultistep2023
+// QUELLEN:
+// liuUtilityGuidedAgentOrchestration2026
+// luOrchDAGComplexTool2025
+// zheRobustEfficientTool2026
+// jiayangTrainingLLMsMultiStep2026
+// alazrakiMetaReasoningImprovesTool2025
+// paranjapeARTAutomaticMultistep2023
+// duanMultitoolIntegrationApplication2024
+// romanOrchestralAIFramework2026
+// yuAdaptOrchTaskAdaptiveMultiAgent2026
+// suiTrainingFreeTimeSeries2025 eher Zeitreihen
+// strehlowSAGEToolAugmentedLLM2026 eher Multi-Agent/Orchestrierung
 
 === Robuste und effiziente Tool-Orchestrierung
 
@@ -84,18 +156,6 @@ Das Paper zeigt damit, dass Agent-Orchestrierung ein eigenständiges Problem ist
 // Iterativ (ReAct)
 
 ReAct (Reasoning + Acting) ist eine Methode bei der das LLM den Tooloutput wieder als Input bekommt und überprüft ob die Informationen ausreichend sind oder weitere Toolaufrufe erforderlich sind. Es werden so lange neue Toolaufrufe getriggert bis das LLM entscheidet, dass es nun genügend oder die passenden Informationen erhalten hat. Es ist ratsam hierfür ein Schleifenlimit zu setzen, um die Kosten und die Laufzeit unter Kontrolle zu halten. Das Paper „ReAct Modular Agent: Orchestrating Tool-Use and Retrieval for Financial Workflows“ versucht den klassische ReAct Agent zu verbessern indem Reasoning und Acting voneinander getrennt werden. Der klassische ReAct Agent wird als monolitisch beschrieben, weil sowohl Reasoning und Acting in einem Aufruf abgearbeitet werden. Es wird erklärt, dass das zu einer hohen Latenz und inkonsistenten Entscheidungsgrenzen führt. Beim vorgestellten Hierarchical ReAct werden Planung und Toolaufruf voneinander getrennt wie in Abbildung 4 zu sehen. Der Planner erhält die Nutzeranfrage und entscheidet ob und welche Tools gebraucht werden. Fällt die Entscheidung, dass Tools aufgerufen werden sollen erhält diese Information der Dispatcher. Dieser ist ausschließlich für die technische Übersetzung zuständig, dass die Tools richtig aufgerufen werden können. Die Tooloutputs werden dann wieder an den Planner zurückgegeben. Dieser entscheidet nun ob er weitere Tools aufrufen möchte oder die alle Informationen an den Synthesizer weitergibt der die finale Antwort generiert. Der Planner und der Synthesizer (HighReasoning Roles) nutzen GPT-4o, ein relativ starkes Modell. Für den Dispatcher (Low-Latency Role) wird GPT-4.1-Nano verwendet, ein leichtgewichtigeres und schnelleres Modell @hernandezReActModularAgent2025.
-
-=== GPT4Tools // Training kleinerer Modelle relevant für mein Paper? Ich wende nur an. Aber trotzdem Stand der Forschung als Möglichkeit -> Methodik begründen warum nicht gemacht? (nicht Fokus, zu viel Aufwand, Modelle vlt schon teilweise vortrainiert auf Tooluse?)
-
-Im Paper „GPT4Tools: Teaching Large Language Models (LLMs) to Use Tools via Selfinstruction“ gezeigt wie man mit einem starkes Modell Trainingsdaten erzeugt, mit denen ein kleineres Modell lernt Tools zu benutzen mit dem man auch neue (unseen) Tools einlernen kann. Diesen Vorgang nennen sie GPT4Tools welcher in drei Schritte unterteilt ist @yangGPT4ToolsTeachingLarge2023.
-
-*Schritt 1:* Wie bereits erklärt werden hier Trainingsdaten von einem stärkeren Modell erzeugt. In diesem Fall wird GPT-3.5 verwendet. Die Struktur dieser Trainingsdaten sieht wie folgt aus: Thought: Do I need to use a tool? Yes, Action: \<tool name>, Action Input: \<arguments>, Observation: \<result> @yangGPT4ToolsTeachingLarge2023.
-
-*Schritt 2:* Mit diesen Trainingsdaten werden kleinere Daten trainiert. Im Paper sind das OPT-13B, LLaMa-13B und Vicuna-13B. Diese lernen durch Toolauswahl, Toolargumente und Toolaufrufsequenzen @yangGPT4ToolsTeachingLarge2023.
-
-*Schritt 3:* Anschließend wird das Ergebnis mit der Successful Rate (SR) evaluiert. DIe SR setzt sich aus Sucessful Rate of Thought (SRt), Successful Rate of Action (SRact) und Successful Rate of Arguments (SRargs) zusammen. Bei jeder dieser Metriken gibt es Wahr oder Falsch welche in 0 oder 1 ausgedrückt werden. Alle drei müssen 1 sein damit SR ebenfalls 1 ist. Dadurch stellt man fest, dass kleine Modelle durch dieses Training signifikant verbessert werden und sogar neue (unseen) Tools sehr gute SR Werte erzielen können. Da wir beim Forschungsprojekt voraussichtlich auf ein lokales LLM setzen werden ist dies durchaus eine interessante Methode die man in Betracht ziehen kann @yangGPT4ToolsTeachingLarge2023.
-
-GPT4Tools ermöglicht es LLMs auf multi-modal tools zuzugreifen. Aber für den praktischen Einsatz sind noch weitere Verbesserungen notwendig @yangGPT4ToolsTeachingLarge2023.
 
 === Proactive Agent
 
