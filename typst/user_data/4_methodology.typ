@@ -81,7 +81,111 @@ Für die Messungen wurde das Powerlimit der GPU auf 70 % des Standardwerts begre
 // Warmup
 Vor den eigentlichen Messungen werden zunächst Warm-up-Durchläufe durchgeführt, um mögliche Einflüsse der Initialisierung der Inferenzumgebung auf die gemessenen Laufzeiten zu reduzieren.
 
-== Modelle
+== Testdaten
+
+// Dadentsatzbeschreibung
+Für die Evaluation werden synthetische Energiedaten über einen fest definierten Zeitraum verwendet. Der Datensatz enthält [Stromverbrauch und Stromproduktion etc.] mit einer zeitlichen Auflösung von 15 Minuten. Die Daten werden für die verschiedenen Testfälle wiederverwendet, sodass alle Orchestrierungsmethoden unter identischen Datenbedingungen evaluiert werden.
+
+// Referenzzeit (resolve_time.ipynb)
+Für die zeitliche Interpretation der Testfälle wurde eine feste Referenzzeit definiert. Diese umfasst neben dem Datum und der Uhrzeit auch die zugehörige Zeitzone und wird dem LLM als aktueller Zeitpunkt vorgegeben. Dadurch können neben tagesbasierten auch stundenbasierte relative Zeitangaben, beispielsweise „vor drei Stunden“ oder „seit heute Morgen“, eindeutig aufgelöst werden. Die Verwendung einer festen Referenzzeit stellt sicher, dass identische Anfragen unabhängig vom tatsächlichen Zeitpunkt der Versuchsdurchführung stets auf dieselben Zeitintervalle und damit auf identische Toolparameter abgebildet werden. Dadurch wird verhindert, dass Unterschiede zwischen den Orchestrierungsmethoden durch eine unterschiedliche zeitliche Interpretation der Testanfragen beeinflusst werden.
+
+// === Szenarien
+
+// *Datensätze*
+// - 365 Tage (für längere Zeitreihenabfragen)
+// - vollständig, keine Auffälligkeiten
+// - mehrere Anomalien (defekter ZP)
+// - fehlende Werte (Ausfälle)
+// - Verbrauchsvorhersage?
+
+// *Nutzer*
+// - Nutzer mit einem Zählpunkt für isolierte Problembehandlung
+// - Nutzer mit mehreren Zählpunkten und teils bewusst mehrdeutigen Situationen
+
+// === Datengenerierung
+
+// - ausgehend von einer Energiegemeinschaft
+// - Testdaten: 01.01.2026 - 31.03.2026 (inklusive)
+// - Referencetime: 02.04.2026
+
+// // *users.csv*
+// // - user_id
+// // - note (beschreibung für mich und nicht fürs llm)
+
+// *meters.csv*
+// - meter_id
+// - meter_name (meist nur bei vielen Zählpunkten vorhanden)
+// - user_id
+// - direction
+// - location
+// - note
+
+// *timeseries.csv* (15min)
+// - meter_id
+// - timestamp
+// - value
+// - unit
+
+// *forecast.csv* (1h)
+// - timestamp
+// - generation
+// - consumption
+
+// *spotmarket.csv* (1h)
+// - timestamp
+// - value (kann auch negativ sein)
+
+// *Characteristics*
+// - normal: actual bis gestern 0 Uhr danach forecast
+// - missing values: forecast über längeren Zeitraum (llm soll auf prognostizierte Werte aufmerksam machen)
+// - missing values: auch kein forecast
+// - missing values: vereinzelte actuals (llm soll auf fehlende Werte aufmerksam machen)
+
+== Tooldesign
+
+=== Struktur
+
+// An Tool Use von OpenAI orientiert
+Die verfügbaren Werkzeuge werden als strukturierte Funktionsdefinitionen bereitgestellt. Für jedes Werkzeug werden eine eindeutige Bezeichnung, eine Beschreibung seiner Funktion sowie die erwarteten Parameter und deren Eigenschaften definiert. Die Struktur orientiert sich an der von OpenAI für Tool-Aufrufe beschriebenen Darstellung. In dieser Schnittstelle werden Werkzeuge mit einer Beschreibung und einem formalisierten Schema für ihre Eingabeparameter bereitgestellt. Bei einer Anfrage kann das Modell daraufhin einen strukturierten Tool-Aufruf mit dem Namen des gewählten Werkzeugs und den entsprechenden Argumenten erzeugen. Die aufgerufene Funktion wird anschließend von der umgebenden Anwendung ausgeführt und ihr Ergebnis dem Modell zur weiteren Verarbeitung bereitgestellt @UsingToolsOpenAI.
+
+// konkrete Designentscheidungen
+
+=== Datenbankzugriff
+
+Für den Datenzugriff werden vordefinierte Funktionen verwendet, die dem Sprachmodell über eine strukturierte Schnittstelle zur Verfügung gestellt werden. Die Funktionen kapseln die konkrete Implementierung des jeweiligen Datenzugriffs und definieren die vom Modell bereitstellbaren Operationen sowie deren Parameter. Dadurch wird die Datenzugriffsschnittstelle auf zuvor festgelegte Operationen beschränkt. Die konkrete Implementierung des Datenzugriffs bleibt dabei vom Sprachmodell getrennt. Die Funktionen werden so gestaltet, dass sie die für die jeweiligen Testfälle benötigten Daten zuverlässig und in einer definierten Struktur zurückgeben @costaEnhancingAccuracyMaintainability2025.
+
+=== Zeitliche Parametrisierung
+
+Zeitangaben in Benutzeranfragen müssen vor einem Toolaufruf eindeutig in konkrete Zeitintervalle überführt werden. Da Anfragen sowohl relative als auch komplex formulierte Zeitangaben enthalten können und sich diese auf unterschiedliche zeitliche Granularitäten beispielsweise Tage oder Stunden beziehen, stellt die zuverlässige Parametrisierung der Werkzeuge eine grundlegende Voraussetzung für eine reproduzierbare Evaluation dar.
+
+Im System werden Zeitintervalle durch einen Start- und Endzeitpunkt beschrieben, wobei der Startzeitpunkt inkludiert und der Endzeitpunkt exkludiert ist. Ein einzelner Kalendertag wird daher durch den Beginn dieses Tages sowie den Beginn des Folgetages beschrieben.
+
+Für die Zeitauflösung wurden zwei Ansätze betrachtet: die Verwendung eines dedizierten Werkzeugs zur Interpretation natürlicher Zeitangaben sowie die direkte Parametrisierung durch das LLM. Zur Bewertung beider Ansätze wurde eine Voruntersuchung mit aktuellen Sprachmodellen durchgeführt. Hierbei wurden repräsentative Anfragen mit relativen und komplexen Zeitangaben formuliert und die erzeugten Toolparameter analysiert.
+
+Die Untersuchung zeigte, dass aktuelle Modelle mit geeigneten Instruktionen Zeitangaben zuverlässig in korrekte Zeitintervalle überführen können. Auf die Implementierung eines separaten Zeitauflösungswerkzeugs wurde daher verzichtet, wodurch die Komplexität der Werkzeuglandschaft reduziert werden konnte.
+ 
+=== Bereitstellung von Zeitreihendaten // (vl-time_png_vs_array.ipynb, multiagent_energydata.pdf - 3.3. Eigener Test 1 ... und 3.4. Eigener Test 2 ...)
+
+// Zeitreihendaten stellen besondere Anforderungen an die Interaktion zwischen LLM und Werkzeugen. Während Energiedaten häufig aus mehreren hundert bis tausend Messwerten bestehen, sind Large Language Models primär für die Verarbeitung natürlicher Sprache optimiert. Die direkte Übergabe vollständiger Zeitreihen als JSON oder Array erhöht den Tokenverbrauch erheblich und erschwert gleichzeitig die Identifikation relevanter Muster innerhalb langer Zahlenfolgen.
+
+// Grundsätzlich bestehen zwei Möglichkeiten, Zeitreihendaten für ein LLM bereitzustellen. Der erste Ansatz besteht darin, die Rohdaten direkt als strukturierte Werte zu übergeben und die Interpretation vollständig dem Sprachmodell zu überlassen. Alternativ können Zeitreihen vor der Übergabe aufbereitet werden, beispielsweise durch externe Analysewerkzeuge oder durch eine visuelle Darstellung in Form von Diagrammen. In der Literatur konnte bereits gezeigt werden, dass insbesondere Visualisierungen die Verarbeitung von Zeitreihen durch LLMs verbessern und gleichzeitig den Tokenverbrauch deutlich reduzieren können @liuPictureWorthThousand.
+
+Für die Bereitstellung von Zeitreihendaten wurden unterschiedliche Repräsentationsformen betrachtet. In einer Voruntersuchung wurden Zeitreihen unterschiedlicher Länge sowohl als strukturierte JSON-Daten als auch als Liniendiagramme an die verwendeten Modelle übergeben. Dabei wurden die Antwortqualität, der Tokenverbrauch und die Bearbeitungszeit betrachtet. Zusätzlich wurde untersucht, inwieweit mehrere Zeitreihen gleichzeitig verarbeitet werden können.
+
+Die Ergebnisse zeigten, dass beide Repräsentationsformen bei kurzen Zeitreihen eine korrekte Interpretation einfacher Verbrauchsmuster ermöglichten. Mit zunehmender Länge der Zeitreihen erwiesen sich Visualisierungen hinsichtlich Tokenverbrauch und Bearbeitungszeit als vorteilhaft. Auf Grundlage dieser Ergebnisse werden längere Zeitreihen im untersuchten System nicht grundsätzlich als vollständige numerische Daten an das LLM übergeben, sondern je nach Anwendungsfall als Visualisierung oder in aufbereiteter Form bereitgestellt.
+
+Darüber hinaus werden wiederkehrende oder eindeutig definierte Analysen nicht ausschließlich dem Sprachmodell überlassen. Funktionen zur Berechnung statistischer Kennwerte oder zur Erkennung definierter Merkmale können die entsprechenden Verarbeitungsschritte übernehmen. Das LLM übernimmt in diesen Fällen die Auswahl und Orchestrierung der Werkzeuge sowie die Interpretation der zurückgegebenen Ergebnisse.
+
+== Tools
+
+// - Zeitabschnitt abfragen (Tage, Stunden?) und interpretieren (Plot?)
+// - Zeitpunkt abfragen
+// - Statistische Werte abfragen (einzeln oder gesammelt um Komplexität zu reduzieren)
+// - Plot erzeugen und darstellen (mehrere)
+
+== Orchestrierungsstrategien
+
+== Modellauswahl
 
 === Lokale Modelle
 
@@ -102,120 +206,10 @@ Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht d
 - unbekannte Hardware
 - unbekannte Modellimplementierung
 
-== Testdaten
+== Prompts
 
-=== Szenarien
-
-*Datensätze*
-- 365 Tage (für längere Zeitreihenabfragen)
-- vollständig, keine Auffälligkeiten
-- mehrere Anomalien (defekter ZP)
-- fehlende Werte (Ausfälle)
-- Verbrauchsvorhersage?
-
-*Nutzer*
-- Nutzer mit einem Zählpunkt für isolierte Problembehandlung
-- Nutzer mit mehreren Zählpunkten und teils bewusst mehrdeutigen Situationen
-
-=== Datengenerierung
-
-- ausgehend von einer Energiegemeinschaft
-- Testdaten: 01.01.2026 - 31.03.2026 (inklusive)
-- Referencetime: 02.04.2026
-
-// *users.csv*
-// - user_id
-// - note (beschreibung für mich und nicht fürs llm)
-
-*meters.csv*
-- meter_id
-- meter_name (meist nur bei vielen Zählpunkten vorhanden)
-- user_id
-- direction
-- location
-- note
-
-*timeseries.csv* (15min)
-- meter_id
-- timestamp
-- value
-- unit
-
-*forecast.csv* (1h)
-- timestamp
-- generation
-- consumption
-
-*spotmarket.csv* (1h)
-- timestamp
-- value (kann auch negativ sein)
-
-*Characteristics*
-- normal: actual bis gestern 0 Uhr danach forecast
-- missing values: forecast über längeren Zeitraum (llm soll auf prognostizierte Werte aufmerksam machen)
-- missing values: auch kein forecast
-- missing values: vereinzelte actuals (llm soll auf fehlende Werte aufmerksam machen)
-
-=== Referenzzeit // festes Zeifenster für Zeitreihendaten - Referenzzeit -> Tools
-
-Es wurde die Verwendung dynamisch generierter Testdaten untersucht. Da relative Zeitangaben abhängig vom tatsächlichen Ausführungszeitpunkt unterschiedliche Ergebnisse liefern würden, wurde stattdessen ein fester Testdatensatz mit einer vollständig definierten Referenzzeit verwendet. Diese umfasst neben dem Datum auch die Uhrzeit sowie die zugehörige Zeitzone und wird vom LLM als aktueller Zeitpunkt interpretiert. Dadurch können neben tagesbasierten auch stundenbasierte Zeitangaben, beispielsweise „vor drei Stunden“ oder „seit heute Morgen“, eindeutig aufgelöst werden. Gleichzeitig wird sichergestellt, dass identische Anfragen unabhängig vom tatsächlichen Zeitpunkt der Versuchsdurchführung stets zu denselben Zeitintervallen und damit zu identischen Toolparametern führen.
-
-Diese Entscheidungen stellen sicher, dass Unterschiede zwischen den Orchestrierungsmethoden nicht durch die Verarbeitung natürlicher Zeitangaben beeinflusst werden und die Evaluation reproduzierbar durchgeführt werden kann.
-
-== Tooldesign
-
-Tools werden als strukturierte Schnittstellen mit einer eindeutigen Bezeichnung, Beschreibung sowie einer formalisierten Parameterdefinition bereitgestellt. Diese Darstellung orientiert sich an etablierten Ansätzen zur Tool-Nutzung durch Large Language Models, bei denen das Modell sowohl die Auswahl geeigneter Tools als auch die Generierung korrekter Argumente übernehmen muss. 
-
-Orientiert an "OpenAI Developers Using Tools" @UsingToolsOpenAI
-
-In dieser Arbeit werden die verfügbaren Werkzeuge daher als strukturierte Funktionsdefinitionen bereitgestellt. Für jedes Werkzeug werden unter anderem eine eindeutige Bezeichnung, eine Beschreibung seiner Funktion sowie die erwarteten Parameter und deren Eigenschaften definiert. Die konkrete Darstellung dieser Informationen wird im Folgenden festgelegt und bildet die Grundlage für die anschließende Toolauswahl und -ausführung durch das LLM.
-
-
-
-=== OpenAI Tool Search // Anwendungsbeispiel strukturierter Umstetzung
-
-Mit der OpenAI API gibt es die Möglichkeit tools als Json zu übergeben. Auf openai.com findet man die Dokumentation die unter anderem beschreibt wie genau die Json strukturiert sein muss. Auf genau diese Struktur wurde das zugrundeliegende Modell trainiert. Sobald man tools auf diese Weise übergibt verändert sich der Output und man bekommt falls notwendig eine Toolauswahl und Reasoning zurück. Man kann aber auch direkt Content generieren lassen den man als Antwort verwenden kann. Zum Beispiel wird dann nachgefragt wenn Informationen fehlen um ein Tool auszuführen.Ich habe ein Notebook erstellt um zu verstehen wie genau das funktioniert und wie gut das tatsächlich funktioniert. Dafür habe ich zwei Funktionen erstellt die Zeitreihen für Stromverbrauch und Stromproduktion erzeugen. Als Parameter habe ich Startzeit, Endzeit und Pattern definiert. Pattern definiert einfach nur ob es einen Haushalt oder eine Industrieanlage simulieren soll. Fragt
-man nun nach dem Verbrauch der letzten Woche gibt das LLM die strukturiert den entsprechenden Funktionsnamen mit den notwendigen Parametern zurück. Mit diesen kann man dann den Funktionsaufruf starten und den Output wieder in das LLM einspeisen. Fehlt beim Input ein Zeitraum gibt das LLM keine Funktion zurück und fragt nach den Informationen die ihm noch fehlen. In diesem Fall wäre das der Zeitraum. Dieses Vorgehen sollte besser und zuverlässiger funktionieren als die Tools nur in der Message einzubinden, weil es auch speziell darauf trainiert wurde. Allerdings ist diese Anwendung sehr spezifisch und nicht so auf andere LLMs übertragbar. Es ist quasi schon eine fertige Lösung. Leider scheint diese Funktion nur auf den API-Zugriff beschränkt zu sein und ist somit nicht lokal nutzbar. Aber es kann als Inspiration dienen wie wir das selbst umsetzen wollen @UsingToolsOpenAI.
-
-=== Datenbankzugriff
-
-Für den Datenzugriff werden vordefinierte Funktionen verwendet, die dem Sprachmodell über eine strukturierte Schnittstelle zur Verfügung gestellt werden. Die Funktionen kapseln die konkrete Implementierung des jeweiligen Datenzugriffs und definieren die vom Modell bereitstellbaren Operationen sowie deren Parameter. Dadurch wird die Datenzugriffsschnittstelle auf zuvor festgelegte Operationen beschränkt, während die konkrete Datenhaltung von der Entscheidungslogik des Sprachmodells entkoppelt wird. Die Funktionen werden so gestaltet, dass sie die für die jeweiligen Testfälle benötigten Daten zuverlässig und in einer definierten Struktur zurückgeben @costaEnhancingAccuracyMaintainability2025.
-
-=== Zeitauflösung
-
-Zeitangaben in Benutzeranfragen müssen vor einem Toolaufruf eindeutig in konkrete Zeitintervalle überführt werden. Da Anfragen sowohl relative als auch komplex formulierte Zeitangaben enthalten können und sich diese auf unterschiedliche zeitliche Granularitäten beispielsweise Tage oder Stunden beziehen, stellt die zuverlässige Parametrisierung der Werkzeuge eine grundlegende Voraussetzung für eine reproduzierbare Evaluation dar.
-
-Im System werden Zeitintervalle durch einen Start- und Endzeitpunkt beschrieben, wobei der Startzeitpunkt inkludiert und der Endzeitpunkt exkludiert ist. Ein einzelner Kalendertag wird daher durch den Beginn dieses Tages sowie den Beginn des Folgetages beschrieben.
-
-Für die Zeitauflösung wurden zwei Ansätze betrachtet: die Verwendung eines dedizierten Werkzeugs zur Interpretation natürlicher Zeitangaben sowie die direkte Parametrisierung durch das LLM. Zur Bewertung beider Ansätze wurde eine Voruntersuchung mit aktuellen Sprachmodellen durchgeführt. Hierbei wurden repräsentative Anfragen mit relativen und komplexen Zeitangaben formuliert und die erzeugten Toolparameter analysiert.
-
-Die Untersuchung zeigte, dass aktuelle Modelle mit geeigneten Instruktionen Zeitangaben zuverlässig in korrekte Zeitintervalle überführen können. Auf die Implementierung eines separaten Zeitauflösungswerkzeugs wurde daher verzichtet, wodurch die Komplexität der Werkzeuglandschaft reduziert werden konnte.
- 
-=== Bereitstellung und Interpretation von Zeitreihendaten // Bezug zu "Stand der Forschung - Zeitreihendaten" herstellen
-
-Zeitreihendaten stellen besondere Anforderungen an die Interaktion zwischen LLM und Werkzeugen. Während Energiedaten häufig aus mehreren hundert bis tausend Messwerten bestehen, sind Large Language Models primär für die Verarbeitung natürlicher Sprache optimiert. Die direkte Übergabe vollständiger Zeitreihen als JSON oder Array erhöht den Tokenverbrauch erheblich und erschwert gleichzeitig die Identifikation relevanter Muster innerhalb langer Zahlenfolgen.
-
-Grundsätzlich bestehen zwei Möglichkeiten, Zeitreihendaten für ein LLM bereitzustellen. Der erste Ansatz besteht darin, die Rohdaten direkt als strukturierte Werte zu übergeben und die Interpretation vollständig dem Sprachmodell zu überlassen. Alternativ können Zeitreihen vor der Übergabe aufbereitet werden, beispielsweise durch externe Analysewerkzeuge oder durch eine visuelle Darstellung in Form von Diagrammen. In der Literatur konnte bereits gezeigt werden, dass insbesondere Visualisierungen die Verarbeitung von Zeitreihen durch LLMs verbessern und gleichzeitig den Tokenverbrauch deutlich reduzieren können @liuPictureWorthThousand.
-
-// Testergebnisse: Zeitreihendaten aus Stand der Forschung (vl-time_png_vs_array.ipynb, multiagent_energydata.pdf - 3.3. Eigener Test 1 ... und 3.4. Eigener Test 2 ...)
-// Testergebnisse: Referenzzeit (resolve_time.ipynb)
-
-Zur Bewertung dieser Ansätze wurde eine Voruntersuchung im Kontext synthetischer Energiedaten durchgeführt. Hierbei wurden Zeitreihen unterschiedlicher Länge sowohl als strukturierte JSON-Daten als auch als Liniendiagramme an das Modell übergeben und hinsichtlich Antwortqualität, Tokenverbrauch und Bearbeitungszeit verglichen. Zusätzlich wurde untersucht, inwieweit mehrere Zeitreihen gleichzeitig verarbeitet werden können.
-
-Die Ergebnisse zeigten, dass beide Darstellungsformen eine korrekte Interpretation einfacher Verbrauchsmuster ermöglichen. Mit zunehmender Länge der Zeitreihen erwiesen sich Visualisierungen jedoch als deutlich effizienter hinsichtlich Tokenverbrauch und Verarbeitungszeit. Gleichzeitig zeigte sich, dass die eigentliche Mustererkennung nicht zwangsläufig durch das LLM erfolgen muss. Wiederkehrende Analysen, wie beispielsweise die Erkennung von Lastspitzen oder die Berechnung statistischer Kennwerte, können konsistenter und ressourcenschonender durch spezialisierte Analysewerkzeuge durchgeführt werden.
-
-Auf Basis der Erkenntnisse aus dem Kapitel "Stand der Forschung" (2.x) wurde das Tooldesign so gewählt, dass das LLM Zeitreihen nicht grundsätzlich selbst interpretieren muss. Stattdessen stellen Werkzeuge je nach Anwendungsfall entweder aufbereitete Visualisierungen oder bereits analysierte Informationen bereit. Das LLM übernimmt damit primär die Orchestrierung sowie die sprachliche Interpretation der Ergebnisse, während rechenintensive oder wiederkehrende Zeitreihenanalysen an spezialisierte Werkzeuge ausgelagert werden.
-
-=== Tools
-
-// - Zeitabschnitt abfragen (Tage, Stunden?) und interpretieren (Plot?)
-// - Zeitpunkt abfragen
-// - Statistische Werte abfragen (einzeln oder gesammelt um Komplexität zu reduzieren)
-// - Plot erzeugen und darstellen (mehrere)
-
-== Orchestrierungsstrategien
-
-Orchestrierungsmethoden - mehrere Modelle vergleichen @schickToolformerLanguageModels2023
+- nur Toolbeschreibung
+- Mit System-Prompts: Nachfragen bei Mehrdeutigkeit, Umfang mit fehlenden Daten, usw.
 
 == Bewertungskrieterien
 
@@ -225,11 +219,6 @@ Orchestrierungsmethoden - mehrere Modelle vergleichen @schickToolformerLanguageM
 - Antwortqualität
 - Laufzeit
 - Tokenverbrauch
-
-== Prompts
-
-- nur Toolbeschreibung
-- Mit System-Prompts: Nachfragen bei Mehrdeutigkeit, Umfang mit fehlenden Daten, usw.
 
 == Versuchsablauf
 

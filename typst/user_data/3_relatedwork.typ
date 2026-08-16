@@ -10,13 +10,20 @@
 
 // 7-10 Seiten
 
-== Tooldesign
+== Toolnutzung
 
-Für die Nutzung externer Werkzeuge durch ein Large Language Model müssen die verfügbaren Funktionen in einer für das Modell verständlichen und eindeutig interpretierbaren Form bereitgestellt werden. Dabei ist insbesondere eine klare Beschreibung der verfügbaren Werkzeuge sowie der von ihnen erwarteten Eingaben erforderlich. Ansätze zur Tool-Nutzung durch Large Language Models zeigen, dass das Modell neben der Auswahl eines geeigneten Werkzeugs auch die für dessen Aufruf erforderlichen Argumente bestimmen muss. Toolformer beschreibt beispielsweise die Auswahl und Ausführung externer Werkzeuge als Bestandteil der Modellentscheidung und unterscheidet dabei zwischen der Auswahl einer API und der Erzeugung der zugehörigen Eingabe @schickToolformerLanguageModels2023.
+// Toolformer
+Ein früher Ansatz zur systematischen Nutzung externer Werkzeuge durch Sprachmodelle ist Toolformer von Schick et al. Dabei wird untersucht, wie Sprachmodelle lernen können, externe Werkzeuge über APIs selbstständig einzusetzen. Das Modell lernt dabei nicht nur, welches Werkzeug verwendet werden soll, sondern auch, wann ein Aufruf sinnvoll ist und welche Argumente dafür erzeugt werden müssen. Hierzu werden potenzielle API-Aufrufe automatisch erzeugt, ausgeführt und anhand ihres Beitrags zur Vorhersage zukünftiger Tokens gefiltert. Die verbleibenden Beispiele werden anschließend zur Feinabstimmung des Modells verwendet @schickToolformerLanguageModels2023.
 
-Diese strukturierte Bereitstellung der Werkzeuge bildet zugleich eine Grundlage für die Koordination mehrerer Werkzeuge innerhalb einer Aufgabe. Während bei einer einfachen Tool-Nutzung lediglich ein einzelner Funktionsaufruf erforderlich sein kann, müssen bei komplexeren Aufgaben mehrere spezialisierte Werkzeuge ausgewählt und in geeigneter Weise miteinander kombiniert werden. Aktuelle Arbeiten zur Entwicklung von Tool-Use-Systemen betrachten daher insbesondere die Koordination mehrerer Werkzeuge sowie die Planung und Ausführung aufeinanderfolgender Tool-Aufrufe als zentrale Bestandteile solcher Systeme @xuEvolutionToolUse2026.
+Toolformer zeigt damit bereits die grundlegende Fähigkeit eines LLM, externe Werkzeuge nicht nur auf explizite Vorgabe hin aufzurufen, sondern deren Verwendung selbst in die Modellentscheidung einzubeziehen. Gleichzeitig ist der Ansatz auf einzelne bzw. unabhängig erzeugte API-Aufrufe beschränkt; insbesondere verkettete Aufrufe, bei denen das Ergebnis eines Werkzeugs als Eingabe für ein weiteres Werkzeug dient, werden von der vorgestellten Methode nicht unterstützt @schickToolformerLanguageModels2023.
+
+// Überleitung zu Orchestrierung
+Damit liegt der Schwerpunkt von Toolformer auf der Fähigkeit eines einzelnen Sprachmodells, geeignete Werkzeuge zu identifizieren und einzusetzen, während die explizite Koordination voneinander abhängiger Werkzeugaufrufe nicht im Mittelpunkt steht.
 
 == Orchestrierung
+
+// Einleitung
+Während bei der Nutzung eines einzelnen Werkzeugs die Auswahl und Ausführung eines einzelnen Aufrufs im Vordergrund steht, entstehen bei komplexeren Aufgaben Abhängigkeiten zwischen mehreren Werkzeugaufrufen. Beispielsweise kann das Ergebnis eines ersten Werkzeugs als Eingabe für ein nachfolgendes Werkzeug dienen. Die Koordination mehrerer solcher Aufrufe stellt damit eine weiterführende Herausforderung der Tool-Nutzung dar.
 
 // STRUCTURE 20260811:
 // Was bedeutet Orchestrierung?
@@ -41,6 +48,7 @@ Diese strukturierte Bereitstellung der Werkzeuge bildet zugleich eine Grundlage 
 // verschiedene Freiheitsgrade
 // konkrete Orchestrierungsansätze
 
+// -> Toolnutzung?
 Tool-Use Ansätze @paranjapeARTAutomaticMultistep2023
 
 === Robuste und effiziente Tool-Orchestrierung
@@ -77,12 +85,6 @@ Das Paper zeigt damit, dass Agent-Orchestrierung ein eigenständiges Problem ist
 
 ReAct (Reasoning + Acting) ist eine Methode bei der das LLM den Tooloutput wieder als Input bekommt und überprüft ob die Informationen ausreichend sind oder weitere Toolaufrufe erforderlich sind. Es werden so lange neue Toolaufrufe getriggert bis das LLM entscheidet, dass es nun genügend oder die passenden Informationen erhalten hat. Es ist ratsam hierfür ein Schleifenlimit zu setzen, um die Kosten und die Laufzeit unter Kontrolle zu halten. Das Paper „ReAct Modular Agent: Orchestrating Tool-Use and Retrieval for Financial Workflows“ versucht den klassische ReAct Agent zu verbessern indem Reasoning und Acting voneinander getrennt werden. Der klassische ReAct Agent wird als monolitisch beschrieben, weil sowohl Reasoning und Acting in einem Aufruf abgearbeitet werden. Es wird erklärt, dass das zu einer hohen Latenz und inkonsistenten Entscheidungsgrenzen führt. Beim vorgestellten Hierarchical ReAct werden Planung und Toolaufruf voneinander getrennt wie in Abbildung 4 zu sehen. Der Planner erhält die Nutzeranfrage und entscheidet ob und welche Tools gebraucht werden. Fällt die Entscheidung, dass Tools aufgerufen werden sollen erhält diese Information der Dispatcher. Dieser ist ausschließlich für die technische Übersetzung zuständig, dass die Tools richtig aufgerufen werden können. Die Tooloutputs werden dann wieder an den Planner zurückgegeben. Dieser entscheidet nun ob er weitere Tools aufrufen möchte oder die alle Informationen an den Synthesizer weitergibt der die finale Antwort generiert. Der Planner und der Synthesizer (HighReasoning Roles) nutzen GPT-4o, ein relativ starkes Modell. Für den Dispatcher (Low-Latency Role) wird GPT-4.1-Nano verwendet, ein leichtgewichtigeres und schnelleres Modell @hernandezReActModularAgent2025.
 
-// training (relevant?)
-
-=== Toolformer // schon in "Einleitung Tooldesign Methodik" angeschnitten. Details irrelevant, weil zu weit weg von meiner Umsetzung?
-
-Im Paper „Toolformer: Language Models Can Teach Themselves to Use Tools“ wird 2023 das erste mal der Toolformer vorgestellt. Hier wird gezeigt wie ein LLM selbst externe Tools über APIs lernen kann. Grob gesagt wird ein kleineres Modell durch ein Größeres trainiert. Durch Webscraping wird ein Trainingsdatenset aus vielen Texten generiert. Nun generiert das kleinere LLM einen Token nach dem anderen und kann auch Toolaufrufe einfügen. Das größere Modell beurteilt dann ob ein Toolaufruf sinnvoll ist oder nicht. Wenn es sinnvoll ist wird es behalten, wenn nicht verworfen. So bleiben Trainingstexte mit sinnvollen Toolaufrufen anhand dessen dann das Fine Tuning des kleineren Modells erfolgt. Es zeigt sich, dass kleinere Modelle davon stark profitieren und bei der Toolauswahl deutlich besser werden. Aber desto größer das Modell, desto weniger Mehrwert bietet dieses Vorgehen @schickToolformerLanguageModels2023.
-
 === GPT4Tools // Training kleinerer Modelle relevant für mein Paper? Ich wende nur an. Aber trotzdem Stand der Forschung als Möglichkeit -> Methodik begründen warum nicht gemacht? (nicht Fokus, zu viel Aufwand, Modelle vlt schon teilweise vortrainiert auf Tooluse?)
 
 Im Paper „GPT4Tools: Teaching Large Language Models (LLMs) to Use Tools via Selfinstruction“ gezeigt wie man mit einem starkes Modell Trainingsdaten erzeugt, mit denen ein kleineres Modell lernt Tools zu benutzen mit dem man auch neue (unseen) Tools einlernen kann. Diesen Vorgang nennen sie GPT4Tools welcher in drei Schritte unterteilt ist @yangGPT4ToolsTeachingLarge2023.
@@ -100,7 +102,7 @@ GPT4Tools ermöglicht es LLMs auf multi-modal tools zuzugreifen. Aber für den p
 Im Paper „Proactive Agent: Shifting LLM Agents from Reactive Responses to Active Assistance“ wird versucht einen Agenten zu entwickeln der nicht nur auf explizite Nutzeranfragen reagiert sondern proaktiv Hilfe anbietet. Er soll die Bedrüfnisse des Nutzers basierend auf User-Aktivitäten (z. B. Maus, Tastatur, Browser) implizit erkennen. Behandelt wurden unter anderem die Szenarien Programmieren und Schreiben. Ein LLM neigt dazu zu häufig Hilfe anzubieten was schnell nervig werden kann. Daher werden Vorschläge von Menschen gelabelt und zum Training verwendet. Das führt zu einer deutlichen Verbesserung aber der Agent bietet trotzdem noch unnötige Hilfe an. Außerdem ist das Timing schwer wann Hilfe angeboten wird. Zu früh ist nervig, zu spät ist nutzlos. Und es ist sehr schwierig automatisch zu erkenne was der Nutzer wirklich möchte. Außerdem braucht es viel Kontext den man oft nicht hat. Zusätzlich sind Datenschutz und Privatsphäre kritisch. Das Paper zeigt, dass es theoretisch geht, aber es noch nicht zuverlässig genug für eichen
 praktischen Einsatz funktioniert. Wählt man ein sehr kontrolliertes Setting wie Coding oder Schreibtools kann es schon sinnvoll eingesetzt werden da der Kontext stark strukturiert vorliegt @luProactiveAgentShifting2024.
 
-== Datenbankabfrage // final
+== Datenbankabfrage
 
 // Text to SQL
 Eine Möglichkeit, Datenbanken über natürliche Sprache zugänglich zu machen, ist Text-to-SQL. Dabei wird eine natürlichsprachliche Anfrage in eine ausführbare SQL-Abfrage übersetzt @singhComprehensiveReviewLLMbased2026.
@@ -114,7 +116,7 @@ Eine alternative Möglichkeit besteht darin, Datenbankoperationen über vordefin
 
 Der Ansatz bietet insbesondere dort Vorteile, wo die Kontrollierbarkeit und Nachvollziehbarkeit der Datenabfragen relevant sind. De Costa et al. berichten in ihrem konkreten Anwendungskontext zudem eine höhere durch Experten bewertete Korrektheit sowie Vorteile hinsichtlich der Wartbarkeit gegenüber einem direkten NL-to-SQL-Ansatz. Gleichzeitig entsteht durch die Entwicklung und Pflege der Funktionsbibliothek ein zusätzlicher Aufwand @costaEnhancingAccuracyMaintainability2025.
 
-== Zeitreihendaten // final
+== Zeitreihendaten
 
 Energiedaten liegen häufig in Form von Zeitreihen vor. Eine direkte Übergabe längerer Zeitreihen an ein LLM kann problematisch sein. Bei der numerischen Repräsentation entstehen einerseits hohe Tokenkosten, andererseits können relevante zeitliche, dimensionale oder frequenzbezogene Merkmale nur schwer aus der Folge numerischer Werte extrahiert werden. Liu et al. zeigen beispielsweise, dass ein einzelnes Zeitreihenbeispiel im untersuchten RCW-Datensatz bei GPT-4o bis zu 60.000 Input-Tokens benötigen kann. Die Autoren identifizieren die direkte numerische Modellierung daher als eine wesentliche Ursache für die beobachteten Schwierigkeiten von LLMs beim Reasoning über Zeitreihen @liuPictureWorthThousand.
 
@@ -123,10 +125,6 @@ Eine Möglichkeit besteht darin, Zeitreihen zunächst durch spezialisierte Verfa
 Einen alternativen Ansatz untersuchen Liu et al. mit VL-Time. Anstatt die Zeitreihen direkt als numerische Daten an das LLM zu übergeben, werden diese visualisiert und anschließend von einem multimodalen LLM verarbeitet. Die Methode umfasst zunächst eine Planungsphase, in der unter anderem eine geeignete Visualisierung im Zeit- oder Frequenzbereich sowie relevante Merkmale bestimmt werden. In der anschließenden Lösungsphase wird die visualisierte Zeitreihe zusammen mit sprachlichen Hinweisen verarbeitet @liuPictureWorthThousand.
 
 Die Visualisierung dient dabei nicht nur der Darstellung, sondern gleichzeitig als Kompromiss zwischen Informationsgehalt und Kontextgröße. Im untersuchten RCW-Beispiel reduziert sich die Repräsentation eines Zeitreihenbeispiels von bis zu 60.000 Tokens bei numerischer Modellierung auf 85 Tokens bei visueller Modellierung. Zusätzlich untersuchen Liu et al. Few-Shot In-Context Learning, bei dem Beispiele zur jeweiligen Aufgabe in den Kontext aufgenommen werden. Im Vergleich zur numerischen Modellierung erzielt VL-Time dabei eine durchschnittliche relative Leistungssteigerung von 140 % und reduziert die durchschnittlichen Tokenkosten um 99 % @liuPictureWorthThousand.
-
-// Energiedaten bestehen oft aus Zeitreihen. Diese direkt im Kontext zu übergeben würde relativ viele Token verbrauchen und den begrenzten Kontext schnell füllen wodurch auch der Fokus auf das wesentliche verloren geht. Außerdem ist ein LLM auf Sprachverständnis optimiert und nicht unbedingt auf Mustererkennung von langen Zahlenreihen. Im Optimalfall hat man Analysemodelle auf die das LLM zugreifen kann die relevante Informationen aus Zeitreihen herausfiltern oder beschreiben ohne, dass das LLM selbst diese analysieren muss. Wenn man das richtig umsetzt ist das effizienter sowie konsistenter. Ein ganz einfaches Beispiel wäre das Herausfiltern von statistischen Werten wie Maximum, Minimum, Durchschnitt usw. Bei Mustererkennung wird das ganze schon etwas komplexer. Hier muss man sich überlegen welche Fragestellungen man beantworten möchte und entsprechende Modelle dafür entwickeln. Das kann aber aufwendig und unflexibel sein.
-
-// Das Paper „A Picture is Worth A Thousand Numbers: Enabling LLMs Reason about Time Series via Visualization“ beschäftigt sich unter anderem damit wie man Zeitreihen besser mit LLMs verarbeiten kann. Grob zusammengefasst werden die Zeitreihen nicht direkt als Array bzw. Json übergeben sondern es wird erst ein Plot erzeugt welcher anschließend übergeben wird. Nutzt man optional noch ICL (In Context Learning) kann man Beispielplots von verschiedenen Mustern und dessen Beschreibung als Vorlage für den zu analysierenden Plot zum Kontext hinzufügen. Vor allem bei spezifischen Domänen auf die das LLM nicht oder nur wenig trainiert ist kann das sehr Hilfreich sein. Laut Testergebnissen soll durch diese Methode eine Performancesteigerung von 140% und eine Tokenersparnis von 99% erreicht worden sein. Außerdem soll die Mustererkennung von Bildern deutlich besser sein @liuPictureWorthThousand.
 
 == Evaluation
 
