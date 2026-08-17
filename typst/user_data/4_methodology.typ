@@ -89,57 +89,57 @@ Für die Evaluation werden synthetische Energiedaten über einen fest definierte
 // Referenzzeit (resolve_time.ipynb)
 Für die zeitliche Interpretation der Testfälle wurde eine feste Referenzzeit definiert. Diese umfasst neben dem Datum und der Uhrzeit auch die zugehörige Zeitzone und wird dem LLM als aktueller Zeitpunkt vorgegeben. Dadurch können neben tagesbasierten auch stundenbasierte relative Zeitangaben, beispielsweise „vor drei Stunden“ oder „seit heute Morgen“, eindeutig aufgelöst werden. Die Verwendung einer festen Referenzzeit stellt sicher, dass identische Anfragen unabhängig vom tatsächlichen Zeitpunkt der Versuchsdurchführung stets auf dieselben Zeitintervalle und damit auf identische Toolparameter abgebildet werden. Dadurch wird verhindert, dass Unterschiede zwischen den Orchestrierungsmethoden durch eine unterschiedliche zeitliche Interpretation der Testanfragen beeinflusst werden.
 
-// === Szenarien
+=== Szenarien
 
-// *Datensätze*
-// - 365 Tage (für längere Zeitreihenabfragen)
-// - vollständig, keine Auffälligkeiten
-// - mehrere Anomalien (defekter ZP)
-// - fehlende Werte (Ausfälle)
-// - Verbrauchsvorhersage?
+*Datensätze*
+- 365 Tage (für längere Zeitreihenabfragen)
+- vollständig, keine Auffälligkeiten
+- mehrere Anomalien (defekter ZP)
+- fehlende Werte (Ausfälle)
+- Verbrauchsvorhersage?
 
-// *Nutzer*
-// - Nutzer mit einem Zählpunkt für isolierte Problembehandlung
-// - Nutzer mit mehreren Zählpunkten und teils bewusst mehrdeutigen Situationen
+*Nutzer*
+- Nutzer mit einem Zählpunkt für isolierte Problembehandlung
+- Nutzer mit mehreren Zählpunkten und teils bewusst mehrdeutigen Situationen
 
-// === Datengenerierung
+=== Datengenerierung
 
-// - ausgehend von einer Energiegemeinschaft
-// - Testdaten: 01.01.2026 - 31.03.2026 (inklusive)
-// - Referencetime: 02.04.2026
+- ausgehend von einer Energiegemeinschaft
+- Testdaten: 01.01.2026 - 31.03.2026 (inklusive)
+- Referencetime: 02.04.2026
 
-// // *users.csv*
-// // - user_id
-// // - note (beschreibung für mich und nicht fürs llm)
-
-// *meters.csv*
-// - meter_id
-// - meter_name (meist nur bei vielen Zählpunkten vorhanden)
+// *users.csv*
 // - user_id
-// - direction
-// - location
-// - note
+// - note (beschreibung für mich und nicht fürs llm)
 
-// *timeseries.csv* (15min)
-// - meter_id
-// - timestamp
-// - value
-// - unit
+*meters.csv*
+- meter_id
+- meter_name (meist nur bei vielen Zählpunkten vorhanden)
+- user_id
+- direction
+- location
+- note
 
-// *forecast.csv* (1h)
-// - timestamp
-// - generation
-// - consumption
+*timeseries.csv* (15min)
+- meter_id
+- timestamp
+- value
+- unit
 
-// *spotmarket.csv* (1h)
-// - timestamp
-// - value (kann auch negativ sein)
+*forecast.csv* (1h)
+- timestamp
+- generation
+- consumption
 
-// *Characteristics*
-// - normal: actual bis gestern 0 Uhr danach forecast
-// - missing values: forecast über längeren Zeitraum (llm soll auf prognostizierte Werte aufmerksam machen)
-// - missing values: auch kein forecast
-// - missing values: vereinzelte actuals (llm soll auf fehlende Werte aufmerksam machen)
+*spotmarket.csv* (1h)
+- timestamp
+- value (kann auch negativ sein)
+
+*Characteristics*
+- normal: actual bis gestern 0 Uhr danach forecast
+- missing values: forecast über längeren Zeitraum (llm soll auf prognostizierte Werte aufmerksam machen)
+- missing values: auch kein forecast
+- missing values: vereinzelte actuals (llm soll auf fehlende Werte aufmerksam machen)
 
 == Tooldesign
 
@@ -155,6 +155,8 @@ Die verfügbaren Werkzeuge werden als strukturierte Funktionsdefinitionen bereit
 Für den Datenzugriff werden vordefinierte Funktionen verwendet, die dem Sprachmodell über eine strukturierte Schnittstelle zur Verfügung gestellt werden. Die Funktionen kapseln die konkrete Implementierung des jeweiligen Datenzugriffs und definieren die vom Modell bereitstellbaren Operationen sowie deren Parameter. Dadurch wird die Datenzugriffsschnittstelle auf zuvor festgelegte Operationen beschränkt. Die konkrete Implementierung des Datenzugriffs bleibt dabei vom Sprachmodell getrennt. Die Funktionen werden so gestaltet, dass sie die für die jeweiligen Testfälle benötigten Daten zuverlässig und in einer definierten Struktur zurückgeben @costaEnhancingAccuracyMaintainability2025.
 
 === Zeitliche Parametrisierung
+
+// start, end: datetime
 
 Zeitangaben in Benutzeranfragen müssen vor einem Toolaufruf eindeutig in konkrete Zeitintervalle überführt werden. Da Anfragen sowohl relative als auch komplex formulierte Zeitangaben enthalten können und sich diese auf unterschiedliche zeitliche Granularitäten beispielsweise Tage oder Stunden beziehen, stellt die zuverlässige Parametrisierung der Werkzeuge eine grundlegende Voraussetzung für eine reproduzierbare Evaluation dar.
 
@@ -174,10 +176,43 @@ Darüber hinaus werden wiederkehrende oder eindeutig definierte Analysen nicht a
 
 == Tools
 
-// - Zeitabschnitt abfragen (Tage, Stunden?) und interpretieren (Plot?)
-// - Zeitpunkt abfragen
-// - Statistische Werte abfragen (einzeln oder gesammelt um Komplexität zu reduzieren)
-// - Plot erzeugen und darstellen (mehrere)
+=== Datenabfrage
+
+- get_energy_data(location, cp, start, end) // cp (counting point) kann entweder Erzeuger oder Verbraucher sein, niemals beides
+- get_energy_consumption_energy_community(start, end) // Verbrauch von gesamter Energiegemeinschaft
+- get_energy_generation_energy_community(start, end) // Erzeugung von gesamter Energiegemeinschaft
+- get_energy_consumption_forecast_energy_community(location) // Verbrauchsvorhersage für gesamte Energiegemeinschaft, Auflösung Stündlich und nicht 15 min wie der Rest, Zusammenlegen mit get_energy_consumption_energy_community() und wenn keine realen Daten vorhanden aber Zeitreihendaten da sind diese ergänzen?
+- get_spotmarket()
+
+=== Darstellung
+
+- create_plot(energy_data, show_in_chat)
+// Weitere Grafiken?
+
+=== Einfache Analyse // energy_data und spotmarket zusammen oder getrennt?
+
+- get_max(energy_data)
+- get_min(energy_data)
+- get_avg(energy_data)
+- get_sum(energy_data)
+
+- get_max(spotmarket)
+- get_min(spotmarket)
+- get_avg(spotmarket)
+// - get_sum(spotmarket)
+
+- calculate_spotmarket_energy_consumption(energy_data, spotmarket)
+
+=== Semantische Analyse
+
+- get_consumption_pattern(energy_data) // sample result
+- get_generation_pattern(energy_data/plot) // sample result, weglassen?
+- compare_periods(energy_data1, energy_data2)
+
+=== Manipulation
+
+// - interpolate_missing_values(energy_data) // weglassen?
+// - concat(energy_data) // weglassen?
 
 == Orchestrierungsstrategien
 
@@ -203,6 +238,11 @@ Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht d
 - unbekannte Modellimplementierung
 
 == Prompts
+
+- „Vergleiche den Verbrauch gestern mit der Prognose für morgen.“ // gestern und heute und morgen sind forecast!
+- „Wie viel hat die Energiegemeinschaft im Januar verbraucht und was hätte dieser Verbrauch zu den Spotmarktpreisen gekostet?“ // Funktionen für Berechnung
+
+// Output von Tokenmenge abziehen, weil unterschiedlich lange Antworten möglich sind aber nichts mit der Qualität zu tun haben müssen?
 
 - nur Toolbeschreibung
 - Mit System-Prompts: Nachfragen bei Mehrdeutigkeit, Umfang mit fehlenden Daten, usw.
