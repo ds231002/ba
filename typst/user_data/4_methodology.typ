@@ -178,41 +178,41 @@ Darüber hinaus werden wiederkehrende oder eindeutig definierte Analysen nicht a
 
 === Datenabfrage
 
-- get_energy_data(location, cp, start, end) // cp (counting point) kann entweder Erzeuger oder Verbraucher sein, niemals beides
+- get_energy_data(cp, start, end) // cp (counting point) kann entweder Erzeuger oder Verbraucher sein, niemals beides
 - get_energy_consumption_energy_community(start, end) // Verbrauch von gesamter Energiegemeinschaft
 - get_energy_generation_energy_community(start, end) // Erzeugung von gesamter Energiegemeinschaft
 - get_energy_consumption_forecast_energy_community(location) // Verbrauchsvorhersage für gesamte Energiegemeinschaft, Auflösung Stündlich und nicht 15 min wie der Rest, Zusammenlegen mit get_energy_consumption_energy_community() und wenn keine realen Daten vorhanden aber Zeitreihendaten da sind diese ergänzen?
-- get_spotmarket()
+- get_energy_surplus(location, start, end) // Wenn nicht Verbraucher und Erzeuger dann keine Überschussberechnung möglich, Überschuss über mehrere Standorte oder individuelle Zählpunkte ermöglichen?, kann nicht negativ sein!
+- get_energy_surplus_energy_community(start, end)
+- get_spot_market(start, end) // awattar.at/tariffs/hourly
+- get_sun_hours(start, end) // alle 15min, 0/1
+- get_weighted_generation() // Measured Generation x Teilhamefaktor
+- 
 
-=== Darstellung
+=== Darstellung // nur in Chat anzeigen
 
-- create_plot(energy_data, show_in_chat)
+- create_energy_plot([energy_data], show_in_chat) // immer für chat?, Vergleichsgrafiken (Verbrauch, Erzeugung, Überschuss) auf einmal?
+- create_spotmarket_plot(spot_market)
+- create_sun_hours_plot(sun_hours)
 // Weitere Grafiken?
 
-=== Einfache Analyse // energy_data und spotmarket zusammen oder getrennt?
+=== Analyse
 
-- get_max(energy_data)
-- get_min(energy_data)
-- get_avg(energy_data)
-- get_sum(energy_data)
-
-- get_max(spotmarket)
-- get_min(spotmarket)
-- get_avg(spotmarket)
-// - get_sum(spotmarket)
-
-- calculate_spotmarket_energy_consumption(energy_data, spotmarket)
-
-=== Semantische Analyse
+- get_max(energy_data/spotmarket)
+- get_min(energy_data/spotmarket)
+- get_avg(energy_data/spotmarket)
+- get_sum(energy_data/spotmarket)
 
 - get_consumption_pattern(energy_data) // sample result
-- get_generation_pattern(energy_data/plot) // sample result, weglassen?
-- compare_periods(energy_data1, energy_data2)
+- get_generation_pattern(energy_data) // sample result, weglassen?
+- time_series_analysis([energy_data], prompt) // vl-time, (Qwen2.5-VL/Llama 3.2 Vision/Gemma 3 (Vision)/MiniCPM-V)
+// - analyze_plot(plot, prompt)
 
-=== Manipulation
+// - calculate_spotmarket_energy_consumption(energy_data, spotmarket) // spotmarket Preisberechnung, Ersparnis?
 
-// - interpolate_missing_values(energy_data) // weglassen?
-// - concat(energy_data) // weglassen?
+=== Finalisieren
+
+- generate_answer()
 
 == Orchestrierungsstrategien
 
