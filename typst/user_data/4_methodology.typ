@@ -256,6 +256,32 @@ Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht d
 - Laufzeit
 - Tokenverbrauch
 
+=== Toolauswahl
+
+- korrekte
+- falsch
+- überflüssig/redundante
+
+=== Parameter
+
+- korrekt/optimal
+- korrekt, aber suboptimal/überflüssig (z.B.: zu langer Zeitraum)
+- falsch (sobald ein Paremter falsch - alles falsch?)
+
+=== Rolle des Aufrufs // Aufruf: jeder Toolaufruf separat oder gesamte Ausführung?
+
+- notwendig
+- optonal/sinnvoll
+- redundant
+- unnötig
+
+// Korrektheit: Hat der Orchestrator alle für die korrekte Beantwortung notwendigen Informationen beschafft und korrekt verarbeitet?
+// Effizienz: Hat er dies mit möglichst wenigen bzw. möglichst passenden Toolaufrufen und Parametern getan?
+
+
+
+
+
 == Versuchsablauf
 
 - Eine Testanfrage wird ausgewählt.
