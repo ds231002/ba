@@ -1,0 +1,70 @@
+{
+  "tools": [
+    {
+      "name": "get_energy_consumption",
+      "description": "Liefert den Energieverbrauch eines Haushalts für einen bestimmten Zeitraum.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "household_id": {
+            "type": "string",
+            "description": "Eindeutige ID des Haushalts."
+          },
+          "start_date": {
+            "type": "string",
+            "description": "Startdatum im Format YYYY-MM-DD."
+          },
+          "end_date": {
+            "type": "string",
+            "description": "Enddatum im Format YYYY-MM-DD."
+          }
+        },
+        "required": [
+          "household_id",
+          "start_date",
+          "end_date"
+        ]
+      }
+    },
+    {
+      "name": "get_weather",
+      "description": "Liefert Wetterdaten für einen bestimmten Ort und Zeitraum.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+            "description": "Ort, für den die Wetterdaten abgerufen werden sollen."
+          },
+          "date": {
+            "type": "string",
+            "description": "Datum im Format YYYY-MM-DD."
+          }
+        },
+        "required": [
+          "location",
+          "date"
+        ]
+      }
+    },
+    {
+      "name": "calculate_average",
+      "description": "Berechnet den Durchschnitt einer Liste numerischer Werte.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "Liste der Werte, deren Durchschnitt berechnet werden soll."
+          }
+        },
+        "required": [
+          "values"
+        ]
+      }
+    }
+  ]
+}
