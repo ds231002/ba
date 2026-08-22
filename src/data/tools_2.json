@@ -1,46 +1,50 @@
 {
-  "name": "get_energy_consumption",
-  "description": "Liefert den Energieverbrauch eines Haushalts für einen Zeitraum.",
-  "parameters": {
-    "type": "object",
-    "properties": {
-      "household_id": {
-        "type": "string",
-        "description": "Eindeutige ID des Haushalts."
-      },
-      "start_date": {
-        "type": "string",
-        "description": "Startdatum im Format YYYY-MM-DD."
-      },
-      "end_date": {
-        "type": "string",
-        "description": "Enddatum im Format YYYY-MM-DD."
-      }
-    },
-    "required": [
-      "household_id",
-      "start_date",
-      "end_date"
-    ]
-  },
-  "returns": {
-    "type": "object",
-    "properties": {
-      "daily_consumption": {
-        "type": "array",
-        "items": {
-          "type": "number"
+  "tools": [
+    {
+      "name": "get_energy_consumption",
+      "description": "Liefert den Energieverbrauch eines Haushalts für einen Zeitraum.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "household_id": {
+            "type": "string",
+            "description": "Eindeutige ID des Haushalts."
+          },
+          "start_date": {
+            "type": "string",
+            "description": "Startdatum im Format YYYY-MM-DD."
+          },
+          "end_date": {
+            "type": "string",
+            "description": "Enddatum im Format YYYY-MM-DD."
+          }
         },
-        "description": "Täglicher Energieverbrauch in kWh."
+        "required": [
+          "household_id",
+          "start_date",
+          "end_date"
+        ]
       },
-      "total_consumption": {
-        "type": "number",
-        "description": "Gesamter Energieverbrauch in kWh."
+      "returns": {
+        "type": "object",
+        "properties": {
+          "daily_consumption": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "Täglicher Energieverbrauch in kWh."
+          },
+          "total_consumption": {
+            "type": "number",
+            "description": "Gesamter Energieverbrauch in kWh."
+          }
+        },
+        "required": [
+          "daily_consumption",
+          "total_consumption"
+        ]
       }
-    },
-    "required": [
-      "daily_consumption",
-      "total_consumption"
-    ]
-  }
+    }
+  ]
 }
