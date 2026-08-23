@@ -53,19 +53,35 @@ Zu Beginn wurde eine strukturierte Literaturrecherche durchgeführt. Hierfür wu
 
 == Technische Rahmenbedingungen
 
-=== Hardware
+Für die Durchführung und Reproduzierbarkeit der Experimente wurde die nachfolgend dargestellte technische Umgebung verwendet. Tabelle @tab:technische-rahmenbedingungen gibt einen Überblick über die eingesetzte Hardware und Software einschließlich der jeweiligen Versionen.
 
-- GPU: NVIDIA RTX 3090, 24 GB VRAM
-- CPU: Intel Core i5-13600K
-- RAM: 32 GB DDR5
+#figure(
+  table(
+    columns: (2fr, 4fr),
+    inset: 8pt,
+    align: left,
 
-=== Software
+    table.header(
+      [*Komponente*],
+      [*Spezifikation*],
+    ),
 
-- Betriebssystem: Microsoft Windows 11 Pro, 64-Bit, Version 25H2
-- NVIDIA-Treiber: Version 610.88
-- Python: Version 3.11.14
-- Ollama: Version 0.32.9
-- OpenAI-Python-Paket: Version 2.30.0
+    table.cell(colspan: 2)[*Hardware*],
+
+    [GPU], [NVIDIA RTX 3090, 24 GB VRAM],
+    [CPU], [Intel Core i5-13600K],
+    [Arbeitsspeicher], [32 GB DDR5],
+
+    table.cell(colspan: 2)[*Software*],
+
+    [Betriebssystem], [Microsoft Windows 11 Pro, 64-Bit, Version 25H2],
+    [NVIDIA-Treiber], [Version 610.88],
+    [Python], [Version 3.11.14],
+    [Ollama], [Version 0.32.9],
+    [OpenAI-Python-Paket], [Version 2.30.0],
+  ),
+  caption: [Technische Rahmenbedingungen],
+) <tab:technische-rahmenbedingungen>
 
 === Ausführungsbedingungen
 
@@ -82,6 +98,82 @@ Für die Messungen wurde das Powerlimit der GPU auf 70 % des Standardwerts begre
 Vor den eigentlichen Messungen werden zunächst Warm-up-Durchläufe durchgeführt, um mögliche Einflüsse der Initialisierung der Inferenzumgebung auf die gemessenen Laufzeiten zu reduzieren.
 
 == Testdaten
+
+=== Energiedaten
+
+#figure(
+  table(
+    columns: (0.8fr, 2.3fr, 3fr, 1fr, 1.3fr),
+    align: (left, left, left, center, center),
+
+    table.header([*Abk.*], [*Bedeutung Englisch*], [*Bedeutung Deutsch*], [*Einheit*], [*Zeitbezug*],),
+
+    // Basisdaten
+    [PF], [Participation Factor], [Teilnahmefaktor], [–], [konstant],
+    [CPC], [Current Power Consumption], [Aktueller Verbrauch], [kW], [aktuell],
+    [CPG], [Current Power Generation], [Aktuelle Erzeugung], [kW], [aktuell],
+    [MC], [Measured Consumption], [Gemessener Verbrauch], [kWh], [15 min],
+    [MG], [Measured Generation], [Gemessene Erzeugung], [kWh], [15 min],
+
+    // Abgeleitete Daten
+    [CP], [Community Potential], [Gemeinschaftsanteil], [kWh], [15 min],
+    [CC], [Community Coverage], [Eigenabdeckung], [kWh], [15 min],
+    // [SG], [Surplus Generation], [Restüberschuss], [kWh], [15 min],
+    // [WSG], [Weighted Surplus Generation], [Restüberschuss gemäß Teilnahmefaktor], [kWh], [15 min],
+    [WMC], [Weighted Measured Consumption], [Gemessener Verbrauch gemäß Teilnahmefaktor], [kWh], [15 min],
+    [WMG], [Weighted Measured Generation], [Gemessene Erzeugung gemäß Teilnahmefaktor], [kWh], [15 min],
+  ),
+  caption: [Für die Evaluation verwendete Energiedaten],
+) <tab:energiedaten>
+
+*Abgeleitete Daten*
+
+Verbrauch der gesamten Energiegemeinschaft:
+$ "MC"_"EG"(t) = sum_(i=1)^n "MC"_i(t) $
+
+Erzeugung der gesamten Energiegemeinschaft:
+$ "MG"_"EG"(t) = sum_(j=1)^m "MG"_j(t) $
+
+Gemeinschaftsanteil (CP):
+$ "CP"_i(t) = "MG"_"EG"(t) dot frac("WMC"_i(t), sum_(k=1)^n "WMC"_k(t)) $
+
+Eigenabdeckung (CC):
+$ "CC"_i(t) = min("CP"_i(t), "WMC"_i(t)) $
+
+// Restüberschuss (SG):
+// $ "SG"_"EG"(t) = max(0, "MG"_"EG"(t) - sum_(i=1)^n "CC"_i(t)) $
+
+// Restüberschuss gemäß Teilnahmefaktor (WSG):
+// $ "WSG"_j(t) = "SG"_j(t) dot "PF"_j(t) $
+
+Gemessener Verbrauch gemäß Teilnahmefaktor (WMC):
+$ "WMC"_i(t) = "MC"_i(t) dot "PF"_i(t) $
+
+Gemessene Erzeugung gemäß Teilnahmefaktor (WMG):
+$ "WMG"_i(t) = "MG"_i(t) dot "PF"_i(t) $
+
+// Gewichteter Gesamtverbrauch:
+// $ "WMC"_"EG"(t) = sum_(i=1)^n "WMC"_i(t) $
+
+// Gewichtete Gesamterzeugung:
+// $ "WMG"_"EG"(t) = sum_(j=1)^m "WMG"_j(t) $
+
+// Anteil des Verbrauchs: // ?
+// $ r_i(t) = frac("WMC"_i(t), sum_(k=1)^n "WMC"_k(t)) $
+
+*Teilnahmefaktor*
+
+- Für die Evaluation wird der Teilnahmefaktor als zeitlich konstanter Wert pro Zählpunkt modelliert. Änderungen des Teilnahmefaktors über den Zeitverlauf werden nicht berücksichtigt.
+- Faktor zwischen 0 und 1
+
+
+=== Allgemein
+
+*fehlende Daten*
+
+- teilweise, vollständig fehlende Daten
+- vorher testen wie gut llms damit umgehen und dann entscheiden ob eigene Kategorie oder 20-30 Prozent in alle anderen Kategorien einstreuen.
+- wenn fehlende Daten oft Fehlergrund sind dann Einfluss von Anteil dieser zu hoch -> Sekundäre Robustheitsevaluation
 
 // Dadentsatzbeschreibung
 Für die Evaluation werden synthetische Energiedaten über einen fest definierten Zeitraum verwendet. Der Datensatz enthält [Stromverbrauch und Stromproduktion etc.] mit einer zeitlichen Auflösung von 15 Minuten. Die Daten werden für die verschiedenen Testfälle wiederverwendet, sodass alle Orchestrierungsmethoden unter identischen Datenbedingungen evaluiert werden.
@@ -249,18 +341,33 @@ Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht d
 
 == Bewertungskrieterien
 
-- Tool Selection Accuracy
-- unnötige/redundante Toolaufrufe
-- Schrittanzahl
-- Antwortqualität
-- Laufzeit
-- Tokenverbrauch
+#figure(
+  table(
+    columns: (1fr, 2fr),
+    align: (left, left),
+
+    table.header([*Kriterium*], [*Metriken*],),
+
+    [Toolplanung], [korrekt, teilweise, falsch],
+    [Parameterauswahl], [korrekt, teilweise, falsch],
+    [Ergebnis], [korrekt, teilweise, falsch],
+    [Effizienz], [korrekte notwendige Toolaufrufe / alle Toolaufrufe],
+    // wenn weniger falsche Toolaufrufe -> auch guter Wert!
+    [Tool Precision], [korrekte Toolaufrufe / alle Toolaufrufe],
+    [Tool Recall], [korrekte notwendige Toolaufrufe / notwendige Toolaufrufe],
+    [Tokenverbrauch], [Anzahl an Tokens ausschließlich für Toolplanung],
+    [Laufzeit], [Inferenzzeit],
+    [Robustheit], [Verhalten bei fehlenden Daten],
+  ),
+  caption: [Bewertungskriterien],
+) <tab:evaluation>
 
 === Toolauswahl
 
 - korrekte
+- teilweise
 - falsch
-- überflüssig/redundante
+// - überflüssig/redundante
 
 === Parameter
 
