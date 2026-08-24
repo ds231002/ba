@@ -2,7 +2,7 @@ from typing import List, Optional
 from utils.data_access import load_energy_data
 import pandas as pd
 
-# ==== Basisdaten ====
+# ==== Basic Data ====
 
 def get_participation_factor(metering_point_id: str, date: str) -> float:
     return 0.7
@@ -55,7 +55,7 @@ def get_measured_energy(metering_point_id: str, start: str | None = None, end: s
         end=end
     )[["timestamp", "value_kwh"]]
 
-# ==== Operationen ====
+# ==== Operations ====
 
 def calculate_timeseries(operation: str, timeseries: list[list[dict]]):
     # community_coverage (Eigenabdeckung) = community_generation x participation_factor
@@ -63,19 +63,6 @@ def calculate_timeseries(operation: str, timeseries: list[list[dict]]):
     # surplus (Überschuss) = generation - consumption (>0)
     # get_weighted_measured_consumption()
     pass
-
-# +/- mit timeseries: list[list[dict]]
-# */: mit timeseries: list[dict] und float (Teinahmefaktor)
-
-# ==== Plot ====
-
-def create_energy_plot(energy_data: list[pd.DataFrame]):
-    # Vergleichsgrafiken (Verbrauch, Erzeugung) auf einmal?
-    # Nur ausführen wenn explizit verlangt (Laufzeit und unklar wie bewerten wenn hilfreich aber nicht notwendig)
-    # autmatisch dem Chat zuordnen oder auch llm machen lassen?
-    pass
-
-# ==== Analyse ====
 
 def get_statistical_value(statistic_type: str, time_series: pd.DataFrame) -> Optional[float]:
     allowed_statistics = ["max", "min", "avg", "sum"]
@@ -86,12 +73,25 @@ def get_statistical_value(statistic_type: str, time_series: pd.DataFrame) -> Opt
     # einfach alle statistischen Werte zurückgeben? - mit allowed_statistics eindeutig für potentielle Übergabe (vlt für weitere Analyse?)
     pass
 
-# ==== Antwort ====
+# def create_energy_plot(label, energy_data: list[pd.DataFrame]):
+#     # Vergleichsgrafiken (Verbrauch, Erzeugung) auf einmal?
+#     # Nur ausführen wenn explizit verlangt (Laufzeit und unklar wie bewerten wenn hilfreich aber nicht notwendig)
+#     # autmatisch dem Chat zuordnen oder auch llm machen lassen?
+#     # Legende mit vom llm genereirten Namen?
+#     pass
+
+def analyse_energy_data(energy_data: list[pd.DataFrame], prompt: str):
+    # nur bei komplizierteren Anfragen die nicht durch Tools abgedeckt sind
+    # vl-time
+    # Qwen2.5-VL/Llama 3.2 Vision/Gemma 3 (Vision)/MiniCPM-V
+    pass
+
+# ==== Answer ====
 
 def generate_answer(results: list, message: str | None = None) -> str:
     return "Beispielantwort"
 
-# ==== Abgeleitete Daten für Methode 1 ====
+# ==== Diviated Data ====
 
 def get_community_potential(metering_point_id, start, end):
     pass
@@ -105,7 +105,7 @@ def get_weighted_measured_consumption(start, end):
 def get_weighted_measured_generation(start, end):
     pass
 
-# ==== Aussortierte Tools ====
+# ==== Rejected Tools ====
 
 # def get_astronomical_sun_hours(start, end):
 #     # bool per h
@@ -154,11 +154,6 @@ def get_weighted_measured_generation(start, end):
 # def get_energy_pattern(energy_data):
 #     # generation, consumption
 #     # sample result
-#     pass
-
-# def analyse_energy_data(energy_data: list, prompt: str):
-#     # vl-time
-#     # Qwen2.5-VL/Llama 3.2 Vision/Gemma 3 (Vision)/MiniCPM-V
 #     pass
 
 # def merge_timeseries(timeseries1, timeseries2):
