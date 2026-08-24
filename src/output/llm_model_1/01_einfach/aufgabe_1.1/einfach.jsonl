@@ -1,0 +1,16 @@
+{"event":"task_start","task_id":"task_023","model":"qwen3:8b","method":"pipeline","category":"complex"}
+{"event":"llm_response","step":1,"response":"..."}
+{"event":"tool_call","step":2,"tool":"get_energy_data","arguments":{"household_id":"H12","date":"2026-08-20"}}
+{"event":"tool_result","step":2,"success":true,"result":{"consumption":12.4},"duration_ms":43}
+{"event":"llm_response","step":3,"response":"..."}
+{"event":"final_answer","step":4,"answer":"..."}
+
+// Toolcall 1
+{"event":"tool_call","tool_call_id":"call_01","tool":"get_consumption","parameters":{"community":"EC1","start":"2025-01-01","end":"2025-01-31"}}
+{"event":"tool_result","tool_call_id":"call_01","result_id":"result_01","status":"success","result":[...]}
+// Toolcall 2
+{"event":"tool_call","tool_call_id":"call_02","tool":"get_production","parameters":{"community":"EC1","start":"2025-01-01","end":"2025-01-31"}}
+{"event":"tool_result","tool_call_id":"call_02","result_id":"result_02","status":"success","result":[...]}
+// Calc Toolcall 1 and 2
+{"event":"tool_call","tool_call_id":"call_03","tool":"calculate_self_sufficiency","parameters":{"consumption":{"$ref":"result_01"},"production":{"$ref":"result_02"}}}
+{"event":"tool_result","tool_call_id":"call_03","result_id":"result_03","status":"success","result":0.73}

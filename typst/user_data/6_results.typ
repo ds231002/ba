@@ -8,9 +8,58 @@
     <sec:results>
 ]
 
-- 4-6 Seiten
-- Tabellen
-- Beobachtungen
+// 4-6 Seite
+
+== Auswertung lokaler Modelle
+
+#figure(
+  table(
+    columns: (1.5fr, 1fr, 1fr, 1fr),
+    align: (left, center, center, center),
+
+    table.header([*Aufgabentyp*], [*Methode 1*], [*Methode 2*], [*Methode 3*]),
+
+    table.cell(colspan: 4)[*Durchschnittliche Laufzeit \[s\]*],
+
+    [Einfach], [], [], [],
+    [Mehrschrittig], [], [], [],
+    [Komplex], [], [], [],
+    [Atypisch], [nicht unterstützt], [], [],
+
+    table.cell(colspan: 4)[*Durchschnittlicher Tokenverbrauch \[Stk\]*],
+
+    [Einfach], [], [], [],
+    [Mehrschrittig], [], [], [],
+    [Komplex], [], [], [],
+    [Atypisch], [nicht unterstützt], [], [],
+
+    table.cell(colspan: 4)[*Erfolgsrate / SucessRate*],
+
+    [Einfach], [], [], [],
+    [Mehrschrittig], [], [], [],
+    [Komplex], [], [], [],
+    [Atypisch], [nicht unterstützt], [], [],
+
+      table.cell(colspan: 4)[*Tool Precision*],
+
+    [Einfach], [], [], [],
+    [Mehrschrittig], [], [], [],
+    [Komplex], [], [], [],
+    [Atypisch], [nicht unterstützt], [], [],
+
+    table.cell(colspan: 4)[*Tool Recall*],
+
+    [Einfach], [], [], [],
+    [Mehrschrittig], [], [], [],
+    [Komplex], [], [], [],
+    [Atypisch], [nicht unterstützt], [], [],
+  ),
+  caption: [Evaluation - Modell 1],
+) <tab:evaluation_modell_1>
+
+=== Auswertung API Modelle
+
+- Laufzeit nicht vergleichbar? - anders und nicht kontrollierbar!
 
 // This section presents a comprehensive overview of measurements, data tables, and performance evaluations, encompassing factors such as accuracy and speed.
 // This section is also where you evaluate your prototype or framework:

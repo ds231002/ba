@@ -161,6 +161,11 @@ $ "WMG"_i(t) = "MG"_i(t) dot "PF"_i(t) $
 // Anteil des Verbrauchs: // ?
 // $ r_i(t) = frac("WMC"_i(t), sum_(k=1)^n "WMC"_k(t)) $
 
+*Kernaufgaben*
+- unterteilung in Kategorien
+- separate und gemeinsame Bewertung
+- SucessRate = korrekt gelöste Kernaufgaben / alle Kernaufgaben
+
 *Teilnahmefaktor*
 
 - Für die Evaluation wird der Teilnahmefaktor als zeitlich konstanter Wert pro Zählpunkt modelliert. Änderungen des Teilnahmefaktors über den Zeitverlauf werden nicht berücksichtigt.
@@ -309,6 +314,29 @@ Darüber hinaus werden wiederkehrende oder eindeutig definierte Analysen nicht a
 == Orchestrierungsstrategien
 
 == Modellauswahl
+
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr, 1fr, 1fr),
+    align: (left, center, center, center, center),
+
+    table.header([*Modell*], [*Parameter*], [*Quantisierung*], [*Speichergröße*], [*Kontextfenster*]),
+
+    table.cell(colspan: 5)[*Lokal*],
+
+    [qwen3:8b], [], [], [], [],
+    [qwen3:14b], [], [], [], [],
+    [qwen3:30b], [], [], [], [],
+
+    table.cell(colspan: 5)[*API*],
+
+    [gpt], [], [], [], [],
+
+  ),
+  caption: [Modellauswahl für Orchestrierung],
+) <tab:modelselection>
+
+// Modelle für Bildanalyse und Finalisierung
 
 === Lokale Modelle
 

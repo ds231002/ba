@@ -1,0 +1,14 @@
+{
+  "result_id": "result_8",
+  "tool": "get_timeseries",
+  "success": true,
+  "output": [
+    {"timestamp": "...", "value": 4.2},
+    {"timestamp": "...", "value": 5.1}
+  ],
+  "metadata": {
+    "description": "Stromverbrauch",
+    "unit": "kWh",
+    "granularity": "hourly"
+  }
+}
