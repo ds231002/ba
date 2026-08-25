@@ -287,10 +287,16 @@ Die für die Evaluation bereitgestellten Werkzeuge sind in @tab:tools zusammenge
     [`calculate_community_coverage`],
     [Berechnet die Eigenabdeckung eines Verbrauchszählpunkts.],
 
-    table.cell(colspan: 2)[*Fachliche Berechnungen*],
+    table.cell(colspan: 2)[*Darstellung*],
 
     [`create_energy_plot`],
     [Erzeugt ein Liniendiagramm aus einer oder mehreren Zeitreihen und stellt diese mit einer Legende dar.],
+
+    table.cell(colspan: 2)[*Antwortgenerierung*],
+
+    [`generate_answer`],
+    [Erzeugt anhand ausgewählter Ergebnisse und einer frei definierbaren Nachricht eine finale Antwort.],
+
   ),
   caption: [Für die Evaluation bereitgestellte Werkzeuge],
 ) <tab:tools>
@@ -316,6 +322,13 @@ Die allgemeinen Operationen stellen elementare Verarbeitungsschritte für Zeitre
 === Fachliche Berechnungen
 
 Die fachlichen Berechnungen stellen höher abstrahierte domänenspezifische Funktionen bereit. Sie kapseln mehrere Datenzugriffe und Berechnungsschritte und ermöglichen dadurch die direkte Berechnung fachlicher Größen der Energiegemeinschaft. Dazu gehören die teilnahmefaktor-gewichtete gemessene Energie, der Gemeinschaftsanteil und die Eigenabdeckung. Die Unterscheidung zwischen allgemeinen Operationen und fachlichen Berechnungen bildet eine wesentliche Grundlage für den Vergleich der Orchestrierungsstrategien. Während höher abstrahierte Werkzeuge komplexere Berechnungsschritte direkt bereitstellen, können dieselben Berechnungen bei Verwendung elementarer Werkzeuge aus mehreren aufeinanderfolgenden Toolaufrufen zusammengesetzt werden.
+
+=== Antwortgenerierung
+
+Nach Abschluss der Orchestrierung werden die für die Beantwortung der Benutzeranfrage relevanten Ergebnisse an die Funktion `generate_answer` übergeben. Diese erzeugt auf Grundlage der Benutzeranfrage und der bereitgestellten Ergebnisse die finale sprachliche Antwort. Die Auswahl der an `generate_answer` übergebenen Ergebnisse erfolgt abhängig von der jeweiligen Orchestrierungsstrategie. Bei der pipelinebasierten Orchestrierung ist bereits bei der Definition der Pipeline festgelegt, welches Ergebnis für die finale Antwort verwendet wird. Bei der planbasierten Orchestrierung wird diese Auswahl gemeinsam mit dem Ablaufplan durch das Sprachmodell festgelegt. Bei der iterativen Orchestrierung entsteht die Auswahl erst während der schrittweisen Bearbeitung der Anfrage, da die benötigten Ergebnisse zu Beginn noch nicht vollständig bekannt sind.
+
+Die einzelnen Ergebnisse werden innerhalb der Anwendung über eindeutige Ergebniskennungen referenziert. Dadurch können Zwischenergebnisse unabhängig von ihrer Position innerhalb des Orchestrierungsablaufs eindeutig adressiert und für nachfolgende Werkzeugaufrufe oder die finale Antwort verwendet werden. Die Ergebniskennungen werden von der umgebenden Anwendung vergeben und
+sind unabhängig von der verwendeten Orchestrierungsstrategie.
 
 == Orchestrierungsstrategien
 
