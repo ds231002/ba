@@ -55,6 +55,9 @@ def load_energy_data(
     Load energy data for a metering point within a given time range.
 
     If start or end is None, no corresponding time boundary is applied.
+
+    Returns a DataFrame with timestamp as index and kwh as
+    the only column.
     """
 
     file_path = Path(data_dir) / f"{user_id}.csv"
@@ -66,13 +69,10 @@ def load_energy_data(
 
     df = pd.read_csv(file_path)
 
-    # Convert timestamp strings to datetime
     df["timestamp"] = pd.to_datetime(df["timestamp"])
 
-    # Filter metering point
     df = df[df["metering_point_id"] == metering_point_id]
 
-    # Convert boundaries if provided
     if start is not None:
         start_dt = pd.to_datetime(start)
         df = df[df["timestamp"] >= start_dt]
@@ -81,4 +81,6 @@ def load_energy_data(
         end_dt = pd.to_datetime(end)
         df = df[df["timestamp"] < end_dt]
 
-    return df.reset_index(drop=True)
+    df = df[["timestamp", "kwh"]]
+
+    return df.set_index("timestamp")

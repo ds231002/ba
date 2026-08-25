@@ -1,4 +1,4 @@
-metering_point_id,energy_type,timestamp,value_kwh
+metering_point_id,energy_type,timestamp,kwh
 community_consumption,consumption,2025-01-01T00:00:00,11.394
 community_consumption,consumption,2025-01-01T00:15:00,5.25
 community_consumption,consumption,2025-01-01T00:30:00,7.75

@@ -118,7 +118,7 @@ def generate_timeseries(
             "metering_point_id": metering_point_id,
             "energy_type": metering_point_type,
             "timestamp": current,
-            "value_kwh": value,
+            "kwh": value,
         })
 
         current += timedelta(minutes=15)
@@ -145,7 +145,7 @@ def create_energy_data_csv(
         "metering_point_id",
         "energy_type",
         "timestamp",
-        "value_kwh",
+        "kwh",
     ]
 
     with file_path.open(
