@@ -1,5 +1,7 @@
 from typing import List, Optional
+from pathlib import Path
 from utils.data_access import load_energy_data
+import matplotlib.pyplot as plt
 import pandas as pd
 
 # ==== Basic Data ====
@@ -190,24 +192,81 @@ def max_timeseries(
         index=result.index,
     )
 
-def analyse_energy_data(energy_data: list[pd.DataFrame], prompt: str):
-    # nur bei komplizierteren Anfragen die nicht durch Tools abgedeckt sind
-    # vl-time
-    # Qwen2.5-VL/Llama 3.2 Vision/Gemma 3 (Vision)/MiniCPM-V
-    pass
-
 # ==== Plot ====
 
-def create_energy_plot(label: str, x: str, y: str, energy_data: list[pd.DataFrame]) -> None:
-    # Vergleichsgrafiken (Verbrauch, Erzeugung) auf einmal?
-    # Nur ausführen wenn explizit verlangt (Laufzeit und unklar wie bewerten wenn hilfreich aber nicht notwendig)
-    # autmatisch dem Chat zuordnen oder auch llm machen lassen?
-    # Legende mit vom llm genereirten Namen?
-    return None # or plot?
+def create_energy_plot(
+    title: str,
+    labels: list[str],
+    energy_data: list[pd.DataFrame],
+) -> plt.Figure:
+    """
+    Create a line plot for one or more energy time series.
+
+    Each DataFrame must contain:
+    - a DatetimeIndex
+    - a column named "kwh"
+
+    Parameters:
+        title: Title of the plot.
+        labels: Labels used for the legend.
+        energy_data: Energy time series to plot.
+
+    Returns:
+        The generated matplotlib Figure.
+    """
+
+    if not energy_data:
+        raise ValueError("At least one time series is required.")
+
+    if len(labels) != len(energy_data):
+        raise ValueError(
+            "The number of labels must match the number of time series."
+        )
+
+    fig, ax = plt.subplots()
+
+    for label, data in zip(labels, energy_data):
+        if "kwh" not in data.columns:
+            raise ValueError(
+                "Each time series must contain a 'kwh' column."
+            )
+
+        ax.plot(data.index, data["kwh"], label=label)
+
+    ax.set_title(title)
+    ax.set_xlabel("Zeit")
+    ax.set_ylabel("Energie (kWh)")
+    ax.legend()
+    ax.grid(True)
+
+    fig.tight_layout()
+
+    return fig
+
+def save_plot(
+    plot: plt.Figure,
+    filename: str,
+    path: str = "output/plots",
+) -> None:
+    """
+    Save a matplotlib plot to a file.
+
+    Parameters:
+        plot: Matplotlib Figure to save.
+        filename: Name of the output file.
+        path: Directory in which the plot is saved.
+    """
+
+    output_dir = Path(path)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    file_path = output_dir / filename
+
+    plot.savefig(file_path, bbox_inches="tight")
 
 # ==== Answer ====
 
-def generate_answer(results: list, message: str | None = None) -> str:
+def generate_answer(result_ids: list[str], message: str | None = None) -> str:
     return "Beispielantwort"
 
 # ==== Diviated Data ====
@@ -285,4 +344,10 @@ def calculate_community_coverage(metering_point_id: str, start: str, end: str) -
 #     # Reihenfolge egal oder erste muss vorher sein?
 #     # muss direkt anschließen oder auch Lücken mögliche?
 #     # primär gedacht um forecast anzuknüpfen (sinnvoll?)
+#     pass
+
+# def analyse_energy_data(energy_data: list[pd.DataFrame], prompt: str):
+#     # nur bei komplizierteren Anfragen die nicht durch Tools abgedeckt sind
+#     # vl-time
+#     # Qwen2.5-VL/Llama 3.2 Vision/Gemma 3 (Vision)/MiniCPM-V
 #     pass
