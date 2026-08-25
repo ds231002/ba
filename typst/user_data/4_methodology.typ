@@ -97,9 +97,17 @@ Für die Messungen wurde das Powerlimit der GPU auf 70 % des Standardwerts begre
 // Warmup
 Vor den eigentlichen Messungen werden zunächst Warm-up-Durchläufe durchgeführt, um mögliche Einflüsse der Initialisierung der Inferenzumgebung auf die gemessenen Laufzeiten zu reduzieren.
 
-== Testdaten
+== Datengrundlage
+
+Für die Evaluation wird eine synthetische Energiedatenbasis verwendet. Die Verwendung synthetischer Daten ermöglicht eine kontrollierte und reproduzierbare Durchführung der Experimente und stellt sicher, dass alle untersuchten Orchestrierungsstrategien auf dieselbe Datengrundlage zugreifen. Die Datenbasis umfasst Messdaten einzelner Zählpunkte sowie Daten, die sich auf die gesamte Energiegemeinschaft beziehen.
 
 === Energiedaten
+
+Die Datenbasis umfasst Verbrauchs- und Erzeugungsdaten verschiedener Zählpunkte eines Benutzers. Dabei werden sowohl Zählpunkte mit Verbrauch als auch Zählpunkte mit Erzeugung berücksichtigt. Zusätzlich werden der Gesamtverbrauch und die Gesamterzeugung der Energiegemeinschaft als eigene Datenquellen bereitgestellt.
+
+Die Messdaten werden mit einer zeitlichen Auflösung von 15 Minuten modelliert. Ein Messwert beschreibt dabei die innerhalb eines 15-minütigen Intervalls gemessene Energiemenge in kWh. Zusätzlich werden aktuelle Verbrauchs- und Erzeugungsleistungen in kW bereitgestellt. Der Teilnahmefaktor wird als dimensionsloser Wert zwischen 0 und 1 modelliert und ist für einen Zählpunkt über den gesamten betrachteten Zeitraum konstant.
+
+Die für die Evaluation verwendeten Größen sind in @tab:energiedaten zusammengefasst.
 
 #figure(
   table(
@@ -109,13 +117,19 @@ Vor den eigentlichen Messungen werden zunächst Warm-up-Durchläufe durchgeführ
     table.header([*Abk.*], [*Bedeutung Englisch*], [*Bedeutung Deutsch*], [*Einheit*], [*Zeitbezug*],),
 
     // Basisdaten
+
+    table.cell(colspan: 5)[*Basisdaten*],
+
     [PF], [Participation Factor], [Teilnahmefaktor], [–], [konstant],
     [CPC], [Current Power Consumption], [Aktueller Verbrauch], [kW], [aktuell],
     [CPG], [Current Power Generation], [Aktuelle Erzeugung], [kW], [aktuell],
     [MC], [Measured Consumption], [Gemessener Verbrauch], [kWh], [15 min],
     [MG], [Measured Generation], [Gemessene Erzeugung], [kWh], [15 min],
+    [$"MC"_"EG"$], [Total Consumption], [Gesamtverbrauch], [kWh], [15 min],
+    [$"MG"_"EG"$], [Total Generation], [Gesamterzeugung], [kWh], [15 min],
 
-    // Abgeleitete Daten
+    table.cell(colspan: 5)[*Abgeleitete Daten*],
+
     [CP], [Community Potential], [Gemeinschaftsanteil], [kWh], [15 min],
     [CC], [Community Coverage], [Eigenabdeckung], [kWh], [15 min],
     // [SG], [Surplus Generation], [Restüberschuss], [kWh], [15 min],
@@ -126,119 +140,86 @@ Vor den eigentlichen Messungen werden zunächst Warm-up-Durchläufe durchgeführ
   caption: [Für die Evaluation verwendete Energiedaten],
 ) <tab:energiedaten>
 
-*Abgeleitete Daten*
+Die Einteilung in Basisdaten und abgeleitete Daten beschreibt die Verfügbarkeit der jeweiligen Größen innerhalb der Testumgebung. Die Größen $"MC"_"EG"$ und $"MG"_"EG"$ könnten grundsätzlich aus den Messwerten der einzelnen Zählpunkte aggregiert werden. Für die vorliegende Evaluation werden sie dennoch als Basisdaten behandelt. Da keine realen Messdaten einer vollständigen Energiegemeinschaft vorliegen, werden sie als synthetische, bereits aggregierte Datenquellen bereitgestellt. Dadurch stehen allen Orchestrierungsstrategien identische und reproduzierbare gemeinschaftsweite Daten zur Verfügung.
 
-Verbrauch der gesamten Energiegemeinschaft:
+=== Synthetische Datengenerierung
+
+Die benötigten Energiedaten werden synthetisch erzeugt. Für die Verbrauchsdaten wird ein Tagesprofil mit einer Grundlast und typischen Verbrauchsspitzen am Morgen und Abend verwendet. Zusätzlich werden zufällige Schwankungen berücksichtigt. Die Erzeugungsdaten bilden ein vereinfachtes Photovoltaikprofil ab, bei dem während der Nacht keine und während der Tagesstunden eine tageszeitabhängige Erzeugung angenommen wird.
+
+Durch unterschiedliche Skalierungsfaktoren werden Zählpunkte mit unterschiedlichen Verbrauchs- und Erzeugungsniveaus simuliert. Die Energiegemeinschaft wird zusätzlich als virtueller Zählpunkt mit höher skalierten Werten modelliert. Die entsprechenden Zeitreihen stellen somit synthetische gemeinschaftsweite Größen dar und sind nicht als reale Messwerte einer bestehenden Energiegemeinschaft zu interpretieren.
+
+Für die zufälligen Schwankungen wird ein fester Seed verwendet. Dadurch können die Testdaten reproduzierbar erzeugt werden und bleiben bei wiederholter Ausführung mit identischen Parametern unverändert.
+
+Die erzeugten Daten werden in CSV-Dateien gespeichert. Beim Einlesen werden die Zeitstempel in ein standardisiertes Zeitformat überführt und als Index der jeweiligen Zeitreihe verwendet. Dadurch weisen die eingelesenen Zeitreihen eine einheitliche Struktur auf.
+
+=== Fachliche Definitionen
+
+Die folgenden Definitionen beschreiben die für die Evaluation relevanten Zusammenhänge zwischen den verfügbaren Basisdaten und den daraus abgeleiteten Größen. Dabei bezeichnet $t$ das betrachtete Messintervall, $i$ den Index eines Verbrauchszählpunkts und $j$ den Index eines Erzeugungszählpunkts. $n$ und $m$ bezeichnen die Anzahl der Verbrauchs- bzw.
+Erzeugungszählpunkte. Der Index $k$ dient als Laufindex bei Summationen über die Verbrauchszählpunkte.
+
+==== Gesamtverbrauch und Gesamterzeugung
+
+Der Gesamtverbrauch und die Gesamterzeugung beschreiben die über alle betrachteten Zählpunkte aggregierten Energiemengen der Energiegemeinschaft.
+
+Der Gesamtverbrauch ergibt sich aus der Summe der gemessenen Verbrauchswerte aller Verbrauchszählpunkte:
+
 $ "MC"_"EG"(t) = sum_(i=1)^n "MC"_i(t) $
 
-Erzeugung der gesamten Energiegemeinschaft:
+Analog ergibt sich die Gesamterzeugung aus der Summe der gemessenen Erzeugungswerte aller Erzeugungszählpunkte:
+
 $ "MG"_"EG"(t) = sum_(j=1)^m "MG"_j(t) $
 
-Gemeinschaftsanteil (CP):
-$ "CP"_i(t) = "MG"_"EG"(t) dot frac("WMC"_i(t), sum_(k=1)^n "WMC"_k(t)) $
+Die beiden Größen werden in der Testumgebung als Basisdaten bereitgestellt, obwohl sie grundsätzlich aus den Messwerten der einzelnen Zählpunkte aggregiert werden könnten.
 
-Eigenabdeckung (CC):
-$ "CC"_i(t) = min("CP"_i(t), "WMC"_i(t)) $
+==== Teilnahmefaktor und gewichtete Messwerte
 
-// Restüberschuss (SG):
-// $ "SG"_"EG"(t) = max(0, "MG"_"EG"(t) - sum_(i=1)^n "CC"_i(t)) $
+Der Teilnahmefaktor bestimmt, mit welchem Anteil der gemessene Verbrauch bzw. die gemessene Erzeugung für die Energiegemeinschaft berücksichtigt wird. Für die Evaluation wird der Teilnahmefaktor als zeitlich konstanter Wert pro Zählpunkt modelliert und als dimensionsloser Faktor zwischen 0 und 1 angegeben.
 
-// Restüberschuss gemäß Teilnahmefaktor (WSG):
-// $ "WSG"_j(t) = "SG"_j(t) dot "PF"_j(t) $
+Der gewichtete Verbrauch eines Verbrauchszählpunkts ergibt sich aus der Multiplikation des gemessenen Verbrauchs mit dem jeweiligen Teilnahmefaktor:
 
-Gemessener Verbrauch gemäß Teilnahmefaktor (WMC):
 $ "WMC"_i(t) = "MC"_i(t) dot "PF"_i(t) $
 
-Gemessene Erzeugung gemäß Teilnahmefaktor (WMG):
-$ "WMG"_i(t) = "MG"_i(t) dot "PF"_i(t) $
+Analog ergibt sich die Teilnahmefaktor-gewichtete Erzeugung eines Erzeugungszählpunkts:
 
-// Gewichteter Gesamtverbrauch:
-// $ "WMC"_"EG"(t) = sum_(i=1)^n "WMC"_i(t) $
+$ "WMG"_j(t) = "MG"_j(t) dot "PF"_j(t) $
 
-// Gewichtete Gesamterzeugung:
-// $ "WMG"_"EG"(t) = sum_(j=1)^m "WMG"_j(t) $
+==== Gemeinschaftsanteil und Eigenabdeckung
 
-// Anteil des Verbrauchs: // ?
-// $ r_i(t) = frac("WMC"_i(t), sum_(k=1)^n "WMC"_k(t)) $
+Der Gemeinschaftsanteil beschreibt die dem jeweiligen Verbrauchszählpunkt
+zugeordnete Energiemenge aus der gemeinschaftlichen Erzeugung. Er wird
+aus der Gesamterzeugung der Energiegemeinschaft und dem Teilnahmefaktor
+des betrachteten Verbrauchszählpunkts bestimmt:
 
-*Kernaufgaben*
-- unterteilung in Kategorien
-- separate und gemeinsame Bewertung
-- SucessRate = korrekt gelöste Kernaufgaben / alle Kernaufgaben
+$ "CP"_i(t) = "MG"_"EG"(t) dot "PF"_i(t) $
 
-*Teilnahmefaktor*
+Die Eigenabdeckung begrenzt den Gemeinschaftsanteil auf den
+tatsächlich für die Energiegemeinschaft berücksichtigten Verbrauch des
+betrachteten Zählpunkts. Sie entspricht daher dem jeweils kleineren
+Wert aus Gemeinschaftsanteil und Teilnahmefaktor-gewichteten Verbrauch:
 
-- Für die Evaluation wird der Teilnahmefaktor als zeitlich konstanter Wert pro Zählpunkt modelliert. Änderungen des Teilnahmefaktors über den Zeitverlauf werden nicht berücksichtigt.
-- Faktor zwischen 0 und 1
+$ "CC"_i(t) = min("CP"_i(t), "WMC"_i(t)) $
 
+Damit kann die Eigenabdeckung weder den verfügbaren Gemeinschaftsanteil noch den Teilnahmefaktor-gewichteten Verbrauch überschreiten.
 
-=== Allgemein
+Die Größen WMC, WMG, CP und CC werden im weiteren Verlauf als abgeleitete Daten bezeichnet.
 
-*fehlende Daten*
+=== Datenverfügbarkeit
 
-- teilweise, vollständig fehlende Daten
-- vorher testen wie gut llms damit umgehen und dann entscheiden ob eigene Kategorie oder 20-30 Prozent in alle anderen Kategorien einstreuen.
-- wenn fehlende Daten oft Fehlergrund sind dann Einfluss von Anteil dieser zu hoch -> Sekundäre Robustheitsevaluation
+Für die Evaluation wird ein fester Referenzzeitpunkt verwendet. Die Verfügbarkeit der Energiedaten wird relativ zu diesem Referenzzeitpunkt festgelegt. Die Datenbasis reicht bis einschließlich des Tages, der zwei Kalendertage vor dem Referenzzeitpunkt liegt. Daten des Vortages und des aktuellen Tages gelten somit als nicht verfügbar.
 
-// Dadentsatzbeschreibung
-Für die Evaluation werden synthetische Energiedaten über einen fest definierten Zeitraum verwendet. Der Datensatz enthält [Stromverbrauch und Stromproduktion etc.] mit einer zeitlichen Auflösung von 15 Minuten. Die Daten werden für die verschiedenen Testfälle wiederverwendet, sodass alle Orchestrierungsmethoden unter identischen Datenbedingungen evaluiert werden.
+Beispielsweise gilt bei einem Referenzdatum von 02.01.2026:
+
+- verfügbar: bis einschließlich 31.12.2025
+- nicht verfügbar: 01.01.2026 und 02.01.2026
+
+Diese Einschränkung wird dem Sprachmodell als Teil der Systembeschreibung mitgeteilt. Ein separater Toolaufruf zur Ermittlung des verfügbaren Datenzeitraums ist daher nicht vorgesehen. Fordert das Sprachmodell dennoch über ein Werkzeug Daten für einen nicht verfügbaren Zeitraum an, wird dies im Rahmen der Evaluation als fehlerhafter Toolaufruf bewertet.
+
+Die Untersuchung der Verarbeitung tatsächlich fehlender oder lückenhafter Messdaten ist nicht Bestandteil der Evaluation. Dadurch bleibt die Datenverfügbarkeit für alle Orchestrierungsstrategien identisch und die Untersuchung konzentriert sich auf die Auswahl und Kombination der verfügbaren Werkzeuge.
+
+== Tooldesign
 
 // Referenzzeit (resolve_time.ipynb)
 Für die zeitliche Interpretation der Testfälle wurde eine feste Referenzzeit definiert. Diese umfasst neben dem Datum und der Uhrzeit auch die zugehörige Zeitzone und wird dem LLM als aktueller Zeitpunkt vorgegeben. Dadurch können neben tagesbasierten auch stundenbasierte relative Zeitangaben, beispielsweise „vor drei Stunden“ oder „seit heute Morgen“, eindeutig aufgelöst werden. Die Verwendung einer festen Referenzzeit stellt sicher, dass identische Anfragen unabhängig vom tatsächlichen Zeitpunkt der Versuchsdurchführung stets auf dieselben Zeitintervalle und damit auf identische Toolparameter abgebildet werden. Dadurch wird verhindert, dass Unterschiede zwischen den Orchestrierungsmethoden durch eine unterschiedliche zeitliche Interpretation der Testanfragen beeinflusst werden.
-
-=== Szenarien
-
-*Datensätze*
-- 365 Tage (für längere Zeitreihenabfragen)
-- vollständig, keine Auffälligkeiten
-- mehrere Anomalien (defekter ZP)
-- fehlende Werte (Ausfälle)
-- Verbrauchsvorhersage?
-
-*Nutzer*
-- Nutzer mit einem Zählpunkt für isolierte Problembehandlung
-- Nutzer mit mehreren Zählpunkten und teils bewusst mehrdeutigen Situationen
-
-=== Datengenerierung
-
-- ausgehend von einer Energiegemeinschaft
-- Testdaten: 01.01.2026 - 31.03.2026 (inklusive)
-- Referencetime: 02.04.2026
-
-// *users.csv*
-// - user_id
-// - note (beschreibung für mich und nicht fürs llm)
-
-*meters.csv*
-- meter_id
-- meter_name (meist nur bei vielen Zählpunkten vorhanden)
-- user_id
-- direction
-- location
-- note
-
-*timeseries.csv* (15min)
-- meter_id
-- timestamp
-- value
-- unit
-
-*forecast.csv* (1h)
-- timestamp
-- generation
-- consumption
-
-*spotmarket.csv* (1h)
-- timestamp
-- value (kann auch negativ sein)
-
-*Characteristics*
-- normal: actual bis gestern 0 Uhr danach forecast
-- missing values: forecast über längeren Zeitraum (llm soll auf prognostizierte Werte aufmerksam machen)
-- missing values: auch kein forecast
-- missing values: vereinzelte actuals (llm soll auf fehlende Werte aufmerksam machen)
-
-== Tooldesign
 
 === Struktur
 
@@ -263,53 +244,17 @@ Für die Zeitauflösung wurden zwei Ansätze betrachtet: die Verwendung eines de
 
 Die Untersuchung zeigte, dass aktuelle Modelle mit geeigneten Instruktionen Zeitangaben zuverlässig in korrekte Zeitintervalle überführen können. Auf die Implementierung eines separaten Zeitauflösungswerkzeugs wurde daher verzichtet, wodurch die Komplexität der Werkzeuglandschaft reduziert werden konnte.
  
-=== Bereitstellung von Zeitreihendaten // (vl-time_png_vs_array.ipynb, multiagent_energydata.pdf - 3.3. Eigener Test 1 ... und 3.4. Eigener Test 2 ...)
+// === Bereitstellung von Zeitreihendaten // (vl-time_png_vs_array.ipynb, multiagent_energydata.pdf - 3.3. Eigener Test 1 ... und 3.4. Eigener Test 2 ...)
 
-Für die Bereitstellung von Zeitreihendaten wurden unterschiedliche Repräsentationsformen betrachtet. In einer Voruntersuchung wurden Zeitreihen unterschiedlicher Länge sowohl als strukturierte JSON-Daten als auch als Liniendiagramme an die verwendeten Modelle übergeben. Dabei wurden die Antwortqualität, der Tokenverbrauch und die Bearbeitungszeit betrachtet. Zusätzlich wurde untersucht, inwieweit mehrere Zeitreihen gleichzeitig verarbeitet werden können.
+// Für die Bereitstellung von Zeitreihendaten wurden unterschiedliche Repräsentationsformen betrachtet. In einer Voruntersuchung wurden Zeitreihen unterschiedlicher Länge sowohl als strukturierte JSON-Daten als auch als Liniendiagramme an die verwendeten Modelle übergeben. Dabei wurden die Antwortqualität, der Tokenverbrauch und die Bearbeitungszeit betrachtet. Zusätzlich wurde untersucht, inwieweit mehrere Zeitreihen gleichzeitig verarbeitet werden können.
 
-Die Ergebnisse zeigten, dass beide Repräsentationsformen bei kurzen Zeitreihen eine korrekte Interpretation einfacher Verbrauchsmuster ermöglichten. Mit zunehmender Länge der Zeitreihen erwiesen sich Visualisierungen hinsichtlich Tokenverbrauch und Bearbeitungszeit als vorteilhaft. Auf Grundlage dieser Ergebnisse werden längere Zeitreihen im untersuchten System nicht grundsätzlich als vollständige numerische Daten an das LLM übergeben, sondern je nach Anwendungsfall als Visualisierung oder in aufbereiteter Form bereitgestellt.
+// Die Ergebnisse zeigten, dass beide Repräsentationsformen bei kurzen Zeitreihen eine korrekte Interpretation einfacher Verbrauchsmuster ermöglichten. Mit zunehmender Länge der Zeitreihen erwiesen sich Visualisierungen hinsichtlich Tokenverbrauch und Bearbeitungszeit als vorteilhaft. Auf Grundlage dieser Ergebnisse werden längere Zeitreihen im untersuchten System nicht grundsätzlich als vollständige numerische Daten an das LLM übergeben, sondern je nach Anwendungsfall als Visualisierung oder in aufbereiteter Form bereitgestellt.
 
-Darüber hinaus werden wiederkehrende oder eindeutig definierte Analysen nicht ausschließlich dem Sprachmodell überlassen. Funktionen zur Berechnung statistischer Kennwerte oder zur Erkennung definierter Merkmale können die entsprechenden Verarbeitungsschritte übernehmen. Das LLM übernimmt in diesen Fällen die Auswahl und Orchestrierung der Werkzeuge sowie die Interpretation der zurückgegebenen Ergebnisse.
+// Darüber hinaus werden wiederkehrende oder eindeutig definierte Analysen nicht ausschließlich dem Sprachmodell überlassen. Funktionen zur Berechnung statistischer Kennwerte oder zur Erkennung definierter Merkmale können die entsprechenden Verarbeitungsschritte übernehmen. Das LLM übernimmt in diesen Fällen die Auswahl und Orchestrierung der Werkzeuge sowie die Interpretation der zurückgegebenen Ergebnisse.
 
-== Tools
+=== Tools
 
-=== Datenabfrage
 
-- get_energy_data(cp, start, end) // cp (counting point) kann entweder Erzeuger oder Verbraucher sein, niemals beides
-- get_energy_consumption_energy_community(start, end) // Verbrauch von gesamter Energiegemeinschaft
-- get_energy_generation_energy_community(start, end) // Erzeugung von gesamter Energiegemeinschaft
-- get_energy_consumption_forecast_energy_community(location) // Verbrauchsvorhersage für gesamte Energiegemeinschaft, Auflösung Stündlich und nicht 15 min wie der Rest, Zusammenlegen mit get_energy_consumption_energy_community() und wenn keine realen Daten vorhanden aber Zeitreihendaten da sind diese ergänzen?
-- get_energy_surplus(location, start, end) // Wenn nicht Verbraucher und Erzeuger dann keine Überschussberechnung möglich, Überschuss über mehrere Standorte oder individuelle Zählpunkte ermöglichen?, kann nicht negativ sein!
-- get_energy_surplus_energy_community(start, end)
-- get_spot_market(start, end) // awattar.at/tariffs/hourly
-- get_sun_hours(start, end) // alle 15min, 0/1
-- get_weighted_generation() // Measured Generation x Teilhamefaktor
-- 
-
-=== Darstellung // nur in Chat anzeigen
-
-- create_energy_plot([energy_data], show_in_chat) // immer für chat?, Vergleichsgrafiken (Verbrauch, Erzeugung, Überschuss) auf einmal?
-- create_spotmarket_plot(spot_market)
-- create_sun_hours_plot(sun_hours)
-// Weitere Grafiken?
-
-=== Analyse
-
-- get_max(energy_data/spotmarket)
-- get_min(energy_data/spotmarket)
-- get_avg(energy_data/spotmarket)
-- get_sum(energy_data/spotmarket)
-
-- get_consumption_pattern(energy_data) // sample result
-- get_generation_pattern(energy_data) // sample result, weglassen?
-- time_series_analysis([energy_data], prompt) // vl-time, (Qwen2.5-VL/Llama 3.2 Vision/Gemma 3 (Vision)/MiniCPM-V)
-// - analyze_plot(plot, prompt)
-
-// - calculate_spotmarket_energy_consumption(energy_data, spotmarket) // spotmarket Preisberechnung, Ersparnis?
-
-=== Finalisieren
-
-- generate_answer()
 
 == Orchestrierungsstrategien
 
@@ -358,6 +303,11 @@ Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht d
 - unbekannte Modellimplementierung
 
 == Prompts
+
+*Kernaufgaben*
+- unterteilung in Kategorien
+- separate und gemeinsame Bewertung
+- SucessRate = korrekt gelöste Kernaufgaben / alle Kernaufgaben
 
 - „Vergleiche den Verbrauch gestern mit der Prognose für morgen.“ // gestern und heute und morgen sind forecast!
 - „Wie viel hat die Energiegemeinschaft im Januar verbraucht und was hätte dieser Verbrauch zu den Spotmarktpreisen gekostet?“ // Funktionen für Berechnung

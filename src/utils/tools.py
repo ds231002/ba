@@ -165,6 +165,31 @@ def min_timeseries(timeseries: list[pd.DataFrame]) -> pd.DataFrame:
         index=result.index,
     )
 
+def max_timeseries(
+    timeseries: list[pd.DataFrame],
+) -> pd.DataFrame:
+    """
+    Return the maximum value of multiple time series for each timestamp.
+    """
+
+    if len(timeseries) < 2:
+        raise ValueError("At least two time series are required.")
+
+    result = pd.concat(
+        [ts["kwh"] for ts in timeseries],
+        axis=1,
+    )
+
+    if result.isna().any().any():
+        raise ValueError(
+            "Time series do not cover the same timestamps."
+        )
+
+    return pd.DataFrame(
+        {"kwh": result.max(axis=1)},
+        index=result.index,
+    )
+
 def analyse_energy_data(energy_data: list[pd.DataFrame], prompt: str):
     # nur bei komplizierteren Anfragen die nicht durch Tools abgedeckt sind
     # vl-time
@@ -187,6 +212,12 @@ def generate_answer(results: list, message: str | None = None) -> str:
 
 # ==== Diviated Data ====
 
+def calculate_weighted_measured_energy(metering_point_id: str, start: str, end: str) -> pd.DataFrame:
+    # consumption und generation hängt vom Zählpunkt ab
+    participation_factor = get_participation_factor(metering_point_id)
+    measured_consumption = get_measured_energy(metering_point_id, start, end)
+    return multiply_timeseries(measured_consumption, participation_factor)
+
 def calculate_community_potential(metering_point_id: str, start: str, end: str) -> pd.DataFrame:
     participation_factor = get_participation_factor(metering_point_id)
     community_generation = get_community_generation(start, end)
@@ -195,14 +226,8 @@ def calculate_community_potential(metering_point_id: str, start: str, end: str) 
 def calculate_community_coverage(metering_point_id: str, start: str, end: str) -> pd.DataFrame:
     # metering_point_id muss consumption sein, Verantwortung an LLM geben und einfach als falsch bewerten wenn falsch übergeben?
     community_potential = calculate_community_potential(metering_point_id, start, end)
-    consumption = get_measured_energy(metering_point_id, start, end)
-    return min_timeseries(community_potential, consumption)
-
-def calculate_weighted_measured_energy(metering_point_id: str, start: str, end: str) -> pd.DataFrame:
-    # consumption und generation hängt vom Zählpunkt ab
-    participation_factor = get_participation_factor(metering_point_id)
-    measured_consumption = get_measured_energy(metering_point_id, start, end)
-    return multiply_timeseries(measured_consumption, participation_factor)
+    weighted_measured_consumption = calculate_weighted_measured_energy(metering_point_id, start, end)
+    return min_timeseries(community_potential, weighted_measured_consumption)
 
 # ==== Rejected Tools ====
 

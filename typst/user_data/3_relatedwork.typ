@@ -38,7 +38,6 @@ Die Visualisierung dient dabei nicht nur der Darstellung, sondern gleichzeitig a
 
 Large Language Models können durch die Anbindung externer Werkzeuge auf Informationen und Funktionen zugreifen, die nicht allein durch das im Modell gespeicherte Wissen bereitgestellt werden können. Frühe Arbeiten untersuchten dabei zunächst die grundlegende Fähigkeit, geeignete Werkzeuge auszuwählen und korrekte API-Aufrufe zu erzeugen. Xu et al. ordnen unter anderem Toolformer und ReAct dieser frühen Entwicklung zu, in der insbesondere die Auswahl eines Werkzeugs und die korrekte Formatierung eines API-Aufrufs im Vordergrund stehen @xuEvolutionToolUse2026.
 
-
 === Tool Calling und Toolauswahl
 
 // Toolformer
