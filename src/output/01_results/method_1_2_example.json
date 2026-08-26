@@ -1,0 +1,31 @@
+{
+  "task_id": "task_01",
+  "method": "pipeline",
+  "model": "model_name",
+  "time_seconds": 3.42,
+  "input_tokens": 2841,
+  "output_tokens": 421,
+  "total_tokens": 3262,
+  "tool_calls": [
+    {
+      "result_id": "result_001",   
+      "tool": "get_measured_energy",
+      "arguments": {
+        "metering_point_id": "MP1",
+        "start": "...",
+        "end": "..."
+      }
+    },
+    {
+      "result_id": "result_002",
+      "tool": "get_statistical_value",
+      "arguments": {
+        "statistic_type": "sum",
+        "time_series": "result_001"
+      }
+    }
+  ],
+  "answer_results": [
+    "result_005"
+  ]
+}
