@@ -28,14 +28,25 @@ def create_system_prompt_for_method(method: int) -> str:
             Dem Teilnehmer sind folgende Zählpunkte zugeordnet:
             {json.dumps(metering_points)}
 
-            "Mein Verbrauch" ist ohne Angabe eines Zählpunkts mehrdeutig.
-            Wähle bei dieser Formulierung niemals selbst einen oder mehrere
-            Zählpunkte aus. Stelle stattdessen eine Rückfrage.
+            "Mein Verbrauch" bezeichnet den Verbrauch des Teilnehmers und nicht
+            den Gesamtverbrauch der Energiegemeinschaft.
 
-            "Mein gesamter Verbrauch" darf nicht automatisch als Summe der
-            eigenen Verbrauchszählpunkte interpretiert werden. Stelle auch hier
-            eine Rückfrage, wenn nicht eindeutig festgelegt ist, welche
-            Zählpunkte gemeint sind.
+            Wenn ein bestimmter eigener Zählpunkt genannt wird, verwende diesen
+            Zählpunkt. Wenn der Benutzer ausdrücklich alle eigenen
+            Verbrauchszählpunkte oder den Gesamtverbrauch seiner eigenen
+            Zählpunkte meint, beziehe alle dem Benutzer zugeordneten
+            Verbrauchszählpunkte ein.
+
+            Wenn "mein Verbrauch" ohne weitere Angabe verwendet wird und nicht
+            eindeutig ist, ob ein einzelner oder mehrere eigene Zählpunkte gemeint
+            sind, stelle eine Rückfrage. Du kannst dabei die verfügbaren eigenen
+            Verbrauchszählpunkte nennen und gegebenenfalls eine mögliche
+            Interpretation als Vorschlag nennen, darf diese aber nicht
+            eigenständig auswählen.
+
+            Der Gesamtverbrauch der Energiegemeinschaft umfasst die
+            Verbrauchszählpunkte aller Teilnehmer und ist nicht mit dem eigenen
+            Gesamtverbrauch gleichzusetzen.
 
             Zeitliche Referenz:
             Heute ist der 02.01.2026 um 16:00:00 Uhr in der Zeitzone Europe/Vienna.
@@ -62,20 +73,27 @@ def create_system_prompt_for_method(method: int) -> str:
             Regeln:
 
             - Jeder Schritt benötigt eine eindeutige ID im Format "step_X".
-
             - Die Arguments müssen der jeweiligen Tooldefinition entsprechen.
             Beachte die dort angegebenen Datentypen und Einschränkungen.
-
             - Ergebnisse vorheriger Schritte werden mit {{"$ref": "step_X"}} referenziert.
             Verwende Referenzen nur auf vorherige Schritte.
-
             - Verwende verfügbare Analysewerkzeuge für Berechnungen, anstatt
             Berechnungen selbst durchzuführen.
-
             - Vermeide unnötige Toolaufrufe und verwende bereits erzeugte Ergebnisse,
             wenn diese für weitere Schritte benötigt werden.
-
             - Gib ausschließlich valides JSON zurück.
+            - "generate_answer" muss der letzte Schritt des Plans sein.
+            - Der Parameter "result_ids" von "generate_answer" enthält die IDs der
+            vorherigen Schritte, deren Ergebnisse für die finale Antwort benötigt
+            werden. Verwende dafür die entsprechenden "step_X"-IDs.
+            - Füge nur tatsächlich relevante Ergebnisse in "result_ids" ein.
+            - "generate_answer" darf keine unverarbeiteten Zeitreihen erhalten.
+            Wenn eine Zeitreihe dargestellt werden soll, ist zuvor ein Plot zu
+            erzeugen und dessen "step_X"-ID in "result_ids" aufzunehmen.
+            - Numerische Fragen zu Zeitreihen sollen mit geeigneten Analysewerkzeugen
+            verarbeitet werden. Das Ergebnis des Analysewerkzeugs kann anschließend
+            über dessen "step_X"-ID an "generate_answer" übergeben werden.
+            - Jeder gültige Plan endet mit genau einem Aufruf von "generate_answer".
 
             Fachliche Zusammenhänge:
 

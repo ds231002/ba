@@ -333,7 +333,7 @@
     },
     {
       "tool": "generate_answer",
-      "description": "Erzeugt die finale Antwort auf die Benutzeranfrage. Das Werkzeug bildet den letzten Schritt der Bearbeitung einer Anfrage. Es kann auch verwendet werden, wenn kein passendes Tool verfügbar ist oder zunächst eine Rückfrage an den Benutzer erforderlich ist.",
+      "description": "Erzeugt die finale Antwort auf die Benutzeranfrage. Das Werkzeug bildet den verpflichtenden letzten Schritt der Bearbeitung einer Anfrage. Es kann auch verwendet werden, wenn kein passendes Tool verfügbar ist oder zunächst eine Rückfrage an den Benutzer erforderlich ist.",
       "arguments": {
         "type": "object",
         "properties": {
