@@ -297,7 +297,7 @@
     },
     {
       "tool": "create_energy_plot",
-      "description": "Erzeugt ein Liniendiagramm aus einer oder mehreren Energiezeitreihen.",
+      "description": "Erzeugt ein Liniendiagramm aus einer oder mehreren Energiezeitreihen. Das Tool darf nur verwendet werden, wenn die Aufgabe ausdrücklich die Erstellung eines Plots oder einer Visualisierung der Energiedaten fordert. Es darf nicht allein deshalb verwendet werden, weil ein Plot möglicherweise hilfreich oder sinnvoll wäre.",
       "arguments": {
         "type": "object",
         "properties": {
@@ -333,29 +333,29 @@
     },
     {
       "tool": "generate_answer",
-      "description": "Erzeugt die finale Antwort auf die Benutzeranfrage auf Grundlage der für die Antwort bestimmten Ergebnisse. Dieses Werkzeug bildet den letzten Schritt der Bearbeitung einer Anfrage.",
+      "description": "Erzeugt die finale Antwort auf die Benutzeranfrage. Das Werkzeug bildet den letzten Schritt der Bearbeitung einer Anfrage. Die Antwort kann auf zuvor erzeugten Ergebnissen basieren, muss aber nicht. Es kann daher auch verwendet werden, wenn kein passendes Tool verfügbar ist oder zunächst eine Rückfrage an den Benutzer erforderlich ist.",
       "arguments": {
         "type": "object",
         "properties": {
           "result_ids": {
             "type": "array",
-            "description": "Eindeutige IDs der Ergebnisse, die für die Beantwortung der Benutzeranfrage relevant sind.",
+            "description": "Optionale eindeutige IDs der Ergebnisse, die für die Beantwortung der Benutzeranfrage relevant sind.",
             "items": {
               "type": "string"
             }
           },
           "message": {
             "type": "string",
-            "description": "Optionale zusätzliche Nachricht oder Anweisung für die finale Antwort."
+            "description": "Nachricht oder Anweisung für die finale Antwort. Gibt beispielsweise die gewünschte Antwort, eine Rückfrage an den Benutzer oder eine Anweisung zur Verwendung der ausgewählten Ergebnisse vor."
           }
         },
         "required": [
-          "result_ids"
+          "message"
         ]
       },
       "returns": {
         "type": "string",
-        "description": "Die auf Grundlage der Benutzeranfrage und der ausgewählten Ergebnisse formulierte finale Antwort."
+        "description": "Die auf Grundlage der Benutzeranfrage, der optional ausgewählten Ergebnisse und der Nachricht formulierte finale Antwort."
       }
     }
   ]

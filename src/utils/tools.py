@@ -263,7 +263,7 @@ def save_plot(
 
 # ==== Answer ====
 
-def generate_answer(result_ids: list[str], message: str | None = None) -> str:
+def generate_answer(message: str, result_ids: list[str] | None = None) -> str:
     return "Beispielantwort"
 
 # ==== Diviated Data ====
