@@ -8,5 +8,5 @@
     <sec:future_work>
 ]
 
-Examine the limitations inherent in your work and outline potential avenues for future research and development.
+// cloud Modelle
 

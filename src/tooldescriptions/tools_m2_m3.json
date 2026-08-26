@@ -42,7 +42,7 @@
     },
     {
       "tool": "get_community_consumption",
-      "description": "Lädt den Gesamtverbrauch der Energiegemeinschaft für einen definierten Zeitraum.",
+      "description": "Lädt den Gesamtverbrauch der Energiegemeinschaft für einen definierten Zeitraum. Es sind ausschließlich Daten bis einschließlich vorgestern verfügbar.",
       "arguments": {
         "type": "object",
         "properties": {
@@ -67,8 +67,8 @@
     },
     {
       "tool": "get_community_generation",
-      "description": "Lädt die Gesamterzeugung der Energiegemeinschaft für einen definierten Zeitraum.",
-      "arguments": {
+      "description": "Lädt die Gesamterzeugung der Energiegemeinschaft für einen definierten Zeitraum. Es sind ausschließlich Daten bis einschließlich vorgestern verfügbar.",
+      "arguments": {  
         "type": "object",
         "properties": {
           "start": {
@@ -92,7 +92,7 @@
     },
     {
       "tool": "get_measured_energy",
-      "description": "Lädt die gemessene Energie eines Zählpunkts für einen definierten Zeitraum. Ob die Zeitreihe den Verbrauch oder die Erzeugung beschreibt, wird durch den angegebenen Zählpunkt bestimmt.",
+      "description": "Lädt die gemessene Energie eines Zählpunkts für einen definierten Zeitraum. Ob die Zeitreihe den Verbrauch oder die Erzeugung beschreibt, wird durch den angegebenen Zählpunkt bestimmt. Es sind ausschließlich Daten bis einschließlich vorgestern verfügbar.",
       "arguments": {
         "type": "object",
         "properties": {
@@ -297,7 +297,7 @@
     },
     {
       "tool": "create_energy_plot",
-      "description": "Erzeugt ein Liniendiagramm aus einer oder mehreren Energiezeitreihen. Das Tool darf nur verwendet werden, wenn die Aufgabe ausdrücklich die Erstellung eines Plots oder einer Visualisierung der Energiedaten fordert. Es darf nicht allein deshalb verwendet werden, weil ein Plot möglicherweise hilfreich oder sinnvoll wäre.",
+      "description": "Erzeugt ein Liniendiagramm aus einer oder mehreren Energiezeitreihen. Es soll nur dann ein Liniendiagramm erzeugt werden wenn es für die Antwort tatsächlich relevant ist.",
       "arguments": {
         "type": "object",
         "properties": {
@@ -333,7 +333,7 @@
     },
     {
       "tool": "generate_answer",
-      "description": "Erzeugt die finale Antwort auf die Benutzeranfrage. Das Werkzeug bildet den letzten Schritt der Bearbeitung einer Anfrage. Die Antwort kann auf zuvor erzeugten Ergebnissen basieren, muss aber nicht. Es kann daher auch verwendet werden, wenn kein passendes Tool verfügbar ist oder zunächst eine Rückfrage an den Benutzer erforderlich ist.",
+      "description": "Erzeugt die finale Antwort auf die Benutzeranfrage. Das Werkzeug bildet den letzten Schritt der Bearbeitung einer Anfrage. Es kann auch verwendet werden, wenn kein passendes Tool verfügbar ist oder zunächst eine Rückfrage an den Benutzer erforderlich ist.",
       "arguments": {
         "type": "object",
         "properties": {
@@ -355,7 +355,7 @@
       },
       "returns": {
         "type": "string",
-        "description": "Die auf Grundlage der Benutzeranfrage, der optional ausgewählten Ergebnisse und der Nachricht formulierte finale Antwort."
+        "description": "IDs von Ergebnissen, die für die finale Antwort relevant sind. Zeitreihen sollen niemals übergeben werden! Stattdessen ist ein Liniendiagramm zu erzeugen welches dann übergeben werden kann."
       }
     }
   ]

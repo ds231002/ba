@@ -1,14 +1,16 @@
 {
   "task_id": "task_01",
+  "task": "Wie viel habe ich gestern verbraucht.",
   "method": "pipeline",
   "model": "model_name",
+  "finish_reason": "stop",
   "time_seconds": 3.42,
   "input_tokens": 2841,
   "output_tokens": 421,
   "total_tokens": 3262,
   "tool_calls": [
     {
-      "result_id": "result_001",   
+      "id": "result_001",   
       "tool": "get_measured_energy",
       "arguments": {
         "metering_point_id": "MP1",
@@ -17,7 +19,7 @@
       }
     },
     {
-      "result_id": "result_002",
+      "id": "result_002",
       "tool": "get_statistical_value",
       "arguments": {
         "statistic_type": "sum",

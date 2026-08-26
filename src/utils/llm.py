@@ -1,107 +1,81 @@
-import os
+# import os
 import time
 from dotenv import load_dotenv
 from openai import OpenAI
-from pydantic import BaseModel
-from utils.files import save_json
-from utils.faiss import search_chunks
+# from pydantic import BaseModel
 
 load_dotenv()
 
-# openai
-# OPENAI_CLIENT = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-# OPENAI_MODELS = {
-#     "large": "gpt-5.6-sol",
-#     "medium": "gpt-5.6-terra",
-#     "small": "gpt-5.6-luna",
-# }
-
-# ollama
-OLLAMA_CLIENT = OpenAI(
+client = OpenAI(
     base_url="http://localhost:11434/v1",
     api_key="ollama",
 )
-OLLAMA_MODEL = "qwen3:8b"j
 
-# selected
-CLIENT = OLLAMA_CLIENT
-MODEL = OLLAMA_MODEL
+model = "qwen3:8b"
 
-class Evaluation(BaseModel):
-    category: str
-    reason: str
+# def _generate_response(
+#     user_prompt: str,
+#     system_prompt: str,
+#     model: str
+# ) -> dict:
+#     return client.chat.completions.create(
+#         model=model,
+#         messages=[
+#             {
+#                 "role": "system",
+#                 "content": system_prompt
+#             },
+#             {
+#                 "role": "user",
+#                 "content": user_prompt
+#             }
+#         ],
+#         temperature=0
+#     )
 
-SYSTEM_PROMPT = """
-...
-"""
+def _get_response_answer(response) -> str:
+    return response.choices[0].message.content
 
-def get_response(user_input: str):
-    response = CLIENT.responses.parse(
-        model=MODEL,
-        input=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_input}
+def _get_response_usage(response) -> dict:
+    return {
+        "input_tokens": response.usage.prompt_tokens,
+        "output_tokens": response.usage.completion_tokens,
+        "total_tokens": response.usage.total_tokens,
+    }
+
+def generate_response(
+    user_prompt: str,
+    system_prompt: str,
+    model: str
+) -> dict:
+
+    start_time = time.perf_counter()
+
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {
+                "role": "system",
+                "content": system_prompt
+            },
+            {
+                "role": "user",
+                "content": user_prompt
+            }
         ],
-        text_format=Evaluation,
+        temperature=0
     )
 
-    return response.output_parsed
+    elapsed_time = time.perf_counter() - start_time
 
-def build_prompt(new_information: str, chunks: list[str]) -> str:
-    prompt = f"Informationsinhalt:\n\n{new_information}\n\n"
-    prompt += "Bereitgestellte Wissensabschnitte:\n\n"
-
-    for i, chunk in enumerate(chunks, start=1):
-        prompt += f"Abschnitt {i}\n{chunk}\n\n"
-
-    return prompt
-
-# sample for itrative use of get_response() with time
-
-# def create_evaluation(
-#     index,
-#     chunks: list[str],
-#     new_informations: list[str],
-#     output_path: str,
-#     next_k_chunks: int = 3
-# ):
-#     results = []
-#     total = len(new_informations)
-#     start_time = time.perf_counter()
-
-#     for i, new_information in enumerate(new_informations, start=1):
-#         iteration_start = time.perf_counter()
-
-#         nearest_chunks = search_chunks(new_information, index, chunks, k=next_k_chunks)
-#         prompt = build_prompt(new_information, chunks)
-#         evaluation = get_response(prompt)
-
-#         results.append({
-#             "new_information": new_information,
-#             "chunks": [
-#                 {
-#                     "text": chunk,
-#                     "score": score,
-#                 }
-#                 for chunk, score in nearest_chunks
-#             ],
-#             "category": evaluation.category,
-#             "reason": evaluation.reason,
-#         })
-
-#         iteration_time = time.perf_counter() - iteration_start
-#         elapsed_time = time.perf_counter() - start_time
-#         average_time = elapsed_time / i
-#         remaining_time = average_time * (total - i)
-
-#         print(
-#             f"{i}/{total} | "
-#             f"Durchlauf: {iteration_time:.1f}s | "
-#             f"Gesamt: {elapsed_time:.1f}s | "
-#             f"Rest: ~{remaining_time:.1f}s"
-#         )
-
-#     save_json(results, output_path)
-#     print(f"Evaluation erfolgreich gespeichert: {output_path}")
-
-#     return results
+    return {
+        "answer": response.choices[0].message.content,
+        "usage": {
+            "runtime_seconds": elapsed_time,
+            "input_tokens": response.usage.prompt_tokens,
+            "output_tokens": response.usage.completion_tokens,
+            "total_tokens": response.usage.total_tokens
+        },
+        "model": model,
+        "finish_reason": response.choices[0].finish_reason
+    }

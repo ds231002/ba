@@ -1,5 +1,6 @@
 {
   "task_id": "task_01",
+  "task": "Wie viel habe ich gestern verbraucht.",
   "method": "iterative",
   "model": "model_name",
   "planning": {

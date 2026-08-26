@@ -10,6 +10,12 @@
 
 // 4-6 Seite
 
+Richtige Tools gewählt - ja/nein
+optimal (keine unnötigen Tools) - ja/nein
+Parameter (automatisch nein wenn fasche Tools) - ja/nein
+Antwrot (richtige Results oder Info übergeben) - ja/nein
+
+
 == Auswertung lokaler Modelle
 
 #figure(
