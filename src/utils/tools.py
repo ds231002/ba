@@ -9,11 +9,8 @@ import pandas as pd
 def get_participation_factor(metering_point_id: str) -> float:
     return 0.7
 
-def get_current_power_consumption(metering_point_id: str) -> float:
+def get_current_energy(metering_point_id: str) -> float:
     return 3.21 # kw
-
-def get_current_power_generation(metering_point_id: str) -> float:
-    return 9.87 # kw
 
 def get_community_consumption(start: str | None = None, end: str | None = None) -> pd.DataFrame:
     """
