@@ -20,48 +20,37 @@ Antwrot (richtige Results oder Info übergeben) - ja/nein
 
 #figure(
   table(
-    columns: (1.5fr, 1fr, 1fr, 1fr),
-    align: (left, center, center, center),
+    columns: (2fr, 2fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+    align: (center),
 
-    table.header([*Aufgabentyp*], [*Methode 1*], [*Methode 2*], [*Methode 3*]),
+    table.header(
+      [*Modell*],
+      [*Aufgaben*],
+      table.cell(colspan: 3)[*Erfolgsrate*],
+      table.cell(colspan: 3)[*Laufzeit [s]*],
+      table.cell(colspan: 3)[*Gesamttoken*]
+      ),
 
-    table.cell(colspan: 4)[*Durchschnittliche Laufzeit \[s\]*],
+    table.cell(colspan: 2)[*Methode:*], [*D*], [*P*],[*I*],[*D*],[*P*],[*I*],[*D*],[*P*],[*I*], 
 
-    [Einfach], [], [], [],
-    [Mehrschrittig], [], [], [],
-    [Komplex], [], [], [],
-    [Atypisch], [nicht unterstützt], [], [],
+    [qwen3:8b], [einfach], [0,8], [0,8], [0,8], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [qwen3:8b], [mehrstufig], [0,8], [0,8], [0,8], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [qwen3:8b], [komplex], [0,8], [0,8], [0,8], [0,27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [qwen3:8b], [ungedeckt], [-], [0,8], [0,8], [-], [27,5], [27,5], [-], [5000], [5000],
 
-    table.cell(colspan: 4)[*Durchschnittlicher Tokenverbrauch \[Stk\]*],
+    [qwen3:14b], [einfach], [0,8], [0,8], [0,8], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [qwen3:14b], [mehrstufig], [0,8], [0,8], [0,8], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [qwen3:14b], [komplex], [0,8], [0,8], [0,8], [0,27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [qwen3:14b], [ungedeckt], [-], [0,8], [0,8], [-], [27,5], [27,5], [-], [5000], [5000],
 
-    [Einfach], [], [], [],
-    [Mehrschrittig], [], [], [],
-    [Komplex], [], [], [],
-    [Atypisch], [nicht unterstützt], [], [],
+    [qwen3:30b], [einfach], [0,8], [0,8], [0,8], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [qwen3:30b], [mehrstufig], [0,8], [0,8], [0,8], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [qwen3:30b], [komplex], [0,8], [0,8], [0,8], [0,27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [qwen3:30b], [ungedeckt], [-], [0,8], [0,8], [-], [27,5], [27,5], [-], [5000], [5000],
 
-    table.cell(colspan: 4)[*Erfolgsrate / SucessRate*],
-
-    [Einfach], [], [], [],
-    [Mehrschrittig], [], [], [],
-    [Komplex], [], [], [],
-    [Atypisch], [nicht unterstützt], [], [],
-
-      table.cell(colspan: 4)[*Tool Precision*],
-
-    [Einfach], [], [], [],
-    [Mehrschrittig], [], [], [],
-    [Komplex], [], [], [],
-    [Atypisch], [nicht unterstützt], [], [],
-
-    table.cell(colspan: 4)[*Tool Recall*],
-
-    [Einfach], [], [], [],
-    [Mehrschrittig], [], [], [],
-    [Komplex], [], [], [],
-    [Atypisch], [nicht unterstützt], [], [],
   ),
-  caption: [Evaluation - Modell 1],
-) <tab:evaluation_modell_1>
+  caption: [Evaluation],
+) <tab:evaluation>
 
 === Auswertung API Modelle
 
