@@ -332,6 +332,11 @@ sind unabhängig von der verwendeten Orchestrierungsstrategie.
 
 == Orchestrierungsstrategien
 
+=== Methode 3
+
+- iterativ
+- mehrere unabhängige Toolaufrufe pro Interpretation
+
 == Modellauswahl
 
 #figure(
