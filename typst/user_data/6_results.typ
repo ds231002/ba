@@ -20,6 +20,41 @@ Antwort (richtige Results oder Info übergeben) - ja/nein
 
 #figure(
   table(
+    columns: (2fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+    align: (center),
+
+    table.header(
+      [*Typ*],
+      [*Aufgabe*],
+      table.cell(colspan: 3)[*Tool korrekt*],
+      table.cell(colspan: 3)[*Parameter korrekt*],
+      table.cell(colspan: 3)[*Antwort korrekt*],
+      table.cell(colspan: 3)[*Zeit [s]*],
+      table.cell(colspan: 3)[*Gesamttoken*]
+      ),
+
+    table.cell(colspan: 2)[],
+    [*D*], [*P*], [*I*],
+    [*D*], [*P*], [*I*],
+    [*D*], [*P*], [*I*],
+    [*D*], [*P*], [*I*],
+    [*D*], [*P*], [*I*],
+
+    [einfach], [1], [✗], [✓], [✓], [✗], [✓], [✓], [✗], [✓], [✓], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [einfach], [1], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [einfach], [1], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [einfach], [1], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [einfach], [1], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [einfach], [1], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [einfach], [1], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+    [einfach], [1], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [✓], [27,5], [27,5], [27,5], [5000], [5000], [5000],
+
+  ),
+  caption: [Beispielevaluation vom Modell 1. D=Deterministisch, P=Plan-Basiert, I=Iterativ],
+) <tab:evaluation_example>
+
+#figure(
+  table(
     columns: (2fr, 2fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
     align: (center),
 
@@ -31,7 +66,7 @@ Antwort (richtige Results oder Info übergeben) - ja/nein
       table.cell(colspan: 3)[*Gesamttoken*]
       ),
 
-    table.cell(colspan: 2)[*Methode:*], [*D*], [*P*],[*I*],[*D*],[*P*],[*I*],[*D*],[*P*],[*I*], 
+    table.cell(colspan: 2)[], [*D*], [*P*],[*I*],[*D*],[*P*],[*I*],[*D*],[*P*],[*I*], 
 
     [qwen3:8b], [einfach], [0,8], [0,8], [0,8], [27,5], [27,5], [27,5], [5000], [5000], [5000],
     [qwen3:8b], [mehrstufig], [0,8], [0,8], [0,8], [27,5], [27,5], [27,5], [5000], [5000], [5000],
@@ -49,7 +84,7 @@ Antwort (richtige Results oder Info übergeben) - ja/nein
     [qwen3:30b], [ungedeckt], [-], [0,8], [0,8], [-], [27,5], [27,5], [-], [5000], [5000],
 
   ),
-  caption: [Evaluation],
+  caption: [Aggregierte Evaluation pro Modell und Aufgabentyp. D=Deterministisch, P=Plan-Basiert, I=Iterativ],
 ) <tab:evaluation>
 
 === Auswertung API Modelle

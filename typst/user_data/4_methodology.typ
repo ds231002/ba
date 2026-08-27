@@ -339,21 +339,30 @@ sind unabhängig von der verwendeten Orchestrierungsstrategie.
     columns: (1fr, 1fr, 1fr, 1fr, 1fr),
     align: (left, center, center, center, center),
 
-    table.header([*Modell*], [*Parameter*], [*Quantisierung*], [*Speichergröße*], [*Kontextfenster*]),
+    table.header(
+      [*Modell*],
+    [*Parameter [Mrd.]*],
+    [*Quantisierung*],
+    [*Speichergröße [GB]*],
+    [*Maximales Kontextfenster [Token]*]
+    ),
 
-    table.cell(colspan: 5)[*Lokal*],
+    // table.cell(colspan: 5)[*Lokal*],
 
-    [qwen3:8b], [], [], [], [],
-    [qwen3:14b], [], [], [], [],
-    [qwen3:30b], [], [], [], [],
+    [qwen3:4b], [4,0], [Q4_K_M], [2,5], [262144],
+    [qwen3:8b], [8,2], [Q4_K_M], [5,2], [40960],
+    [qwen3:14b], [14,8], [Q4_K_M], [9,3], [40960],
+    [qwen3:30b], [30,5], [Q4_K_M], [18], [262144],
 
-    table.cell(colspan: 5)[*API*],
+    // table.cell(colspan: 5)[*API*],
 
-    [gpt], [], [], [], [],
+    // [gpt], [], [], [], [],
 
   ),
   caption: [Modellauswahl für Orchestrierung],
 ) <tab:modelselection>
+
+gewähltes Kontextfenster für alle Modelle: 32768
 
 // Modelle für Bildanalyse und Finalisierung
 
