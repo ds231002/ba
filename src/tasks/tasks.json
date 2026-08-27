@@ -1,12 +1,31 @@
-[
-    {
-        "level": 0,
-        "prompt": "Hallo",
-        "tools": []
-    },
-    {
-        "level": 1,
-        "prompt": "Gib mir eine Prognose",
-        "tools": ["get_forecast"]
-    }
-]
+// einfach: Eine einzelne Ergebnisgröße wird verlangt. Einschließlich notwendiger Aggregationen, Transformationen und einfacher mathematischer Herleitungen.
+// komplex: Mehrere Ergebnisgrößen müssen ermittelt, miteinander kombiniert, verglichen oder weiterverarbeitet werden.
+// ungedeckt: Die Aufgabe kann mit dem bereitgestellten Toolset von Methode 1 nicht vollständig beantwortet werden. Eher komplex.
+{
+    "einfach": [
+        {
+            "task_id": "1",
+            "task": "Gib mir den Gesamtverbrauch aller meiner Zählpunkte letzte Woche."
+        },
+        {
+            "task_id": "2",
+            "task": "Welcher meiner Zählpunkte hatte letzte Woche den höchsten Verbrauch?"
+        }
+    ],
+    "komplex": [
+        {
+            "task_id": "3",
+            "task": "Vergleiche den Verbrauch meiner Zählpunkte in den letzten zwei Wochen."
+        },
+        {
+            "task_id": "4",
+            "task": "..."
+        }
+    ],
+    "ungedeckt": [
+        {
+            "task_id": "5",
+            "task": "..."
+        }
+    ]
+}
