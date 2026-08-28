@@ -177,7 +177,7 @@ def create_system_prompt_for_method_3(available_results: dict) -> str:
         keine Daten verfügbar sind.
 
         Bereits ausgeführte Toolaufrufe und deren Ergebnisse:
-        {json.dumps(available_results, indent=2)}
+        {json.dumps(available_results, indent=2, default=str)}
 
         Die oben aufgeführten Ergebnisse stehen für die weitere Bearbeitung
         zur Verfügung und sollen wiederverwendet werden, wenn sie für einen
@@ -234,6 +234,23 @@ def create_system_prompt_for_method_3(available_results: dict) -> str:
         beantwortet werden kann, rufe ausschließlich "generate_answer" auf.
         - Wenn "generate_answer" aufgerufen wird, endet die Bearbeitung nach
         diesem Toolaufruf.
+
+        WICHTIG: Eine "result_id" existiert ausschließlich für ein bereits
+        ausgeführtes Tool und wird erst dann in "available_results" bereitgestellt.
+
+        Eine "result_id" darf niemals als Platzhalter für ein noch nicht
+        ausgeführtes Tool verwendet werden. Erfinde, schätze oder antizipiere
+        keine "result_id".
+
+        Wenn ein benötigtes Ergebnis noch nicht in "available_results" vorhanden
+        ist, kann dessen "result_id" in dieser Iteration nicht verwendet werden.
+        Fordere stattdessen zunächst den Toolaufruf an, der dieses Ergebnis erzeugt.
+        Erst in einer späteren Iteration, nachdem das Ergebnis tatsächlich
+        ausgeführt und in "available_results" aufgenommen wurde, darf dessen
+        "result_id" als Argument für weitere Toolaufrufe verwendet werden.
+
+        Die Existenz eines geplanten Toolaufrufs bedeutet nicht, dass dessen
+        Ergebnis bereits verfügbar ist.
 
         Fachliche Zusammenhänge:
 

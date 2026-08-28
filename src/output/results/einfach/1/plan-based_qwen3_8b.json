@@ -2,7 +2,7 @@
     "task_id": "1",
     "task_type": "einfach",
     "task": "Gib mir den Gesamtverbrauch aller meiner Zählpunkte letzte Woche.",
-    "method": "plan-based",
+    "method": "plan_based",
     "model": "qwen3:8b",
     "tool_calls": [
         {
@@ -59,7 +59,7 @@
         }
     ],
     "usage": {
-        "runtime_seconds": 19.366286799999216,
+        "runtime_seconds": 19.3640854999976,
         "input_tokens": 4920,
         "output_tokens": 1144,
         "total_tokens": 6064

@@ -334,6 +334,11 @@ sind unabhängig von der verwendeten Orchestrierungsstrategie.
 
 Möglichst ähnliche Systemprompts um vergleichbarkeit zu wahren. Nur Struktur wurde entsprechend anders erklärt. Allgemeine Informationen bleiben gleich. Toolbeschreibung ist bei Methode 2 und 3 gleich. Nur Methode 1 hat aufgrund der Pipelines eine andere Tools und damit eine andere Toolbeschreibung. Dessen Struktur ist aber identisch.
 
+Kleine Modelle brauchen oft deutlich klarere und ausführlichere Anweisungen.
+
+// result.json - gleiche Struktur
+Jeder Toolaufruf erhält eine eindeutige ID. Bei Methode 2 entspricht diese der Position des Aufrufs im vorab generierten Plan. Bei Methode 3 kodiert die ID zusätzlich die Iteration, in der der Toolaufruf erfolgt. Nach Ausführung dient dieselbe ID zur Referenzierung des erzeugten Ergebnisses.
+
 === Methode 3
 
 - iterativ
@@ -428,6 +433,7 @@ Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht d
     
     // effizient
     [Toolauswahl effizient], [Wurden ausschließlich notwendige Toolaufrufe ausgewählt?\ Trifft nicht zu, wenn Toolauswahl falsch ist. Ausschließlich auf Toolauswahl beschränkt. Keine etwaigen Token durch Toolaufrufe selbst enthalten.],
+    [Parmeter effizient], [Wurden nur notwendige Zeitfenster abgefragt?],
     [Antwort effizient], [Wurden ausschließlich notwendige Informationen für die Antwort übergeben?],
     [Effizienz], [Sind Toolauswahl und Antwort effizient?],
 

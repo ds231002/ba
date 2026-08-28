@@ -285,6 +285,69 @@ def calculate_community_coverage(metering_point_id: str, start: str, end: str) -
     weighted_measured_consumption = calculate_weighted_measured_energy(metering_point_id, start, end)
     return min_timeseries(community_potential, weighted_measured_consumption)
 
+# ==== execute tool calls for methode 3 ====
+
+def execute_tool_calls(tool_calls: list[dict]) -> dict:
+    results = {}
+
+    for tool_call in tool_calls:
+        result_id = tool_call["id"]
+        tool = tool_call["tool"]
+        arguments = tool_call["arguments"]
+
+        try:
+            # basic data
+            if tool == "get_participation_factor":
+                result = get_participation_factor(**arguments)
+            elif tool == "get_current_energy":
+                result = get_current_energy(**arguments)
+            elif tool == "get_community_consumption":
+                result = get_community_consumption(**arguments)
+            elif tool == "get_community_generation":
+                result = get_community_generation(**arguments)
+            elif tool == "get_measured_energy":
+                result = get_measured_energy(**arguments)
+            # operations
+            elif tool == "get_statistical_value":
+                result = get_statistical_value(**arguments)
+            elif tool == "add_timeseries":
+                result = add_timeseries(**arguments)
+            elif tool == "subtract_timeseries":
+                result = subtract_timeseries(**arguments)
+            elif tool == "multiply_timeseries":
+                result = multiply_timeseries(**arguments)
+            elif tool == "divide_timeseries":
+                result = divide_timeseries(**arguments)
+            elif tool == "min_timeseries":
+                result = min_timeseries(**arguments)
+            elif tool == "max_timeseries":
+                result = max_timeseries(**arguments)
+            # plot
+            elif tool == "create_energy_plot":
+                result = create_energy_plot(**arguments)
+            # answer
+            elif tool == "generate_answer":
+                result = generate_answer(**arguments)
+            else:
+                raise ValueError(f"Unbekanntes Tool: {tool}")
+
+            results[result_id] = {
+                "tool":  tool,
+                "arguments": arguments,
+                "status": "success",
+                "result": result
+            }
+            
+        except Exception as e:
+            results[result_id] = {
+                "tool":  tool,
+                "arguments": arguments,
+                "status": "error",
+                "error": str(e)
+            }
+
+    return results
+
 # ==== Rejected Tools ====
 
 # def get_astronomical_sun_hours(start, end):
