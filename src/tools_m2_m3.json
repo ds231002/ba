@@ -339,7 +339,7 @@
         "properties": {
           "result_ids": {
             "type": "array",
-            "description": "Optionale eindeutige IDs der Ergebnisse, die für die Beantwortung der Benutzeranfrage relevant sind.",
+            "description": "IDs von Ergebnissen, die für die finale Antwort relevant sind. Zeitreihen sollen niemals übergeben werden! Stattdessen ist ein Liniendiagramm zu erzeugen welches dann übergeben werden kann.",
             "items": {
               "type": "string"
             }
@@ -355,7 +355,7 @@
       },
       "returns": {
         "type": "string",
-        "description": "IDs von Ergebnissen, die für die finale Antwort relevant sind. Zeitreihen sollen niemals übergeben werden! Stattdessen ist ein Liniendiagramm zu erzeugen welches dann übergeben werden kann."
+        "description": "Generiert eine Anwort anhand der Benutzeranfrage, der zur Verfügung gestelten result_ids und der übergebenen messsage."
       }
     }
   ]

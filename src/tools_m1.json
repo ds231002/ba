@@ -1,5 +1,124 @@
-{    
+{
   "tools": [
-
+    {
+      "tool": "get_participation_factor",
+      "description": "Liefert den Teilnahmefaktor eines Zählpunkts.",
+      "arguments": {
+        "type": "object",
+        "properties": {
+          "metering_point_id": {
+            "type": "string",
+            "description": "Eindeutige ID des Zählpunkts."
+          }
+        },
+        "required": [
+          "metering_point_id"
+        ]
+      },
+      "returns": {
+        "type": "number",
+        "description": "Teilnahmefaktor des Zählpunkts als Wert zwischen 0 und 1."
+      }
+    },
+    {
+    "tool": "get_current_energy",
+    "description": "Liefert die aktuell gemessene elektrische Leistung eines Zählpunkts. Ob der zurückgegebene Wert den Verbrauch oder die Erzeugung beschreibt, wird durch den angegebenen Zählpunkt bestimmt. Für Verbrauchszählpunkte wird die aktuelle Verbrauchsleistung und für Erzeugungszählpunkte die aktuelle Erzeugungsleistung zurückgegeben.",
+    "arguments": {
+        "type": "object",
+        "properties": {
+        "metering_point_id": {
+            "type": "string",
+            "description": "Eindeutige ID des Zählpunkts. Die Art des Zählpunkts bestimmt, ob Verbrauch oder Erzeugung zurückgegeben wird."
+        }
+        },
+        "required": [
+        "metering_point_id"
+        ]
+    },
+    "returns": {
+        "type": "number",
+        "description": "Aktuelle elektrische Leistung des angegebenen Zählpunkts in kW."
+    }
+    },
+    {
+      "tool": "get_community_consumption",
+      "description": "Lädt den Gesamtverbrauch der Energiegemeinschaft für einen definierten Zeitraum. Es sind ausschließlich Daten bis einschließlich vorgestern verfügbar.",
+      "arguments": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "description": "Startzeitpunkt des Zeitraums im Format YYYY-MM-DD HH:MM:SS. Der Startzeitpunkt ist eingeschlossen."
+          },
+          "end": {
+            "type": "string",
+            "description": "Endzeitpunkt des Zeitraums im Format YYYY-MM-DD HH:MM:SS. Der Endzeitpunkt ist ausgeschlossen."
+          }
+        },
+        "required": [
+          "start",
+          "end"
+        ]
+      },
+      "returns": {
+        "type": "time_series",
+        "description": "Zeitreihe des Gesamtverbrauchs der Energiegemeinschaft mit Zeitstempel als Index und einem Energiewert in kWh pro 15-Minuten-Messintervall."
+      }
+    },
+    {
+      "tool": "get_community_generation",
+      "description": "Lädt die Gesamterzeugung der Energiegemeinschaft für einen definierten Zeitraum. Es sind ausschließlich Daten bis einschließlich vorgestern verfügbar.",
+      "arguments": {  
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "description": "Startzeitpunkt des Zeitraums im Format YYYY-MM-DD HH:MM:SS. Der Startzeitpunkt ist eingeschlossen."
+          },
+          "end": {
+            "type": "string",
+            "description": "Endzeitpunkt des Zeitraums im Format YYYY-MM-DD HH:MM:SS. Der Endzeitpunkt ist ausgeschlossen."
+          }
+        },
+        "required": [
+          "start",
+          "end"
+        ]
+      },
+      "returns": {
+        "type": "time_series",
+        "description": "Zeitreihe der Gesamterzeugung der Energiegemeinschaft mit Zeitstempel als Index und einem Energiewert in kWh pro 15-Minuten-Messintervall."
+      }
+    },
+    {
+      "tool": "get_measured_energy",
+      "description": "Lädt die gemessene Energie eines Zählpunkts für einen definierten Zeitraum. Ob die Zeitreihe den Verbrauch oder die Erzeugung beschreibt, wird durch den angegebenen Zählpunkt bestimmt. Es sind ausschließlich Daten bis einschließlich vorgestern verfügbar.",
+      "arguments": {
+        "type": "object",
+        "properties": {
+          "metering_point_id": {
+            "type": "string",
+            "description": "Eindeutige ID des Zählpunkts."
+          },
+          "start": {
+            "type": "string",
+            "description": "Startzeitpunkt des Zeitraums im Format YYYY-MM-DD HH:MM:SS. Der Startzeitpunkt ist eingeschlossen."
+          },
+          "end": {
+            "type": "string",
+            "description": "Endzeitpunkt des Zeitraums im Format YYYY-MM-DD HH:MM:SS. Der Endzeitpunkt ist ausgeschlossen."
+          }
+        },
+        "required": [
+          "metering_point_id",
+          "start",
+          "end"
+        ]
+      },
+      "returns": {
+        "type": "time_series",
+        "description": "Zeitreihe der gemessenen Energie mit Zeitstempel als Index und einem Energiewert in kWh pro 15-Minuten-Messintervall."
+      }
+    }
   ]
 }
