@@ -179,14 +179,8 @@ def generate_result_for_task_with_method_3(
     max_iterations = 7
 
     while current_iteration < max_iterations:
-        print(f"===== Iteration {current_iteration} =====")
-        print(f"available_results = {available_results}")
-
         system_prompt = create_system_prompt_for_method_3(available_results)
-        print("START generate_response ....")
         response = generate_response(task, system_prompt, model)
-
-        print("END generate_response")
         answer = json.loads(response["answer"])
         # response = load_json("output/results/methode_3_first_iteration.json")
 
@@ -209,8 +203,6 @@ def generate_result_for_task_with_method_3(
 
         new_available_results = _create_available_results(new_results)
         available_results.extend(new_available_results)
-
-        print(f"iteration = {iteration}")
 
         current_iteration += 1
 

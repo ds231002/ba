@@ -11,8 +11,6 @@ client = OpenAI(
     api_key="ollama",
 )
 
-model = "qwen3:8b"
-
 def _get_response_answer(response) -> str:
     return response.choices[0].message.content
 
@@ -31,7 +29,8 @@ def _get_response_finish_reason(response: dict) -> str:
 def generate_response(
     user_prompt: str,
     system_prompt: str,
-    model: str
+    model: str,
+    timeout: int = 120
 ) -> dict:
 
     start_time = time.perf_counter()
@@ -48,7 +47,8 @@ def generate_response(
                 "content": user_prompt
             }
         ],
-        temperature=0
+        temperature=0,
+        timeout=timeout
     )
 
     elapsed_time = time.perf_counter() - start_time

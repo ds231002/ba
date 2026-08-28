@@ -6,36 +6,20 @@
     "model": "qwen3:8b",
     "tool_calls": [
         {
-            "tool": "get_measured_energy",
-            "arguments": {
-                "metering_point_id": "mp_1",
-                "start": "2025-12-25 16:00:00",
-                "end": "2025-12-31 23:59:59"
-            }
-        },
-        {
-            "tool": "get_measured_energy",
-            "arguments": {
-                "metering_point_id": "mp_2",
-                "start": "2025-12-25 16:00:00",
-                "end": "2025-12-31 23:59:59"
-            }
-        },
-        {
             "tool": "add_timeseries",
             "arguments": {
                 "metering_point_id_1": "mp_1",
                 "metering_point_id_2": "mp_2",
-                "start": "2025-12-25 16:00:00",
+                "start": "2025-12-26 00:00:00",
                 "end": "2025-12-31 23:59:59"
             }
         }
     ],
     "usage": {
-        "runtime_seconds": 39.741400999999314,
-        "input_tokens": 3455,
-        "output_tokens": 3228,
-        "total_tokens": 6683
+        "runtime_seconds": 21.20320730000094,
+        "input_tokens": 3549,
+        "output_tokens": 1685,
+        "total_tokens": 5234
     },
     "finish_reason": "stop"
 }
