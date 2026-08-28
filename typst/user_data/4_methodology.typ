@@ -339,10 +339,21 @@ Kleine Modelle brauchen oft deutlich klarere und ausführlichere Anweisungen.
 // result.json - gleiche Struktur
 Jeder Toolaufruf erhält eine eindeutige ID. Bei Methode 2 entspricht diese der Position des Aufrufs im vorab generierten Plan. Bei Methode 3 kodiert die ID zusätzlich die Iteration, in der der Toolaufruf erfolgt. Nach Ausführung dient dieselbe ID zur Referenzierung des erzeugten Ergebnisses.
 
+- Zeitlimit?
+
+=== Methode 1
+
+=== Methode 2
+
+- Das LLM erstellt zunächst einen vollständigen Plan.
+- Die im Plan enthaltenen Funktionen werden anschließend durch das System abgearbeitet.
+- Der Zustand ist zunächst statisch und erfordert keine iterative Verarbeitung durch das LLM.
+
 === Methode 3
 
 - iterativ
 - mehrere unabhängige Toolaufrufe pro Interpretation
+- Limit von 6 Iterationen
 
 == Modellauswahl
 
@@ -466,12 +477,15 @@ Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht d
 - Die Bewertungskriterien werden berechnet.
 - Der Vorgang wird für alle Methoden wiederholt.
 
-
-// Typically, the methodology section addresses the "what" and "how" questions.
-// It delineates the overarching approach you've taken, whether it involves experimental research, a comprehensive literature survey, a quantitative study, or another methodology altogether.
-
-// Furthermore, it specifies the necessary data type and volume, elucidating the methods employed for data extraction and collection.
-// Additionally, it outlines the evaluative processes, which might encompass experiment design, questionnaire development, and similar components.
-
-// In many cases, the Methodology links hypotheses to specific experiments outlined here.
-// Note that the implementation details are not part of the methodolology; we simply explain the rationale and high-level approach.
+- Aufgabe definieren.
+- LLM auswählen.
+- Orchestrierungsstrategie auswählen.
+- Systemprompt erzeugen.
+- LLM aufrufen.
+- Antwort analysieren.
+- Tool Calls ausführen.
+- Ergebnisse aufbereiten.
+- Bei der iterativen Methode die Ergebnisse an den nächsten LLM-Aufruf übergeben.
+- Prozess mit `generate_answer` beenden, sobald die Aufgabe vollständig beantwortet werden kann.
+- Prozess bei Erreichen des Iterationslimits oder eines Timeouts abbrechen.
+- Ergebnisse und relevante Messgrößen speichern.

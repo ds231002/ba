@@ -134,6 +134,18 @@ Antwort (richtige Results oder Info übergeben) - ja/nein
 
 - Laufzeit nicht vergleichbar? - anders und nicht kontrollierbar!
 
+=== Brainstorming
+- Die plan-basierte Methode ermöglicht bei der getesteten einfachen Aufgabe eine zuverlässige Erstellung eines plausiblen Plans.
+- Qwen3:8B benötigt bei einem direkten Aufruf der getesteten Aufgabe ungefähr 15 Sekunden.
+- Der erste Iterationsschritt der iterativen Methode funktioniert grundsätzlich.
+- Die Schwierigkeiten treten insbesondere nach der Verarbeitung der ersten Tool-Ergebnisse auf.
+- Bei Qwen3:8B können im iterativen Ansatz sehr lange LLM-Laufzeiten auftreten.
+- Qwen3:30B zeigt ein besseres Verständnis der Struktur des iterativen Systems.
+- Qwen3:30B führt jedoch teilweise bereits ausgeführte Tools erneut mit identischen Argumenten aus.
+- Dadurch kann der iterative Prozess ohne Fortschritt weitere Iterationen durchführen.
+- Die explizite Bereitstellung von `available_results` verhindert redundante Tool Calls nicht zuverlässig.
+- Technische Fehler der Orchestrierung, beispielsweise fehlerhafte Python-Datenstrukturen, müssen von tatsächlichen LLM-Fehlern getrennt betrachtet werden.
+
 // This section presents a comprehensive overview of measurements, data tables, and performance evaluations, encompassing factors such as accuracy and speed.
 // This section is also where you evaluate your prototype or framework:
 // What is the users' verdict?
