@@ -266,25 +266,6 @@ def save_plot(
 def generate_answer(message: str, result_ids: list[str] | None = None) -> str:
     return "Beispielantwort"
 
-# ==== Diviated Data ====
-
-def calculate_weighted_measured_energy(metering_point_id: str, start: str, end: str) -> pd.DataFrame:
-    # consumption und generation hängt vom Zählpunkt ab
-    participation_factor = get_participation_factor(metering_point_id)
-    measured_consumption = get_measured_energy(metering_point_id, start, end)
-    return multiply_timeseries(measured_consumption, participation_factor)
-
-def calculate_community_potential(metering_point_id: str, start: str, end: str) -> pd.DataFrame:
-    participation_factor = get_participation_factor(metering_point_id)
-    community_generation = get_community_generation(start, end)
-    return multiply_timeseries(community_generation, participation_factor)
-
-def calculate_community_coverage(metering_point_id: str, start: str, end: str) -> pd.DataFrame:
-    # metering_point_id muss consumption sein, Verantwortung an LLM geben und einfach als falsch bewerten wenn falsch übergeben?
-    community_potential = calculate_community_potential(metering_point_id, start, end)
-    weighted_measured_consumption = calculate_weighted_measured_energy(metering_point_id, start, end)
-    return min_timeseries(community_potential, weighted_measured_consumption)
-
 # ==== execute tool calls for methode 3 ====
 
 def execute_tool_calls(tool_calls: list[dict]) -> dict:

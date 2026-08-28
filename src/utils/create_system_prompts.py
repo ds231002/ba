@@ -63,60 +63,48 @@ def create_system_prompt_for_method_1() -> str:
         Der Output MUSS exakt diesem Schema entsprechen:
 
         {{
-            "pipeline_id": "pipeline_X"
+            "pipelines": [
+                {{
+                    "tool": "tool_name",
+                    "arguments": {{}}
+                }}
+            ]
         }}
 
         Regeln:
 
-        - Wähle genau eine der verfügbaren Pipelines.
-        - Verwende ausschließlich die angegebene "pipeline_id".
+        - Wähle die verfügbaren Pipelines aus, die zur vollständigen
+        Bearbeitung der Benutzeranfrage benötigt werden.
+        - Verwende ausschließlich die in den verfügbaren Pipelines enthaltenen
+        Tools.
         - Verändere keine Pipeline.
         - Füge keine eigenen Tool Calls hinzu.
         - Entferne keine Bestandteile einer Pipeline.
         - Die Reihenfolge und die enthaltenen Funktionen einer Pipeline sind
         vollständig vorgegeben.
+        - Mehrere Pipelines dürfen ausgewählt werden, wenn die Benutzeranfrage
+        mehrere Ergebnisse erfordert.
+        - Führe die Tool Calls der ausgewählten Pipelines in ihrer vorgegebenen
+        Reihenfolge auf.
+        - Jeder Tool Call enthält genau ein Tool und die zugehörigen Arguments.
+        - Die Arguments müssen entsprechend der Beschreibung des jeweiligen
+        Tools angegeben werden.
+        - Werte wie Zählpunkt, Start- und Endzeitpunkt müssen aus der
+        Benutzeranfrage und dem Benutzerkontext abgeleitet werden.
+        - Verwende für Start- und Endzeitpunkte das in den Toolbeschreibungen
+        angegebene Format.
         - Wenn keine verfügbare Pipeline die Benutzeranfrage korrekt bearbeiten
         kann, darf keine ungeeignete Pipeline ausgewählt werden.
         - Gib in diesem Fall eine entsprechende Rückfrage bzw. Information
         zurück.
         - Gib ausschließlich valides JSON zurück.
-
-        Fachliche Zusammenhänge:
-
-        Dabei bezeichnet:
-        - t das betrachtete 15-Minuten-Messintervall,
-        - i den Index eines Verbrauchszählpunkts,
-        - j den Index eines Erzeugungszählpunkts,
-        - n die Anzahl der Verbrauchszählpunkte,
-        - m die Anzahl der Erzeugungszählpunkte,
-        - PF_i den Teilnahmefaktor des Zählpunkts i,
-        - MC_EG den Gesamtverbrauch der Energiegemeinschaft,
-        - MG_EG die Gesamterzeugung der Energiegemeinschaft,
-        - WMC_i den gemäß Teilnahmefaktor gewichteten Verbrauch des Verbrauchszählpunkts i,
-        - WMG_j die gemäß Teilnahmefaktor gewichtete Erzeugung des Erzeugungszählpunkts j,
-        - CP_i den Gemeinschaftsanteil des Verbrauchszählpunkts i,
-        - CC_i die Eigenabdeckung des Verbrauchszählpunkts i.
-
-        Die fachlichen Berechnungen sind:
-
-        WMC_i(t) = MC_i(t) * PF_i
-        WMG_j(t) = MG_j(t) * PF_j
-
-        CP_i(t) = MG_EG(t) * PF_i
-
-        CC_i(t) = min(CP_i(t), WMC_i(t))
+        - Wähle ausschließlich Pipelines aus, deren Ergebnisse für die
+        Beantwortung der Benutzeranfrage tatsächlich benötigt werden.
+        - Führe keine Pipeline aus, deren Ergebnis für die Beantwortung der
+        Benutzeranfrage nicht benötigt wird.
+        - Eine Pipeline darf nicht allein deshalb ausgewählt werden, weil ihr
+        Ergebnis möglicherweise interessant oder ergänzend sein könnte.
     """
-
-    pass
-    # return f"""
-    #     Verfügbare Tools:
-    #     {json.dumps(tools_1, indent=2)}
-
-    #     Benutzerkontext:
-    #     Die Anfrage stammt von einem Teilnehmer einer Energiegemeinschaft.
-    #     Dem Teilnehmer sind folgende Zählpunkte zugeordnet:
-    #     {json.dumps(metering_points)}
-    # """
 
 def create_system_prompt_for_method_2() -> str:
     return f"""

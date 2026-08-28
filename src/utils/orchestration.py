@@ -31,18 +31,19 @@ def generate_result_for_task_with_method_1(
     method: str = "deterministic"
 ) -> dict:
     system_prompt = create_system_prompt_for_method_1()
-    # response = generate_response(task, system_prompt, model)
+    response = generate_response(task, system_prompt, model)
+    answer = json.loads(response["answer"])
 
     result = {
-            "task_id": task_id,
-            "task_type": task_type,
-            "task": task,
-            "method": method,
-            "model": model,
-            # "tool_calls": response["answer"]["plan"],
-            # "usage": response["usage"],
-            # "finish_reason": response["finish_reason"]
-        }
+        "task_id": task_id,
+        "task_type": task_type,
+        "task": task,
+        "method": method,
+        "model": model,
+        "tool_calls": answer["pipelines"],
+        "usage": response["usage"],
+        "finish_reason": response["finish_reason"]
+    }
 
     _save_result_as_json(result, task_id, task_type, method, model)
 
