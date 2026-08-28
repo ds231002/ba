@@ -66,13 +66,13 @@ Für die Durchführung und Reproduzierbarkeit der Experimente wurde die nachfolg
       [*Spezifikation*],
     ),
 
-    table.cell(colspan: 2)[*Hardware*],
+    table.cell(colspan: 2, fill: luma(240), align: center)[*Hardware*],
 
     [GPU], [NVIDIA RTX 3090, 24 GB VRAM],
     [CPU], [Intel Core i5-13600K],
     [Arbeitsspeicher], [32 GB DDR5],
 
-    table.cell(colspan: 2)[*Software*],
+    table.cell(colspan: 2, fill: luma(240), align: center)[*Software*],
 
     [Betriebssystem], [Microsoft Windows 11 Pro, 64-Bit, Version 25H2],
     [NVIDIA-Treiber], [Version 610.88],
@@ -112,13 +112,13 @@ Die für die Evaluation verwendeten Größen sind in @tab:energiedaten zusammeng
 #figure(
   table(
     columns: (0.8fr, 2.3fr, 3fr, 1fr, 1.3fr),
-    align: (left, left, left, center, center),
+    align: (center, left, left, center, center),
 
     table.header([*Abk.*], [*Bedeutung Englisch*], [*Bedeutung Deutsch*], [*Einheit*], [*Zeitbezug*],),
 
     // Basisdaten
 
-    table.cell(colspan: 5)[*Basisdaten*],
+    table.cell(colspan: 5, fill: luma(240))[*Basisdaten*],
 
     [PF], [Participation Factor], [Teilnahmefaktor], [–], [konstant],
     [CPC], [Current Power Consumption], [Aktueller Verbrauch], [kW], [aktuell],
@@ -128,7 +128,7 @@ Die für die Evaluation verwendeten Größen sind in @tab:energiedaten zusammeng
     [$"MC"_"EG"$], [Total Consumption], [Gesamtverbrauch], [kWh], [15 min],
     [$"MG"_"EG"$], [Total Generation], [Gesamterzeugung], [kWh], [15 min],
 
-    table.cell(colspan: 5)[*Abgeleitete Daten*],
+    table.cell(colspan: 5, fill: luma(240))[*Abgeleitete Daten*],
 
     [CP], [Community Potential], [Gemeinschaftsanteil], [kWh], [15 min],
     [CC], [Community Coverage], [Eigenabdeckung], [kWh], [15 min],
@@ -233,7 +233,7 @@ Die für die Evaluation bereitgestellten Werkzeuge sind in @tab:tools zusammenge
 
     table.header([*Werkzeug*], [*Funktion*]),
 
-    table.cell(colspan: 2)[*Datenzugriff*],
+    table.cell(colspan: 2, fill: luma(240))[*Datenzugriff*],
 
     [`get_participation_factor`],
     [Lädt den Teilnahmefaktor eines Zählpunkts.],
@@ -253,7 +253,7 @@ Die für die Evaluation bereitgestellten Werkzeuge sind in @tab:tools zusammenge
     [`get_measured_energy`],
     [Lädt die gemessene Energie eines Zählpunkts für einen definierten Zeitraum.],
 
-    table.cell(colspan: 2)[*Allgemeine Operationen*],
+    table.cell(colspan: 2, fill: luma(240))[*Allgemeine Operationen*],
 
     [`get_statistical_value`],
     [Berechnet einen statistischen Kennwert einer Zeitreihe.],
@@ -276,7 +276,7 @@ Die für die Evaluation bereitgestellten Werkzeuge sind in @tab:tools zusammenge
     [`max_timeseries`],
     [Bestimmt für jedes Messintervall den größeren Wert mehrerer Zeitreihen.],
 
-    table.cell(colspan: 2)[*Fachliche Berechnungen*],
+    table.cell(colspan: 2, fill: luma(240))[*Fachliche Berechnungen*],
 
     [`get_weighted_measured_energy`],
     [Berechnet die teilnahmefaktor-gewichtete gemessene Energie eines Zählpunkts.],
@@ -287,12 +287,12 @@ Die für die Evaluation bereitgestellten Werkzeuge sind in @tab:tools zusammenge
     [`calculate_community_coverage`],
     [Berechnet die Eigenabdeckung eines Verbrauchszählpunkts.],
 
-    table.cell(colspan: 2)[*Darstellung*],
+    table.cell(colspan: 2, fill: luma(240))[*Darstellung*],
 
     [`create_energy_plot`],
     [Erzeugt ein Liniendiagramm aus einer oder mehreren Zeitreihen und stellt diese mit einer Legende dar.],
 
-    table.cell(colspan: 2)[*Antwortgenerierung*],
+    table.cell(colspan: 2, fill: luma(240))[*Antwortgenerierung*],
 
     [`generate_answer`],
     [Erzeugt anhand ausgewählter Ergebnisse und einer frei definierbaren Nachricht eine finale Antwort.],
@@ -332,6 +332,8 @@ sind unabhängig von der verwendeten Orchestrierungsstrategie.
 
 == Orchestrierungsstrategien
 
+Möglichst ähnliche Systemprompts um vergleichbarkeit zu wahren. Nur Struktur wurde entsprechend anders erklärt. Allgemeine Informationen bleiben gleich. Toolbeschreibung ist bei Methode 2 und 3 gleich. Nur Methode 1 hat aufgrund der Pipelines eine andere Tools und damit eine andere Toolbeschreibung. Dessen Struktur ist aber identisch.
+
 === Methode 3
 
 - iterativ
@@ -349,7 +351,7 @@ sind unabhängig von der verwendeten Orchestrierungsstrategie.
     [*Parameter [Mrd.]*],
     [*Quantisierung*],
     [*Speichergröße [GB]*],
-    [*Maximales Kontextfenster [Token]*]
+    [*Maximales Kontextfenster*]
     ),
 
     // table.cell(colspan: 5)[*Lokal*],
@@ -390,20 +392,24 @@ Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht d
 - unbekannte Hardware
 - unbekannte Modellimplementierung
 
-== Prompts
+== Aufgaben
 
-*Kernaufgaben*
-- unterteilung in Kategorien
-- separate und gemeinsame Bewertung
-- SucessRate = korrekt gelöste Kernaufgaben / alle Kernaufgaben
+=== Einfach
+
+- Eine einzelne Ergebnisgröße wird verlangt. Einschließlich notwendiger Aggregationen, Transformationen und einfacher mathematischer Herleitungen.
+
+=== komplexe
+
+- Mehrere Ergebnisgrößen müssen ermittelt, miteinander kombiniert, verglichen oder weiterverarbeitet werden.
+
+=== Ungedeckt
+
+- Die Aufgabe kann mit dem bereitgestellten Toolset von Methode 1 nicht vollständig beantwortet werden.
+- Wenn Methode 1 effizienter und zuverlässiger ist aber manche Aufgaben nicht abgedeckt sind können diese an eine flexiblere Methode übergeben werden.
+- Eher komplex.
 
 - „Vergleiche den Verbrauch gestern mit der Prognose für morgen.“ // gestern und heute und morgen sind forecast!
 - „Wie viel hat die Energiegemeinschaft im Januar verbraucht und was hätte dieser Verbrauch zu den Spotmarktpreisen gekostet?“ // Funktionen für Berechnung
-
-// Output von Tokenmenge abziehen, weil unterschiedlich lange Antworten möglich sind aber nichts mit der Qualität zu tun haben müssen?
-
-- nur Toolbeschreibung
-- Mit System-Prompts: Nachfragen bei Mehrdeutigkeit, Umfang mit fehlenden Daten, usw.
 
 == Bewertungskrieterien
 
@@ -412,41 +418,30 @@ Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht d
     columns: (1fr, 2fr),
     align: (left, left),
 
-    table.header([*Kriterium*], [*Metriken*],),
+    table.header([*Kriterium*], [*Beschreibung*],),
 
-    [Toolplanung], [korrekt, teilweise, falsch],
-    [Parameterauswahl], [korrekt, teilweise, falsch],
-    [Ergebnis], [korrekt, teilweise, falsch],
-    [Effizienz], [korrekte notwendige Toolaufrufe / alle Toolaufrufe],
-    // wenn weniger falsche Toolaufrufe -> auch guter Wert!
-    [Tool Precision], [korrekte Toolaufrufe / alle Toolaufrufe],
-    [Tool Recall], [korrekte notwendige Toolaufrufe / notwendige Toolaufrufe],
-    [Tokenverbrauch], [Anzahl an Tokens ausschließlich für Toolplanung],
-    [Laufzeit], [Inferenzzeit],
-    [Robustheit], [Verhalten bei fehlenden Daten],
+    // korrekt
+    [Toolauswahl korrekt], [Wurden die korrekten Tools ausgewählt?],
+    [Parameterauswahl korrekt], [Wurden die Parameter korrekt übergeben?\ Trifft nicht zu, wenn Toolauswahl falsch ist.],
+    [Antwort korrekt], [Wurden alle notwendigen Informationen für die Antwort übergeben worden?],
+    [Korrekt], [Sind Toolauswahl, Parameterauswahl und Informationen für die Antwort korrekt?],
+    
+    // effizient
+    [Toolauswahl effizient], [Wurden ausschließlich notwendige Toolaufrufe ausgewählt?\ Trifft nicht zu, wenn Toolauswahl falsch ist. Ausschließlich auf Toolauswahl beschränkt. Keine etwaigen Token durch Toolaufrufe selbst enthalten.],
+    [Antwort effizient], [Wurden ausschließlich notwendige Informationen für die Antwort übergeben?],
+    [Effizienz], [Sind Toolauswahl und Antwort effizient?],
+
+    // usage
+    [Gesamttokenverbrauch], [Wie viele Token sind instgesamt verbraucht worden? (Input + Output)],
+    [Laufzeit], [Wie lange hat ausschließlich das Erstellen der Toolauswahl gedauert? Toolausführungszeit ist nicht enthalten.],
+
+    // aggregierte Werte
+    [Erfolgsrate], [korrekte gelöste Aufgaben / alle Aufgaben], // Precision?
+    [Effizienzrate], [Effizient gelöste Aufgaben / alle Aufgaben],
   ),
   caption: [Bewertungskriterien],
 ) <tab:evaluation>
 
-=== Toolauswahl
-
-- korrekte
-- teilweise
-- falsch
-// - überflüssig/redundante
-
-=== Parameter
-
-- korrekt/optimal
-- korrekt, aber suboptimal/überflüssig (z.B.: zu langer Zeitraum)
-- falsch (sobald ein Paremter falsch - alles falsch?)
-
-=== Rolle des Aufrufs // Aufruf: jeder Toolaufruf separat oder gesamte Ausführung?
-
-- notwendig
-- optonal/sinnvoll
-- redundant
-- unnötig
 
 // Korrektheit: Hat der Orchestrator alle für die korrekte Beantwortung notwendigen Informationen beschafft und korrekt verarbeitet?
 // Effizienz: Hat er dies mit möglichst wenigen bzw. möglichst passenden Toolaufrufen und Parametern getan?

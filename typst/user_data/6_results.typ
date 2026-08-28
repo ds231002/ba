@@ -87,6 +87,49 @@ Antwort (richtige Results oder Info übergeben) - ja/nein
   caption: [Aggregierte Evaluation pro Modell und Aufgabentyp. D=Deterministisch, P=Plan-Basiert, I=Iterativ],
 ) <tab:evaluation>
 
+#figure(
+  table(
+    columns: (auto, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr ,1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+    align: (center),
+
+    table.header(
+      [*Aufgabentyp*],
+      table.cell(colspan: 3)[*Erfolgsrate*],
+      table.cell(colspan: 3)[*Effizienzrate*],
+      table.cell(colspan: 3)[*Laufzeit [s]*],
+      table.cell(colspan: 3)[*Gesamttoken*]
+    ),
+
+    [], [*D*], [*P*],[*I*],[*D*],[*P*],[*I*],[*D*],[*P*],[*I*], [*D*], [*P*], [*I*],
+
+    table.cell(colspan: 13, fill: luma(240))[qwen3:4b],
+
+    [einfach], [0,8],[0,8],[0,8],[0,8],[0,8],[0,8],[27,5],[100,5], [27,5], [5000], [5000], [15000],
+    [komlex], [0,8],[0,8],[0,8],[0,8],[0,8],[0,8],[100,5],[100,5], [27,5], [5000], [5000], [15000],
+    [ungedeckt], [-],[0,8],[0,8],[-],[0,8],[0,8],[-],[100,5], [27,5], [-], [5000], [15000],
+
+    table.cell(colspan: 13, fill: luma(240))[qwen3:8b],
+
+    [einfach], [0,8],[0,8],[0,8],[0,8],[0,8],[0,8],[27,5],[100,5], [27,5], [5000], [5000], [15000],
+    [komlex], [0,8],[0,8],[0,8],[0,8],[0,8],[0,8],[100,5],[100,5], [27,5], [5000], [5000], [15000],
+    [ungedeckt], [-],[0,8],[0,8],[-],[0,8],[0,8],[-],[100,5], [27,5], [-], [5000], [15000],
+
+    table.cell(colspan: 13, fill: luma(240))[qwen3:14b],
+
+    [einfach], [0,8],[0,8],[0,8],[0,8],[0,8],[0,8],[27,5],[100,5], [27,5], [5000], [5000], [15000],
+    [komlex], [0,8],[0,8],[0,8],[0,8],[0,8],[0,8],[100,5],[100,5], [27,5], [5000], [5000], [15000],
+    [ungedeckt], [-],[0,8],[0,8],[-],[0,8],[0,8],[-],[100,5], [27,5], [-], [5000], [15000],
+
+    table.cell(colspan: 13, fill: luma(240))[qwen3:30b],
+
+    [einfach], [0,8],[0,8],[0,8],[0,8],[0,8],[0,8],[27,5],[100,5], [27,5], [5000], [5000], [15000],
+    [komlex], [0,8],[0,8],[0,8],[0,8],[0,8],[0,8],[100,5],[100,5], [27,5], [5000], [5000], [15000],
+    [ungedeckt], [-],[0,8],[0,8],[-],[0,8],[0,8],[-],[100,5], [27,5], [-], [5000], [15000],
+
+  ),
+  caption: [Aggregierte Evaluation pro Modell und Aufgabentyp. D=Deterministisch, P=Plan-Basiert, I=Iterativ],
+) <tab:evaluation>
+
 === Auswertung API Modelle
 
 - Laufzeit nicht vergleichbar? - anders und nicht kontrollierbar!

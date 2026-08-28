@@ -4,10 +4,10 @@ import json
 
 metering_points = get_metering_point_ids_for_user_id("user")
 
-# tools_1_path = "tooldescriptions/tools_m1.json"
+# tools_1_path = "tools_m1.json"
 # tools_1 = load_json(tools_1_path)
 
-tools_2_3_path = "tooldescriptions/tools_m2_m3.json"
+tools_2_3_path = "tools_m2_m3.json"
 tools_2_3 = load_json(tools_2_3_path)
 
 def create_system_prompt_for_method_1() -> str:
