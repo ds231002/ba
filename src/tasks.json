@@ -2,7 +2,7 @@
 // komplex: Mehrere Ergebnisgrößen müssen ermittelt, miteinander kombiniert, verglichen oder weiterverarbeitet werden.
 // ungedeckt: Die Aufgabe kann mit dem bereitgestellten Toolset von Methode 1 nicht vollständig beantwortet werden. Eher komplex.
 {
-    "einfach": [
+    "single-step": [
         {
             "task_id": "1",
             "task": "Gib mir den Gesamtverbrauch aller meiner Zählpunkte letzte Woche."
@@ -12,7 +12,7 @@
             "task": "Welcher meiner Zählpunkte hatte letzte Woche den höchsten Verbrauch?"
         }
     ],
-    "komplex": [
+    "multi-step": [
         {
             "task_id": "3",
             "task": "Vergleiche den Verbrauch meiner Zählpunkte in den letzten zwei Wochen."

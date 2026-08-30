@@ -159,7 +159,14 @@ Damit zeigen METATOOL und WTU-EVAL eine für die Evaluation von Tool-Orchestrier
 
 === Auswahl und Anzahl der Werkzeugaufrufe
 
-Neben der Entscheidung für oder gegen Tool Use ist die Auswahl der richtigen Werkzeuge eine weitere zentrale Evaluationsdimension. METATOOL betrachtet hierfür vier unterschiedliche Aufgaben: die Auswahl unter ähnlichen Werkzeugen, die Auswahl in unterschiedlichen Anwendungsszenarien, die Auswahl unter Bedingungen mit möglichen Zuverlässigkeitsproblemen sowie die Auswahl mehrerer Werkzeuge. Die vier Aufgaben sollen unterschiedliche Aspekte der Werkzeugauswahl abbilden, darunter semantisches Verständnis, Anpassungsfähigkeit, Zuverlässigkeit und Schlussfolgerungsfähigkeit @huangMetaToolBenchmarkLarge2024.
+Neben der Entscheidung für oder gegen Tool Use ist die Auswahl der richtigen Werkzeuge eine weitere zentrale Evaluationsdimension. METATOOL betrachtet hierfür vier unterschiedliche Aufgaben:
+
+- die Auswahl unter ähnlichen Werkzeugen
+- die Auswahl in unterschiedlichen Anwendungsszenarien
+- die Auswahl unter Bedingungen mit möglichen Zuverlässigkeitsproblemen
+- die Auswahl mehrerer Werkzeuge
+
+Die vier Aufgaben sollen unterschiedliche Aspekte der Werkzeugauswahl abbilden, darunter semantisches Verständnis, Anpassungsfähigkeit, Zuverlässigkeit und Schlussfolgerungsfähigkeit @huangMetaToolBenchmarkLarge2024.
 
 Insbesondere die Aufgabe der Multi-Tool Selection ist für die Orchestrierung relevant. Dabei müssen nicht nur einzelne Werkzeuge identifiziert, sondern mehrere für eine Anfrage relevante Werkzeuge ausgewählt werden. Huang et al. (2024) unterscheiden bei der Auswertung unter anderem zwischen Fällen, in denen beide benötigten Werkzeuge korrekt ausgewählt wurden, nur eines korrekt ausgewählt wurde oder zwei Werkzeuge ausgewählt wurden, von denen nur eines korrekt ist. Dadurch wird sichtbar, dass eine reine Ja/Nein-Bewertung der Werkzeugverwendung bei mehreren benötigten Werkzeugen nur einen Teil der tatsächlichen Leistung erfasst @huangMetaToolBenchmarkLarge2024.
 

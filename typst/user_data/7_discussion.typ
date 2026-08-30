@@ -34,6 +34,10 @@
 - Daraus ergibt sich die Möglichkeit eines hybriden Ansatzes, bei dem das LLM semantische Entscheidungen trifft und der Python-Orchestrator deterministische Kontrollaufgaben übernimmt.
 - Die Beobachtungen sollten jedoch erst nach einer systematischen Evaluation als allgemeingültige Aussagen über Modellgrößen interpretiert werden.
 
+// aus relatedwork - iterative Methode funktionierte deutlich unzuverlässiger als Einmalaufrufe wie plan-based und deterministic
+- Die Ergebnisse von OrchDAG verdeutlichen zudem, warum eine getrennte Betrachtung verschiedener Bewertungsebenen sinnvoll ist. In den Experimenten erzielen Modelle teilweise eine deutlich höhere Accuracy/step als Accuracy/user_query. Die Autoren interpretieren dies dahingehend, dass Modelle einzelne Schritte korrekt ausführen können, gleichzeitig aber Schwierigkeiten haben, eine konsistente Gesamtstruktur der Tool-Ausführung aufrechtzuerhalten @luOrchDAGComplexTool2025.
+
+
 // Now that all aspects of your project are laid out, it's time to contemplate the experiences and insights gleaned from your work.
 
 // Consider the following:

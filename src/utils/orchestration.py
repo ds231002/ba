@@ -10,7 +10,7 @@ import json
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def _save_result_as_json(
+def save_result_as_json(
     result: dict,
     task_id: str,
     task_type: str,
@@ -18,8 +18,7 @@ def _save_result_as_json(
     model: str
 ):
     path = f"output/results/{task_type}/{task_id}/{method}_{model.replace(':', '_')}.json"
-    result_path = save_json(result, path)
-    print(f"result saved: {result_path}")
+    return save_json(result, path)
 
 # ==== Methode 1 ====
 
@@ -30,24 +29,36 @@ def generate_result_for_task_with_method_1(
     model: str,
     method: str = "deterministic"
 ) -> dict:
-    system_prompt = create_system_prompt_for_method_1()
-    response = generate_response(task, system_prompt, model)
-    answer = json.loads(response["answer"])
 
-    result = {
+    tool_calls = []
+    usage = None
+    finish_reason = None
+    error = None
+
+    try:
+        system_prompt = create_system_prompt_for_method_1()
+        response = generate_response(task, system_prompt, model)
+        answer = json.loads(response["answer"])
+        tool_calls = answer["pipelines"]
+        usage = response["usage"]
+        finish_reason = response["finish_reason"]
+    except Exception as e:
+        error = {
+            "type": type(e).__name__,
+            "message": str(e)
+        }
+
+    return {
         "task_id": task_id,
         "task_type": task_type,
         "task": task,
         "method": method,
         "model": model,
-        "tool_calls": answer["pipelines"],
-        "usage": response["usage"],
-        "finish_reason": response["finish_reason"]
+        "tool_calls": tool_calls,
+        "usage": usage,
+        "finish_reason": finish_reason,
+        "error": error
     }
-
-    _save_result_as_json(result, task_id, task_type, method, model)
-
-    return result
     
 # ==== Methode 2 ====
 
@@ -58,24 +69,36 @@ def generate_result_for_task_with_method_2(
     model: str,
     method: str = "plan-based"
 ) -> dict:
-    system_prompt = create_system_prompt_for_method_2()
-    response = generate_response(task, system_prompt, model)
-    answer = json.loads(response["answer"])
 
-    result = {
+    tool_calls = []
+    usage = None
+    finish_reason = None
+    error = None
+
+    try:
+        system_prompt = create_system_prompt_for_method_2()
+        response = generate_response(task, system_prompt, model)
+        answer = json.loads(response["answer"])
+        tool_calls = answer["plan"]
+        usage = response["usage"]
+        finish_reason = response["finish_reason"]
+    except Exception as e:
+        error = {
+            "type": type(e).__name__,
+            "message": str(e)
+        }
+
+    return {
         "task_id": task_id,
         "task_type": task_type,
         "task": task,
         "method": method,
         "model": model,
-        "tool_calls": answer["plan"],
-        "usage": response["usage"],
-        "finish_reason": response["finish_reason"]
+        "tool_calls": tool_calls,
+        "usage": usage,
+        "finish_reason": finish_reason,
+        "error": error
     }
-
-    _save_result_as_json(result, task_id, task_type, method, model)
-
-    return result
 
 # ==== Methode 3 ====
 
@@ -165,12 +188,12 @@ def _calculate_total_usage(iterations: list) -> dict:
     }
 
 def generate_result_for_task_with_method_3(
-        task_id: str,
-        task_type: str,
-        task: str,
-        model: str,
-        method: str = "iterative"
-    ):
+    task_id: str,
+    task_type: str,
+    task: str,
+    model: str,
+    method: str = "iterative"
+):
     iterations = []
     result_store = {}
     available_results = []
@@ -178,44 +201,54 @@ def generate_result_for_task_with_method_3(
     current_iteration = 1
     max_iterations = 7
 
-    while current_iteration < max_iterations:
-        system_prompt = create_system_prompt_for_method_3(available_results)
-        response = generate_response(task, system_prompt, model)
-        answer = json.loads(response["answer"])
-        # response = load_json("output/results/methode_3_first_iteration.json")
+    iterations = []
+    total_usage = None
+    error = None
 
-        tool_calls = answer["tool_calls"]
-        tool_calls_with_ids = _add_tool_call_ids(tool_calls, current_iteration)
+    try:
+        while current_iteration < max_iterations:
+            system_prompt = create_system_prompt_for_method_3(available_results)
+            response = generate_response(task, system_prompt, model)
+            answer = json.loads(response["answer"])
+            # response = load_json("output/results/methode_3_first_iteration.json")
 
-        iteration = {
-            "tool_calls": tool_calls_with_ids,
-            "usage": response["usage"],
-            "finish_reason": response["finish_reason"]
+            tool_calls = answer["tool_calls"]
+            tool_calls_with_ids = _add_tool_call_ids(tool_calls, current_iteration)
+
+            iteration = {
+                "tool_calls": tool_calls_with_ids,
+                "usage": response["usage"],
+                "finish_reason": response["finish_reason"]
+            }
+
+            iterations.append(iteration)
+
+            if _is_generate_answer(tool_calls_with_ids):
+                break
+
+            new_results = execute_tool_calls(tool_calls_with_ids)
+            result_store.update(new_results)
+
+            new_available_results = _create_available_results(new_results)
+            available_results.extend(new_available_results)
+
+            current_iteration += 1
+
+        total_usage = _calculate_total_usage(iterations)
+
+    except Exception as e:
+        error = {
+            "type": type(e).__name__,
+            "message": str(e)
         }
 
-        iterations.append(iteration)
-
-        if _is_generate_answer(tool_calls_with_ids):
-            break
-
-        new_results = execute_tool_calls(tool_calls_with_ids)
-        result_store.update(new_results)
-
-        new_available_results = _create_available_results(new_results)
-        available_results.extend(new_available_results)
-
-        current_iteration += 1
-
-    result = {
+    return {
         "task_id": task_id,
         "task_type": task_type,
         "task": task,
         "method": method,
         "model": model,
         "iterations": iterations,
-        "total_usage": _calculate_total_usage(iterations)
+        "total_usage": total_usage,
+        "error": error
     }
-
-    _save_result_as_json(result, task_id, task_type, method, model)
-
-    return result

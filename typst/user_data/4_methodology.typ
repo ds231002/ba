@@ -455,9 +455,15 @@ Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht d
     // aggregierte Werte
     [Erfolgsrate], [korrekte gelöste Aufgaben / alle Aufgaben], // Precision?
     [Effizienzrate], [Effizient gelöste Aufgaben / alle Aufgaben],
+
+    // Error
+    [Error], [Timeout, Strukturfehler, anderer Fehler]
   ),
   caption: [Bewertungskriterien],
 ) <tab:evaluation>
+
+- Jede Orchestrierungsmethode hat die Möglichkeit kein Tool auszuwählen was auch teilweise die korrekt Toolauswahl darstellt @liuWTUEVALWhetherorNotTool2025.
+- Der mehrfache Durchlauf der selben Aufgabe kann vor allem bei kleineren Modellen zu unterschiedlichen Ergebnissen führen. Das messe ich hier aber nicht. Stattdessen werden einige ähnliche Aufgaben erstellt wobei sich die Inkonsistenz über mehrere Aufgaben verteilt und so direkten Einfluss auf die Erfolgsrate hat.
 
 
 // Korrektheit: Hat der Orchestrator alle für die korrekte Beantwortung notwendigen Informationen beschafft und korrekt verarbeitet?
