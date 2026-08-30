@@ -77,9 +77,7 @@ def create_system_prompt_for_method_1() -> str:
         Bearbeitung der Benutzeranfrage benötigt werden.
         - Verwende ausschließlich die in den verfügbaren Pipelines enthaltenen
         Tools.
-        - Verändere keine Pipeline.
         - Füge keine eigenen Tool Calls hinzu.
-        - Entferne keine Bestandteile einer Pipeline.
         - Die Reihenfolge und die enthaltenen Funktionen einer Pipeline sind
         vollständig vorgegeben.
         - Mehrere Pipelines dürfen ausgewählt werden, wenn die Benutzeranfrage
@@ -187,6 +185,10 @@ def create_system_prompt_for_method_2() -> str:
         verarbeitet werden. Das Ergebnis des Analysewerkzeugs kann anschließend
         über dessen "step_X"-ID an "generate_answer" übergeben werden.
         - Jeder gültige Plan endet mit genau einem Aufruf von "generate_answer".
+        - Wenn keine verfügbaren Tools die Benutzeranfrage korrekt bearbeiten
+        können, darf keine ungeeignetes Tool ausgewählt werden.
+        - Gib in diesem Fall eine entsprechende Rückfrage bzw. Information
+        zurück.
 
         Fachliche Zusammenhänge:
 
@@ -318,6 +320,10 @@ def create_system_prompt_for_method_3(available_results: dict) -> str:
         beantwortet werden kann, rufe ausschließlich "generate_answer" auf.
         - Wenn "generate_answer" aufgerufen wird, endet die Bearbeitung nach
         diesem Toolaufruf.
+        - Wenn keine verfügbaren Tools die Benutzeranfrage korrekt bearbeiten
+        können, darf keine ungeeignetes Tool ausgewählt werden.
+        - Gib in diesem Fall eine entsprechende Rückfrage bzw. Information
+        zurück.
 
         WICHTIG: Eine "result_id" existiert ausschließlich für ein bereits
         ausgeführtes Tool und wird erst dann in "available_results" bereitgestellt.
