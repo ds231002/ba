@@ -1,0 +1,23 @@
+{
+    "task_id": 11,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie viel verbrauche ich gerade?",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Die angefragten Daten sind nicht verfügbar, da Energiedaten ausschließlich bis einschließlich 31.12.2025 bereitstehen."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 15.13943880000079,
+        "input_tokens": 3516,
+        "output_tokens": 1299,
+        "total_tokens": 4815
+    },
+    "finish_reason": "stop",
+    "error": null
+}

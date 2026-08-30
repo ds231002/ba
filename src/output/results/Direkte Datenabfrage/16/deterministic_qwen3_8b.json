@@ -1,0 +1,23 @@
+{
+    "task_id": 16,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie viel verbraucht mp_3 gerade?",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "get_current_energy",
+            "arguments": {
+                "metering_point_id": "mp_3"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 5.568657500001791,
+        "input_tokens": 3518,
+        "output_tokens": 472,
+        "total_tokens": 3990
+    },
+    "finish_reason": "stop",
+    "error": null
+}

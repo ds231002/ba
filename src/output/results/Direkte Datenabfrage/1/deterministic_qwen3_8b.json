@@ -1,0 +1,23 @@
+{
+    "task_id": 1,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Was ist mein Teilnamefaktor?",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Um den Teilnahmefaktor zu ermitteln, muss ich wissen, welchen Zählpunkt Sie meinen. Bitte geben Sie die ID des Zählpunkts an (z. B. mp_1, mp_2 oder mp_3)."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 12.037191800000073,
+        "input_tokens": 3517,
+        "output_tokens": 895,
+        "total_tokens": 4412
+    },
+    "finish_reason": "stop",
+    "error": null
+}

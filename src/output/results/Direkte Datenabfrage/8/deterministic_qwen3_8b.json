@@ -1,0 +1,23 @@
+{
+    "task_id": 8,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Teilnamefaktor mp1?",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "get_participation_factor",
+            "arguments": {
+                "metering_point_id": "mp1"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 2.452007500000036,
+        "input_tokens": 3517,
+        "output_tokens": 189,
+        "total_tokens": 3706
+    },
+    "finish_reason": "stop",
+    "error": null
+}

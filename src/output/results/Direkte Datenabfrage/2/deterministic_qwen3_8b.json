@@ -1,0 +1,23 @@
+{
+    "task_id": 2,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Was ist mein Teilnamefaktor von meinem Verbrauch?",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Kann den Teilnahmefaktor für 'mein Verbrauch' nicht bestimmen. Bitte kläre, ob du den Teilnahmefaktor für einen spezifischen Verbrauchszählpunkt (mp_1 oder mp_2) meinst oder eine andere Interpretation gemeint ist."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 10.896777300000394,
+        "input_tokens": 3522,
+        "output_tokens": 924,
+        "total_tokens": 4446
+    },
+    "finish_reason": "stop",
+    "error": null
+}
