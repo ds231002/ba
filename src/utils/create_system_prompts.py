@@ -324,23 +324,14 @@ def create_system_prompt_for_method_3(available_results: dict) -> str:
         können, darf keine ungeeignetes Tool ausgewählt werden.
         - Gib in diesem Fall eine entsprechende Rückfrage bzw. Information
         zurück.
-
-        WICHTIG: Eine "result_id" existiert ausschließlich für ein bereits
-        ausgeführtes Tool und wird erst dann in "available_results" bereitgestellt.
-
-        Eine "result_id" darf niemals als Platzhalter für ein noch nicht
-        ausgeführtes Tool verwendet werden. Erfinde, schätze oder antizipiere
-        keine "result_id".
-
-        Wenn ein benötigtes Ergebnis noch nicht in "available_results" vorhanden
-        ist, kann dessen "result_id" in dieser Iteration nicht verwendet werden.
-        Fordere stattdessen zunächst den Toolaufruf an, der dieses Ergebnis erzeugt.
-        Erst in einer späteren Iteration, nachdem das Ergebnis tatsächlich
-        ausgeführt und in "available_results" aufgenommen wurde, darf dessen
-        "result_id" als Argument für weitere Toolaufrufe verwendet werden.
-
-        Die Existenz eines geplanten Toolaufrufs bedeutet nicht, dass dessen
-        Ergebnis bereits verfügbar ist.
+        - result_ids darf ausschließlich Werte enthalten, die exakt als
+        "result_id" in "Bereits ausgeführte Toolaufrufe und deren Ergebnisse"
+        vorhanden sind.
+        - Kopiere die result_id Zeichen für Zeichen.
+        - Wenn kein passendes Ergebnis vorhanden ist, darf keine result_id
+        erfunden werden.
+        - Eine ID wie "i2_r1" darf nur verwendet werden, wenn exakt
+        "i2_r1" als result_id vorhanden ist.
 
         Fachliche Zusammenhänge:
 
