@@ -1,0 +1,24 @@
+{
+    "task_id": 44,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie viel hat meine Energiegemeinschaft letztes Jahr insgesamt erzeugt?",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "get_community_generation",
+            "arguments": {
+                "start": "2025-01-01 00:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.6354117000009865,
+        "input_tokens": 3135,
+        "output_tokens": 48,
+        "total_tokens": 3183
+    },
+    "finish_reason": "stop",
+    "error": null
+}

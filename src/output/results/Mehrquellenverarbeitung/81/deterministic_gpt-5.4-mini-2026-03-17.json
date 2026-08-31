@@ -1,0 +1,23 @@
+{
+    "task_id": 81,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Wie hoch war meine Eigenabdeckung letztes Jahr?",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Die Anfrage ist ohne eindeutige Zuordnung zu einem einzelnen Verbrauchszählpunkt nicht eindeutig. Du hast zwei eigene Verbrauchszählpunkte (mp_1, mp_2). Bitte nenne den gewünschten Zählpunkt oder bestätige, ob beide Verbrauchszählpunkte gemeinsam gemeint sind."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 2.0856002000000444,
+        "input_tokens": 3131,
+        "output_tokens": 79,
+        "total_tokens": 3210
+    },
+    "finish_reason": "stop",
+    "error": null
+}

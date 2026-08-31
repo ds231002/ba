@@ -9,19 +9,19 @@ from utils.faiss import search_chunks
 load_dotenv()
 
 # openai
-# OPENAI_CLIENT = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-# OPENAI_MODELS = {
-#     "large": "gpt-5.6-sol",
-#     "medium": "gpt-5.6-terra",
-#     "small": "gpt-5.6-luna",
-# }
+OPENAI_CLIENT = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+OPENAI_MODELS = {
+    "large": "gpt-5.6-sol",
+    "medium": "gpt-5.6-terra",
+    "small": "gpt-5.6-luna",
+}
 
 # ollama
 OLLAMA_CLIENT = OpenAI(
     base_url="http://localhost:11434/v1",
     api_key="ollama",
 )
-OLLAMA_MODEL = "qwen3:8b"j
+OLLAMA_MODEL = "qwen3:8b"
 
 # selected
 CLIENT = OLLAMA_CLIENT

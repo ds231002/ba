@@ -1,0 +1,23 @@
+{
+    "task_id": 21,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie hoch ist mein Verbrauch gerade und was ist mein Teilnamefaktor?",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Die Anfrage ist unklar, weil 'mein Verbrauch' sich auf einen einzelnen oder mehrere eigene Verbrauchszählpunkte beziehen kann. Deine Verbrauchszählpunkte sind mp_1 und mp_2. Bitte nenne den gewünschten Zählpunkt oder bestätige, ob beide gemeint sind. Den Teilnahmefaktor kann ich für den genannten Zählpunkt ebenfalls abrufen."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.790392700000666,
+        "input_tokens": 3135,
+        "output_tokens": 93,
+        "total_tokens": 3228
+    },
+    "finish_reason": "stop",
+    "error": null
+}

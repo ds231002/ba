@@ -1,0 +1,23 @@
+{
+    "task_id": 26,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie viel kostet der Strom aktuell?",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Die aktuelle Stromkostenabfrage wird nicht unterstützt. Es stehen nur Mess- und Auswertungsfunktionen für Energie- und Zeitreihendaten zur Verfügung."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.6228709999995772,
+        "input_tokens": 3127,
+        "output_tokens": 53,
+        "total_tokens": 3180
+    },
+    "finish_reason": "stop",
+    "error": null
+}

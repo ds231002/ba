@@ -1,0 +1,23 @@
+{
+    "task_id": "1",
+    "task_type": "warmup",
+    "task": "Generiere mir eine Grafik vom Verbrauch meiner Energiegemeinschaft letzten Monat.",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Die Anfrage ist nicht eindeutig unterstützbar: 'mein Verbrauch' kann sich auf einen einzelnen eigenen Verbrauchszählpunkt oder auf alle eigenen Verbrauchszählpunkte beziehen. Dir sind die Verbrauchszählpunkte mp_1 und mp_2 zugeordnet. Bitte gib an, ob die Grafik für mp_1, mp_2 oder für beide zusammen erstellt werden soll."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 2.0432043000037083,
+        "input_tokens": 3135,
+        "output_tokens": 93,
+        "total_tokens": 3228
+    },
+    "finish_reason": "stop",
+    "error": null
+}

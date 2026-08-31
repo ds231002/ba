@@ -1,0 +1,33 @@
+{
+    "task_id": 80,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Gib mir das Gemeinschaftspotential aller meiner Verbraucherzählpunkte für letztes Jahr.",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "calculate_community_potential",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-01-01 00:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        },
+        {
+            "tool": "calculate_community_potential",
+            "arguments": {
+                "metering_point_id": "mp_2",
+                "start": "2025-01-01 00:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.8432671999980812,
+        "input_tokens": 3137,
+        "output_tokens": 108,
+        "total_tokens": 3245
+    },
+    "finish_reason": "stop",
+    "error": null
+}

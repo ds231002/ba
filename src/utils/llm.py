@@ -1,4 +1,4 @@
-# import os
+import os
 import time
 from multiprocessing import Process, Queue
 from dotenv import load_dotenv
@@ -11,6 +11,8 @@ client = OpenAI(
     base_url="http://localhost:11434/v1",
     api_key="ollama",
 )
+
+client_openai = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def _get_response_answer(response) -> str:
     return response.choices[0].message.content
@@ -28,6 +30,9 @@ def _get_response_finish_reason(response: dict) -> str:
     return response.choices[0].finish_reason
 
 def _call_llm_process(queue, user_prompt, system_prompt, model):
+    if model == "gpt-5.4-mini-2026-03-17":
+        client = client_openai
+
     try:
         response = client.chat.completions.create(
             model=model,

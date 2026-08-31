@@ -1,0 +1,23 @@
+{
+    "task_id": 31,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Generiere mir eine Grafik vom Verbrauch meiner Energiegemeinschaft.",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Meinst du den Gesamtverbrauch der Energiegemeinschaft für einen bestimmten Zeitraum? Bitte nenne den gewünschten Zeitraum (z. B. 'heute', 'letzte Woche' oder konkrete Start-/Endzeitpunkte)."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 2.182261899994046,
+        "input_tokens": 3133,
+        "output_tokens": 64,
+        "total_tokens": 3197
+    },
+    "finish_reason": "stop",
+    "error": null
+}

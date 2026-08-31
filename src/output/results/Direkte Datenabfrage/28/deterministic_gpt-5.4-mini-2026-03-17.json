@@ -1,0 +1,23 @@
+{
+    "task_id": 28,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie wird das Wetter morgen?",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Diese Anfrage wird nicht unterstützt. Es stehen nur Energiedaten-Funktionen zur Verfügung, keine Wetterabfrage."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.583351200002653,
+        "input_tokens": 3126,
+        "output_tokens": 43,
+        "total_tokens": 3169
+    },
+    "finish_reason": "stop",
+    "error": null
+}

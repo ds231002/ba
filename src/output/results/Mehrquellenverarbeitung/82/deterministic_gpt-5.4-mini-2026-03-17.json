@@ -1,0 +1,25 @@
+{
+    "task_id": 82,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Wie hoch war meine Eigenabdeckung von mp_1 letztes Jahr?",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "calculate_community_coverage",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-01-01 00:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.6434472999972058,
+        "input_tokens": 3135,
+        "output_tokens": 58,
+        "total_tokens": 3193
+    },
+    "finish_reason": "stop",
+    "error": null
+}

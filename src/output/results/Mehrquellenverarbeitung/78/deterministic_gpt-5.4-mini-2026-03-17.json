@@ -1,0 +1,23 @@
+{
+    "task_id": 78,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Ich wüsste gerne wie viel ich im laufe des letzten Monats mit mp_2 verbrauchen hätte können.",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Für die Formulierung 'wie viel ich im Laufe des letzten Monats verbrauchen hätte können' ist keine eindeutig passende Pipeline verfügbar. Wenn Sie den tatsächlichen Verbrauch von mp_2 im letzten Monat meinen, kann ich diesen berechnen."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.881575300001714,
+        "input_tokens": 3144,
+        "output_tokens": 68,
+        "total_tokens": 3212
+    },
+    "finish_reason": "stop",
+    "error": null
+}

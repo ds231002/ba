@@ -1,0 +1,23 @@
+{
+    "task_id": 35,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Zeige mir meinen Verbrauch über die letzten drei Monate.",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Meinst du den Verbrauch eines einzelnen deiner Verbrauchszählpunkte (mp_1 oder mp_2) oder den Gesamtverbrauch deiner eigenen Verbrauchszählpunkte? Bitte präzisiere das."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.7635660000014468,
+        "input_tokens": 3131,
+        "output_tokens": 59,
+        "total_tokens": 3190
+    },
+    "finish_reason": "stop",
+    "error": null
+}

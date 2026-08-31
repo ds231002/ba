@@ -1,0 +1,26 @@
+{
+    "task_id": 64,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Zeige mir meinen Verbrauch von mp_1 über das letzte Monat abzüglich meiner Erzeugung von mp_3.",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "subtract_timeseries",
+            "arguments": {
+                "metering_point_id_minuend": "mp_1",
+                "metering_point_id_subtrahend": "mp_3",
+                "start": "2025-12-01 00:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.9597119000027305,
+        "input_tokens": 3144,
+        "output_tokens": 72,
+        "total_tokens": 3216
+    },
+    "finish_reason": "stop",
+    "error": null
+}

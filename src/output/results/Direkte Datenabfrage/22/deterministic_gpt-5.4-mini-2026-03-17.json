@@ -1,0 +1,32 @@
+{
+    "task_id": 22,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie hoch ist mein Verbrauch von mp_1 und wie ich ist mein Teilnamefaktor?",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "get_participation_factor",
+            "arguments": {
+                "metering_point_id": "mp_1"
+            }
+        },
+        {
+            "tool": "calc_statistical_value",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2026-01-02 00:00:00",
+                "end": "2026-01-02 16:00:00",
+                "statistic_type": "sum"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.6825337000045693,
+        "input_tokens": 3139,
+        "output_tokens": 83,
+        "total_tokens": 3222
+    },
+    "finish_reason": "stop",
+    "error": null
+}

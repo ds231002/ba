@@ -1,0 +1,49 @@
+{
+    "task_id": 90,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Gib mir Eigenabdeckung und Gemeinschaftspotential für alle meine Verbraucherzählpunkte über das letzte Monat.",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "calculate_community_coverage",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-12-01 00:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        },
+        {
+            "tool": "calculate_community_potential",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-12-01 00:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        },
+        {
+            "tool": "calculate_community_coverage",
+            "arguments": {
+                "metering_point_id": "mp_2",
+                "start": "2025-12-01 00:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        },
+        {
+            "tool": "calculate_community_potential",
+            "arguments": {
+                "metering_point_id": "mp_2",
+                "start": "2025-12-01 00:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 2.430639500002144,
+        "input_tokens": 3141,
+        "output_tokens": 208,
+        "total_tokens": 3349
+    },
+    "finish_reason": "stop",
+    "error": null
+}

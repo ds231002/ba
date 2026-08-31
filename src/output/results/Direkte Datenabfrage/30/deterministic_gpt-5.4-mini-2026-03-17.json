@@ -1,0 +1,23 @@
+{
+    "task_id": 30,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Ich bin unzufrieden mit meinem Energieanbieter.",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Diese Anfrage kann mit den verfügbaren Energiedaten-Tools nicht bearbeitet werden."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.508437700002105,
+        "input_tokens": 3130,
+        "output_tokens": 37,
+        "total_tokens": 3167
+    },
+    "finish_reason": "stop",
+    "error": null
+}

@@ -417,35 +417,20 @@ Die drei Strategien unterscheiden sich damit gezielt in der Organisation der Wer
 
 #figure(
   table(
-    columns: (1fr, 1fr, 1fr, 1fr, 1fr),
+    columns: (auto, 1fr, 1fr, auto),
     align: (left, center, center, center, center),
 
-    table.header(
-      [*Modell*],
-    [*Parameter [Mrd.]*],
-    [*Quantisierung*],
-    [*Speichergröße [GB]*],
-    [*Maximales Kontextfenster*]
-    ),
+    table.header([*Merkmale*], [*qwen3:8b*], [*qwen3:30b*], [*gpt-5.4-mini-2026-03-17*]),
 
-    // table.cell(colspan: 5)[*Lokal*],
-
-    [qwen3:4b], [4,0], [Q4_K_M], [2,5], [262144],
-    [qwen3:8b], [8,2], [Q4_K_M], [5,2], [40960],
-    [qwen3:14b], [14,8], [Q4_K_M], [9,3], [40960],
-    [qwen3:30b], [30,5], [Q4_K_M], [18], [262144],
-
-    // table.cell(colspan: 5)[*API*],
-
-    // [gpt], [], [], [], [],
+    [Parameter [Mrd]], [8,2], [30,5], [n.a.],
+    [Quantisierung], [Q4_K_M], [Q4_K_M], [n.a.],
+    [Speichergröße [GB]], [5,2], [18], [n.a.],
+    [Maximales Kontextfenster], [40.960], [262.144], [400.000],
+    [Ausführung], [lokal], [lokal], [API]
 
   ),
   caption: [Modellauswahl für Orchestrierung],
 ) <tab:modelselection>
-
-gewähltes Kontextfenster für alle Modelle: 32768
-
-// Modelle für Bildanalyse und Finalisierung
 
 === Lokale Modelle
 
@@ -465,6 +450,8 @@ Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht d
 - möglicherweise Queueing
 - unbekannte Hardware
 - unbekannte Modellimplementierung
+
+GPT-5.4 mini wurde als externes Vergleichsmodell ausgewählt, da es speziell für schnelle, effiziente Workloads mit Tool-Nutzung und agentischen Anwendungen entwickelt wurde. OpenAI weist für das Modell explizit Unterstützung für Function Calling, Structured Outputs sowie verschiedene Werkzeuge und MCP aus. Zudem zeigt GPT-5.4 mini in den von OpenAI veröffentlichten Tool-Calling-Evaluationen eine deutlich höhere Leistung als das kleinere GPT-5 mini. Damit eignet sich das Modell als Gegenpol zu den lokal ausgeführten Qwen3-Modellen, um zu untersuchen, inwieweit die untersuchten Orchestrierungsstrategien auch bei einem leistungsfähigen proprietären Modell unterschiedliche Ergebnisse hervorbringen @GPT54MiniModel.
 
 == Aufgaben
 

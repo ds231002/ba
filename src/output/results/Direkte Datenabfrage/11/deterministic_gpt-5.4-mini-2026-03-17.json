@@ -1,0 +1,23 @@
+{
+    "task_id": 11,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie viel verbrauche ich gerade?",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Meinst du den aktuellen Verbrauch eines bestimmten eigenen Zählpunkts? Dir sind die Verbrauchszählpunkte mp_1 und mp_2 zugeordnet. Bitte nenne den gewünschten Zählpunkt."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 1.8382186999951955,
+        "input_tokens": 3128,
+        "output_tokens": 60,
+        "total_tokens": 3188
+    },
+    "finish_reason": "stop",
+    "error": null
+}

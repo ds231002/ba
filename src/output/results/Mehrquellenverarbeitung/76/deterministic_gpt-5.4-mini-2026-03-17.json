@@ -1,0 +1,23 @@
+{
+    "task_id": 76,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Berechne mir das Gemeinschaftspotential.",
+    "method": "deterministic",
+    "model": "gpt-5.4-mini-2026-03-17",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Für die Berechnung des Gemeinschaftspotentials wird ein konkreter Zählpunkt und ein Zeitraum benötigt. Bitte nenne den gewünschten Zählpunkt und den Zeitraum."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 3.169515699999465,
+        "input_tokens": 3129,
+        "output_tokens": 52,
+        "total_tokens": 3181
+    },
+    "finish_reason": "stop",
+    "error": null
+}
