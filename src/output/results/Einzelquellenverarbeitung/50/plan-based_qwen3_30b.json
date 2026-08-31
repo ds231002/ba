@@ -1,0 +1,24 @@
+{
+    "task_id": 50,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Was war der niedrigste Verbrauch meines Zählpunktes letztes Jahr?",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "id": "step_1",
+            "tool": "generate_answer",
+            "arguments": {
+                "message": "Bitte geben Sie an, welchen Zählpunkt Sie meinen: mp_1 oder mp_2 (beide sind Verbrauchszählpunkte). Ohne diese Angabe kann ich die Anfrage nicht präzise beantworten."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 9.242453700004262,
+        "input_tokens": 4985,
+        "output_tokens": 913,
+        "total_tokens": 5898
+    },
+    "finish_reason": "stop",
+    "error": null
+}

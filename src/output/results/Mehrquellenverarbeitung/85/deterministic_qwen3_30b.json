@@ -1,0 +1,25 @@
+{
+    "task_id": 85,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Berechne mir die Eigenabdeckung für meinen Verbraucherzählpunkt mp_2 für letzte Woche.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "calculate_community_coverage",
+            "arguments": {
+                "metering_point_id": "mp_2",
+                "start": "2025-12-26 00:00:00",
+                "end": "2026-01-02 00:00:00"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 20.995193499999004,
+        "input_tokens": 3590,
+        "output_tokens": 2664,
+        "total_tokens": 6254
+    },
+    "finish_reason": "stop",
+    "error": null
+}

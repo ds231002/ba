@@ -1,0 +1,16 @@
+{
+    "task_id": 44,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie viel hat meine Energiegemeinschaft letztes Jahr insgesamt erzeugt?",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.04133870000078,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

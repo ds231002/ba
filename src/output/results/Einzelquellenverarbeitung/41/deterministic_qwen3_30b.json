@@ -1,0 +1,16 @@
+{
+    "task_id": 41,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie ist mein gesamtverbrauch über die letzten 2 Monate?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.08673180000187,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

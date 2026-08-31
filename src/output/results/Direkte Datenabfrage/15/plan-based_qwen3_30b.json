@@ -1,0 +1,16 @@
+{
+    "task_id": 15,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie viel erzeuge ich gerade?",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.05071250000037,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

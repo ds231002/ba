@@ -1,0 +1,23 @@
+{
+    "task_id": 37,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie ist meine Verbrauch über letzte 12 Monate?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Bitte geben Sie an, welchen Zählpunkt Sie meinen (mp_1 oder mp_2), oder ob Sie den Gesamtverbrauch beider Verbrauchszählpunkte (mp_1 und mp_2) wissen möchten."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 14.199702500001877,
+        "input_tokens": 3578,
+        "output_tokens": 1648,
+        "total_tokens": 5226
+    },
+    "finish_reason": "stop",
+    "error": null
+}

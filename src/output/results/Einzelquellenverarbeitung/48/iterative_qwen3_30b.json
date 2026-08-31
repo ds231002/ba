@@ -1,0 +1,64 @@
+{
+    "task_id": 48,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie hoch ist war der Durchschnittsverbrauch von mp_1 letzte Woche?",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_measured_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_1",
+                        "start": "2025-12-26 00:00:00",
+                        "end": "2026-01-01 00:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 18.03675170000497,
+                "input_tokens": 5407,
+                "output_tokens": 2203,
+                "total_tokens": 7610
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "avg",
+                        "energy_data": "i1_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 12.401266100001521,
+                "input_tokens": 5517,
+                "output_tokens": 1323,
+                "total_tokens": 6840
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04609619999974,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 150.484,
+        "input_tokens": 10924,
+        "output_tokens": 3526,
+        "total_tokens": 14450
+    }
+}

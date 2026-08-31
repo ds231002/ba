@@ -1,0 +1,16 @@
+{
+    "task_id": 82,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Wie hoch war meine Eigenabdeckung von mp_1 letztes Jahr?",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.05427749999944,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

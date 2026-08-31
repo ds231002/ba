@@ -1,0 +1,23 @@
+{
+    "task_id": 84,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Berechne mir die Eigenabdeckung für letztes Monat von mp_3.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "mp_3 ist ein Erzeugungs-Zählpunkt, aber die Eigenabdeckung wird nur für Verbrauchszählpunkte berechnet."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 12.998591600000509,
+        "input_tokens": 3583,
+        "output_tokens": 1542,
+        "total_tokens": 5125
+    },
+    "finish_reason": "stop",
+    "error": null
+}

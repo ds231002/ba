@@ -1,0 +1,26 @@
+{
+    "task_id": 57,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Zeige mir eine Grafik von meinem Zählpunkt von mp_1 wenn ich doppelt so viel verbrauchen würde.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "multiply_timeseries",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-01-01 00:00:00",
+                "end": "2026-01-01 00:00:00",
+                "factor": 2
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 11.949820000001637,
+        "input_tokens": 3591,
+        "output_tokens": 1363,
+        "total_tokens": 4954
+    },
+    "finish_reason": "stop",
+    "error": null
+}

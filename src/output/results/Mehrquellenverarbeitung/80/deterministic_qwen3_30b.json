@@ -1,0 +1,16 @@
+{
+    "task_id": 80,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Gib mir das Gemeinschaftspotential aller meiner Verbraucherzählpunkte für letztes Jahr.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.05918659999588,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

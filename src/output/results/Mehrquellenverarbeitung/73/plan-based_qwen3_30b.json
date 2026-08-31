@@ -1,0 +1,16 @@
+{
+    "task_id": 73,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Zeig mir meinen Erzeugung für das letzte Jahr, aber gewichte das nach Teilnamefaktor.",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.04488990000391,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

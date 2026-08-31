@@ -1,0 +1,82 @@
+{
+    "task_id": 49,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Was war der niedrigste Verbrauch meiner gesamten Energiegemeinschaft letztes Jahr?",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_community_consumption",
+                    "arguments": {
+                        "start": "2025-01-01 00:00:00",
+                        "end": "2026-01-01 00:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 15.404327399999602,
+                "input_tokens": 5409,
+                "output_tokens": 1749,
+                "total_tokens": 7158
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "min",
+                        "energy_data": "i1_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 14.752279499996803,
+                "input_tokens": 5507,
+                "output_tokens": 1666,
+                "total_tokens": 7173
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i3_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "min",
+                        "energy_data": "i1_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 12.986220200000389,
+                "input_tokens": 5562,
+                "output_tokens": 1398,
+                "total_tokens": 6960
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04779940000299,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 163.191,
+        "input_tokens": 16478,
+        "output_tokens": 4813,
+        "total_tokens": 21291
+    }
+}

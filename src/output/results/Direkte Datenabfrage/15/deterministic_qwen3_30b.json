@@ -1,0 +1,23 @@
+{
+    "task_id": 15,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie viel erzeuge ich gerade?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "get_current_energy",
+            "arguments": {
+                "metering_point_id": "mp_3"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 6.223815300007118,
+        "input_tokens": 3571,
+        "output_tokens": 441,
+        "total_tokens": 4012
+    },
+    "finish_reason": "stop",
+    "error": null
+}

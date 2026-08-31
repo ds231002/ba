@@ -1,0 +1,45 @@
+{
+    "task_id": 42,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie ist mein Gesamtverbrauch von mp_1 über die letzten 2 Monate?",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_measured_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_1",
+                        "start": "2025-11-02 00:00:00",
+                        "end": "2026-01-02 00:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 13.278858500001661,
+                "input_tokens": 5407,
+                "output_tokens": 1483,
+                "total_tokens": 6890
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04439619999903,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 133.323,
+        "input_tokens": 5407,
+        "output_tokens": 1483,
+        "total_tokens": 6890
+    }
+}

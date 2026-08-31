@@ -1,0 +1,69 @@
+{
+    "task_id": 36,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Zeige mir meinen Verbrauch von mp_1 über die letzten drei Monate.",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_measured_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_1",
+                        "start": "2025-10-02 16:00:00",
+                        "end": "2026-01-02 16:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 11.33731540000008,
+                "input_tokens": 5405,
+                "output_tokens": 1164,
+                "total_tokens": 6569
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "create_energy_plot",
+                    "arguments": {
+                        "title": "Mein Verbrauch von mp_1 über die letzten drei Monate",
+                        "labels": [
+                            "mp_1"
+                        ],
+                        "energy_data": [
+                            "i1_r1"
+                        ]
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 16.905118100003165,
+                "input_tokens": 5515,
+                "output_tokens": 1951,
+                "total_tokens": 7466
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04396350000025,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 148.286,
+        "input_tokens": 10920,
+        "output_tokens": 3115,
+        "total_tokens": 14035
+    }
+}

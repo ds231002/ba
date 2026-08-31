@@ -1,0 +1,44 @@
+{
+    "task_id": 32,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Generiere mir eine Grafik vom Verbrauch meiner Energiegemeinschaft letzten Monat.",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_community_consumption",
+                    "arguments": {
+                        "start": "2025-12-01 00:00:00",
+                        "end": "2026-01-01 00:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 13.924238999999943,
+                "input_tokens": 5407,
+                "output_tokens": 1542,
+                "total_tokens": 6949
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.05623099999502,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 133.98,
+        "input_tokens": 5407,
+        "output_tokens": 1542,
+        "total_tokens": 6949
+    }
+}

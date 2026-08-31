@@ -1,0 +1,25 @@
+{
+    "task_id": 47,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Berechne mir meinen Durchschnittsverbrauch über das letzte Jahr.",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.06229840000015,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.062,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

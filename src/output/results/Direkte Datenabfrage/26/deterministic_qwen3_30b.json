@@ -1,0 +1,23 @@
+{
+    "task_id": 26,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie viel kostet der Strom aktuell?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Die aktuelle Stromkosteninformation kann nicht abgerufen werden, da keine Tools zur Preisermittlung verfügbar sind."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 7.155078299998422,
+        "input_tokens": 3572,
+        "output_tokens": 605,
+        "total_tokens": 4177
+    },
+    "finish_reason": "stop",
+    "error": null
+}

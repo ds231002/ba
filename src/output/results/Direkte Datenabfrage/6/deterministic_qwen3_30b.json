@@ -1,0 +1,23 @@
+{
+    "task_id": 6,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Welchen Teilnamefaktor habe ich bei mp_3?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "get_participation_factor",
+            "arguments": {
+                "metering_point_id": "mp_3"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 5.708141700000851,
+        "input_tokens": 3577,
+        "output_tokens": 384,
+        "total_tokens": 3961
+    },
+    "finish_reason": "stop",
+    "error": null
+}

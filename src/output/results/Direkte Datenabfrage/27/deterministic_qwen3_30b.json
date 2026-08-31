@@ -1,0 +1,23 @@
+{
+    "task_id": 27,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie viel bekomme ich vür meinen erzeugten Strom?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Die Berechnung von Zahlungen für erzeugten Strom ist nicht in den verfügbaren Tools enthalten. Bitte wenden Sie sich an Ihren Energieanbieter für Informationen zu Vergütungsmodellen."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 6.862294799997471,
+        "input_tokens": 3576,
+        "output_tokens": 548,
+        "total_tokens": 4124
+    },
+    "finish_reason": "stop",
+    "error": null
+}

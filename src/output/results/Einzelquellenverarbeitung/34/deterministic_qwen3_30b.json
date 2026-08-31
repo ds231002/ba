@@ -1,0 +1,24 @@
+{
+    "task_id": 34,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Zeig mir die Erzeugung meiner Energiegemeinschaft.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "get_community_generation",
+            "arguments": {
+                "start": "2025-01-01 00:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 14.251219400000991,
+        "input_tokens": 3577,
+        "output_tokens": 1657,
+        "total_tokens": 5234
+    },
+    "finish_reason": "stop",
+    "error": null
+}

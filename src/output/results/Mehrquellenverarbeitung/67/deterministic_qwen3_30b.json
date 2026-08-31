@@ -1,0 +1,25 @@
+{
+    "task_id": 67,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Wie hoch ist mein gewichteter Verbrauch von mp_1 über das letzte Monat?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "calculate_weighted_measured_energy",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-12-01 00:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 7.973789700001362,
+        "input_tokens": 3584,
+        "output_tokens": 701,
+        "total_tokens": 4285
+    },
+    "finish_reason": "stop",
+    "error": null
+}

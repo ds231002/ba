@@ -1,0 +1,23 @@
+{
+    "task_id": 3,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Was ist mein Teilnamefaktor von meinem Erzeugerzählpunkt?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "get_participation_factor",
+            "arguments": {
+                "metering_point_id": "mp_3"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 6.044615999999223,
+        "input_tokens": 3581,
+        "output_tokens": 421,
+        "total_tokens": 4002
+    },
+    "finish_reason": "stop",
+    "error": null
+}

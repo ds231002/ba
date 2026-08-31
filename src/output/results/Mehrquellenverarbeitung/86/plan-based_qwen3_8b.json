@@ -12,9 +12,5 @@
         "total_tokens": null
     },
     "finish_reason": "timeout",
-    "error": {
-        "type": "TypeError",
-        "message": "the JSON object must be str, bytes or bytearray, not NoneType",
-        "step": "answer_json"
-    }
+    "error": null
 }

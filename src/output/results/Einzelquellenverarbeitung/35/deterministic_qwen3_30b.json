@@ -1,0 +1,23 @@
+{
+    "task_id": 35,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Zeige mir meinen Verbrauch über die letzten drei Monate.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Bitte spezifizieren Sie, ob Sie den Verbrauch für einen bestimmten Zählpunkt (mp_1 oder mp_2) oder für alle Verbrauchszählpunkte sehen möchten."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 11.831331900000805,
+        "input_tokens": 3577,
+        "output_tokens": 1301,
+        "total_tokens": 4878
+    },
+    "finish_reason": "stop",
+    "error": null
+}

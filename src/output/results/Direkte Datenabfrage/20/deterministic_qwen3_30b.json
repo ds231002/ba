@@ -1,0 +1,23 @@
+{
+    "task_id": 20,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Was viel verbraucht mein Zählpunkt mp_3 gerade?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "get_current_energy",
+            "arguments": {
+                "metering_point_id": "mp_3"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 6.897036399997887,
+        "input_tokens": 3578,
+        "output_tokens": 557,
+        "total_tokens": 4135
+    },
+    "finish_reason": "stop",
+    "error": null
+}

@@ -1,0 +1,23 @@
+{
+    "task_id": 52,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Gib mir den Minimalverbrauch meines Zählpunktes mp_2.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Bitte geben Sie den Start- und Endzeitpunkt für die Minimalverbrauchsanfrage an."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 12.224191700006486,
+        "input_tokens": 3582,
+        "output_tokens": 1367,
+        "total_tokens": 4949
+    },
+    "finish_reason": "stop",
+    "error": null
+}

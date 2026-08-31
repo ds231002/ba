@@ -1,0 +1,25 @@
+{
+    "task_id": 81,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Wie hoch war meine Eigenabdeckung letztes Jahr?",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.05735519999871,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.057,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

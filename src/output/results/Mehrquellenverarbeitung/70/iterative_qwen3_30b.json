@@ -1,0 +1,25 @@
+{
+    "task_id": 70,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Ich hätte gerne den Verlauf meines gewichteten Verbrauchs von mp_2 für letzte Woche.",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.05188400000043,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.052,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

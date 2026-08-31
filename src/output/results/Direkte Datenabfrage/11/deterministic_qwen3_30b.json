@@ -1,0 +1,23 @@
+{
+    "task_id": 11,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie viel verbrauche ich gerade?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Bitte geben Sie an, welchen Zählpunkt Sie meinen (mp_1 oder mp_2)."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 13.046335999999428,
+        "input_tokens": 3571,
+        "output_tokens": 1497,
+        "total_tokens": 5068
+    },
+    "finish_reason": "stop",
+    "error": null
+}

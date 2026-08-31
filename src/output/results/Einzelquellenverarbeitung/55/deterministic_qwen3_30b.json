@@ -1,0 +1,26 @@
+{
+    "task_id": 55,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Was habe ich maximal mit mp_3 produziert über das letzte Monat?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "calc_statistical_value",
+            "arguments": {
+                "metering_point_id": "mp_3",
+                "start": "2025-12-01 00:00:00",
+                "end": "2026-01-01 00:00:00",
+                "statistic_type": "max"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 10.941240100000869,
+        "input_tokens": 3581,
+        "output_tokens": 1200,
+        "total_tokens": 4781
+    },
+    "finish_reason": "stop",
+    "error": null
+}

@@ -1,0 +1,16 @@
+{
+    "task_id": 8,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Teilnamefaktor mp1?",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.05332239999552,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

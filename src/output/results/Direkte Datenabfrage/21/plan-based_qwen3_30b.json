@@ -1,0 +1,16 @@
+{
+    "task_id": 21,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie hoch ist mein Verbrauch gerade und was ist mein Teilnamefaktor?",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.04866720000427,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

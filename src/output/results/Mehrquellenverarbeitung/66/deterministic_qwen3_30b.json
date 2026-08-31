@@ -1,0 +1,23 @@
+{
+    "task_id": 66,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Wie hoch ist mein gewichteter Verbrauch über das letzte Monat?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Bitte geben Sie den Zählpunkt an, für den Sie den gewichteten Verbrauch abfragen möchten (mp_1 oder mp_2)."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 11.508731300004001,
+        "input_tokens": 3580,
+        "output_tokens": 1245,
+        "total_tokens": 4825
+    },
+    "finish_reason": "stop",
+    "error": null
+}

@@ -1,0 +1,35 @@
+{
+    "task_id": 25,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Gib mir alle meine Zählpunkte und deren Teilnamefaktoren.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "get_participation_factor",
+            "arguments": {
+                "metering_point_id": "mp_1"
+            }
+        },
+        {
+            "tool": "get_participation_factor",
+            "arguments": {
+                "metering_point_id": "mp_2"
+            }
+        },
+        {
+            "tool": "get_participation_factor",
+            "arguments": {
+                "metering_point_id": "mp_3"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 7.665115899995726,
+        "input_tokens": 3581,
+        "output_tokens": 677,
+        "total_tokens": 4258
+    },
+    "finish_reason": "stop",
+    "error": null
+}

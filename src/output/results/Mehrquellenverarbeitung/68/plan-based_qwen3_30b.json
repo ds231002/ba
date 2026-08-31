@@ -1,0 +1,16 @@
+{
+    "task_id": 68,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Berechne mir den gewichteten Verbrauch von mp_1 und mp_2 für die letzten 3 Monate.",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.05337810000492,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

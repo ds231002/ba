@@ -1,0 +1,16 @@
+{
+    "task_id": 89,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Ich wüsste gerne für letzte Woche den Verbrauch gewichtet als auch ungewichtet für mp_1 und dessen Eigenabdeckung.",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.04970830000093,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

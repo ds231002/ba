@@ -1,0 +1,25 @@
+{
+    "task_id": 58,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Zeige mir eine Grafik von mp_2 wenn ich letzte Woche doppelt so viel verbraucht hätte.",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.05240049999702,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.052,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

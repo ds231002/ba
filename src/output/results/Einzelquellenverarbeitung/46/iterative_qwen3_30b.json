@@ -1,0 +1,44 @@
+{
+    "task_id": 46,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie hoch war die durchschnittliche Produktion meiner Energiegemeinschaft letztes Jahr?",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_community_generation",
+                    "arguments": {
+                        "start": "2025-01-01 00:00:00",
+                        "end": "2026-01-01 00:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 16.987261900001613,
+                "input_tokens": 5407,
+                "output_tokens": 1951,
+                "total_tokens": 7358
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.05276719999529,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 137.04,
+        "input_tokens": 5407,
+        "output_tokens": 1951,
+        "total_tokens": 7358
+    }
+}

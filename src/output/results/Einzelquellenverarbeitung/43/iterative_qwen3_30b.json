@@ -1,0 +1,44 @@
+{
+    "task_id": 43,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie viel hat meine Energiegmeinschaft ingesamt verbraucht im letzten Jahr?",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_community_consumption",
+                    "arguments": {
+                        "start": "2025-01-01 00:00:00",
+                        "end": "2026-01-01 00:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 17.627205999997386,
+                "input_tokens": 5407,
+                "output_tokens": 2061,
+                "total_tokens": 7468
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.05331529999967,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 137.681,
+        "input_tokens": 5407,
+        "output_tokens": 2061,
+        "total_tokens": 7468
+    }
+}

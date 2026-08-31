@@ -277,6 +277,7 @@ def generate_result_for_task_with_method_3(
     result_store = {}
     available_results = []
     total_usage = None
+    error = None
 
     current_iteration = 1
     max_iterations = 7

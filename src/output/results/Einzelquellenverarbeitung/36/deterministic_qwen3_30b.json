@@ -1,0 +1,25 @@
+{
+    "task_id": 36,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Zeige mir meinen Verbrauch von mp_1 über die letzten drei Monate.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "get_measured_energy",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-10-02 16:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 14.36963200000173,
+        "input_tokens": 3581,
+        "output_tokens": 1691,
+        "total_tokens": 5272
+    },
+    "finish_reason": "stop",
+    "error": null
+}

@@ -1,0 +1,63 @@
+{
+    "task_id": 53,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie hoch war der maximale Verbrauch meiner gesamten Energiegemeinschaft letztes Jahr?",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_community_consumption",
+                    "arguments": {
+                        "start": "2025-01-01 00:00:00",
+                        "end": "2026-01-01 00:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 13.198079299996607,
+                "input_tokens": 5409,
+                "output_tokens": 1487,
+                "total_tokens": 6896
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "max",
+                        "energy_data": "i1_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 13.837630200003332,
+                "input_tokens": 5507,
+                "output_tokens": 1533,
+                "total_tokens": 7040
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04623130000255,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 147.082,
+        "input_tokens": 10916,
+        "output_tokens": 3020,
+        "total_tokens": 13936
+    }
+}

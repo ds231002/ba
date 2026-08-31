@@ -1,0 +1,23 @@
+{
+    "task_id": 29,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Was kostet eine PV-Anlage?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Die Kosten einer PV-Anlage können mit den verfügbaren Tools nicht ermittelt werden. Bitte wenden Sie sich an einen Fachmann oder nutzen Sie eine andere Quelle für Preisinformationen."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 8.29136329999892,
+        "input_tokens": 3571,
+        "output_tokens": 767,
+        "total_tokens": 4338
+    },
+    "finish_reason": "stop",
+    "error": null
+}

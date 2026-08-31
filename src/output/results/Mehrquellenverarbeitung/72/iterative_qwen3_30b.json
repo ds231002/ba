@@ -1,0 +1,25 @@
+{
+    "task_id": 72,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Ich würde gerne meine gewichtete Erzeugung über das letzte Jahr sehen.",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.062708999998,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.063,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

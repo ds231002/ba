@@ -1,0 +1,25 @@
+{
+    "task_id": 59,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Ich möchte sehen wie mein Verbrauch aussieht wenn ich nur noch halb so viel verbrauchen würde.",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04541400000016,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.045,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

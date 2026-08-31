@@ -1,0 +1,16 @@
+{
+    "task_id": 63,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Zeige mir meinen Verbrauch über das letzte Monat abzüglich meiner Erzeugung.",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.05716419999953,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

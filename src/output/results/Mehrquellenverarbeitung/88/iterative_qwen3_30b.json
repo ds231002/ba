@@ -1,0 +1,25 @@
+{
+    "task_id": 88,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Gib mir für letzte Woche meine meine Eigenabdeckung für mp_1 und mp_2 sowie das Gemeinschaftspotential.",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.05343670000002,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.053,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "task_id": 90,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Gib mir Eigenabdeckung und Gemeinschaftspotential für alle meine Verbraucherzählpunkte über das letzte Monat.",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.0598983000018,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

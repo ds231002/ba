@@ -1,0 +1,25 @@
+{
+    "task_id": 72,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Ich würde gerne meine gewichtete Erzeugung über das letzte Jahr sehen.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "calculate_weighted_measured_energy",
+            "arguments": {
+                "metering_point_id": "mp_3",
+                "start": "2025-01-02 16:00:00",
+                "end": "2026-01-01 00:00:00"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 18.401863600003708,
+        "input_tokens": 3580,
+        "output_tokens": 2285,
+        "total_tokens": 5865
+    },
+    "finish_reason": "stop",
+    "error": null
+}

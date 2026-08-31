@@ -1,0 +1,23 @@
+{
+    "task_id": 47,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Berechne mir meinen Durchschnittsverbrauch über das letzte Jahr.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Bitte spezifizieren Sie, ob Sie den Durchschnittsverbrauch für mp_1, mp_2 oder beide Zählpunkte haben möchten."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 13.466331299998274,
+        "input_tokens": 3582,
+        "output_tokens": 1591,
+        "total_tokens": 5173
+    },
+    "finish_reason": "stop",
+    "error": null
+}

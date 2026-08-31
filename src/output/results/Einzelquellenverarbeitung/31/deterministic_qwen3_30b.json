@@ -1,0 +1,23 @@
+{
+    "task_id": 31,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Generiere mir eine Grafik vom Verbrauch meiner Energiegemeinschaft.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Bitte geben Sie den Start- und Endzeitpunkt für die Grafik des Gemeinschaftsverbrauchs an."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 11.693001999999979,
+        "input_tokens": 3580,
+        "output_tokens": 1289,
+        "total_tokens": 4869
+    },
+    "finish_reason": "stop",
+    "error": null
+}

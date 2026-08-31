@@ -1,0 +1,23 @@
+{
+    "task_id": 14,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie viel erzeugt mp_3 gerade?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "get_current_energy",
+            "arguments": {
+                "metering_point_id": "mp_3"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 5.863067400001455,
+        "input_tokens": 3573,
+        "output_tokens": 390,
+        "total_tokens": 3963
+    },
+    "finish_reason": "stop",
+    "error": null
+}

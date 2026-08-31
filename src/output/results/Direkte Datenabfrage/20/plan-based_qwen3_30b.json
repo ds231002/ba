@@ -1,0 +1,16 @@
+{
+    "task_id": 20,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Was viel verbraucht mein Zählpunkt mp_3 gerade?",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.04954790000193,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

@@ -1,0 +1,25 @@
+{
+    "task_id": 77,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Berechne mir das Gemeinschaftspotential von mp_1 für letzten Monat.",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.05553009999858,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.056,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

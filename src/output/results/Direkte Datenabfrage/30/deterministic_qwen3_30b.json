@@ -1,0 +1,23 @@
+{
+    "task_id": 30,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Ich bin unzufrieden mit meinem Energieanbieter.",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Ihre Anfrage ist nicht mit den verfügbaren Tools zur Energieverbrauchs- oder Erzeugungsdatenabfrage kompatibel. Bitte wenden Sie sich an Ihren Energieanbieter für Rückfragen zu Ihrem Vertrag oder Service."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 5.714043899999524,
+        "input_tokens": 3578,
+        "output_tokens": 373,
+        "total_tokens": 3951
+    },
+    "finish_reason": "stop",
+    "error": null
+}

@@ -1,0 +1,73 @@
+{
+    "task_id": 64,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Zeige mir meinen Verbrauch von mp_1 über das letzte Monat abzüglich meiner Erzeugung von mp_3.",
+    "method": "iterative",
+    "model": "qwen3:30b",
+    "iterations": [
+        {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_measured_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_1",
+                        "start": "2025-12-01 00:00:00",
+                        "end": "2026-01-01 00:00:00"
+                    }
+                },
+                {
+                    "id": "i1_r2",
+                    "tool": "get_measured_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_3",
+                        "start": "2025-12-01 00:00:00",
+                        "end": "2026-01-01 00:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 15.452095500004361,
+                "input_tokens": 5417,
+                "output_tokens": 1831,
+                "total_tokens": 7248
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "subtract_timeseries",
+                    "arguments": {
+                        "minuend": "i1_r1",
+                        "subtrahend": "i1_r2"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 15.061675099997956,
+                "input_tokens": 5636,
+                "output_tokens": 1776,
+                "total_tokens": 7412
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.0508633999998,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 150.565,
+        "input_tokens": 11053,
+        "output_tokens": 3607,
+        "total_tokens": 14660
+    }
+}

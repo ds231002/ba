@@ -1,0 +1,23 @@
+{
+    "task_id": 46,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie hoch war die durchschnittliche Produktion meiner Energiegemeinschaft letztes Jahr?",
+    "method": "deterministic",
+    "model": "qwen3:30b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Ihre Anfrage nach der durchschnittlichen Produktion der Energiegemeinschaft kann nicht direkt beantwortet werden. Bitte fragen Sie nach der Gesamterzeugung für den gewünschten Zeitraum."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 13.39832039999601,
+        "input_tokens": 3583,
+        "output_tokens": 1557,
+        "total_tokens": 5140
+    },
+    "finish_reason": "stop",
+    "error": null
+}

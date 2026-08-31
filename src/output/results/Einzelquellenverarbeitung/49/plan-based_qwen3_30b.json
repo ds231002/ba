@@ -1,0 +1,16 @@
+{
+    "task_id": 49,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Was war der niedrigste Verbrauch meiner gesamten Energiegemeinschaft letztes Jahr?",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.05654879999929,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}

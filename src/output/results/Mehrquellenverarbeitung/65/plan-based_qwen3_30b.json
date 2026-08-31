@@ -1,0 +1,16 @@
+{
+    "task_id": 65,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Berechne eine Grafik mit dem Verbrauch meiner Energiegemeinschaft abzüglich meines Verbrauchs für letztes Jahr.",
+    "method": "plan-based",
+    "model": "qwen3:30b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.05428519999987,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": null
+}
