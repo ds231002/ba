@@ -332,67 +332,86 @@ sind unabhängig von der verwendeten Orchestrierungsstrategie.
 
 == Orchestrierungsstrategien
 
+Die Nutzung mehrerer Werkzeuge stellt nicht nur die Frage nach dem jeweils geeigneten Werkzeug, sondern auch nach der Organisation der einzelnen Werkzeugaufrufe. Sobald mehrere Werkzeuge innerhalb einer Aufgabe verwendet werden, können Abhängigkeiten zwischen den einzelnen Aufrufen entstehen. So kann beispielsweise die Ausgabe eines Werkzeugs als Eingabe für ein nachfolgendes Werkzeug benötigt werden. Die Auswahl der Werkzeuge muss daher gemeinsam mit ihrer Anordnung und Ausführungsreihenfolge betrachtet werden @luOrchDAGComplexTool2025.
+
+In dieser Arbeit wird diese Organisation als Orchestrierung bezeichnet. Orchestrierung umfasst damit insbesondere die Auswahl und Anordnung von Werkzeugaufrufen, die Berücksichtigung von Abhängigkeiten sowie die Verarbeitung von Zwischenresultaten. Bei komplexeren Aufgaben kann eine solche Ausführung als strukturierte Kette oder als Graph von Werkzeugaufrufen dargestellt werden @paranjapeARTAutomaticMultistep2023
+@luOrchDAGComplexTool2025.
+
+Die betrachteten Ansätze unterscheiden sich insbesondere darin, wie stark die Ausführungsstruktur vorgegeben ist und zu welchem Zeitpunkt das LLM über den weiteren Ablauf entscheidet. In der Forschung werden unter anderem reaktive Verfahren, bei denen Entscheidungen schrittweise während der Ausführung getroffen werden, und planbasierte Verfahren, bei denen zunächst ein globaler Plan erzeugt wird, unterschieden @zheRobustEfficientTool2026. Auch die in dieser Arbeit betrachtete iterative Strategie basiert auf einer solchen schrittweisen Entscheidung unter Berücksichtigung bereits ausgeführter Werkzeugaufrufe @hernandezReActModularAgent2025.
+
+Für die Untersuchung werden drei Orchestrierungsstrategien betrachtet: eine deterministische, eine planbasierte und eine iterative Strategie. Abbildung @orchestrierungsmethoden stellt die grundlegende Struktur der drei Ansätze gegenüber.
+
 #figure(
   image("../figures/orchestrierungsmethoden.drawio.png", width: 90%),
-  caption: [Orchestrierungsstrategien],
+  caption: [Vergleich der untersuchten Orchestrierungsstrategien],
 ) <orchestrierungsmethoden>
 
+Die Abbildung verdeutlicht dabei insbesondere die zunehmende Flexibilität der Ausführungsentscheidung. Bei der deterministischen Strategie wird eine vorgegebene Pipeline ausgewählt und anschließend abgearbeitet. Bei der planbasierten Strategie erzeugt das LLM zunächst einen vollständigen Plan, dessen Schritte anschließend ausgeführt werden. Bei der iterativen Strategie entscheidet das LLM dagegen nach der Ausführung von Werkzeugen erneut über die benötigten nächsten Schritte. Die Strategien unterscheiden sich damit vor allem darin, auf welcher Ebene und zu welchem Zeitpunkt die Ausführungsentscheidungen getroffen werden.
 
+=== Deterministische Orchestrierung
 
-=== Gemeinsame Grundlage
+Die deterministische Orchestrierung stellt den einfachsten der betrachteten Ansätze dar. Die möglichen Pipelines und deren Abläufe sind vorgegeben. Das LLM erhält die Benutzeranfrage sowie die verfügbaren Werkzeuge und entscheidet, welche der vorgesehenen Pipelines für die Anfrage geeignet ist. Die ausgewählte Pipeline wird anschließend entsprechend ihrer festgelegten Reihenfolge abgearbeitet.
 
-// Systemprompt
-Möglichst ähnliche Systemprompts um vergleichbarkeit zu wahren. Nur Struktur wurde entsprechend anders erklärt. Allgemeine Informationen bleiben gleich. Toolbeschreibung ist bei Methode 2 und 3 gleich. Nur Methode 1 hat aufgrund der Pipelines eine andere Tools und damit eine andere Toolbeschreibung. Dessen Struktur ist aber identisch.
+Die zentrale Eigenschaft dieses Ansatzes besteht darin, dass die Ausführungsstruktur nach der Auswahl der Pipeline nicht mehr durch das LLM verändert wird. Die Reihenfolge der Werkzeugaufrufe sowie die grundsätzliche Struktur des Ablaufs sind damit durch die jeweilige Pipeline bestimmt. Entscheidungen über alternative Ausführungswege finden während der Abarbeitung nicht statt.
 
-Kleine Modelle brauchen oft deutlich klarere und ausführlichere Anweisungen.
+Für die vorliegende Untersuchung ist insbesondere die Auswahl der richtigen Pipeline relevant. Die tatsächliche Ausführung der Werkzeuge ist hierfür nicht erforderlich. Entscheidend ist, ob das LLM anhand der Benutzeranfrage die Pipeline auswählt, die die für die Aufgabe erforderlichen Schritte enthält. Die Pipeline kann anschließend entsprechend der vorgegebenen Struktur ausgeführt werden.
 
-// result.json - gleiche Struktur
-Jeder Toolaufruf erhält eine eindeutige ID. Bei Methode 2 entspricht diese der Position des Aufrufs im vorab generierten Plan. Bei Methode 3 kodiert die ID zusätzlich die Iteration, in der der Toolaufruf erfolgt. Nach Ausführung dient dieselbe ID zur Referenzierung des erzeugten Ergebnisses.
+Die deterministische Strategie bildet damit den Fall mit der stärksten Vorabstrukturierung. Die Ausführungsentscheidung des LLM beschränkt sich auf die Auswahl der geeigneten Pipeline, während die einzelnen Ausführungsschritte anschließend durch die vorgegebene Struktur bestimmt werden. Dies ermöglicht eine einfache und nachvollziehbare Ausführung, begrenzt jedoch gleichzeitig die Möglichkeit, den Ablauf an während der Ausführung gewonnene Informationen anzupassen.
 
-Alle drei Methoden verwenden dieselbe grundlegende Tool-Infrastruktur. Das LLM erhält:
+=== Planbasierte Orchestrierung
 
-- die Benutzeranfrage,
-- einen System-Prompt,
-- die verfügbaren Tools mit ihren Definitionen,
-- den Benutzerkontext,
-- zeitliche Rahmenbedingungen,
-- Datenverfügbarkeiten,
-- fachliche Zusammenhänge bzw. Berechnungsregeln.
+Bei der planbasierten Orchestrierung wird der konkrete Ablauf nicht mehr durch eine vorgegebene Pipeline festgelegt. Stattdessen erzeugt das LLM zunächst einen vollständigen Plan für die Bearbeitung der Benutzeranfrage. Dieser Plan enthält die benötigten Werkzeugaufrufe und deren Reihenfolge.
 
-Die Kommunikation mit dem lokalen Modell erfolgt über eine OpenAI-kompatible Schnittstelle zu Ollama. Die Modellwahl ist dabei unabhängig von der jeweiligen Orchestrierungsmethode.
+Das Prinzip entspricht der in der Forschung beschriebenen Plan-and-Execute-Struktur, bei der zunächst ein globaler Plan erzeugt und anschließend ausgeführt wird @zheRobustEfficientTool2026. Eine explizite Darstellung von Werkzeugabhängigkeiten findet sich beispielsweise bei OrchDAG. Dort werden Werkzeugaufrufe als Knoten eines gerichteten azyklischen Graphen dargestellt, während Kanten die Abhängigkeiten zwischen den Aufrufen beschreiben @luOrchDAGComplexTool2025.
 
-Für jeden LLM-Aufruf werden folgende Kennzahlen erfasst:
+Für die vorliegende Implementierung wird der Plan als Folge von Werkzeugaufrufen dargestellt. Jeder Werkzeugaufruf erhält eine eindeutige ID. Diese entspricht bei dieser Methode seiner Position innerhalb des erzeugten Plans und ermöglicht die Referenzierung des zugehörigen Ergebnisses.
 
-- Laufzeit,(timeout von 120 Sekunden)
-- Input-Tokens,
-- Output-Tokens,
-- Gesamtzahl der Tokens,
-- Finish Reason.
+Die tatsächliche Ausführung des Plans ist für die Evaluation der Orchestrierungsentscheidung nicht erforderlich. Bewertet wird, ob das LLM die für die Anfrage erforderlichen Werkzeuge auswählt und diese in der richtigen Reihenfolge in den Plan aufnimmt. Der erzeugte Plan könnte anschließend Schritt für Schritt abgearbeitet werden. Durch die Referenzierung vorheriger Ergebnisse kann dabei festgelegt werden, welches
+Ergebnis eines vorherigen Werkzeugaufrufs als Eingabe für einen nachfolgenden Aufruf dient.
 
-Bei iterativen Verfahren werden die Werte zusätzlich für jede Iteration separat gespeichert und anschließend zu total_usage aggregiert.
+Im Unterschied zur deterministischen Strategie muss damit nicht bereits vor der Anfrage festgelegt sein, welche konkrete Pipeline für die Aufgabe benötigt wird. Das LLM kann den Ablauf an die jeweilige Anfrage anpassen. Die wesentliche Entscheidung wird jedoch weiterhin vor der Ausführung der geplanten Werkzeugaufrufe getroffen.
 
-=== Methode 1: Deterministisch
+Diese Eigenschaft unterscheidet die planbasierte von einer iterativen Orchestrierung. Bei einem vorab erzeugten Plan stehen die späteren Werkzeugergebnisse zum Zeitpunkt der Planung noch nicht zur Verfügung. Zhe et al. beschreiben entsprechend, dass vollständig vorab erzeugte Pläne gegenüber Abweichungen während der tatsächlichen Ausführung empfindlich sein können @zheRobustEfficientTool2026.
 
-Die erste Methode stellt den einfachsten Orchestrierungsansatz dar.
+=== Iterative Orchestrierung
 
-Das LLM erhält die Benutzeranfrage und die verfügbaren Tools und erzeugt unmittelbar die benötigten Toolaufrufe. Eine explizite Planung oder Aufteilung in mehrere LLM-Iterationen findet nicht statt.
+Die iterative Orchestrierung legt den konkreten Ausführungsweg nichtvollständig im Voraus fest. Stattdessen entscheidet das LLM schrittweise, welche Werkzeugaufrufe als Nächstes erforderlich sind. Die Ergebnisse bereits ausgeführter Werkzeuge werden dabei in die nächste Entscheidungsrunde einbezogen.
 
-Das Ergebnis wird in einer einheitlichen Struktur gespeichert
+Dieses Vorgehen entspricht grundsätzlich dem in der Forschung beschriebenen Zusammenspiel von Planung, Aktion und Beobachtung. Beim ReAct-Prinzip werden die Ergebnisse einer Aktion als Beobachtung verwendet und können die anschließende Entscheidung beeinflussen @hernandezReActModularAgent2025. Hernández et al. beschreiben hierzu eine Architektur, in der ein Planner zunächst Aktionen bestimmt, diese ausgeführt werden und die erhaltenen Ergebnisse anschließend wieder an den Planner zurückgegeben werden. Auf Grundlage dieser Ergebnisse können weitere Aktionen geplant werden @hernandezReActModularAgent2025.
 
-=== Methode 2: Planbasiert
+Die iterative Strategie der vorliegenden Arbeit folgt diesem Grundprinzip. Das LLM erstellt keinen vollständigen Plan für die gesamte Aufgabe. Statt dessen erzeugt es in jeder Iteration die für den nächsten Ausführungsschritt benötigten Werkzeugaufrufe. Die Werkzeugaufrufe werden anschließend ausgeführt und ihre Ergebnisse für die nächste Iteration bereitgestellt. Dadurch kann die Entscheidung über den weiteren Ablauf von den tatsächlich erhaltenen Ergebnissen abhängig gemacht werden.
 
-- Das LLM erstellt zunächst einen vollständigen Plan.
-- Die im Plan enthaltenen Funktionen werden anschließend durch das System abgearbeitet.
-- Der Zustand ist zunächst statisch und erfordert keine iterative Verarbeitung durch das LLM.
-- Ein zentraler Bestandteil ist die Referenzierung vorheriger Ergebnisse. Die Orchestrierungsschicht löst die Referenz auf und übergibt das entsprechende Ergebnis an das nachfolgende Tool.
+Jeder Werkzeugaufruf erhält dabei eine eindeutige ID. Bei der iterativen Methode kodiert diese ID zusätzlich die Iteration, in der der Aufruf erfolgt. Nach der Ausführung wird dieselbe ID zur Referenzierung des erzeugten Ergebnisses verwendet. Dadurch können Ergebnisse eindeutig den zugehörigen Werkzeugaufrufen zugeordnet und in späteren Iterationen referenziert werden.
 
-=== Methode 3: Iterativ
+Die iterative Verarbeitung wird beendet, sobald das LLM den letzten für die Antwort erforderlichen Schritt erreicht. Hierfür steht das Werkzeug `generate_answer` zur Verfügung. Dieser Schritt entscheidet, welche der bisher erzeugten Ergebnisse für die anschließende Antwortgenerierung benötigt werden. Die Orchestrierung kann damit auch dann beendet werden, wenn nicht sämtliche verfügbaren Werkzeuge verwendet wurden.
 
-Hier erstellt das LLM keinen vollständigen Plan im Voraus. Stattdessen entscheidet es iterativ, welche Tools als Nächstes benötigt werden.
+Die Zahl der Iterationen ist für die vorliegende Implementierung auf sechs begrenzt. Innerhalb einer Iteration können mehrere Werkzeugaufrufe vorgesehen werden. Die Werkzeugausführung erfolgt anschließend anhand der erzeugten Aufrufliste.
 
-- iterativ
-- mehrere unabhängige Toolaufrufe pro Interpretation
-- Limit von 6 Iterationen
+Eine zentrale Eigenschaft der iterativen Strategie ist die Verarbeitung der Zwischenergebnisse. Dabei werden die Ergebnisse abhängig von ihrem Datentyp an das LLM übergeben. Insbesondere Zeitreihen würden den Kontext und die Token stark erhöhen. Das Ziel ist es die Zeitreihen mit zur verfügung stehenden Tools zu verarbeiten.
+
+=== Ergebnisaufbereitung
+
+Für alle drei Strategien wird eine gemeinsame grundlegende Werkzeug-Infrastruktur verwendet. Das LLM erhält die Benutzeranfrage, einen System-Prompt, die verfügbaren Werkzeuge mit ihren Definitionen, den Benutzerkontext, zeitliche Rahmenbedingungen, Datenverfügbarkeiten sowie fachliche Zusammenhänge und Berechnungsregeln.
+
+Die Kommunikation mit dem lokalen Modell erfolgt über eine OpenAI-kompatible Schnittstelle zu Ollama. Die Wahl des Modells ist dabei unabhängig von der jeweiligen Orchestrierungsstrategie.
+
+Die Ergebnisse von Werkzeugaufrufen werden in einer einheitlichen Struktur gespeichert. Neben der ID des Ergebnisses werden der verwendete Werkzeugaufruf, dessen Argumente und der Status der Ausführung gespeichert. Bei einer erfolgreichen Ausführung wird zusätzlich das Ergebnis des Werkzeugs abgelegt. Bei einem Fehler wird stattdessen die aufgetretene Fehlermeldung gespeichert.
+
+Für die iterative Orchestrierung werden diese Ergebnisse anschließend für die nächste LLM-Iteration aufbereitet. Dabei werden einfache numerische Ergebnisse wie ganzzahlige oder reelle Werte mit ihrem konkreten Wert bereitgestellt. Zeitreihendaten werden dagegen nicht vollständig an das LLM übergeben. Stattdessen werden der ausgeführte Werkzeugaufruf einschließlich seiner Argumente sowie der Ergebnistyp `timeseries` übergeben. Das LLM erhält damit insbesondere Informationen darüber, welches Werkzeug mit welchen Parametern ausgeführt wurde und dass das Ergebnis eine Zeitreihe darstellt, nicht jedoch die einzelnen Werte der Zeitreihe.
+
+Diese Einschränkung wurde gewählt, um die Übergabe umfangreicher numerischer Zeitreihendaten in den Kontext des LLM zu vermeiden. Wie im Stand der Forschung beschrieben, können längere numerische Zeitreihen einen erheblichen Tokenaufwand verursachen und gleichzeitig Schwierigkeiten bei der Verarbeitung zeitlicher, dimensionaler oder frequenzbezogener Merkmale hervorrufen @liuPictureWorthThousand. Liu et al. zeigen für ein untersuchtes Zeitreihenbeispiel, dass die numerische Repräsentation bis zu 60.000 Input-Tokens umfassen kann. Gleichzeitig untersuchen sie mit VL-Time eine alternative visuelle Repräsentation, die den benötigten Kontext deutlich reduziert @liuPictureWorthThousand.
+
+Die in dieser Arbeit gewählte Ergebnisaufbereitung verfolgt einen anderen Ansatz. Die Zeitreihe selbst bleibt in der Werkzeug- beziehungsweise Ausführungsschicht verfügbar, wird jedoch nicht als vollständige numerische Folge in den Kontext des LLM aufgenommen. Dadurch kann das LLM weiterhin erkennen, dass ein entsprechender Werkzeugaufruf erfolgreich eine Zeitreihe bereitgestellt hat und auf welchen Zeitraum sich der Aufruf bezieht. Die Verarbeitung der eigentlichen Zeitreihendaten erfolgt dagegen außerhalb des LLM-Kontexts.
+
+Auch andere nicht-numerische oder umfangreiche Ergebnisse werden nicht zwangsläufig vollständig an das LLM übergeben. Bei erzeugten Plots wird beispielsweise lediglich der Ergebnistyp `plot` als Information für die weitere Orchestrierung bereitgestellt. Die eigentliche Darstellung wird damit nicht Bestandteil des textuellen Kontexts der nächsten Orchestrierungsiteration.
+
+=== Gemeinsame Konfiguration und Messgrößen
+
+Um die drei Strategien möglichst vergleichbar zu untersuchen, werden weitgehend identische System-Prompts verwendet. Die allgemeinen Informationen und die grundlegende Struktur der Werkzeugbeschreibungen bleiben über die Methoden hinweg gleich. Unterschiede bestehen dort, wo sie für die jeweilige Orchestrierungsstrategie erforderlich sind. Die deterministische Strategie verwendet aufgrund der vorgegebenen Pipelines eine entsprechend angepasste Werkzeugbeschreibung.
+
+Für jeden LLM-Aufruf werden die Laufzeit, die Anzahl der Input-Tokens, die Anzahl der Output-Tokens, die Gesamtzahl der Tokens sowie die Finish Reason erfasst. Für die LLM-Aufrufe wird ein Timeout von 120 Sekunden verwendet. Bei der iterativen Strategie werden diese Werte zusätzlich für jede Iteration separat gespeichert und anschließend zu einer Gesamtnutzung aggregiert.
+
+Die drei Strategien unterscheiden sich damit gezielt in der Organisation der Werkzeugausführung, während die übrige technische Grundlage möglichst vergleichbar gehalten wird. Die deterministische Strategie bildet dabei den Fall einer vorgegebenen Ausführungsstruktur, die planbasierte Strategie einen durch das LLM erzeugten Ablauf und die iterative Strategie eine schrittweise, auf Zwischenergebnissen basierende Orchestrierung.
 
 == Modellauswahl
 

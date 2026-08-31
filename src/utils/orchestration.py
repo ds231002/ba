@@ -233,7 +233,7 @@ def _create_available_results(results: dict) -> list[dict]:
                 "tool": tool,
                 "arguments": arguments,
                 "result": {
-                    "type": type(result).__sname__,
+                    "type": type(result).__name__,
                     "value": result
                 }                       
             })
