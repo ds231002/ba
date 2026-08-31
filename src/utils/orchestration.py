@@ -38,14 +38,23 @@ def generate_result_for_task_with_method_1(
     try:
         system_prompt = create_system_prompt_for_method_1()
         response = generate_response(task, system_prompt, model)
-        answer = json.loads(response["answer"])
-        tool_calls = answer["pipelines"]
         usage = response["usage"]
         finish_reason = response["finish_reason"]
     except Exception as e:
         error = {
             "type": type(e).__name__,
-            "message": str(e)
+            "message": str(e),
+            "step": "response"
+        }    
+
+    try:
+        answer = json.loads(response["answer"])
+        tool_calls = answer["pipelines"]
+    except Exception as e:
+        error = {
+            "type": type(e).__name__,
+            "message": str(e),
+            "step": "answer json"
         }
 
     return {
@@ -78,14 +87,23 @@ def generate_result_for_task_with_method_2(
     try:
         system_prompt = create_system_prompt_for_method_2()
         response = generate_response(task, system_prompt, model)
-        answer = json.loads(response["answer"])
-        tool_calls = answer["plan"]
         usage = response["usage"]
         finish_reason = response["finish_reason"]
     except Exception as e:
         error = {
             "type": type(e).__name__,
-            "message": str(e)
+            "message": str(e),
+            "response": "response"
+        }
+
+    try:
+        answer = json.loads(response["answer"])
+        tool_calls = answer["plan"]
+    except Exception as e:
+        error = {
+            "type": type(e).__name__,
+            "message": str(e),
+            "step": "answer json"
         }
 
     return {
@@ -207,41 +225,63 @@ def generate_result_for_task_with_method_3(
 
     try:
         while current_iteration < max_iterations:
-            system_prompt = create_system_prompt_for_method_3(available_results)
-            response = generate_response(task, system_prompt, model)
-            answer = json.loads(response["answer"])
-            # response = load_json("output/results/methode_3_first_iteration.json")
 
-            tool_calls = answer["tool_calls"]
-            tool_calls_with_ids = _add_tool_call_ids(tool_calls, current_iteration)
+            tool_calls = None
+
+            try:
+                system_prompt = create_system_prompt_for_method_3(available_results)
+                response = generate_response(task, system_prompt, model)
+                usage = response["usage"]
+                finish_reason = response["finish_reason"]
+            except Exception as e:
+                error = {
+                    "type": type(e).__name__,
+                    "message": str(e),
+                    "step": "response"
+                }
+
+            try:
+                answer = json.loads(response["answer"])
+                tool_calls = answer["tool_calls"]
+                tool_calls = _add_tool_call_ids(tool_calls, current_iteration)
+
+                if _is_generate_answer(tool_calls):
+                    break
+    
+                new_results = execute_tool_calls(tool_calls)
+                result_store.update(new_results)
+    
+                new_available_results = _create_available_results(new_results)
+                available_results.extend(new_available_results)
+            except Exception as e:
+                error = {
+                    "type": type(e).__name__,
+                    "message": str(e),
+                    "step": "answer json"
+                }
 
             iteration = {
-                "tool_calls": tool_calls_with_ids,
-                "usage": response["usage"],
-                "finish_reason": response["finish_reason"]
+                "tool_calls": tool_calls,
+                "usage": usage,
+                "finish_reason": finish_reason
             }
 
             iterations.append(iteration)
 
-            if _is_generate_answer(tool_calls_with_ids):
-                break
-
-            new_results = execute_tool_calls(tool_calls_with_ids)
-            result_store.update(new_results)
-
-            new_available_results = _create_available_results(new_results)
-            available_results.extend(new_available_results)
+ 
 
             current_iteration += 1
-
-        total_usage = _calculate_total_usage(iterations)
 
     except Exception as e:
         error = {
             "type": type(e).__name__,
-            "message": str(e)
+            "message": str(e),
+            "step": "general"
         }
 
+    if iterations:
+        total_usage = _calculate_total_usage(iterations)
+    
     return {
         "task_id": task_id,
         "task_type": task_type,
