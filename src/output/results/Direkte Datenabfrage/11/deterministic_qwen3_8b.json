@@ -8,15 +8,15 @@
         {
             "tool": "request_not_supported",
             "arguments": {
-                "message": "Die angefragten Daten sind nicht verfügbar, da Energiedaten ausschließlich bis einschließlich 31.12.2025 bereitstehen."
+                "message": "Kann den aktuellen Verbrauch nicht eindeutig bestimmen. Bitte kläre, ob du den Verbrauch eines spezifischen Zählpunkts (mp_1, mp_2) oder den Gesamtverbrauch aller Verbrauchszählpunkte meinst."
             }
         }
     ],
     "usage": {
-        "runtime_seconds": 15.13943880000079,
-        "input_tokens": 3516,
-        "output_tokens": 1299,
-        "total_tokens": 4815
+        "runtime_seconds": 11.828787899999952,
+        "input_tokens": 3571,
+        "output_tokens": 787,
+        "total_tokens": 4358
     },
     "finish_reason": "stop",
     "error": null

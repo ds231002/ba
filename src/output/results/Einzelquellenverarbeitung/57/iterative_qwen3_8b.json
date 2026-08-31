@@ -1,0 +1,25 @@
+{
+    "task_id": 57,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Zeige mir eine Grafik von meinem Zählpunkt von mp_1 wenn ich doppelt so viel verbrauchen würde.",
+    "method": "iterative",
+    "model": "qwen3:8b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04657530000077,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.047,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "task_id": 37,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie ist meine Verbrauch über letzte 12 Monate?",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "add_timeseries",
+            "arguments": {
+                "metering_point_id_1": "mp_1",
+                "metering_point_id_2": "mp_2",
+                "start": "2025-01-02 00:00:00",
+                "end": "2025-12-31 23:59:59"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 18.86740009999994,
+        "input_tokens": 3578,
+        "output_tokens": 1370,
+        "total_tokens": 4948
+    },
+    "finish_reason": "stop",
+    "error": null
+}

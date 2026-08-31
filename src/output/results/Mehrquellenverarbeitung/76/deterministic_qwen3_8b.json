@@ -1,0 +1,23 @@
+{
+    "task_id": 76,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Berechne mir das Gemeinschaftspotential.",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Um das Gemeinschaftspotential berechnen zu können, benötige ich die ID des Zählpunkts und einen Zeitraum (Start- und Enddatum). Bitte geben Sie diese Informationen an."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 17.52048179999838,
+        "input_tokens": 3575,
+        "output_tokens": 1328,
+        "total_tokens": 4903
+    },
+    "finish_reason": "stop",
+    "error": null
+}

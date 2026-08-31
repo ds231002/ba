@@ -1,0 +1,23 @@
+{
+    "task_id": 28,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie wird das Wetter morgen?",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Die Anfrage nach dem Wetter morgen kann nicht mit den verfügbaren Tools beantwortet werden. Es stehen keine Wetterdaten oder Vorhersagen zur Verfügung."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 6.225056199999017,
+        "input_tokens": 3571,
+        "output_tokens": 278,
+        "total_tokens": 3849
+    },
+    "finish_reason": "stop",
+    "error": null
+}

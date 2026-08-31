@@ -38,8 +38,23 @@ def generate_result_for_task_with_method_1(
     try:
         system_prompt = create_system_prompt_for_method_1()
         response = generate_response(task, system_prompt, model)
+
         usage = response["usage"]
         finish_reason = response["finish_reason"]
+
+        if finish_reason == "timeout":
+            return {
+                "task_id": task_id,
+                "task_type": task_type,
+                "task": task,
+                "method": method,
+                "model": model,
+                "tool_calls": tool_calls,
+                "usage": usage,
+                "finish_reason": finish_reason,
+                "error": error
+            }
+        
     except Exception as e:
         error = {
             "type": type(e).__name__,
@@ -100,8 +115,23 @@ def generate_result_for_task_with_method_2(
     try:
         system_prompt = create_system_prompt_for_method_2()
         response = generate_response(task, system_prompt, model)
+
         usage = response["usage"]
         finish_reason = response["finish_reason"]
+
+        if finish_reason == "timeout":
+            return {
+                "task_id": task_id,
+                "task_type": task_type,
+                "task": task,
+                "method": method,
+                "model": model,
+                "tool_calls": tool_calls,
+                "usage": usage,
+                "finish_reason": finish_reason,
+                "error": error
+            }
+
     except Exception as e:
         error = {
             "type": type(e).__name__,
@@ -203,7 +233,7 @@ def _create_available_results(results: dict) -> list[dict]:
                 "tool": tool,
                 "arguments": arguments,
                 "result": {
-                    "type": type(result).__name__,
+                    "type": type(result).__sname__,
                     "value": result
                 }                       
             })
@@ -258,6 +288,7 @@ def generate_result_for_task_with_method_3(
         try:
             system_prompt = create_system_prompt_for_method_3(available_results)
             response = generate_response(task, system_prompt, model)
+
             usage = response["usage"]
             finish_reason = response["finish_reason"]
 

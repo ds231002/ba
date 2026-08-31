@@ -1,0 +1,102 @@
+{
+    "task_id": 65,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Berechne eine Grafik mit dem Verbrauch meiner Energiegemeinschaft abzüglich meines Verbrauchs für letztes Jahr.",
+    "method": "plan-based",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "id": "step_1",
+            "tool": "get_community_consumption",
+            "arguments": {
+                "start": "2025-01-01 00:00:00",
+                "end": "2025-12-31 23:59:59"
+            }
+        },
+        {
+            "id": "step_2",
+            "tool": "get_measured_energy",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-01-01 00:00:00",
+                "end": "2025-12-31 23:59:59"
+            }
+        },
+        {
+            "id": "step_3",
+            "tool": "get_measured_energy",
+            "arguments": {
+                "metering_point_id": "mp_2",
+                "start": "2025-01-01 00:00:00",
+                "end": "2025-12-31 23:59:59"
+            }
+        },
+        {
+            "id": "step_4",
+            "tool": "add_timeseries",
+            "arguments": {
+                "timeseries": [
+                    {
+                        "$ref": "step_2"
+                    },
+                    {
+                        "$ref": "step_3"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "step_5",
+            "tool": "subtract_timeseries",
+            "arguments": {
+                "minuend": {
+                    "$ref": "step_1"
+                },
+                "subtrahend": {
+                    "$ref": "step_4"
+                }
+            }
+        },
+        {
+            "id": "step_6",
+            "tool": "create_energy_plot",
+            "arguments": {
+                "title": "Energiegemeinschaftsverbrauch abzüglich meines Verbrauchs (2025)",
+                "labels": [
+                    "Energiegemeinschaft",
+                    "Mein Verbrauch",
+                    "Differenz"
+                ],
+                "energy_data": [
+                    {
+                        "$ref": "step_1"
+                    },
+                    {
+                        "$ref": "step_4"
+                    },
+                    {
+                        "$ref": "step_5"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "step_7",
+            "tool": "generate_answer",
+            "arguments": {
+                "result_ids": [
+                    "step_6"
+                ],
+                "message": "Hier ist die Grafik, die den Verbrauch der Energiegemeinschaft abzüglich Ihres Verbrauchs für das Jahr 2025 zeigt. Die Differenz wird als dritte Linie dargestellt."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 21.355278299999554,
+        "input_tokens": 4997,
+        "output_tokens": 1681,
+        "total_tokens": 6678
+    },
+    "finish_reason": "stop",
+    "error": null
+}

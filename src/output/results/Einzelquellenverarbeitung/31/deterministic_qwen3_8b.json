@@ -1,0 +1,23 @@
+{
+    "task_id": 31,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Generiere mir eine Grafik vom Verbrauch meiner Energiegemeinschaft.",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Es ist keine Grafik für den Gesamtverbrauch der Energiegemeinschaft verfügbar. Die verfügbaren Tools liefern lediglich numerische Werte für den Gesamtverbrauch, nicht grafische Darstellungen."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 10.061506199999712,
+        "input_tokens": 3580,
+        "output_tokens": 647,
+        "total_tokens": 4227
+    },
+    "finish_reason": "stop",
+    "error": null
+}

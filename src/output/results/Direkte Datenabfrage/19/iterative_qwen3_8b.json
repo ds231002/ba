@@ -16,10 +16,10 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 11.053878700000496,
-                "input_tokens": 5503,
-                "output_tokens": 882,
-                "total_tokens": 6385
+                "runtime_seconds": 12.015942699999869,
+                "input_tokens": 5398,
+                "output_tokens": 734,
+                "total_tokens": 6132
             },
             "finish_reason": "stop"
         },
@@ -34,10 +34,10 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 10.33072329999959,
-                "input_tokens": 5560,
-                "output_tokens": 840,
-                "total_tokens": 6400
+                "runtime_seconds": 15.830319900000177,
+                "input_tokens": 5455,
+                "output_tokens": 1086,
+                "total_tokens": 6541
             },
             "finish_reason": "stop"
         },
@@ -52,10 +52,10 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 188.06176099999902,
-                "input_tokens": 5616,
-                "output_tokens": 14275,
-                "total_tokens": 19891
+                "runtime_seconds": 16.050772100001268,
+                "input_tokens": 5511,
+                "output_tokens": 1098,
+                "total_tokens": 6609
             },
             "finish_reason": "stop"
         },
@@ -63,29 +63,61 @@
             "tool_calls": [
                 {
                     "id": "i4_r1",
-                    "tool": "generate_answer",
+                    "tool": "get_current_energy",
                     "arguments": {
-                        "result_ids": [
-                            "get_current_energy:mp_1"
-                        ],
-                        "message": "Der Zählpunkt mp_1 ist ein Verbrauchszählpunkt und erzeugt daher keine Energie. Sein aktueller Verbrauch beträgt 3,21 kW."
+                        "metering_point_id": "mp_1"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 18.77745550000145,
-                "input_tokens": 5672,
-                "output_tokens": 1498,
-                "total_tokens": 7170
+                "runtime_seconds": 15.14177969999946,
+                "input_tokens": 5567,
+                "output_tokens": 1019,
+                "total_tokens": 6586
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i5_r1",
+                    "tool": "get_current_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 21.65050109999902,
+                "input_tokens": 5623,
+                "output_tokens": 1573,
+                "total_tokens": 7196
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i6_r1",
+                    "tool": "get_current_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 14.549696399999448,
+                "input_tokens": 5679,
+                "output_tokens": 964,
+                "total_tokens": 6643
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 228.22381850000056,
-        "input_tokens": 22351,
-        "output_tokens": 17495,
-        "total_tokens": 39846
-    },
-    "error": null
+        "runtime_seconds": 95.239,
+        "input_tokens": 33233,
+        "output_tokens": 6474,
+        "total_tokens": 39707
+    }
 }

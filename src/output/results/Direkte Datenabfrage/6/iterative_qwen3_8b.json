@@ -16,10 +16,10 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.364130899999509,
-                "input_tokens": 5506,
-                "output_tokens": 147,
-                "total_tokens": 5653
+                "runtime_seconds": 5.562845200000083,
+                "input_tokens": 5401,
+                "output_tokens": 170,
+                "total_tokens": 5571
             },
             "finish_reason": "stop"
         },
@@ -30,26 +30,25 @@
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "get_participation_factor_mp_3"
+                            "i2_r1"
                         ],
                         "message": "Der Teilnahmefaktor für den Zählpunkt mp_3 beträgt 0,7."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 6.583574900001622,
-                "input_tokens": 5563,
-                "output_tokens": 531,
-                "total_tokens": 6094
+                "runtime_seconds": 6.614101900000605,
+                "input_tokens": 5458,
+                "output_tokens": 283,
+                "total_tokens": 5741
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 8.947705800001131,
-        "input_tokens": 11069,
-        "output_tokens": 678,
-        "total_tokens": 11747
-    },
-    "error": null
+        "runtime_seconds": 12.177,
+        "input_tokens": 10859,
+        "output_tokens": 453,
+        "total_tokens": 11312
+    }
 }

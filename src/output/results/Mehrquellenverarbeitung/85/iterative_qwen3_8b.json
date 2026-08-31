@@ -1,0 +1,25 @@
+{
+    "task_id": 85,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Berechne mir die Eigenabdeckung für meinen Verbraucherzählpunkt mp_2 für letzte Woche.",
+    "method": "iterative",
+    "model": "qwen3:8b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04441249999945,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.044,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

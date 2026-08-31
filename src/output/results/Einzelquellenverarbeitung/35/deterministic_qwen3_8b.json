@@ -1,0 +1,26 @@
+{
+    "task_id": 35,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Zeige mir meinen Verbrauch über die letzten drei Monate.",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "add_timeseries",
+            "arguments": {
+                "metering_point_id_1": "mp_1",
+                "metering_point_id_2": "mp_2",
+                "start": "2025-10-02 00:00:00",
+                "end": "2025-12-31 23:59:59"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 21.392626600001677,
+        "input_tokens": 3577,
+        "output_tokens": 1554,
+        "total_tokens": 5131
+    },
+    "finish_reason": "stop",
+    "error": null
+}

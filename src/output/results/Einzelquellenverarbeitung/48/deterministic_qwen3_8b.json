@@ -1,0 +1,26 @@
+{
+    "task_id": 48,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie hoch ist war der Durchschnittsverbrauch von mp_1 letzte Woche?",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "calc_statistical_value",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-12-26 00:00:00",
+                "end": "2025-12-31 23:59:59",
+                "statistic_type": "avg"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 8.371661200000744,
+        "input_tokens": 3583,
+        "output_tokens": 485,
+        "total_tokens": 4068
+    },
+    "finish_reason": "stop",
+    "error": null
+}

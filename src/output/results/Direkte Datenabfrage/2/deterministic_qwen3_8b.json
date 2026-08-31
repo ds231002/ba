@@ -8,15 +8,15 @@
         {
             "tool": "request_not_supported",
             "arguments": {
-                "message": "Kann den Teilnahmefaktor für 'mein Verbrauch' nicht bestimmen. Bitte kläre, ob du den Teilnahmefaktor für einen spezifischen Verbrauchszählpunkt (mp_1 oder mp_2) meinst oder eine andere Interpretation gemeint ist."
+                "message": "Kann den Teilnahmefaktor für 'meinen Verbrauch' nicht bestimmen. Bitte geben Sie an, ob Sie den Teilnahmefaktor für einen spezifischen Verbrauchszählpunkt (mp_1 oder mp_2) oder den Gesamtverbrauch Ihrer Zählpunkte meinen."
             }
         }
     ],
     "usage": {
-        "runtime_seconds": 10.896777300000394,
-        "input_tokens": 3522,
-        "output_tokens": 924,
-        "total_tokens": 4446
+        "runtime_seconds": 11.095906200000172,
+        "input_tokens": 3577,
+        "output_tokens": 699,
+        "total_tokens": 4276
     },
     "finish_reason": "stop",
     "error": null

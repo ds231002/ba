@@ -13,13 +13,20 @@
                     "arguments": {
                         "metering_point_id": "mp_2"
                     }
+                },
+                {
+                    "id": "i1_r2",
+                    "tool": "get_current_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_2"
+                    }
                 }
             ],
             "usage": {
-                "runtime_seconds": 11.139641499999925,
-                "input_tokens": 5510,
-                "output_tokens": 893,
-                "total_tokens": 6403
+                "runtime_seconds": 20.17090880000069,
+                "input_tokens": 5405,
+                "output_tokens": 1482,
+                "total_tokens": 6887
             },
             "finish_reason": "stop"
         },
@@ -30,26 +37,25 @@
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "get_participation_factor_mp_2"
+                            "i2_r1"
                         ],
-                        "message": "Der Teilnahmefaktor für den Zählpunkt mp_2 beträgt 0,7. Dieser Wert beschreibt, wie stark Sie an der Energiegemeinschaft teilnehmen. Für eine genaue Auswertung der Energiebeteiligung wäre zusätzliche Messdaten erforderlich."
+                        "message": "Der Teilnahmefaktor für den Zählpunkt mp_2 beträgt 0,7 (70 %). Dieser Wert gibt an, wie stark Sie mit diesem Zählpunkt an der Energiegemeinschaft teilnehmen."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 15.820864900000743,
-                "input_tokens": 5567,
-                "output_tokens": 1282,
-                "total_tokens": 6849
+                "runtime_seconds": 8.947093200000381,
+                "input_tokens": 5518,
+                "output_tokens": 499,
+                "total_tokens": 6017
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 26.960506400000668,
-        "input_tokens": 11077,
-        "output_tokens": 2175,
-        "total_tokens": 13252
-    },
-    "error": null
+        "runtime_seconds": 29.118,
+        "input_tokens": 10923,
+        "output_tokens": 1981,
+        "total_tokens": 12904
+    }
 }

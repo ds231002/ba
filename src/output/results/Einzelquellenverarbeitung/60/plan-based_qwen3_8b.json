@@ -1,0 +1,20 @@
+{
+    "task_id": 60,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Ich möchte sehen wie mein Verbrauch von mp_2 aussieht wenn ich nur noch halb so viel verbrauchen würde.",
+    "method": "plan-based",
+    "model": "qwen3:8b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.04609589999927,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": {
+        "type": "TypeError",
+        "message": "the JSON object must be str, bytes or bytearray, not NoneType",
+        "step": "answer_json"
+    }
+}

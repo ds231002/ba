@@ -32,7 +32,7 @@
     },
     {
       "tool": "get_community_generation",
-      "description": "Liefert die Gesamterzeugung der Energiegemeinschaft für einen definierten Zeitraum.",
+      "description": "Liefert die Gesamterzeugung der Energiegemeinschaft für einen definierten Zeitraum als Grafik.",
       "arguments": {
         "start": {
           "description": "Startzeitpunkt des Zeitraums im Format YYYY-MM-DD HH:MM:SS. Der Startzeitpunkt ist eingeschlossen."
@@ -44,7 +44,7 @@
     },
     {
       "tool": "get_measured_energy",
-      "description": "Liefert die gemessene Energie eines Zählpunkts für einen definierten Zeitraum. Die Art des Zählpunkts bestimmt, ob der Wert den Verbrauch oder die Erzeugung beschreibt.",
+      "description": "Liefert die gemessene Energie eines Zählpunkts für einen definierten Zeitraum als Grafik. Die Art des Zählpunkts bestimmt, ob der Wert den Verbrauch oder die Erzeugung beschreibt.",
       "arguments": {
         "metering_point_id": {
           "description": "Eindeutige ID des Zählpunkts."
@@ -77,7 +77,7 @@
     },
     {
       "tool": "add_timeseries",
-      "description": "Addiert die gemessenen Energiewerte zweier Zählpunkte für jedes Messintervall.",
+      "description": "Addiert die gemessenen Energiewerte zweier Zählpunkte für jedes Messintervall und erzeugt eine Grafik.",
       "arguments": {
         "metering_point_id_1": {
           "description": "Eindeutige ID des ersten Zählpunkts."
@@ -95,7 +95,7 @@
     },
     {
       "tool": "subtract_timeseries",
-      "description": "Subtrahiert die gemessenen Energiewerte eines Zählpunkts von den gemessenen Energiewerten eines anderen Zählpunkts für jedes Messintervall.",
+      "description": "Subtrahiert die gemessenen Energiewerte eines Zählpunkts von den gemessenen Energiewerten eines anderen Zählpunkts für jedes Messintervall und erzeugt eine Grafik.",
       "arguments": {
         "metering_point_id_minuend": {
           "description": "Eindeutige ID des Zählpunkts, von dessen Zeitreihe subtrahiert wird."
@@ -113,7 +113,7 @@
     },
     {
       "tool": "multiply_timeseries",
-      "description": "Multipliziert die gemessenen Energiewerte eines Zählpunkts für jedes Messintervall mit einem Faktor.",
+      "description": "Multipliziert die gemessenen Energiewerte eines Zählpunkts für jedes Messintervall mit einem Faktor und erzeugt eine Grafik.",
       "arguments": {
         "metering_point_id": {
           "description": "Eindeutige ID des Zählpunkts."
@@ -131,7 +131,7 @@
     },
     {
       "tool": "divide_timeseries",
-      "description": "Dividiert die gemessenen Energiewerte eines Zählpunkts für jedes Messintervall durch einen Divisor.",
+      "description": "Dividiert die gemessenen Energiewerte eines Zählpunkts für jedes Messintervall durch einen Divisor und erzeugt eine Grafik.",
       "arguments": {
         "metering_point_id": {
           "description": "Eindeutige ID des Zählpunkts."
@@ -149,7 +149,7 @@
     },
     {
       "tool": "calculate_weighted_measured_energy",
-      "description": "Berechnet die gemäß Teilnahmefaktor gewichtete gemessene Energie eines Zählpunkts für einen definierten Zeitraum.",
+      "description": "Berechnet die gemäß Teilnahmefaktor gewichtete gemessene Energie eines Zählpunkts für einen definierten Zeitraum und erzeugt eine Grafik.",
       "arguments": {
         "metering_point_id": {
           "description": "Eindeutige ID des Zählpunkts."
@@ -164,7 +164,7 @@
     },
     {
       "tool": "calculate_community_potential",
-      "description": "Berechnet für einen Zählpunkt dessen potenziellen Anteil an der Gesamterzeugung der Energiegemeinschaft für einen definierten Zeitraum.",
+      "description": "Berechnet für einen Zählpunkt dessen potenziellen Anteil an der Gesamterzeugung der Energiegemeinschaft für einen definierten Zeitraum und erzeugt eine Grafik.",
       "arguments": {
         "metering_point_id": {
           "description": "Eindeutige ID des Zählpunkts."
@@ -179,7 +179,7 @@
     },
     {
       "tool": "calculate_community_coverage",
-      "description": "Berechnet die Eigenabdeckung eines Verbrauchszählpunkts für einen definierten Zeitraum.",
+      "description": "Berechnet die Eigenabdeckung eines Verbrauchszählpunkts für einen definierten Zeitraum und erzeugt eine Grafik.",
       "arguments": {
         "metering_point_id": {
           "description": "Eindeutige ID des Verbrauchszählpunkts."

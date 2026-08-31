@@ -1,0 +1,41 @@
+{
+    "task_id": 89,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Ich wüsste gerne für letzte Woche den Verbrauch gewichtet als auch ungewichtet für mp_1 und dessen Eigenabdeckung.",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "get_measured_energy",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-12-25 00:00:00",
+                "end": "2025-12-31 23:59:59"
+            }
+        },
+        {
+            "tool": "calculate_weighted_measured_energy",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-12-25 00:00:00",
+                "end": "2025-12-31 23:59:59"
+            }
+        },
+        {
+            "tool": "calculate_community_coverage",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-12-25 00:00:00",
+                "end": "2025-12-31 23:59:59"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 18.78748479999922,
+        "input_tokens": 3595,
+        "output_tokens": 1488,
+        "total_tokens": 5083
+    },
+    "finish_reason": "stop",
+    "error": null
+}

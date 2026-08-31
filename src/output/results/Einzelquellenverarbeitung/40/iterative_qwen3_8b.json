@@ -1,0 +1,45 @@
+{
+    "task_id": 40,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Hallo, ich würde gerne meine Erzeugung über das letzte Jahr sehen.",
+    "method": "iterative",
+    "model": "qwen3:8b",
+    "iterations": [
+        {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_measured_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_3",
+                        "start": "2025-01-02 00:00:00",
+                        "end": "2025-12-31 23:59:59"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 15.2038749000003,
+                "input_tokens": 5403,
+                "output_tokens": 1006,
+                "total_tokens": 6409
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04348270000082,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 135.247,
+        "input_tokens": 5403,
+        "output_tokens": 1006,
+        "total_tokens": 6409
+    }
+}

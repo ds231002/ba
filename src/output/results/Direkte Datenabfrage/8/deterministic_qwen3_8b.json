@@ -8,15 +8,15 @@
         {
             "tool": "get_participation_factor",
             "arguments": {
-                "metering_point_id": "mp1"
+                "metering_point_id": "mp_1"
             }
         }
     ],
     "usage": {
-        "runtime_seconds": 2.452007500000036,
-        "input_tokens": 3517,
-        "output_tokens": 189,
-        "total_tokens": 3706
+        "runtime_seconds": 6.220807599998807,
+        "input_tokens": 3572,
+        "output_tokens": 268,
+        "total_tokens": 3840
     },
     "finish_reason": "stop",
     "error": null

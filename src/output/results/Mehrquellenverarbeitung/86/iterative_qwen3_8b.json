@@ -1,0 +1,25 @@
+{
+    "task_id": 86,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Gib mir bitte den gewichteten Verbrauch aller meiner Zählpunkte letzte Woche und gib mir auch deren Teilnamefaktoren.",
+    "method": "iterative",
+    "model": "qwen3:8b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04437739999776,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.044,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

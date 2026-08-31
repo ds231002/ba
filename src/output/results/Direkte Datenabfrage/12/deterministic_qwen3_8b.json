@@ -6,17 +6,17 @@
     "model": "qwen3:8b",
     "tool_calls": [
         {
-            "tool": "get_current_energy",
+            "tool": "request_not_supported",
             "arguments": {
-                "metering_point_id": "mp_1"
+                "message": "Die Daten für den angefragten Zeitraum sind nicht verfügbar, da Energiedaten ausschließlich bis einschließlich 31.12.2025 bereitstehen."
             }
         }
     ],
     "usage": {
-        "runtime_seconds": 3.7177362000002177,
-        "input_tokens": 3518,
-        "output_tokens": 303,
-        "total_tokens": 3821
+        "runtime_seconds": 15.57475930000146,
+        "input_tokens": 3573,
+        "output_tokens": 1112,
+        "total_tokens": 4685
     },
     "finish_reason": "stop",
     "error": null

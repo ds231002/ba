@@ -11,24 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Können Sie bitte klären, ob Sie den Verbrauch von einem bestimmten Zählpunkt (mp_1 oder mp_2) oder den Gesamtverbrauch beider Verbrauchszählpunkte meinen?"
+                        "message": "Können Sie bitte klären, ob Sie den Gesamtverbrauch aller eigenen Verbrauchszählpunkte (mp_1 und mp_2) oder den Verbrauch eines spezifischen Zählpunkts (z. B. mp_1 oder mp_2) wissen möchten?"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 9.557575899998483,
-                "input_tokens": 5500,
-                "output_tokens": 749,
-                "total_tokens": 6249
+                "runtime_seconds": 15.350432600000204,
+                "input_tokens": 5395,
+                "output_tokens": 1020,
+                "total_tokens": 6415
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 9.557575899998483,
-        "input_tokens": 5500,
-        "output_tokens": 749,
-        "total_tokens": 6249
-    },
-    "error": null
+        "runtime_seconds": 15.35,
+        "input_tokens": 5395,
+        "output_tokens": 1020,
+        "total_tokens": 6415
+    }
 }

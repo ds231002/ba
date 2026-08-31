@@ -1,0 +1,26 @@
+{
+    "task_id": 60,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Ich möchte sehen wie mein Verbrauch von mp_2 aussieht wenn ich nur noch halb so viel verbrauchen würde.",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "multiply_timeseries",
+            "arguments": {
+                "metering_point_id": "mp_2",
+                "start": "2025-01-01 00:00:00",
+                "end": "2025-12-31 23:59:59",
+                "factor": 0.5
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 18.00204070000109,
+        "input_tokens": 3591,
+        "output_tokens": 1377,
+        "total_tokens": 4968
+    },
+    "finish_reason": "stop",
+    "error": null
+}

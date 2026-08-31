@@ -1,0 +1,23 @@
+{
+    "task_id": 53,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie hoch war der maximale Verbrauch meiner gesamten Energiegemeinschaft letztes Jahr?",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "request_not_supported",
+            "arguments": {
+                "message": "Der maximale Verbrauch der Energiegemeinschaft kann nicht direkt abgerufen werden. Es ist nur der Gesamtverbrauch für einen definierten Zeitraum erhältlich."
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 13.256859500001156,
+        "input_tokens": 3585,
+        "output_tokens": 928,
+        "total_tokens": 4513
+    },
+    "finish_reason": "stop",
+    "error": null
+}

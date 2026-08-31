@@ -1,0 +1,25 @@
+{
+    "task_id": 79,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Gib mir das Gemeinschaftspotential aller meiner Verbraucherzählpunkte.",
+    "method": "iterative",
+    "model": "qwen3:8b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04726429999937,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.047,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

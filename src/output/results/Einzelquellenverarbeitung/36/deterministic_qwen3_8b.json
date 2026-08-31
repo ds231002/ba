@@ -1,0 +1,20 @@
+{
+    "task_id": 36,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Zeige mir meinen Verbrauch von mp_1 über die letzten drei Monate.",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.04773740000019,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": {
+        "type": "TypeError",
+        "message": "the JSON object must be str, bytes or bytearray, not NoneType",
+        "step": "answer_json"
+    }
+}

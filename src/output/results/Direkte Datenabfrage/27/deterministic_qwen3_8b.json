@@ -1,0 +1,23 @@
+{
+    "task_id": 27,
+    "task_type": "Direkte Datenabfrage",
+    "task": "Wie viel bekomme ich vür meinen erzeugten Strom?",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "get_participation_factor",
+            "arguments": {
+                "metering_point_id": "mp_3"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 9.672913599999447,
+        "input_tokens": 3576,
+        "output_tokens": 609,
+        "total_tokens": 4185
+    },
+    "finish_reason": "stop",
+    "error": null
+}

@@ -8,21 +8,16 @@
         {
             "tool_calls": null,
             "usage": {
-                "runtime_seconds": 120.0715779000002,
+                "runtime_seconds": 120.0558101000006,
                 "input_tokens": null,
                 "output_tokens": null,
                 "total_tokens": null
             },
-            "finish_reason": "timeout",
-            "error": {
-                "type": "TypeError",
-                "message": "the JSON object must be str, bytes or bytearray, not NoneType",
-                "step": "answer_json"
-            }
+            "finish_reason": "timeout"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 120.072,
+        "runtime_seconds": 120.056,
         "input_tokens": 0,
         "output_tokens": 0,
         "total_tokens": 0

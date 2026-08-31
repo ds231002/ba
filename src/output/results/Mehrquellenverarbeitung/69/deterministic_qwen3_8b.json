@@ -1,0 +1,20 @@
+{
+    "task_id": 69,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Gib mir den Gewichteten Verbrauch über das letzte Jahr für jeden meiner Verbraucherzählpunkte.",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [],
+    "usage": {
+        "runtime_seconds": 120.0533718000006,
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null
+    },
+    "finish_reason": "timeout",
+    "error": {
+        "type": "TypeError",
+        "message": "the JSON object must be str, bytes or bytearray, not NoneType",
+        "step": "answer_json"
+    }
+}

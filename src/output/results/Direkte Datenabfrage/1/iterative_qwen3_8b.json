@@ -11,24 +11,24 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Könnten Sie bitte klären, für welchen Zählpunkt (mp_1, mp_2 oder mp_3) Sie den Teilnahmefaktor wissen möchten? Der Teilnahmefaktor ist für jeden Zählpunkt individuell berechenbar."
+                        "message": "Um Ihren Teilnahmefaktor zu ermitteln, bitte geben Sie an, für welchen Zählpunkt Sie dies benötigen. Sie haben folgende Zählpunkte: mp_1 (Verbrauch), mp_2 (Verbrauch) und mp_3 (Erzeugung).",
+                        "result_ids": []
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 8.101736900000105,
-                "input_tokens": 5501,
-                "output_tokens": 656,
-                "total_tokens": 6157
+                "runtime_seconds": 13.235802699999113,
+                "input_tokens": 5396,
+                "output_tokens": 722,
+                "total_tokens": 6118
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 8.101736900000105,
-        "input_tokens": 5501,
-        "output_tokens": 656,
-        "total_tokens": 6157
-    },
-    "error": null
+        "runtime_seconds": 13.236,
+        "input_tokens": 5396,
+        "output_tokens": 722,
+        "total_tokens": 6118
+    }
 }

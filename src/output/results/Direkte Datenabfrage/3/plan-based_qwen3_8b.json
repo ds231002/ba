@@ -24,10 +24,10 @@
         }
     ],
     "usage": {
-        "runtime_seconds": 3.977338900000177,
+        "runtime_seconds": 6.907933799999228,
         "input_tokens": 4983,
-        "output_tokens": 317,
-        "total_tokens": 5300
+        "output_tokens": 332,
+        "total_tokens": 5315
     },
     "finish_reason": "stop",
     "error": null

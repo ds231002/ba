@@ -1,0 +1,25 @@
+{
+    "task_id": 84,
+    "task_type": "Mehrquellenverarbeitung",
+    "task": "Berechne mir die Eigenabdeckung für letztes Monat von mp_3.",
+    "method": "iterative",
+    "model": "qwen3:8b",
+    "iterations": [
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04457159999947,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 120.045,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "task_id": 34,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Zeig mir die Erzeugung meiner Energiegemeinschaft.",
+    "method": "iterative",
+    "model": "qwen3:8b",
+    "iterations": [
+        {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_community_generation",
+                    "arguments": {
+                        "start": "2025-12-31 00:00:00",
+                        "end": "2026-01-01 00:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 21.716829100001632,
+                "input_tokens": 5401,
+                "output_tokens": 1511,
+                "total_tokens": 6912
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "get_community_generation",
+                    "arguments": {
+                        "start": "2025-12-31 00:00:00",
+                        "end": "2026-01-01 00:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 7.854009700000461,
+                "input_tokens": 5498,
+                "output_tokens": 380,
+                "total_tokens": 5878
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.05169489999935,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
+        }
+    ],
+    "total_usage": {
+        "runtime_seconds": 149.623,
+        "input_tokens": 10899,
+        "output_tokens": 1891,
+        "total_tokens": 12790
+    }
+}

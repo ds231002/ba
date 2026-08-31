@@ -1,0 +1,26 @@
+{
+    "task_id": 42,
+    "task_type": "Einzelquellenverarbeitung",
+    "task": "Wie ist mein Gesamtverbrauch von mp_1 über die letzten 2 Monate?",
+    "method": "deterministic",
+    "model": "qwen3:8b",
+    "tool_calls": [
+        {
+            "tool": "calc_statistical_value",
+            "arguments": {
+                "metering_point_id": "mp_1",
+                "start": "2025-11-02T00:00:00",
+                "end": "2025-12-31T23:59:59",
+                "statistic_type": "sum"
+            }
+        }
+    ],
+    "usage": {
+        "runtime_seconds": 20.288413500000388,
+        "input_tokens": 3583,
+        "output_tokens": 1572,
+        "total_tokens": 5155
+    },
+    "finish_reason": "stop",
+    "error": null
+}
