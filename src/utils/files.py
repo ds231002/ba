@@ -17,7 +17,7 @@ def save_json(data: dict, path: str) -> None:
 
 def read_csv(path):
     return pd.read_csv(
-    "tasks.csv",
+    "tasks/tasks.csv",
     sep= ";",
     encoding="utf-8"
 )
