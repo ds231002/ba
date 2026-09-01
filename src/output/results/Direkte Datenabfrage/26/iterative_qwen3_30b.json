@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Die aktuelle Stromkosteninformation ist nicht über die verfügbaren Tools abrufbar. Die Tools liefern lediglich Energieverbrauchs- und Erzeugungsdaten (in kW/kWh), aber keine Preisinformationen. Um die Stromkosten zu berechnen, müssten zusätzliche Preisdaten (z.B. €/kWh) vorliegen, die derzeit nicht verfügbar sind."
+                        "message": "Die aktuelle Stromkosteninformation ist nicht über die verfügbaren Tools verfügbar. Die Tools liefern lediglich Messwerte für Verbrauch, Erzeugung und Teilnahmefaktoren, aber keine Preisinformationen. Bitte fragen Sie gezielt nach Verbrauchswerten (z.B. 'Wie hoch ist mein aktueller Verbrauch?') oder klären Sie, ob Sie die Kosten in einer anderen Form benötigen."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 7.478418099999544,
+                "runtime_seconds": 8.729526999999507,
                 "input_tokens": 5396,
-                "output_tokens": 623,
-                "total_tokens": 6019
+                "output_tokens": 714,
+                "total_tokens": 6110
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 7.478,
+        "runtime_seconds": 8.73,
         "input_tokens": 5396,
-        "output_tokens": 623,
-        "total_tokens": 6019
+        "output_tokens": 714,
+        "total_tokens": 6110
     }
 }

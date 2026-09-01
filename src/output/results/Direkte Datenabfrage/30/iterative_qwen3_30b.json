@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Could you please specify what aspect of your energy usage you're concerned about? For example, your current consumption, comparison with the community, or something else?"
+                        "message": "Um Ihnen besser helfen zu können, benötige ich weitere Details. Können Sie spezifizieren, worauf sich Ihre Unzufriedenheit bezieht? Beispielsweise: Verbrauchswerte, Gemeinschaftsanteil, Erzeugungsdetails oder andere Aspekte Ihres Energievertrags?"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 7.951221600000281,
+                "runtime_seconds": 7.279575399999885,
                 "input_tokens": 5402,
-                "output_tokens": 680,
-                "total_tokens": 6082
+                "output_tokens": 604,
+                "total_tokens": 6006
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 7.951,
+        "runtime_seconds": 7.28,
         "input_tokens": 5402,
-        "output_tokens": 680,
-        "total_tokens": 6082
+        "output_tokens": 604,
+        "total_tokens": 6006
     }
 }

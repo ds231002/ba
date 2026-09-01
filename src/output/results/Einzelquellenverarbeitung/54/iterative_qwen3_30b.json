@@ -18,7 +18,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 12.122908900004404,
+                "runtime_seconds": 12.368158700000095,
                 "input_tokens": 5409,
                 "output_tokens": 1249,
                 "total_tokens": 6658
@@ -37,7 +37,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 14.777139600002556,
+                "runtime_seconds": 15.434715000000324,
                 "input_tokens": 5519,
                 "output_tokens": 1677,
                 "total_tokens": 7196
@@ -56,7 +56,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 11.16637659999833,
+                "runtime_seconds": 11.594790699999976,
                 "input_tokens": 5574,
                 "output_tokens": 1145,
                 "total_tokens": 6719
@@ -75,7 +75,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 14.180927399997017,
+                "runtime_seconds": 14.761566999999559,
                 "input_tokens": 5629,
                 "output_tokens": 1582,
                 "total_tokens": 7211
@@ -94,7 +94,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 11.436814200002118,
+                "runtime_seconds": 12.293633499999487,
                 "input_tokens": 5684,
                 "output_tokens": 1171,
                 "total_tokens": 6855
@@ -113,7 +113,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 14.878812100003415,
+                "runtime_seconds": 14.871270900000127,
                 "input_tokens": 5739,
                 "output_tokens": 1681,
                 "total_tokens": 7420
@@ -122,7 +122,7 @@
         }
     ],
     "total_usage": {
-        "runtime_seconds": 78.563,
+        "runtime_seconds": 81.324,
         "input_tokens": 33554,
         "output_tokens": 8505,
         "total_tokens": 42059

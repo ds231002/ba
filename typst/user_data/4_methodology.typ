@@ -415,6 +415,8 @@ Die drei Strategien unterscheiden sich damit gezielt in der Organisation der Wer
 
 == Modellauswahl
 
+Für die Evaluation werden drei Modelle ausgewählt, die unterschiedliche Voraussetzungen hinsichtlich lokaler Ressourcen und Modellbereitstellung repräsentieren. Ziel der Auswahl ist dabei nicht, die gesamte Größenabstufung einer Modellfamilie zu untersuchen, sondern den Einfluss unterschiedlicher Modellcharakteristika auf die Wirksamkeit der untersuchten Orchestrierungsmethoden zu betrachten. Hierzu werden mit Qwen3:8B und Qwen3:30B zwei lokal ausführbare Modelle derselben Modellfamilie sowie mit GPT-5.4 mini ein über eine API bereitgestelltes Cloud-Modell verwendet. Die wesentlichen technischen Merkmale der Modelle sind in @tab:modelselection dargestellt.
+
 #figure(
   table(
     columns: (auto, 1fr, 1fr, auto),
@@ -422,9 +424,9 @@ Die drei Strategien unterscheiden sich damit gezielt in der Organisation der Wer
 
     table.header([*Merkmale*], [*qwen3:8b*], [*qwen3:30b*], [*gpt-5.4-mini-2026-03-17*]),
 
-    [Parameter [Mrd]], [8,2], [30,5], [n.a.],
-    [Quantisierung], [Q4_K_M], [Q4_K_M], [n.a.],
-    [Speichergröße [GB]], [5,2], [18], [n.a.],
+    [Parameter [Mrd]], [8,2], [30,5], [n.v.],
+    [Quantisierung], [Q4_K_M], [Q4_K_M], [n.v.],
+    [Speichergröße [GB]], [5,2], [18], [n.v.],
     [Maximales Kontextfenster], [40.960], [262.144], [400.000],
     [Ausführung], [lokal], [lokal], [API]
 
@@ -432,45 +434,57 @@ Die drei Strategien unterscheiden sich damit gezielt in der Organisation der Wer
   caption: [Modellauswahl für Orchestrierung],
 ) <tab:modelselection>
 
+*Anmerkung:* n. v. = nicht veröffentlicht.
+
 === Lokale Modelle
 
-// Auwahlkriterien
-// Ein weiteres Auswahlkriterium war die vollständige Ausführbarkeit der Modelle im verfügbaren GPU-Speicher.
-// Modellgrößen
-// Quantisierung
-// Spezialisierungen?
+Die beiden Qwen3-Modelle wurden ausgewählt, um unterschiedliche Anforderungen an die Ressourcen einer lokalen Ausführungsumgebung abzubilden. Qwen3:8B repräsentiert dabei ein vergleichsweise ressourcenarmes Modell, das aufgrund seiner geringeren Parameterzahl auch auf Systemen mit begrenzten GPU- oder Arbeitsspeicherressourcen betrieben werden kann. Qwen3:30B stellt demgegenüber ein deutlich größeres Modell dar, dessen Ausführung leistungsfähigere Hardware erfordert. Beide Modelle stammen aus derselben Modellfamilie und werden mit derselben Quantisierung ausgeführt. Dadurch kann insbesondere untersucht werden, ob die höhere Modellkapazität des 30B-Modells gegenüber dem 8B-Modell einen zusätzlichen Nutzen bei der Bearbeitung der untersuchten Tool-basierten Aufgaben bietet und in welchem Verhältnis dieser mögliche Vorteil zur Verwendung unterschiedlicher Orchestrierungsmethoden steht.
 
+Die Auswahl stellt bewusst keine vollständige Abdeckung der verfügbaren Qwen3-Modellgrößen dar. Kleinere beziehungsweise zwischen den beiden gewählten Modellen liegende Varianten wie Qwen3:4B und Qwen3:14B wurden nicht in die Evaluation aufgenommen. Ziel der Untersuchung ist nicht die Bestimmung eines Zusammenhangs zwischen Parameterzahl und Leistungsfähigkeit über die gesamte Modellfamilie hinweg. Stattdessen sollen zwei deutlich unterschiedliche lokale Ressourcenszenarien gegenübergestellt werden. Die zusätzliche Untersuchung weiterer Modellgrößen würde den Evaluationsumfang erhöhen, ohne für die zentrale Fragestellung nach dem Einfluss der Orchestrierung einen vergleichbaren zusätzlichen Erkenntnisgewinn zu erwarten.
 
-=== API-Modell // Modell(e): ein großes oder zusätzlich ein kleineres das immer noch viel größer ist als die lokalen?
+Ein weiteres Auswahlkriterium für die lokalen Modelle war die vollständige Ausführbarkeit innerhalb des verfügbaren GPU-Speichers. Dadurch können beide Modelle unter vergleichbaren lokalen Bedingungen evaluiert werden, ohne dass für die Verarbeitung auf externe Rechenressourcen zurückgegriffen werden muss.
 
-Die Laufzeit des API-Modells hängt von vielen Faktoren ab und ist daher nicht direkt vergleichbar:
-- Netzwerk
-- Serverauslastung
-- API-Latenz
-- möglicherweise Queueing
-- unbekannte Hardware
-- unbekannte Modellimplementierung
+=== Cloud-Modell
 
-GPT-5.4 mini wurde als externes Vergleichsmodell ausgewählt, da es speziell für schnelle, effiziente Workloads mit Tool-Nutzung und agentischen Anwendungen entwickelt wurde. OpenAI weist für das Modell explizit Unterstützung für Function Calling, Structured Outputs sowie verschiedene Werkzeuge und MCP aus. Zudem zeigt GPT-5.4 mini in den von OpenAI veröffentlichten Tool-Calling-Evaluationen eine deutlich höhere Leistung als das kleinere GPT-5 mini. Damit eignet sich das Modell als Gegenpol zu den lokal ausgeführten Qwen3-Modellen, um zu untersuchen, inwieweit die untersuchten Orchestrierungsstrategien auch bei einem leistungsfähigen proprietären Modell unterschiedliche Ergebnisse hervorbringen @GPT54MiniModel.
+Als dritter Modelltyp wird GPT-5.4 mini in der versionierten Modellvariante `gpt-5.4-mini-2026-03-17` eingesetzt. Damit wird neben den beiden lokalen Modellen ein Cloud-Modell berücksichtigt, dessen Ausführung über eine API erfolgt. GPT-5.4 mini wurde insbesondere aufgrund seiner Eignung für Tool-basierte und agentische Anwendungen ausgewählt. OpenAI positioniert das Modell ausdrücklich für Coding, Computer Use und Subagents und dokumentiert unter anderem die Unterstützung von Function Calling und Structured Outputs. In den vom Hersteller veröffentlichten Evaluationen erreicht GPT-5.4 mini zudem hohe Ergebnisse bei Tool-Calling-Aufgaben. @GPT54MiniModel
 
-== Aufgaben
+Die Verwendung eines Cloud-Modells erweitert die Untersuchung über die lokale Qwen3-Modellfamilie hinaus. Dadurch kann untersucht werden, ob die beobachteten Unterschiede zwischen den Orchestrierungsmethoden auch bei einem leistungsfähigen proprietären Modell auftreten. Da für GPT-5.4 mini unter anderem die Anzahl der Modellparameter, die Quantisierung und die Größe der Modellgewichte nicht veröffentlicht werden, werden diese Merkmale in der Tabelle als nicht veröffentlicht gekennzeichnet.
 
-=== Einfach
+Die Laufzeit des Cloud-Modells ist aufgrund der API-basierten Ausführung zudem nicht unmittelbar mit der Laufzeit der lokal ausgeführten Modelle vergleichbar. Während die lokale Laufzeit maßgeblich durch die verwendete Hardware und die lokale Inferenz beeinflusst wird, können bei der API-Ausführung unter anderem Netzwerkverzögerungen, Serverauslastung, API-Latenzen und weitere infrastrukturelle Faktoren auftreten. Die Laufzeitwerte werden daher entsprechend getrennt betrachtet und nicht als direkter Vergleich der reinen Modellinferenz interpretiert.
 
-- Eine einzelne Ergebnisgröße wird verlangt. Einschließlich notwendiger Aggregationen, Transformationen und einfacher mathematischer Herleitungen.
+=== Vergleichbarkeit der Evaluation
 
-=== komplexe
+Um den Einfluss der Modellwahl und der Orchestrierungsmethoden möglichst getrennt betrachten zu können, werden für alle drei Modelle dieselben Aufgaben, Prompts und verfügbaren Werkzeuge verwendet. Ebenso werden sämtliche untersuchten Orchestrierungsmethoden mit jedem Modell auf demselben Aufgabensatz ausgeführt. Unterschiede in den Evaluationsergebnissen können dadurch unter den gegebenen Versuchsbedingungen im Zusammenhang mit dem verwendeten Modell und der jeweiligen Orchestrierungsmethode betrachtet werden.
 
-- Mehrere Ergebnisgrößen müssen ermittelt, miteinander kombiniert, verglichen oder weiterverarbeitet werden.
+== Aufgabenauswahl
 
-=== Ungedeckt
+Für die Evaluation wurde ein Aufgabensatz mit insgesamt 90 Aufgaben erstellt. Dieser umfasst jeweils 30 Aufgaben der drei Aufgabentypen *Direkte Datenabfrage*, *Einzelquellenverarbeitung* und *Mehrquellenverarbeitung*. Die Aufgaben wurden so zusammengestellt, dass das verfügbare Toolset unter den jeweiligen Anforderungen der drei Aufgabentypen möglichst vollständig abgedeckt wird. Die Zuordnung der Aufgaben zu den Aufgabentypen erfolgte vor Beginn der Evaluation manuell anhand der für die Bearbeitung erforderlichen Tool- und Verarbeitungsschritte.
 
-- Die Aufgabe kann mit dem bereitgestellten Toolset von Methode 1 nicht vollständig beantwortet werden.
-- Wenn Methode 1 effizienter und zuverlässiger ist aber manche Aufgaben nicht abgedeckt sind können diese an eine flexiblere Methode übergeben werden.
-- Eher komplex.
+=== Direkte Datenabfrage
 
-- „Vergleiche den Verbrauch gestern mit der Prognose für morgen.“ // gestern und heute und morgen sind forecast!
-- „Wie viel hat die Energiegemeinschaft im Januar verbraucht und was hätte dieser Verbrauch zu den Spotmarktpreisen gekostet?“ // Funktionen für Berechnung
+Bei direkten Datenabfragen werden Informationen angefordert, die unmittelbar durch einen oder mehrere einzelne Toolaufrufe ermittelt werden können. Werden mehrere Informationen abgefragt, können dafür auch mehrere Toolaufrufe erforderlich sein. Voraussetzung für die Einordnung in diesen Aufgabentyp ist jedoch, dass keine Abhängigkeit zwischen den einzelnen Toolaufrufen besteht und keine Verarbeitung der Ergebnisse mehrerer Quellen erforderlich ist.
+
+=== Einzelquellenverarbeitung
+
+Bei der Einzelquellenverarbeitung wird eine einzelne Datenquelle zunächst über ein Tool abgerufen und anschließend durch einen Verarbeitungsschritt in das geforderte Ergebnis überführt. Die Aufgaben umfassen dabei verschiedene Verarbeitungsoperationen und Darstellungsformen, darunter beispielsweise die Berechnung von Summen, Mittelwerten, Minimal- und Maximalwerten sowie die Veränderung und Visualisierung von Zeitreihen. Auch bei diesem Aufgabentyp können mehrere Ergebnisse innerhalb einer Aufgabe gefordert werden, sofern diese jeweils unabhängig voneinander aus einer einzelnen Quelle und einem Verarbeitungsschritt hervorgehen.
+
+=== Mehrquellenverarbeitung
+
+Die Mehrquellenverarbeitung erfordert die gemeinsame Verarbeitung von Informationen aus mehreren Quellen, um das geforderte Ergebnis zu bestimmen. Hierzu zählen beispielsweise die Addition oder Subtraktion von Verbrauchs- und Erzeugungsdaten sowie die Berechnung von Kennzahlen, bei denen mehrere Datenquellen miteinander verknüpft werden müssen. Ebenso können mehrere Ergebnisse innerhalb einer Aufgabe gefordert werden, sofern für deren Berechnung jeweils mehrere Quellen gemeinsam verarbeitet werden müssen. Im Vergleich zu den vorherigen Aufgabentypen stehen hierbei insbesondere die Abhängigkeiten zwischen mehreren Toolergebnissen im Mittelpunkt.
+
+Die drei Aufgabentypen unterscheiden sich somit hinsichtlich der für ihre Bearbeitung erforderlichen Tool- und Verarbeitungsschritte. Die Einteilung stellt dabei keine allgemeingültige Bewertung der Schwierigkeit einer Aufgabe dar, sondern dient der systematischen Untersuchung unterschiedlicher Anforderungen an die Orchestrierung.
+
+=== Aufgabenvarianten und Konsistenz
+
+Bei der Erstellung des Aufgabensatzes wurden teilweise mehrere inhaltlich ähnliche Aufgaben aufgenommen. Diese unterscheiden sich beispielsweise hinsichtlich des verwendeten Zählpunkts, des abgefragten Zeitraums oder der konkreten Formulierung der Anfrage. Die Varianten stellen eigenständige Aufgaben dar und werden entsprechend separat bewertet.
+
+Die Aufnahme ähnlicher Aufgaben basiert auf Beobachtungen aus vorangegangenen Testdurchläufen. Dabei zeigte sich, dass Modelle bei vergleichbaren Anfragen nicht immer konsistent reagieren und dieselbe Art von Aufgabe in unterschiedlichen Durchläufen unterschiedlich bearbeiten können. Durch die Verwendung mehrerer Varianten soll der Einfluss einzelner zufälliger Fehlleistungen auf die aggregierten Evaluationsergebnisse reduziert werden. Eine vollständige Eliminierung dieser Variabilität wird dadurch nicht angestrebt.
+
+=== Unvollständige und nicht eindeutig beantwortbare Anfragen
+
+Ein Teil der Aufgaben wurde bewusst so gestaltet, dass die Anfrage mit den zum jeweiligen Zeitpunkt verfügbaren Informationen nicht eindeutig bearbeitet werden kann. Hierzu gehören beispielsweise Anfragen, bei denen ein Zählpunkt nicht eindeutig spezifiziert ist, eine angeforderte Eigenschaft für den genannten Zählpunkt nicht vorliegt oder für die Anfrage notwendige Daten fehlen. Ebenso wurden Anfragen aufgenommen, deren Inhalt nicht durch das verfügbare Toolset abgedeckt wird.
+
+Mit diesen Aufgaben wird untersucht, ob das Modell die fehlenden oder widersprüchlichen Informationen erkennt und angemessen darauf reagiert. Ist für eine Bearbeitung eine zusätzliche Information erforderlich, wird eine entsprechende Rückfrage erwartet. Ist die Anfrage mit den verfügbaren Werkzeugen nicht bearbeitbar, soll das Modell dies erkennen, anstatt eigenständig Annahmen zu treffen oder einen nicht passenden Toolaufruf auszuführen. Ein unpassender Toolaufruf beziehungsweise eine darauf basierende falsche Bearbeitung wird als Fehler bewertet.
 
 == Bewertungskrieterien
 

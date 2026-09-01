@@ -7,7 +7,7 @@ from openai import OpenAI
 
 load_dotenv()
 
-client = OpenAI(
+client_ollama = OpenAI(
     base_url="http://localhost:11434/v1",
     api_key="ollama",
 )
@@ -32,6 +32,8 @@ def _get_response_finish_reason(response: dict) -> str:
 def _call_llm_process(queue, user_prompt, system_prompt, model):
     if model == "gpt-5.4-mini-2026-03-17":
         client = client_openai
+    else:
+        client = client_ollama
 
     try:
         response = client.chat.completions.create(

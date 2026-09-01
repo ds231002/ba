@@ -23,23 +23,28 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 7.7188084999943385,
+                "runtime_seconds": 8.182677199999489,
                 "input_tokens": 5409,
-                "output_tokens": 678,
-                "total_tokens": 6087
+                "output_tokens": 785,
+                "total_tokens": 6194
             },
-            "finish_reason": "stop",
-            "error": {
-                "type": "AttributeError",
-                "message": "type object 'float' has no attribute '__sname__'",
-                "step": "answer_json"
-            }
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.05387640000026,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 7.719,
+        "runtime_seconds": 128.237,
         "input_tokens": 5409,
-        "output_tokens": 678,
-        "total_tokens": 6087
+        "output_tokens": 785,
+        "total_tokens": 6194
     }
 }

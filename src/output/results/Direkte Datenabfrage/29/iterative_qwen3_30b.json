@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Die Frage nach der Kosten einer PV-Anlage kann mit den verfügbaren Tools nicht beantwortet werden. Die Tools liefern ausschließlich Energieverbrauchs-, Erzeugungs- und statistische Daten, keine Preisinformationen für PV-Anlagen. Bitte wenden Sie sich an einen Fachbetrieb oder eine geeignete Preisvergleichs-Plattform für die Kostenabschätzung."
+                        "message": "Die verfügbaren Tools können keine Informationen über die Kosten einer PV-Anlage bereitstellen. Die Tools sind ausschließlich für die Analyse von Energieverbrauch, -erzeugung und -gemeinschaftsdaten vorgesehen. Für Preisinformationen zu PV-Anlagen empfehlen wir, einen Fachbetrieb oder einen Preisvergleichsdienst zu kontaktieren."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 6.649403900002653,
+                "runtime_seconds": 5.64445010000054,
                 "input_tokens": 5395,
-                "output_tokens": 490,
-                "total_tokens": 5885
+                "output_tokens": 366,
+                "total_tokens": 5761
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 6.649,
+        "runtime_seconds": 5.644,
         "input_tokens": 5395,
-        "output_tokens": 490,
-        "total_tokens": 5885
+        "output_tokens": 366,
+        "total_tokens": 5761
     }
 }

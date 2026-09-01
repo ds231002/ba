@@ -18,7 +18,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 18.1457220999946,
+                "runtime_seconds": 17.41195280000011,
                 "input_tokens": 5405,
                 "output_tokens": 2110,
                 "total_tokens": 7515
@@ -37,7 +37,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 15.93310080000083,
+                "runtime_seconds": 15.500843699999677,
                 "input_tokens": 5515,
                 "output_tokens": 1815,
                 "total_tokens": 7330
@@ -56,7 +56,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 11.949669100002211,
+                "runtime_seconds": 11.837762799999837,
                 "input_tokens": 5570,
                 "output_tokens": 1222,
                 "total_tokens": 6792
@@ -75,7 +75,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 15.130009100001189,
+                "runtime_seconds": 15.145903800001179,
                 "input_tokens": 5625,
                 "output_tokens": 1695,
                 "total_tokens": 7320
@@ -85,7 +85,7 @@
         {
             "tool_calls": null,
             "usage": {
-                "runtime_seconds": 120.04442769999878,
+                "runtime_seconds": 120.05304009999963,
                 "input_tokens": null,
                 "output_tokens": null,
                 "total_tokens": null
@@ -94,7 +94,7 @@
         }
     ],
     "total_usage": {
-        "runtime_seconds": 181.203,
+        "runtime_seconds": 179.95,
         "input_tokens": 22115,
         "output_tokens": 6842,
         "total_tokens": 28957
