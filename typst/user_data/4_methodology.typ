@@ -528,29 +528,16 @@ Mit diesen Aufgaben wird untersucht, ob das Modell die fehlenden oder widersprü
 // Korrektheit: Hat der Orchestrator alle für die korrekte Beantwortung notwendigen Informationen beschafft und korrekt verarbeitet?
 // Effizienz: Hat er dies mit möglichst wenigen bzw. möglichst passenden Toolaufrufen und Parametern getan?
 
-
-
-
-
 == Versuchsablauf
 
-- Eine Testanfrage wird ausgewählt.
-- Eine Orchestrierungsmethode wird gestartet.
-- Das LLM ruft Tools auf.
-- Die Tool-Rückgaben werden verarbeitet.
-- Die finale Antwort wird erzeugt.
-- Die Bewertungskriterien werden berechnet.
-- Der Vorgang wird für alle Methoden wiederholt.
+Die Evaluation wird als vollständige Kombination aus den definierten Aufgaben, den ausgewählten Modellen und den untersuchten Orchestrierungsmethoden durchgeführt. Für jede Kombination aus Modell, Orchestrierungsmethode und Aufgabe wird genau ein Durchlauf ausgeführt. Bei 90 Aufgaben und den drei ausgewählten Modellen wird somit jede Aufgabe unter jeder Orchestrierungsmethode mit jedem Modell bearbeitet. Auf eine mehrfache Ausführung identischer Kombinationen wird aufgrund des hohen daraus resultierenden Evaluationsumfangs verzichtet. Die Berücksichtigung möglicher Inkonsistenzen im Modellverhalten erfolgt stattdessen durch die im Aufgabensatz enthaltenen inhaltlich ähnlichen Aufgabenvarianten.
 
-- Aufgabe definieren.
-- LLM auswählen.
-- Orchestrierungsstrategie auswählen.
-- Systemprompt erzeugen.
-- LLM aufrufen.
-- Antwort analysieren.
-- Tool Calls ausführen.
-- Ergebnisse aufbereiten.
-- Bei der iterativen Methode die Ergebnisse an den nächsten LLM-Aufruf übergeben.
-- Prozess mit `generate_answer` beenden, sobald die Aufgabe vollständig beantwortet werden kann.
-- Prozess bei Erreichen des Iterationslimits oder eines Timeouts abbrechen.
-- Ergebnisse und relevante Messgrößen speichern.
+Zu Beginn eines jeden Durchlaufs wird dem LLM die jeweilige Nutzeranfrage zusammen mit der für die Bearbeitung erforderlichen Systemanweisung und dem verfügbaren Toolset bereitgestellt. Zusätzlich erhält das Modell allgemeine Informationen über den zugrunde liegenden Datensatz sowie die vorhandenen Zählpunkte. Zu den allgemeinen Informationen gehören beispielsweise Einschränkungen hinsichtlich des verfügbaren Datenbestands. Dadurch wird sichergestellt, dass das Modell über die für die Planung und Ausführung der jeweiligen Aufgabe relevanten Rahmenbedingungen verfügt.
+
+Der weitere Ablauf unterscheidet sich abhängig von der eingesetzten Orchestrierungsmethode. Bei der deterministischen Orchestrierung wird ein einzelner LLM-Aufruf durchgeführt, in dem anhand der Nutzeranfrage die erforderlichen Pipelines ausgewählt werden. Die ausgewählten Pipelines werden anschließend ausgeführt. Bei der planbasierten Orchestrierung erzeugt das LLM in einem einzelnen Aufruf einen Plan für die Bearbeitung der Aufgabe. Auch hier werden die daraus resultierenden Verarbeitungsschritte anschließend ausgeführt.
+
+Bei der iterativen Orchestrierung kann die Aufgabe hingegen mehrere LLM-Aufrufe erfordern. Nach der Ausführung der vom LLM vorgeschlagenen Werkzeuge werden die daraus resultierenden Ergebnisse erneut an das LLM übergeben. Auf dieser Grundlage entscheidet das Modell, ob weitere Toolaufrufe erforderlich sind oder die Aufgabe bereits ausreichend bearbeitet wurde. Dieser Ablauf wird wiederholt, bis das Modell keine weiteren Toolaufrufe mehr anfordert und eine abschließende Antwort erzeugt. Zeitreihendaten werden dabei nicht als Rohdaten an das LLM übergeben, sondern entsprechend der im Kapitel zur Orchestrierung beschriebenen Verarbeitung aufbereitet.
+
+Während jedes Durchlaufs werden die Ergebnisse der Modell- und Toolinteraktionen sowie die für die spätere Evaluation relevanten Messwerte protokolliert. Die Erfassung der Laufzeit und des Tokenverbrauchs beschränkt sich dabei ausdrücklich auf die LLM-Aufrufe. Die Laufzeit von Toolaufrufen sowie weitere Verarbeitungsschritte der Orchestrierung werden nicht in diese Messwerte einbezogen. Bei den einstufigen Orchestrierungsmethoden entspricht die gemessene LLM-Laufzeit daher der Dauer des jeweiligen einzelnen LLM-Aufrufs. Beim iterativen Verfahren werden die Laufzeit und der Tokenverbrauch jedes einzelnen LLM-Aufrufs erfasst und anschließend zu einer Gesamtnutzung (`total_usage`) aggregiert. Der Ablauf entspricht somit konzeptionell einer Folge aus LLM-Aufruf, Toolausführung und erneuter LLM-Verarbeitung, bis keine weiteren Toolaufrufe erforderlich sind.
+
+Tritt während eines Durchlaufs ein technischer Fehler auf, wird die Bearbeitung der jeweiligen Aufgabe abgebrochen. Der Fehler wird für die spätere manuelle Bewertung protokolliert. Eine erneute Ausführung derselben Kombination aus Aufgabe, Modell und Orchestrierungsmethode erfolgt nicht.
