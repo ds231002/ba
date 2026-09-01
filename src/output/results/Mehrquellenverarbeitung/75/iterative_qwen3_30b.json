@@ -6,9 +6,36 @@
     "model": "qwen3:30b",
     "iterations": [
         {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_participation_factor",
+                    "arguments": {
+                        "metering_point_id": "mp_3"
+                    }
+                },
+                {
+                    "id": "i1_r2",
+                    "tool": "get_measured_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_3",
+                        "start": "2025-01-01 00:00:00",
+                        "end": "2026-01-01 00:00:00"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 17.09721459999855,
+                "input_tokens": 5407,
+                "output_tokens": 2069,
+                "total_tokens": 7476
+            },
+            "finish_reason": "stop"
+        },
+        {
             "tool_calls": null,
             "usage": {
-                "runtime_seconds": 120.05535580000287,
+                "runtime_seconds": 120.04996860000028,
                 "input_tokens": null,
                 "output_tokens": null,
                 "total_tokens": null
@@ -17,9 +44,9 @@
         }
     ],
     "total_usage": {
-        "runtime_seconds": 120.055,
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "runtime_seconds": 137.147,
+        "input_tokens": 5407,
+        "output_tokens": 2069,
+        "total_tokens": 7476
     }
 }
