@@ -12,7 +12,7 @@
 )
 #show: stpuas.with(
     title:      "Orchestrierung von Large Language Models im Kontext von Energiegemeinschaften",
-    subtitle:   "SUBTITLE",
+    subtitle:   "Evaluation deterministischer, planbasierter und iterativer Tool-Orchestrierung",
     thesistype: "Bachelorarbeit",
     //thesistype: "Bachelor thesis",
     //thesistype: "Bachelorarbeit",

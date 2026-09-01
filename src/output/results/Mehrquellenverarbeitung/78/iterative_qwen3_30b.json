@@ -18,10 +18,10 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 13.082646399998339,
+                "runtime_seconds": 13.933146100000158,
                 "input_tokens": 5412,
-                "output_tokens": 1480,
-                "total_tokens": 6892
+                "output_tokens": 1639,
+                "total_tokens": 7051
             },
             "finish_reason": "stop"
         },
@@ -37,7 +37,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 8.217376499997044,
+                "runtime_seconds": 8.409664500000872,
                 "input_tokens": 5522,
                 "output_tokens": 716,
                 "total_tokens": 6238
@@ -56,7 +56,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 11.358982599995215,
+                "runtime_seconds": 11.94955630000004,
                 "input_tokens": 5577,
                 "output_tokens": 1187,
                 "total_tokens": 6764
@@ -66,7 +66,7 @@
         {
             "tool_calls": null,
             "usage": {
-                "runtime_seconds": 120.04595549999794,
+                "runtime_seconds": 120.0541147999993,
                 "input_tokens": null,
                 "output_tokens": null,
                 "total_tokens": null
@@ -75,9 +75,9 @@
         }
     ],
     "total_usage": {
-        "runtime_seconds": 152.705,
+        "runtime_seconds": 154.346,
         "input_tokens": 16511,
-        "output_tokens": 3383,
-        "total_tokens": 19894
+        "output_tokens": 3542,
+        "total_tokens": 20053
     }
 }
