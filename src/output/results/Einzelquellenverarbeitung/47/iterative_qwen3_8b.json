@@ -24,9 +24,20 @@
                         "start": "2025-01-02 00:00:00",
                         "end": "2025-12-31 23:59:59"
                     }
-                },
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 9.47184819999893,
+                "input_tokens": 5406,
+                "output_tokens": 589,
+                "total_tokens": 5995
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
                 {
-                    "id": "i1_r3",
+                    "id": "i2_r1",
                     "tool": "add_timeseries",
                     "arguments": {
                         "timeseries": [
@@ -36,37 +47,37 @@
                     }
                 },
                 {
-                    "id": "i1_r4",
+                    "id": "i2_r2",
                     "tool": "get_statistical_value",
                     "arguments": {
                         "statistic_type": "avg",
-                        "energy_data": "i1_r3"
+                        "energy_data": "i2_r1"
                     }
                 },
                 {
-                    "id": "i1_r5",
+                    "id": "i2_r3",
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i1_r4"
+                            "i3_r1"
                         ],
                         "message": "Der Durchschnittsverbrauch über das letzte Jahr beträgt {result} kWh."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 10.327741299999616,
-                "input_tokens": 5406,
-                "output_tokens": 647,
-                "total_tokens": 6053
+                "runtime_seconds": 14.1900839000009,
+                "input_tokens": 5625,
+                "output_tokens": 979,
+                "total_tokens": 6604
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 10.328,
-        "input_tokens": 5406,
-        "output_tokens": 647,
-        "total_tokens": 6053
+        "runtime_seconds": 23.662,
+        "input_tokens": 11031,
+        "output_tokens": 1568,
+        "total_tokens": 12599
     }
 }

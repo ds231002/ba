@@ -12,16 +12,16 @@
                     "tool": "get_measured_energy",
                     "arguments": {
                         "metering_point_id": "mp_1",
-                        "start": "2025-10-01 00:00:00",
+                        "start": "2025-10-02 00:00:00",
                         "end": "2025-12-31 23:59:59"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 9.152141300000949,
+                "runtime_seconds": 9.118236599999364,
                 "input_tokens": 5405,
-                "output_tokens": 509,
-                "total_tokens": 5914
+                "output_tokens": 527,
+                "total_tokens": 5932
             },
             "finish_reason": "stop"
         },
@@ -55,18 +55,18 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 22.646111800000654,
+                "runtime_seconds": 20.77640109999993,
                 "input_tokens": 5515,
-                "output_tokens": 1643,
-                "total_tokens": 7158
+                "output_tokens": 1492,
+                "total_tokens": 7007
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 31.798,
+        "runtime_seconds": 29.895,
         "input_tokens": 10920,
-        "output_tokens": 2152,
-        "total_tokens": 13072
+        "output_tokens": 2019,
+        "total_tokens": 12939
     }
 }

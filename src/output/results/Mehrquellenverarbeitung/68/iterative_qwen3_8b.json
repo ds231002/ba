@@ -6,9 +6,83 @@
     "model": "qwen3:8b",
     "iterations": [
         {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_measured_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_1",
+                        "start": "2025-10-01 00:00:00",
+                        "end": "2025-12-31 23:59:59"
+                    }
+                },
+                {
+                    "id": "i1_r2",
+                    "tool": "get_measured_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_2",
+                        "start": "2025-10-01 00:00:00",
+                        "end": "2025-12-31 23:59:59"
+                    }
+                },
+                {
+                    "id": "i1_r3",
+                    "tool": "get_participation_factor",
+                    "arguments": {
+                        "metering_point_id": "mp_1"
+                    }
+                },
+                {
+                    "id": "i1_r4",
+                    "tool": "get_participation_factor",
+                    "arguments": {
+                        "metering_point_id": "mp_2"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 18.102322900002036,
+                "input_tokens": 5415,
+                "output_tokens": 1345,
+                "total_tokens": 6760
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "multiply_timeseries",
+                    "arguments": {
+                        "timeseries": {
+                            "result_id": "i1_r1"
+                        },
+                        "factor": 0.7
+                    }
+                },
+                {
+                    "id": "i2_r2",
+                    "tool": "multiply_timeseries",
+                    "arguments": {
+                        "timeseries": {
+                            "result_id": "i1_r2"
+                        },
+                        "factor": 0.7
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 14.82825800000137,
+                "input_tokens": 5768,
+                "output_tokens": 1021,
+                "total_tokens": 6789
+            },
+            "finish_reason": "stop"
+        },
+        {
             "tool_calls": null,
             "usage": {
-                "runtime_seconds": 120.04855529999986,
+                "runtime_seconds": 120.05532089999906,
                 "input_tokens": null,
                 "output_tokens": null,
                 "total_tokens": null
@@ -17,9 +91,9 @@
         }
     ],
     "total_usage": {
-        "runtime_seconds": 120.049,
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "runtime_seconds": 152.986,
+        "input_tokens": 11183,
+        "output_tokens": 2366,
+        "total_tokens": 13549
     }
 }

@@ -15,39 +15,53 @@
                         "start": "2025-12-01 00:00:00",
                         "end": "2025-12-31 23:59:59"
                     }
-                },
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 17.436781399999745,
+                "input_tokens": 5405,
+                "output_tokens": 1291,
+                "total_tokens": 6696
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
                 {
-                    "id": "i1_r2",
+                    "id": "i2_r1",
                     "tool": "get_statistical_value",
                     "arguments": {
                         "statistic_type": "max",
-                        "energy_data": "i2_r1"
-                    }
-                },
-                {
-                    "id": "i1_r3",
-                    "tool": "generate_answer",
-                    "arguments": {
-                        "result_ids": [
-                            "i2_r2"
-                        ],
-                        "message": "Die maximale Erzeugung mit mp_3 im letzten Monat betrug {result} kWh."
+                        "energy_data": {
+                            "type": "time_series",
+                            "result_id": "i1_r1"
+                        }
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 11.404862200000935,
-                "input_tokens": 5405,
-                "output_tokens": 709,
-                "total_tokens": 6114
+                "runtime_seconds": 11.393978000000061,
+                "input_tokens": 5515,
+                "output_tokens": 711,
+                "total_tokens": 6226
             },
             "finish_reason": "stop"
+        },
+        {
+            "tool_calls": null,
+            "usage": {
+                "runtime_seconds": 120.04935710000063,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
+            },
+            "finish_reason": "timeout"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 11.405,
-        "input_tokens": 5405,
-        "output_tokens": 709,
-        "total_tokens": 6114
+        "runtime_seconds": 148.88,
+        "input_tokens": 10920,
+        "output_tokens": 2002,
+        "total_tokens": 12922
     }
 }

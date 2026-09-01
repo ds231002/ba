@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Leider kann ich keine direkten Informationen zu Ihrer Zufriedenheit mit dem Energieanbieter bereitstellen, da dies nicht in meine Funktionsbereiche fällt. Sie können sich direkt an Ihren Anbieter wenden, um Ihre Bedenken zu klären. Möchten Sie stattdessen Informationen zu Ihrem Verbrauch oder der Energiegemeinschaft erhalten?"
+                        "message": "Leider kann ich nicht direkt mit Energieanbietern kommunizieren oder Ihre Beschwerde bearbeiten. Für Fragen zu Ihrem Anbieter oder den Wechsel zu einem anderen Anbieter wenden Sie sich bitte direkt an Ihre lokale Energieversorgung oder nutzen Sie die offiziellen Kanäle der österreichischen Energiebranche (z. B. www.e-energy.at)."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 7.608233099999779,
+                "runtime_seconds": 7.638886699998693,
                 "input_tokens": 5402,
-                "output_tokens": 401,
-                "total_tokens": 5803
+                "output_tokens": 403,
+                "total_tokens": 5805
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 7.608,
+        "runtime_seconds": 7.639,
         "input_tokens": 5402,
-        "output_tokens": 401,
-        "total_tokens": 5803
+        "output_tokens": 403,
+        "total_tokens": 5805
     }
 }

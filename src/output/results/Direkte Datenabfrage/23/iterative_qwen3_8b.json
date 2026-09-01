@@ -23,10 +23,10 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 7.497456400000374,
+                "runtime_seconds": 8.651849100002437,
                 "input_tokens": 5414,
-                "output_tokens": 346,
-                "total_tokens": 5760
+                "output_tokens": 459,
+                "total_tokens": 5873
             },
             "finish_reason": "stop"
         },
@@ -37,26 +37,26 @@
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i2_r1",
-                            "i2_r2"
+                            "i1_r1",
+                            "i1_r2"
                         ],
-                        "message": "Aktuell produziere ich 3,21 kW und der Teilnahmefaktor des Erzeugungszählpunkts beträgt 0,7."
+                        "message": "Derzeit produziere ich 3,21 kW und der Teilnahmefaktor des Erzeugungszählpunkts beträgt 0,7."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 9.992094400000497,
-                "input_tokens": 5527,
-                "output_tokens": 584,
-                "total_tokens": 6111
+                "runtime_seconds": 7.5842307999992045,
+                "input_tokens": 5549,
+                "output_tokens": 360,
+                "total_tokens": 5909
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 17.49,
-        "input_tokens": 10941,
-        "output_tokens": 930,
-        "total_tokens": 11871
+        "runtime_seconds": 16.236,
+        "input_tokens": 10963,
+        "output_tokens": 819,
+        "total_tokens": 11782
     }
 }

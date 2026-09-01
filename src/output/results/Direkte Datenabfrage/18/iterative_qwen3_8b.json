@@ -23,10 +23,10 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 7.411159200000839,
+                "runtime_seconds": 8.340466800000286,
                 "input_tokens": 5406,
-                "output_tokens": 339,
-                "total_tokens": 5745
+                "output_tokens": 428,
+                "total_tokens": 5834
             },
             "finish_reason": "stop"
         },
@@ -37,26 +37,26 @@
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i2_r1",
-                            "i2_r2"
+                            "i1_r1",
+                            "i1_r2"
                         ],
-                        "message": "Der aktuelle Verbrauch deiner Verbrauchszählpunkte beträgt: mp_1: 3,21 kW, mp_2: 3,21 kW."
+                        "message": "Der aktuelle Verbrauch deiner Verbrauchszählpunkte beträgt:\n- Zählpunkt mp_1: 3,21 kW\n- Zählpunkt mp_2: 3,21 kW"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 6.86071179999999,
-                "input_tokens": 5519,
-                "output_tokens": 298,
-                "total_tokens": 5817
+                "runtime_seconds": 13.015713600001618,
+                "input_tokens": 5541,
+                "output_tokens": 821,
+                "total_tokens": 6362
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 14.272,
-        "input_tokens": 10925,
-        "output_tokens": 637,
-        "total_tokens": 11562
+        "runtime_seconds": 21.356,
+        "input_tokens": 10947,
+        "output_tokens": 1249,
+        "total_tokens": 12196
     }
 }

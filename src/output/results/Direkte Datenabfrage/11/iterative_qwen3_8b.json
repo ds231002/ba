@@ -6,28 +6,20 @@
     "model": "qwen3:8b",
     "iterations": [
         {
-            "tool_calls": [
-                {
-                    "id": "i1_r1",
-                    "tool": "generate_answer",
-                    "arguments": {
-                        "message": "Können Sie bitte klären, ob Sie den Gesamtverbrauch aller eigenen Verbrauchszählpunkte (mp_1 und mp_2) oder den Verbrauch eines spezifischen Zählpunkts (z. B. mp_1 oder mp_2) wissen möchten?"
-                    }
-                }
-            ],
+            "tool_calls": null,
             "usage": {
-                "runtime_seconds": 15.350432600000204,
-                "input_tokens": 5395,
-                "output_tokens": 1020,
-                "total_tokens": 6415
+                "runtime_seconds": 120.04222740000114,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
             },
-            "finish_reason": "stop"
+            "finish_reason": "timeout"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 15.35,
-        "input_tokens": 5395,
-        "output_tokens": 1020,
-        "total_tokens": 6415
+        "runtime_seconds": 120.042,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
     }
 }

@@ -6,9 +6,112 @@
     "model": "qwen3:8b",
     "iterations": [
         {
+            "tool_calls": [
+                {
+                    "id": "i1_r1",
+                    "tool": "get_community_consumption",
+                    "arguments": {
+                        "start": "2025-01-01 00:00:00",
+                        "end": "2025-12-31 23:59:59"
+                    }
+                },
+                {
+                    "id": "i1_r2",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "avg",
+                        "energy_data": "i1_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 13.092930799997703,
+                "input_tokens": 5407,
+                "output_tokens": 840,
+                "total_tokens": 6247
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "avg",
+                        "energy_data": "i1_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 13.437890699999116,
+                "input_tokens": 5571,
+                "output_tokens": 859,
+                "total_tokens": 6430
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i3_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "avg",
+                        "energy_data": "i1_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 14.38103609999962,
+                "input_tokens": 5637,
+                "output_tokens": 939,
+                "total_tokens": 6576
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i4_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "avg",
+                        "energy_data": "i1_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 8.392361899997923,
+                "input_tokens": 5703,
+                "output_tokens": 420,
+                "total_tokens": 6123
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i5_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "avg",
+                        "energy_data": "i1_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 9.791358200000104,
+                "input_tokens": 5769,
+                "output_tokens": 541,
+                "total_tokens": 6310
+            },
+            "finish_reason": "stop"
+        },
+        {
             "tool_calls": null,
             "usage": {
-                "runtime_seconds": 120.04764439999963,
+                "runtime_seconds": 120.04474249999839,
                 "input_tokens": null,
                 "output_tokens": null,
                 "total_tokens": null
@@ -17,9 +120,9 @@
         }
     ],
     "total_usage": {
-        "runtime_seconds": 120.048,
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "total_tokens": 0
+        "runtime_seconds": 179.14,
+        "input_tokens": 28087,
+        "output_tokens": 3599,
+        "total_tokens": 31686
     }
 }

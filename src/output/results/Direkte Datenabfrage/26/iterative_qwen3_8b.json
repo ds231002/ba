@@ -6,28 +6,70 @@
     "model": "qwen3:8b",
     "iterations": [
         {
-            "tool_calls": [
-                {
-                    "id": "i1_r1",
-                    "tool": "generate_answer",
-                    "arguments": {
-                        "message": "Die aktuellen Stromkosten können nicht aus den bereitgestellten Tools ermittelt werden. Es fehlt eine Funktion, die den Strompreis pro kWh berechnet oder zurückgibt."
-                    }
-                }
-            ],
+            "tool_calls": [],
             "usage": {
-                "runtime_seconds": 8.225994000000355,
+                "runtime_seconds": 7.400864100000035,
                 "input_tokens": 5396,
-                "output_tokens": 426,
-                "total_tokens": 5822
+                "output_tokens": 347,
+                "total_tokens": 5743
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [],
+            "usage": {
+                "runtime_seconds": 7.1154146999979275,
+                "input_tokens": 5396,
+                "output_tokens": 347,
+                "total_tokens": 5743
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [],
+            "usage": {
+                "runtime_seconds": 6.936596899999131,
+                "input_tokens": 5396,
+                "output_tokens": 347,
+                "total_tokens": 5743
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [],
+            "usage": {
+                "runtime_seconds": 6.9932874999976775,
+                "input_tokens": 5396,
+                "output_tokens": 347,
+                "total_tokens": 5743
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [],
+            "usage": {
+                "runtime_seconds": 6.968506799999886,
+                "input_tokens": 5396,
+                "output_tokens": 347,
+                "total_tokens": 5743
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [],
+            "usage": {
+                "runtime_seconds": 7.0098122999988846,
+                "input_tokens": 5396,
+                "output_tokens": 347,
+                "total_tokens": 5743
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 8.226,
-        "input_tokens": 5396,
-        "output_tokens": 426,
-        "total_tokens": 5822
+        "runtime_seconds": 42.424,
+        "input_tokens": 32376,
+        "output_tokens": 2082,
+        "total_tokens": 34458
     }
 }

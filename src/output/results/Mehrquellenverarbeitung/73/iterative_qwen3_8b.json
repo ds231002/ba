@@ -9,13 +9,6 @@
             "tool_calls": [
                 {
                     "id": "i1_r1",
-                    "tool": "get_participation_factor",
-                    "arguments": {
-                        "metering_point_id": "mp_3"
-                    }
-                },
-                {
-                    "id": "i1_r2",
                     "tool": "get_measured_energy",
                     "arguments": {
                         "metering_point_id": "mp_3",
@@ -24,39 +17,69 @@
                     }
                 },
                 {
+                    "id": "i1_r2",
+                    "tool": "get_participation_factor",
+                    "arguments": {
+                        "metering_point_id": "mp_3"
+                    }
+                },
+                {
                     "id": "i1_r3",
                     "tool": "multiply_timeseries",
                     "arguments": {
                         "timeseries": {
-                            "timeseries": "i2_r2"
+                            "result_id": "i2_r1"
                         },
-                        "factor": "i2_r1"
-                    }
-                },
-                {
-                    "id": "i1_r4",
-                    "tool": "generate_answer",
-                    "arguments": {
-                        "result_ids": [
-                            "i2_r3"
-                        ],
-                        "message": "Hier ist dein gewichteter Erzeugungswert für das letzte Jahr (berechnet mit dem Teilnahmefaktor des Zählpunkts mp_3):"
+                        "factor": {
+                            "result_id": "i2_r2"
+                        }
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 11.807291299999633,
+                "runtime_seconds": 13.864079800001491,
                 "input_tokens": 5411,
-                "output_tokens": 723,
-                "total_tokens": 6134
+                "output_tokens": 994,
+                "total_tokens": 6405
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "multiply_timeseries",
+                    "arguments": {
+                        "timeseries": {
+                            "result_id": "i1_r1"
+                        },
+                        "factor": 0.7
+                    }
+                },
+                {
+                    "id": "i2_r2",
+                    "tool": "generate_answer",
+                    "arguments": {
+                        "result_ids": [
+                            "i1_r1"
+                        ],
+                        "message": "Hier ist dein gewichteter Erzeugungswert für das letzte Jahr (berechnet mit dem Teilnahmefaktor von 0,7):"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 9.39526670000123,
+                "input_tokens": 5664,
+                "output_tokens": 542,
+                "total_tokens": 6206
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 11.807,
-        "input_tokens": 5411,
-        "output_tokens": 723,
-        "total_tokens": 6134
+        "runtime_seconds": 23.259,
+        "input_tokens": 11075,
+        "output_tokens": 1536,
+        "total_tokens": 12611
     }
 }

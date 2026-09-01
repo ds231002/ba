@@ -19,7 +19,7 @@
                     "id": "i1_r2",
                     "tool": "create_energy_plot",
                     "arguments": {
-                        "title": "Verbrauch der Energiegemeinschaft - Dezember 2025",
+                        "title": "Gesamtverbrauch der Energiegemeinschaft - Dezember 2025",
                         "labels": [
                             "Gesamtverbrauch"
                         ],
@@ -37,23 +37,23 @@
                         "result_ids": [
                             "i2_r2"
                         ],
-                        "message": "Hier ist die Grafik des Gesamtverbrauchs der Energiegemeinschaft für den Zeitraum Dezember 2025."
+                        "message": "Hier ist die Grafik des Gesamtverbrauchs der Energiegemeinschaft für Dezember 2025."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 17.198324900000443,
+                "runtime_seconds": 13.356079799999861,
                 "input_tokens": 5407,
-                "output_tokens": 1248,
-                "total_tokens": 6655
+                "output_tokens": 904,
+                "total_tokens": 6311
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 17.198,
+        "runtime_seconds": 13.356,
         "input_tokens": 5407,
-        "output_tokens": 1248,
-        "total_tokens": 6655
+        "output_tokens": 904,
+        "total_tokens": 6311
     }
 }

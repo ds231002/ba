@@ -16,10 +16,10 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 10.88583269999981,
+                "runtime_seconds": 11.105633400002262,
                 "input_tokens": 5402,
-                "output_tokens": 626,
-                "total_tokens": 6028
+                "output_tokens": 667,
+                "total_tokens": 6069
             },
             "finish_reason": "stop"
         },
@@ -30,25 +30,25 @@
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i2_r1"
+                            "i1_r1"
                         ],
-                        "message": "Der Zählpunkt mp_3 verbraucht aktuell 3,21 kW."
+                        "message": "Der aktuelle Verbrauch Ihres Zählpunkts mp_3 beträgt 3,21 kW. Da mp_3 ein Erzeugungszählpunkt ist, wird der Wert als aktuelle Erzeugungsleistung gemessen."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 6.507417499999065,
-                "input_tokens": 5459,
-                "output_tokens": 267,
-                "total_tokens": 5726
+                "runtime_seconds": 12.872527000003174,
+                "input_tokens": 5470,
+                "output_tokens": 805,
+                "total_tokens": 6275
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 17.393,
-        "input_tokens": 10861,
-        "output_tokens": 893,
-        "total_tokens": 11754
+        "runtime_seconds": 23.978,
+        "input_tokens": 10872,
+        "output_tokens": 1472,
+        "total_tokens": 12344
     }
 }

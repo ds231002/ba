@@ -146,6 +146,13 @@ Antwort (richtige Results oder Info übergeben) - ja/nein
 - Die explizite Bereitstellung von `available_results` verhindert redundante Tool Calls nicht zuverlässig.
 - Technische Fehler der Orchestrierung, beispielsweise fehlerhafte Python-Datenstrukturen, müssen von tatsächlichen LLM-Fehlern getrennt betrachtet werden.
 
+- Iterationen werden oft nicht richtig aufgelöst.
+- Zeiträume falsch erkannt
+- Verfügbare Tools nicht richtig erkannt und wiederholt die selbe Aktion ausgeführte
+- Bei der Menge an Informationen von Systeminformationen Kontext Strukturregeln usw scheinen schnell mal wichtige Informationen unterzugehen und das llm macht Dinge die ihm ausdrücklich verboten sind, zum Beispiel eine ID erfinden usw.
+- Bei Iterativ wird die Wahrscheinlichkeit für Timeout aufgrund höherer Aufrufe und steigender Komplexität erhöht (Prüfen ob Ergebnisse zu dieser Hypothese passen)
+- Offensichtlich falsche oder wiedersprüchliche Aufgaben werden relativ zuverlässig erkannt. Subtile Fehler gehen schnell einmal unter auch wenn sie ganz klar in den Systeminformationen erklärt werden. Auch falsche Dateiformate kommen bei der Üerbergabe manchmal vor. Das war auch ein Grund warum nur auf die Result_ids verwiesen werden soll damit die Datei zuverlässig im richtigen Format und unverändert übergeben wird.
+
 // This section presents a comprehensive overview of measurements, data tables, and performance evaluations, encompassing factors such as accuracy and speed.
 // This section is also where you evaluate your prototype or framework:
 // What is the users' verdict?

@@ -24,3 +24,5 @@
 - Untersuchung des Einflusses der Aufgabenkomplexität auf die benötigte Modellgröße.
 - Untersuchung, ob größere Modelle zwar zuverlässiger, aufgrund ihrer höheren Laufzeit aber weniger effizient sind.
 
+
+- Zuverlässigkeit bei fehlenden Tools oder Nachfragen separat betrachten

@@ -9,20 +9,6 @@
             "tool_calls": [
                 {
                     "id": "i1_r1",
-                    "tool": "get_participation_factor",
-                    "arguments": {
-                        "metering_point_id": "mp_1"
-                    }
-                },
-                {
-                    "id": "i1_r2",
-                    "tool": "get_participation_factor",
-                    "arguments": {
-                        "metering_point_id": "mp_2"
-                    }
-                },
-                {
-                    "id": "i1_r3",
                     "tool": "get_measured_energy",
                     "arguments": {
                         "metering_point_id": "mp_1",
@@ -31,20 +17,34 @@
                     }
                 },
                 {
-                    "id": "i1_r4",
+                    "id": "i1_r2",
                     "tool": "get_measured_energy",
                     "arguments": {
                         "metering_point_id": "mp_2",
                         "start": "2025-12-01 00:00:00",
                         "end": "2025-12-31 23:59:59"
                     }
+                },
+                {
+                    "id": "i1_r3",
+                    "tool": "get_participation_factor",
+                    "arguments": {
+                        "metering_point_id": "mp_1"
+                    }
+                },
+                {
+                    "id": "i1_r4",
+                    "tool": "get_participation_factor",
+                    "arguments": {
+                        "metering_point_id": "mp_2"
+                    }
                 }
             ],
             "usage": {
-                "runtime_seconds": 15.418584699998974,
+                "runtime_seconds": 14.809229099999357,
                 "input_tokens": 5404,
-                "output_tokens": 1124,
-                "total_tokens": 6528
+                "output_tokens": 1075,
+                "total_tokens": 6479
             },
             "finish_reason": "stop"
         },
@@ -54,7 +54,7 @@
                     "id": "i2_r1",
                     "tool": "multiply_timeseries",
                     "arguments": {
-                        "timeseries": "i1_r3",
+                        "timeseries": "i1_r1",
                         "factor": 0.7
                     }
                 },
@@ -62,7 +62,7 @@
                     "id": "i2_r2",
                     "tool": "multiply_timeseries",
                     "arguments": {
-                        "timeseries": "i1_r4",
+                        "timeseries": "i1_r2",
                         "factor": 0.7
                     }
                 },
@@ -81,78 +81,33 @@
                     "tool": "get_statistical_value",
                     "arguments": {
                         "statistic_type": "sum",
-                        "energy_data": "i2_r3"
+                        "energy_data": "i3_r1"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 18.513880900000004,
-                "input_tokens": 5735,
-                "output_tokens": 1358,
-                "total_tokens": 7093
+                "runtime_seconds": 20.482789000001503,
+                "input_tokens": 5757,
+                "output_tokens": 1517,
+                "total_tokens": 7274
             },
             "finish_reason": "stop"
         },
         {
-            "tool_calls": [
-                {
-                    "id": "i3_r1",
-                    "tool": "multiply_timeseries",
-                    "arguments": {
-                        "timeseries": "i1_r3",
-                        "factor": 0.7
-                    }
-                },
-                {
-                    "id": "i3_r2",
-                    "tool": "multiply_timeseries",
-                    "arguments": {
-                        "timeseries": "i1_r4",
-                        "factor": 0.7
-                    }
-                },
-                {
-                    "id": "i3_r3",
-                    "tool": "add_timeseries",
-                    "arguments": {
-                        "timeseries": [
-                            "i1_r3_multiply",
-                            "i1_r4_multiply"
-                        ]
-                    }
-                },
-                {
-                    "id": "i3_r4",
-                    "tool": "get_statistical_value",
-                    "arguments": {
-                        "statistic_type": "sum",
-                        "energy_data": "i1_r3_add"
-                    }
-                },
-                {
-                    "id": "i3_r5",
-                    "tool": "generate_answer",
-                    "arguments": {
-                        "result_ids": [
-                            "i1_r3_add_sum"
-                        ],
-                        "message": "Mein gewichteter Verbrauch über das letzte Monat beträgt {value} kWh."
-                    }
-                }
-            ],
+            "tool_calls": null,
             "usage": {
-                "runtime_seconds": 14.533267799999521,
-                "input_tokens": 5954,
-                "output_tokens": 995,
-                "total_tokens": 6949
+                "runtime_seconds": 120.05060500000036,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
             },
-            "finish_reason": "stop"
+            "finish_reason": "timeout"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 48.466,
-        "input_tokens": 17093,
-        "output_tokens": 3477,
-        "total_tokens": 20570
+        "runtime_seconds": 155.343,
+        "input_tokens": 11161,
+        "output_tokens": 2592,
+        "total_tokens": 13753
     }
 }

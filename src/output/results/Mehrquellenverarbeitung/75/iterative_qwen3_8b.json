@@ -22,27 +22,13 @@
                         "start": "2025-01-01 00:00:00",
                         "end": "2025-12-31 23:59:59"
                     }
-                },
-                {
-                    "id": "i1_r3",
-                    "tool": "multiply_timeseries",
-                    "arguments": {
-                        "timeseries": {
-                            "metering_point_id": "mp_3",
-                            "start": "2025-01-01 00:00:00",
-                            "end": "2025-12-31 23:59:59"
-                        },
-                        "factor": {
-                            "metering_point_id": "mp_3"
-                        }
-                    }
                 }
             ],
             "usage": {
-                "runtime_seconds": 21.93219560000216,
+                "runtime_seconds": 20.167177100000117,
                 "input_tokens": 5407,
-                "output_tokens": 1685,
-                "total_tokens": 7092
+                "output_tokens": 1566,
+                "total_tokens": 6973
             },
             "finish_reason": "stop"
         },
@@ -52,51 +38,34 @@
                     "id": "i2_r1",
                     "tool": "multiply_timeseries",
                     "arguments": {
-                        "timeseries": {
-                            "result_id": "i1_r2"
-                        },
+                        "timeseries": "i1_r2",
                         "factor": 0.7
                     }
                 },
                 {
                     "id": "i2_r2",
-                    "tool": "create_energy_plot",
-                    "arguments": {
-                        "title": "Gewichtete Erzeugung von mp_3 (letztes Jahr)",
-                        "labels": [
-                            "gewichtete Erzeugung"
-                        ],
-                        "energy_data": [
-                            {
-                                "result_id": "i2_r1"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "id": "i2_r3",
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i3_r1"
+                            "i2_r1"
                         ],
-                        "message": "Hier ist die gewichtete Erzeugung des Zählpunkts mp_3 für das letzte Jahr (berechnet mit dem Teilnahmefaktor von 0.7)."
+                        "message": "Die gewichtete Erzeugung für mp_3 im letzten Jahr beträgt {value} kWh."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 16.8538996999996,
-                "input_tokens": 5690,
-                "output_tokens": 1194,
-                "total_tokens": 6884
+                "runtime_seconds": 18.791470899999695,
+                "input_tokens": 5584,
+                "output_tokens": 1393,
+                "total_tokens": 6977
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 38.786,
-        "input_tokens": 11097,
-        "output_tokens": 2879,
-        "total_tokens": 13976
+        "runtime_seconds": 38.959,
+        "input_tokens": 10991,
+        "output_tokens": 2959,
+        "total_tokens": 13950
     }
 }

@@ -15,20 +15,9 @@
                         "start": "2025-12-27 00:00:00",
                         "end": "2025-12-31 23:59:59"
                     }
-                }
-            ],
-            "usage": {
-                "runtime_seconds": 11.365202599999975,
-                "input_tokens": 5401,
-                "output_tokens": 663,
-                "total_tokens": 6064
-            },
-            "finish_reason": "stop"
-        },
-        {
-            "tool_calls": [
+                },
                 {
-                    "id": "i2_r1",
+                    "id": "i1_r2",
                     "tool": "create_energy_plot",
                     "arguments": {
                         "title": "Meine Erzeugung der letzten Woche",
@@ -37,35 +26,35 @@
                         ],
                         "energy_data": [
                             {
-                                "type": "timeseries"
+                                "result_id": "i2_r1"
                             }
                         ]
                     }
                 },
                 {
-                    "id": "i2_r2",
+                    "id": "i1_r3",
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i1_r1_plot"
+                            "i2_r2"
                         ],
-                        "message": "Hier ist ein Diagramm, das Ihre Erzeugung der letzten Woche zeigt. Die Daten basieren auf den gemessenen Werten Ihres Erzeugungszählpunkts (mp_3)."
+                        "message": "Hier ist ein Diagramm, das Ihre Erzeugung der letzten Woche zeigt. Sie können die Daten im Diagramm analysieren."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 20.653962200000024,
-                "input_tokens": 5511,
-                "output_tokens": 1478,
-                "total_tokens": 6989
+                "runtime_seconds": 16.35695570000098,
+                "input_tokens": 5401,
+                "output_tokens": 1156,
+                "total_tokens": 6557
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 32.019,
-        "input_tokens": 10912,
-        "output_tokens": 2141,
-        "total_tokens": 13053
+        "runtime_seconds": 16.357,
+        "input_tokens": 5401,
+        "output_tokens": 1156,
+        "total_tokens": 6557
     }
 }

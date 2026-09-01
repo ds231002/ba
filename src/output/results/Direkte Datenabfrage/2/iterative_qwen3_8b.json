@@ -11,23 +11,24 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Klar, ich kann Ihren Teilnahmefaktor ermitteln. Bitte geben Sie an, für welchen Verbrauchszählpunkt (mp_1 oder mp_2) Sie den Teilnahmefaktor benötigen. Ohne Angabe wird standardmäßig der erste Verbrauchszählpunkt (mp_1) berücksichtigt."
+                        "message": "Um Ihren Teilnahmefaktor zu ermitteln, bitte geben Sie an, welchen Verbrauchszählpunkt (mp_1 oder mp_2) Sie meinen. Der Teilnahmefaktor wird pro Zählpunkt separat berechnet.",
+                        "result_ids": []
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 7.777070100000856,
+                "runtime_seconds": 10.778552399999171,
                 "input_tokens": 5401,
-                "output_tokens": 388,
-                "total_tokens": 5789
+                "output_tokens": 605,
+                "total_tokens": 6006
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 7.777,
+        "runtime_seconds": 10.779,
         "input_tokens": 5401,
-        "output_tokens": 388,
-        "total_tokens": 5789
+        "output_tokens": 605,
+        "total_tokens": 6006
     }
 }

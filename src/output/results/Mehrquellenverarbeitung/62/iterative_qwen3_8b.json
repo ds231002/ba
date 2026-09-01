@@ -54,31 +54,112 @@
                             }
                         ]
                     }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 12.550736199998937,
+                "input_tokens": 5420,
+                "output_tokens": 865,
+                "total_tokens": 6285
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "add_timeseries",
+                    "arguments": {
+                        "timeseries": [
+                            {
+                                "result_id": "i1_r1"
+                            },
+                            {
+                                "result_id": "i1_r2"
+                            }
+                        ]
+                    }
                 },
                 {
-                    "id": "i1_r5",
-                    "tool": "generate_answer",
+                    "id": "i2_r2",
+                    "tool": "create_energy_plot",
                     "arguments": {
-                        "result_ids": [
-                            "i2_r4"
+                        "title": "Summierten Energieverbrauch von mp_1 und mp_2 (Dezember 2025)",
+                        "labels": [
+                            "mp_1",
+                            "mp_2"
                         ],
-                        "message": "Hier ist die Grafik mit dem summierten Energieverbrauch von mp_1 und mp_2 für den Zeitraum Dezember 2025."
+                        "energy_data": [
+                            {
+                                "result_id": "i1_r3"
+                            }
+                        ]
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 17.744872700000997,
-                "input_tokens": 5420,
-                "output_tokens": 1290,
-                "total_tokens": 6710
+                "runtime_seconds": 15.74343570000201,
+                "input_tokens": 5843,
+                "output_tokens": 1101,
+                "total_tokens": 6944
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i3_r1",
+                    "tool": "add_timeseries",
+                    "arguments": {
+                        "timeseries": [
+                            {
+                                "result_id": "i1_r1"
+                            },
+                            {
+                                "result_id": "i1_r2"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "i3_r2",
+                    "tool": "create_energy_plot",
+                    "arguments": {
+                        "title": "Summierten Energieverbrauch von mp_1 und mp_2 (Dezember 2025)",
+                        "labels": [
+                            "Summe mp_1 und mp_2"
+                        ],
+                        "energy_data": [
+                            {
+                                "result_id": "i2_r1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "i3_r3",
+                    "tool": "generate_answer",
+                    "arguments": {
+                        "result_ids": [
+                            "i2_r1"
+                        ],
+                        "message": "Hier ist die Grafik des summierten Energieverbrauchs von mp_1 und mp_2 für Dezember 2025."
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 17.542168799998763,
+                "input_tokens": 6047,
+                "output_tokens": 1262,
+                "total_tokens": 7309
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 17.745,
-        "input_tokens": 5420,
-        "output_tokens": 1290,
-        "total_tokens": 6710
+        "runtime_seconds": 45.836,
+        "input_tokens": 17310,
+        "output_tokens": 3228,
+        "total_tokens": 20538
     }
 }

@@ -30,8 +30,8 @@
                     "tool": "add_timeseries",
                     "arguments": {
                         "timeseries": [
-                            "i2_r1",
-                            "i2_r2"
+                            "i1_r1",
+                            "i2_r1"
                         ]
                     }
                 },
@@ -42,60 +42,31 @@
                         "statistic_type": "sum",
                         "energy_data": "i3_r1"
                     }
-                }
-            ],
-            "usage": {
-                "runtime_seconds": 27.767833599998994,
-                "input_tokens": 5403,
-                "output_tokens": 2170,
-                "total_tokens": 7573
-            },
-            "finish_reason": "stop"
-        },
-        {
-            "tool_calls": [
-                {
-                    "id": "i2_r1",
-                    "tool": "add_timeseries",
-                    "arguments": {
-                        "timeseries": [
-                            "i1_r1",
-                            "i1_r2"
-                        ]
-                    }
                 },
                 {
-                    "id": "i2_r2",
-                    "tool": "get_statistical_value",
-                    "arguments": {
-                        "statistic_type": "sum",
-                        "energy_data": "i4_r1"
-                    }
-                },
-                {
-                    "id": "i2_r3",
+                    "id": "i1_r5",
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i5_r1"
+                            "i4_r1"
                         ],
-                        "message": "Dein Gesamtverbrauch über die letzten 2 Monate beträgt {sum} kWh."
+                        "message": "Mein Gesamtverbrauch über die letzten 2 Monate beträgt {sum} kWh."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 12.346045600001162,
-                "input_tokens": 5733,
-                "output_tokens": 795,
-                "total_tokens": 6528
+                "runtime_seconds": 10.45940150000024,
+                "input_tokens": 5403,
+                "output_tokens": 607,
+                "total_tokens": 6010
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 40.114,
-        "input_tokens": 11136,
-        "output_tokens": 2965,
-        "total_tokens": 14101
+        "runtime_seconds": 10.459,
+        "input_tokens": 5403,
+        "output_tokens": 607,
+        "total_tokens": 6010
     }
 }

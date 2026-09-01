@@ -20,35 +20,118 @@
                     "tool": "get_statistical_value",
                     "arguments": {
                         "statistic_type": "sum",
-                        "energy_data": {
-                            "result_id": "i1_r1"
-                        }
-                    }
-                },
-                {
-                    "id": "i1_r3",
-                    "tool": "generate_answer",
-                    "arguments": {
-                        "result_ids": [
-                            "i2_r1"
-                        ],
-                        "message": "Die Energiegemeinschaft hat letztes Jahr insgesamt {value} kWh erzeugt."
+                        "energy_data": "i1_r1"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 14.020264900000257,
+                "runtime_seconds": 24.312812499996653,
                 "input_tokens": 5406,
-                "output_tokens": 977,
-                "total_tokens": 6383
+                "output_tokens": 1805,
+                "total_tokens": 7211
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "get_community_generation",
+                    "arguments": {
+                        "start": "2025-01-01 00:00:00",
+                        "end": "2025-12-31 23:59:59"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 14.565127000001667,
+                "input_tokens": 5569,
+                "output_tokens": 967,
+                "total_tokens": 6536
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i3_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "sum",
+                        "energy_data": "i2_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 12.011830200000986,
+                "input_tokens": 5665,
+                "output_tokens": 741,
+                "total_tokens": 6406
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i4_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "sum",
+                        "energy_data": "i2_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 15.291395700001885,
+                "input_tokens": 5731,
+                "output_tokens": 1014,
+                "total_tokens": 6745
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i5_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "sum",
+                        "energy_data": "i2_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 21.432682500002556,
+                "input_tokens": 5797,
+                "output_tokens": 1544,
+                "total_tokens": 7341
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i6_r1",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "sum",
+                        "energy_data": "i2_r1"
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 21.32242430000042,
+                "input_tokens": 5863,
+                "output_tokens": 1531,
+                "total_tokens": 7394
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 14.02,
-        "input_tokens": 5406,
-        "output_tokens": 977,
-        "total_tokens": 6383
+        "runtime_seconds": 108.936,
+        "input_tokens": 34031,
+        "output_tokens": 7602,
+        "total_tokens": 41633
     }
 }

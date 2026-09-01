@@ -16,10 +16,10 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 7.360773399999744,
+                "runtime_seconds": 7.074709199998324,
                 "input_tokens": 5397,
-                "output_tokens": 326,
-                "total_tokens": 5723
+                "output_tokens": 316,
+                "total_tokens": 5713
             },
             "finish_reason": "stop"
         },
@@ -30,25 +30,25 @@
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i2_r1"
+                            "i1_r1"
                         ],
-                        "message": "Der Zählpunkt mp_1 hat im Moment eine elektrische Leistung von 3,21 kW. Da mp_1 ein Verbrauchszählpunkt ist, handelt es sich um den aktuellen Verbrauch."
+                        "message": "Der Zählpunkt mp_1 ist ein Verbrauchszählpunkt und misst aktuell eine elektrische Leistung von 3,21 kW. Er erzeugt keine Energie."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 14.3068504999992,
-                "input_tokens": 5454,
-                "output_tokens": 955,
-                "total_tokens": 6409
+                "runtime_seconds": 15.978863500000443,
+                "input_tokens": 5465,
+                "output_tokens": 1102,
+                "total_tokens": 6567
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 21.668,
-        "input_tokens": 10851,
-        "output_tokens": 1281,
-        "total_tokens": 12132
+        "runtime_seconds": 23.054,
+        "input_tokens": 10862,
+        "output_tokens": 1418,
+        "total_tokens": 12280
     }
 }

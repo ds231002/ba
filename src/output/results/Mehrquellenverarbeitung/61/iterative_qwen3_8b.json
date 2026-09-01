@@ -6,86 +6,20 @@
     "model": "qwen3:8b",
     "iterations": [
         {
-            "tool_calls": [
-                {
-                    "id": "i1_r1",
-                    "tool": "get_measured_energy",
-                    "arguments": {
-                        "metering_point_id": "mp_1",
-                        "start": "2025-12-01 00:00:00",
-                        "end": "2026-01-01 00:00:00"
-                    }
-                },
-                {
-                    "id": "i1_r2",
-                    "tool": "get_measured_energy",
-                    "arguments": {
-                        "metering_point_id": "mp_2",
-                        "start": "2025-12-01 00:00:00",
-                        "end": "2026-01-01 00:00:00"
-                    }
-                },
-                {
-                    "id": "i1_r3",
-                    "tool": "add_timeseries",
-                    "arguments": {
-                        "timeseries": [
-                            {
-                                "result_id": "i2_r1"
-                            },
-                            {
-                                "result_id": "i2_r2"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "id": "i1_r4",
-                    "tool": "create_energy_plot",
-                    "arguments": {
-                        "title": "Summierte Verbrauchszählpunkte (Dezember 2025)",
-                        "labels": [
-                            "mp_1",
-                            "mp_2",
-                            "Summe"
-                        ],
-                        "energy_data": [
-                            {
-                                "result_id": "i2_r1"
-                            },
-                            {
-                                "result_id": "i2_r2"
-                            },
-                            {
-                                "result_id": "i2_r3"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "id": "i1_r5",
-                    "tool": "generate_answer",
-                    "arguments": {
-                        "result_ids": [
-                            "i2_r4"
-                        ],
-                        "message": "Hier ist der summierte Verlauf aller Ihrer Verbrauchszählpunkte (mp_1 und mp_2) über das letzte Monat (Dezember 2025). Die Daten sind als Diagramm dargestellt."
-                    }
-                }
-            ],
+            "tool_calls": null,
             "usage": {
-                "runtime_seconds": 15.491304999999556,
-                "input_tokens": 5413,
-                "output_tokens": 1107,
-                "total_tokens": 6520
+                "runtime_seconds": 120.05408349999925,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
             },
-            "finish_reason": "stop"
+            "finish_reason": "timeout"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 15.491,
-        "input_tokens": 5413,
-        "output_tokens": 1107,
-        "total_tokens": 6520
+        "runtime_seconds": 120.054,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
     }
 }

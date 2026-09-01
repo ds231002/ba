@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Um den Minimalverbrauch Ihres Zählpunktes mp_2 zu ermitteln, benötige ich den Zeitraum, für den Sie den Minimalverbrauch wissen möchten. Bitte geben Sie den gewünschten Zeitraum an (z. B. 'Heute', 'Letzte Woche', 'Vorgestern 15:00-18:00')."
+                        "message": "Um den Minimalverbrauch Ihres Zählpunktes mp_2 zu ermitteln, benötige ich den Zeitraum, für den Sie den Minimalwert möchten. Bitte geben Sie den gewünschten Zeitraum an (z. B. 'von 01.01.2025 bis 31.12.2025')."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 22.744975600000544,
+                "runtime_seconds": 11.705341599998064,
                 "input_tokens": 5406,
-                "output_tokens": 1772,
-                "total_tokens": 7178
+                "output_tokens": 785,
+                "total_tokens": 6191
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 22.745,
+        "runtime_seconds": 11.705,
         "input_tokens": 5406,
-        "output_tokens": 1772,
-        "total_tokens": 7178
+        "output_tokens": 785,
+        "total_tokens": 6191
     }
 }

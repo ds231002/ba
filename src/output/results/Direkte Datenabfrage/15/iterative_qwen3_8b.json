@@ -16,10 +16,10 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 8.459233100000347,
+                "runtime_seconds": 8.1190588999998,
                 "input_tokens": 5395,
-                "output_tokens": 435,
-                "total_tokens": 5830
+                "output_tokens": 432,
+                "total_tokens": 5827
             },
             "finish_reason": "stop"
         },
@@ -30,25 +30,25 @@
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i2_r1"
+                            "i1_r1"
                         ],
                         "message": "Du erzeugst aktuell 3,21 kW."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 9.763981899999635,
-                "input_tokens": 5452,
-                "output_tokens": 564,
-                "total_tokens": 6016
+                "runtime_seconds": 8.668192199998884,
+                "input_tokens": 5463,
+                "output_tokens": 473,
+                "total_tokens": 5936
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 18.223,
-        "input_tokens": 10847,
-        "output_tokens": 999,
-        "total_tokens": 11846
+        "runtime_seconds": 16.787,
+        "input_tokens": 10858,
+        "output_tokens": 905,
+        "total_tokens": 11763
     }
 }

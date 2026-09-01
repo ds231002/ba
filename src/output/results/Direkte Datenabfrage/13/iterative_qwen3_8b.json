@@ -16,10 +16,10 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 9.501482899999246,
+                "runtime_seconds": 8.126834700000472,
                 "input_tokens": 5396,
-                "output_tokens": 518,
-                "total_tokens": 5914
+                "output_tokens": 436,
+                "total_tokens": 5832
             },
             "finish_reason": "stop"
         },
@@ -30,25 +30,25 @@
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i2_r1"
+                            "i1_r1"
                         ],
                         "message": "Der aktuelle Verbrauch des Zählpunkts mp2 beträgt 3,21 kW."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 7.6514142000014544,
-                "input_tokens": 5453,
-                "output_tokens": 378,
-                "total_tokens": 5831
+                "runtime_seconds": 6.282623800001602,
+                "input_tokens": 5464,
+                "output_tokens": 250,
+                "total_tokens": 5714
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 17.153,
-        "input_tokens": 10849,
-        "output_tokens": 896,
-        "total_tokens": 11745
+        "runtime_seconds": 14.409,
+        "input_tokens": 10860,
+        "output_tokens": 686,
+        "total_tokens": 11546
     }
 }

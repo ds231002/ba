@@ -6,59 +6,20 @@
     "model": "qwen3:8b",
     "iterations": [
         {
-            "tool_calls": [
-                {
-                    "id": "i1_r1",
-                    "tool": "get_participation_factor",
-                    "arguments": {
-                        "metering_point_id": "mp_03"
-                    }
-                },
-                {
-                    "id": "i1_r2",
-                    "tool": "get_measured_energy",
-                    "arguments": {
-                        "metering_point_id": "mp_03",
-                        "start": "2025-12-01 00:00:00",
-                        "end": "2025-12-31 23:59:59"
-                    }
-                },
-                {
-                    "id": "i1_r3",
-                    "tool": "multiply_timeseries",
-                    "arguments": {
-                        "timeseries": {
-                            "result_id": "i2_r1"
-                        },
-                        "factor": {
-                            "result_id": "i2_r2"
-                        }
-                    }
-                },
-                {
-                    "id": "i1_r4",
-                    "tool": "generate_answer",
-                    "arguments": {
-                        "result_ids": [
-                            "i2_r3"
-                        ],
-                        "message": "Hier ist die gewichtete Erzeugung für mp_03 im letzten Monat."
-                    }
-                }
-            ],
+            "tool_calls": null,
             "usage": {
-                "runtime_seconds": 21.492932200000723,
-                "input_tokens": 5408,
-                "output_tokens": 1644,
-                "total_tokens": 7052
+                "runtime_seconds": 120.04309830000057,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
             },
-            "finish_reason": "stop"
+            "finish_reason": "timeout"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 21.493,
-        "input_tokens": 5408,
-        "output_tokens": 1644,
-        "total_tokens": 7052
+        "runtime_seconds": 120.043,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
     }
 }

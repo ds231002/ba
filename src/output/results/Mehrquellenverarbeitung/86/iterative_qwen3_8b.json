@@ -8,7 +8,7 @@
         {
             "tool_calls": null,
             "usage": {
-                "runtime_seconds": 120.04437739999776,
+                "runtime_seconds": 120.0462761000017,
                 "input_tokens": null,
                 "output_tokens": null,
                 "total_tokens": null
@@ -17,7 +17,7 @@
         }
     ],
     "total_usage": {
-        "runtime_seconds": 120.044,
+        "runtime_seconds": 120.046,
         "input_tokens": 0,
         "output_tokens": 0,
         "total_tokens": 0

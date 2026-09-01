@@ -6,51 +6,20 @@
     "model": "qwen3:8b",
     "iterations": [
         {
-            "tool_calls": [
-                {
-                    "id": "i1_r1",
-                    "tool": "get_measured_energy",
-                    "arguments": {
-                        "metering_point_id": "mp_1",
-                        "start": "2025-11-01 00:00:00",
-                        "end": "2025-12-31 23:59:59"
-                    }
-                }
-            ],
+            "tool_calls": null,
             "usage": {
-                "runtime_seconds": 14.502189400000134,
-                "input_tokens": 5407,
-                "output_tokens": 960,
-                "total_tokens": 6367
+                "runtime_seconds": 120.04070859999774,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
             },
-            "finish_reason": "stop"
-        },
-        {
-            "tool_calls": [
-                {
-                    "id": "i2_r1",
-                    "tool": "generate_answer",
-                    "arguments": {
-                        "result_ids": [
-                            "i1_r1"
-                        ],
-                        "message": "Der Gesamtverbrauch Ihres Zählpunkts mp_1 über die letzten 2 Monate (02.11.2025 – 31.12.2025) ist in der bereitgestellten Zeitreihe zusammengefasst. Bitte prüfen Sie die Daten im Diagramm oder als Zeitreihe."
-                    }
-                }
-            ],
-            "usage": {
-                "runtime_seconds": 9.715633300000263,
-                "input_tokens": 5517,
-                "output_tokens": 554,
-                "total_tokens": 6071
-            },
-            "finish_reason": "stop"
+            "finish_reason": "timeout"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 24.218,
-        "input_tokens": 10924,
-        "output_tokens": 1514,
-        "total_tokens": 12438
+        "runtime_seconds": 120.041,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
     }
 }
