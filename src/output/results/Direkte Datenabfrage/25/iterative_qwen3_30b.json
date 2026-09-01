@@ -30,7 +30,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 9.007709699999396,
+                "runtime_seconds": 8.484533899998496,
                 "input_tokens": 5405,
                 "output_tokens": 761,
                 "total_tokens": 6166
@@ -38,20 +38,33 @@
             "finish_reason": "stop"
         },
         {
-            "tool_calls": null,
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "generate_answer",
+                    "arguments": {
+                        "result_ids": [
+                            "i1_r1",
+                            "i1_r2",
+                            "i1_r3"
+                        ],
+                        "message": "Hier sind Ihre Zählpunkte und ihre Teilnahmefaktoren:\n- mp_1: 0.7\n- mp_2: 0.7\n- mp_3: 0.7"
+                    }
+                }
+            ],
             "usage": {
-                "runtime_seconds": 120.05637120000029,
-                "input_tokens": null,
-                "output_tokens": null,
-                "total_tokens": null
+                "runtime_seconds": 7.375675499999488,
+                "input_tokens": 5607,
+                "output_tokens": 548,
+                "total_tokens": 6155
             },
-            "finish_reason": "timeout"
+            "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 129.064,
-        "input_tokens": 5405,
-        "output_tokens": 761,
-        "total_tokens": 6166
+        "runtime_seconds": 15.86,
+        "input_tokens": 11012,
+        "output_tokens": 1309,
+        "total_tokens": 12321
     }
 }

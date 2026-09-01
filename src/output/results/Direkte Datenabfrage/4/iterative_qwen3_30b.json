@@ -16,7 +16,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 5.477815400000054,
+                "runtime_seconds": 5.724105900000723,
                 "input_tokens": 5398,
                 "output_tokens": 285,
                 "total_tokens": 5683
@@ -30,25 +30,25 @@
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i2_r1"
+                            "i1_r1"
                         ],
-                        "message": "Der Teilnahmefaktor für mp1 beträgt 0.7."
+                        "message": "Ihr Teilnahmefaktor für mp1 beträgt 0.7."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 15.452986900000269,
-                "input_tokens": 5454,
-                "output_tokens": 1811,
-                "total_tokens": 7265
+                "runtime_seconds": 10.182854799997585,
+                "input_tokens": 5465,
+                "output_tokens": 932,
+                "total_tokens": 6397
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 20.931,
-        "input_tokens": 10852,
-        "output_tokens": 2096,
-        "total_tokens": 12948
+        "runtime_seconds": 15.907,
+        "input_tokens": 10863,
+        "output_tokens": 1217,
+        "total_tokens": 12080
     }
 }

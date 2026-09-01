@@ -13,15 +13,23 @@
                     "arguments": {
                         "metering_point_id": "mp_2",
                         "start": "2025-01-01 00:00:00",
-                        "end": "2025-12-31 24:00:00"
+                        "end": "2025-12-31 23:59:59"
+                    }
+                },
+                {
+                    "id": "i1_r2",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "min",
+                        "energy_data": "<result_of_get_measured_energy>"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.7230877999973018,
+                "runtime_seconds": 2.8981230999997933,
                 "input_tokens": 4743,
-                "output_tokens": 63,
-                "total_tokens": 4806
+                "output_tokens": 91,
+                "total_tokens": 4834
             },
             "finish_reason": "stop"
         },
@@ -29,47 +37,33 @@
             "tool_calls": [
                 {
                     "id": "i2_r1",
-                    "tool": "get_measured_energy",
+                    "tool": "get_statistical_value",
                     "arguments": {
-                        "metering_point_id": "mp_2",
-                        "start": "2025-01-01 00:00:00",
-                        "end": "2025-12-31 23:59:59"
+                        "statistic_type": "min",
+                        "energy_data": "i1_r1"
                     }
                 },
                 {
                     "id": "i2_r2",
-                    "tool": "get_statistical_value",
-                    "arguments": {
-                        "statistic_type": "min",
-                        "energy_data": {
-                            "result_id": "i1_r1"
-                        }
-                    }
-                },
-                {
-                    "id": "i2_r3",
                     "tool": "generate_answer",
                     "arguments": {
-                        "result_ids": [
-                            "i2_r1"
-                        ],
-                        "message": "Gib den Minimalverbrauch des Zählpunkts mp_2 aus."
+                        "message": "Berechne den Minimalverbrauch für den Zählpunkt mp_2 auf Basis des bereits geladenen Zeitreihen-Ergebnisses i1_r1 und gib anschließend den Wert aus."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.041685399999551,
-                "input_tokens": 4846,
-                "output_tokens": 125,
-                "total_tokens": 4971
+                "runtime_seconds": 1.7613674999993236,
+                "input_tokens": 4907,
+                "output_tokens": 87,
+                "total_tokens": 4994
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 3.765,
-        "input_tokens": 9589,
-        "output_tokens": 188,
-        "total_tokens": 9777
+        "runtime_seconds": 4.659,
+        "input_tokens": 9650,
+        "output_tokens": 178,
+        "total_tokens": 9828
     }
 }

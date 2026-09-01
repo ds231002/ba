@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Ich kann die gewünschte Grafik für das letzte Monat nicht direkt erzeugen, weil der angefragte Zeitraum teilweise in die Zukunft bzw. über den verfügbaren Datenbereich hinausgeht. Heute ist der 02.01.2026, und Energiedaten sind nur bis einschließlich 31.12.2025 verfügbar. Bitte nenne einen Zeitraum, der vollständig bis 31.12.2025 liegt."
+                        "message": "Ich kann die gewünschte Grafik für das letzte Monat nicht direkt erzeugen, weil der Zeitraum teilweise in die Zukunft bzw. über den verfügbaren Datenstand hinausreichen kann. Bitte präzisiere den Zeitraum als konkretes Datum oder bestätige einen Zeitraum, der vollständig bis einschließlich 31.12.2025 liegt."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.216207999998005,
+                "runtime_seconds": 4.306526899999881,
                 "input_tokens": 4753,
-                "output_tokens": 107,
-                "total_tokens": 4860
+                "output_tokens": 89,
+                "total_tokens": 4842
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.216,
+        "runtime_seconds": 4.307,
         "input_tokens": 4753,
-        "output_tokens": 107,
-        "total_tokens": 4860
+        "output_tokens": 89,
+        "total_tokens": 4842
     }
 }

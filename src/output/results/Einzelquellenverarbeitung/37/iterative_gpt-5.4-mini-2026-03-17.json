@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Meinst du mit „mein Verbrauch“ einen bestimmten deiner Verbrauchszählpunkte (mp_1 oder mp_2) oder den Gesamtverbrauch über beide eigenen Verbrauchszählpunkte zusammen? Bitte nenne den gewünschten Zählpunkt bzw. bestätige die Summe beider Verbrauchszählpunkte."
+                        "message": "Rückfrage: Meinst du mit „mein Verbrauch“ einen bestimmten deiner Verbrauchszählpunkte (mp_1 oder mp_2) oder den Gesamtverbrauch über beide eigenen Verbrauchszählpunkte zusammen? Bitte nenne den gewünschten Zählpunkt bzw. bestätige die Summe beider Verbrauchszählpunkte. Hinweis: Für die letzten 12 Monate sind nur Daten bis einschließlich 31.12.2025 verfügbar."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.7799048000015318,
+                "runtime_seconds": 2.042325400001573,
                 "input_tokens": 4738,
-                "output_tokens": 82,
-                "total_tokens": 4820
+                "output_tokens": 104,
+                "total_tokens": 4842
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.78,
+        "runtime_seconds": 2.042,
         "input_tokens": 4738,
-        "output_tokens": 82,
-        "total_tokens": 4820
+        "output_tokens": 104,
+        "total_tokens": 4842
     }
 }

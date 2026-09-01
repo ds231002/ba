@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Meinst du mit „meinen Erzeugung“ den eigenen Erzeugungszähler mp_3? Und soll ich für das letzte Jahr den Zeitraum 01.01.2025 00:00:00 bis 01.01.2026 00:00:00 verwenden? Hinweis: Daten sind nur bis einschließlich 31.12.2025 verfügbar, daher kann ich den Zeitraum nur bis 31.12.2025 23:59:59 auswerten."
+                        "message": "Rückfrage: Meinst du mit „meinen Erzeugung“ den eigenen Erzeugungszählpunkt mp_3? Außerdem ist „das letzte Jahr“ ausgehend von heute (02.01.2026) der Zeitraum 01.01.2025 00:00:00 bis 01.01.2026 00:00:00. Dafür sind jedoch nur Daten bis einschließlich 31.12.2025 verfügbar. Ich kann daher den Zeitraum nur bis 31.12.2025 24:00:00 bzw. 01.01.2026 00:00:00 nicht vollständig abdecken. Wenn du möchtest, kann ich die verfügbare Erzeugung für 01.01.2025 bis 31.12.2025 berechnen und nach Teilnahmefaktor gewichten."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.2193604999993113,
+                "runtime_seconds": 2.2683601999997336,
                 "input_tokens": 4750,
-                "output_tokens": 129,
-                "total_tokens": 4879
+                "output_tokens": 195,
+                "total_tokens": 4945
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.219,
+        "runtime_seconds": 2.268,
         "input_tokens": 4750,
-        "output_tokens": 129,
-        "total_tokens": 4879
+        "output_tokens": 195,
+        "total_tokens": 4945
     }
 }

@@ -16,7 +16,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 5.838844299999437,
+                "runtime_seconds": 5.980264000001625,
                 "input_tokens": 5397,
                 "output_tokens": 406,
                 "total_tokens": 5803
@@ -30,25 +30,25 @@
                     "tool": "generate_answer",
                     "arguments": {
                         "result_ids": [
-                            "i2_r1"
+                            "i1_r1"
                         ],
-                        "message": "mp_1 verbraucht gerade 3.21 kW."
+                        "message": "Der aktuelle Verbrauch von mp_1 beträgt 3.21 kW."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 11.708841500000744,
-                "input_tokens": 5454,
-                "output_tokens": 1271,
-                "total_tokens": 6725
+                "runtime_seconds": 6.212922499998967,
+                "input_tokens": 5465,
+                "output_tokens": 351,
+                "total_tokens": 5816
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 17.548,
-        "input_tokens": 10851,
-        "output_tokens": 1677,
-        "total_tokens": 12528
+        "runtime_seconds": 12.193,
+        "input_tokens": 10862,
+        "output_tokens": 757,
+        "total_tokens": 11619
     }
 }

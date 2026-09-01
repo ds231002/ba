@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Die Anfrage ist ohne weitere Zeitangabe nicht eindeutig genug für eine Berechnung. Bitte nenne den gewünschten Zeitraum (z. B. heute, letzter Monat oder ein konkretes Datum). Wenn du mit „mein Verbrauch“ alle deine Verbrauchszählpunkte meinst, kann ich auch beide Zählpunkte mp_1 und mp_2 gemeinsam auswerten."
+                        "message": "Die Anfrage ist ohne weitere Präzisierung nicht eindeutig genug, um einen einzelnen Zählpunkt auszuwählen. Du hast zwei eigene Verbrauchszählpunkte: mp_1 und mp_2. Bitte sag mir, ob ich deinen Verbrauch für mp_1, mp_2 oder beide zusammen halbieren soll. Wenn du möchtest, kann ich auch beide Verbrauchszählpunkte gemeinsam als deinen Gesamtverbrauch betrachten und diesen halbieren."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.9384745999996085,
+                "runtime_seconds": 1.9749914000021818,
                 "input_tokens": 4747,
-                "output_tokens": 90,
-                "total_tokens": 4837
+                "output_tokens": 104,
+                "total_tokens": 4851
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.938,
+        "runtime_seconds": 1.975,
         "input_tokens": 4747,
-        "output_tokens": 90,
-        "total_tokens": 4837
+        "output_tokens": 104,
+        "total_tokens": 4851
     }
 }

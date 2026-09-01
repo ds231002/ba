@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Mit „letztes Monat“ ist der Zeitraum 01.12.2025 00:00:00 bis 01.01.2026 00:00:00 gemeint. Für Daten ab 01.01.2026 sind jedoch keine Energiedaten verfügbar. Soll ich stattdessen den letzten vollständig verfügbaren Monat, also 01.11.2025 00:00:00 bis 01.12.2025 00:00:00, auswerten?"
+                        "message": "Rückfrage: Meinst du mit „letztes Monat“ den Zeitraum vom 01.12.2025 00:00:00 bis 01.01.2026 00:00:00? Für diesen Zeitraum sind nur Daten bis einschließlich 31.12.2025 verfügbar. Ich kann daher den Zeitraum bis 31.12.2025 23:59:59 auswerten. Soll ich das so machen?"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.142916899996635,
+                "runtime_seconds": 1.9279496000017389,
                 "input_tokens": 4749,
-                "output_tokens": 132,
-                "total_tokens": 4881
+                "output_tokens": 116,
+                "total_tokens": 4865
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.143,
+        "runtime_seconds": 1.928,
         "input_tokens": 4749,
-        "output_tokens": 132,
-        "total_tokens": 4881
+        "output_tokens": 116,
+        "total_tokens": 4865
     }
 }

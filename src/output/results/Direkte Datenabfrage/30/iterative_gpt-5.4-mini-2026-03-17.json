@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Die Anfrage ist zu ungenau, um sie fachlich zu bearbeiten. Bitte präzisieren Sie, was Sie zu Ihrem Energieverbrauch, Ihrer Erzeugung, einem bestimmten Zählpunkt oder einem Zeitraum wissen möchten."
+                        "message": "Die Aussage ist zu allgemein, um sinnvoll mit Energiedaten zu antworten. Bitte präzisieren Sie Ihr Anliegen, z. B. ob Sie Ihren eigenen Verbrauch, Ihre Erzeugung, einen bestimmten Zählpunkt oder einen Zeitraum analysieren möchten."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.6737782999989577,
+                "runtime_seconds": 1.8379796000008355,
                 "input_tokens": 4738,
-                "output_tokens": 63,
-                "total_tokens": 4801
+                "output_tokens": 70,
+                "total_tokens": 4808
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.674,
+        "runtime_seconds": 1.838,
         "input_tokens": 4738,
-        "output_tokens": 63,
-        "total_tokens": 4801
+        "output_tokens": 70,
+        "total_tokens": 4808
     }
 }

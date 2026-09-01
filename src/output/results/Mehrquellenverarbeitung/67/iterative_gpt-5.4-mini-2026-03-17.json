@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Ich kann die Anfrage so noch nicht eindeutig und korrekt bearbeiten, weil der Zeitraum „letzte Monat“ bis heute (02.01.2026) in den Januar 2026 hineinreichen würde. Energiedaten sind jedoch nur bis einschließlich 31.12.2025 verfügbar. Bitte nenne einen Zeitraum, der vollständig bis 31.12.2025 liegt."
+                        "message": "Rückfrage: Meinst du mit „letztes Monat“ den Zeitraum vom 01.12.2025 00:00:00 bis 01.01.2026 00:00:00? Für diesen Zeitraum sind nur Daten bis einschließlich 31.12.2025 verfügbar. Ich kann daher den Zeitraum 01.12.2025 00:00:00 bis 01.01.2026 00:00:00 nicht vollständig auswerten. Wenn du möchtest, kann ich stattdessen den verfügbaren Teil vom 01.12.2025 00:00:00 bis 31.12.2025 24:00:00 bzw. 01.01.2026 00:00:00 nicht einschließen und den gewichteten Verbrauch für Dezember 2025 berechnen."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.9781220000004396,
+                "runtime_seconds": 2.403859999998531,
                 "input_tokens": 4744,
-                "output_tokens": 100,
-                "total_tokens": 4844
+                "output_tokens": 197,
+                "total_tokens": 4941
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.978,
+        "runtime_seconds": 2.404,
         "input_tokens": 4744,
-        "output_tokens": 100,
-        "total_tokens": 4844
+        "output_tokens": 197,
+        "total_tokens": 4941
     }
 }

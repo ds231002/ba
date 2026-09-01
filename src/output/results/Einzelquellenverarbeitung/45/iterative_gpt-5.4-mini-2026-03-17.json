@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Meinst du mit „meiner Energiegemeinschaft“ den Gesamtverbrauch der Energiegemeinschaft oder deinen eigenen Verbrauch über alle deine Verbrauchszählpunkte (mp_1 und mp_2)? Für „letztes Jahr“ kann ich außerdem nur Daten bis einschließlich 31.12.2025 verwenden."
+                        "message": "Rückfrage: Meinst du mit „meiner Energiegemeinschaft“ den Gesamtverbrauch der Energiegemeinschaft oder deinen eigenen Verbrauch über deine Verbrauchszählpunkte (mp_1 und mp_2)? Außerdem ist „letztes Jahr“ hier als 01.01.2025 00:00:00 bis 01.01.2026 00:00:00 interpretierbar; dafür sind Daten bis einschließlich 31.12.2025 verfügbar. Bitte bestätige, welche Variante du meinst."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.213192999995954,
+                "runtime_seconds": 3.47356999999829,
                 "input_tokens": 4743,
-                "output_tokens": 92,
-                "total_tokens": 4835
+                "output_tokens": 132,
+                "total_tokens": 4875
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.213,
+        "runtime_seconds": 3.474,
         "input_tokens": 4743,
-        "output_tokens": 92,
-        "total_tokens": 4835
+        "output_tokens": 132,
+        "total_tokens": 4875
     }
 }

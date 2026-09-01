@@ -23,7 +23,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 7.1277462999996715,
+                "runtime_seconds": 7.557079799997155,
                 "input_tokens": 5407,
                 "output_tokens": 555,
                 "total_tokens": 5962
@@ -31,20 +31,32 @@
             "finish_reason": "stop"
         },
         {
-            "tool_calls": null,
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "generate_answer",
+                    "arguments": {
+                        "result_ids": [
+                            "i1_r1",
+                            "i1_r2"
+                        ],
+                        "message": "Der Teilnahmefaktor für Ihren Verbrauchszählpunkt mp_1 beträgt 0.7 und für mp_2 beträgt er ebenfalls 0.7."
+                    }
+                }
+            ],
             "usage": {
-                "runtime_seconds": 120.0560561000002,
-                "input_tokens": null,
-                "output_tokens": null,
-                "total_tokens": null
+                "runtime_seconds": 6.880658799997036,
+                "input_tokens": 5542,
+                "output_tokens": 454,
+                "total_tokens": 5996
             },
-            "finish_reason": "timeout"
+            "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 127.184,
-        "input_tokens": 5407,
-        "output_tokens": 555,
-        "total_tokens": 5962
+        "runtime_seconds": 14.438,
+        "input_tokens": 10949,
+        "output_tokens": 1009,
+        "total_tokens": 11958
     }
 }

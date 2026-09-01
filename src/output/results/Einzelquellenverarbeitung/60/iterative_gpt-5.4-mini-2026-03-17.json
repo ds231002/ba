@@ -9,58 +9,25 @@
             "tool_calls": [
                 {
                     "id": "i1_r1",
-                    "tool": "get_measured_energy",
-                    "arguments": {
-                        "metering_point_id": "mp_2",
-                        "start": "2025-12-31 00:00:00",
-                        "end": "2026-01-01 00:00:00"
-                    }
-                },
-                {
-                    "id": "i1_r2",
-                    "tool": "multiply_timeseries",
-                    "arguments": {
-                        "timeseries": "<result_of_get_measured_energy>",
-                        "factor": 0.5
-                    }
-                },
-                {
-                    "id": "i1_r3",
-                    "tool": "create_energy_plot",
-                    "arguments": {
-                        "title": "Verbrauch mp_2 bei halbiertem Verbrauch",
-                        "labels": [
-                            "mp_2 halbiert"
-                        ],
-                        "energy_data": [
-                            "<result_of_multiply_timeseries>"
-                        ]
-                    }
-                },
-                {
-                    "id": "i1_r4",
                     "tool": "generate_answer",
                     "arguments": {
-                        "result_ids": [
-                            "<result_of_create_energy_plot>"
-                        ],
-                        "message": "Stelle das Diagramm des halbierten Verbrauchs von mp_2 dar."
+                        "message": "Die Anfrage ist ohne weitere Zeitangabe nicht direkt auswertbar. Bitte nenne den gewünschten Zeitraum für den Verbrauch von mp_2 (z. B. 'heute', 'letzte Woche' oder ein konkretes Datum)."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.1529274999993504,
+                "runtime_seconds": 1.8539053999993484,
                 "input_tokens": 4751,
-                "output_tokens": 173,
-                "total_tokens": 4924
+                "output_tokens": 72,
+                "total_tokens": 4823
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.153,
+        "runtime_seconds": 1.854,
         "input_tokens": 4751,
-        "output_tokens": 173,
-        "total_tokens": 4924
+        "output_tokens": 72,
+        "total_tokens": 4823
     }
 }

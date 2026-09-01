@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: mp_1 ist ein Verbrauchszählpunkt. Meinst du vielleicht den aktuell gemessenen Verbrauch von mp_1 oder einen anderen Zählpunkt zur Erzeugung?"
+                        "message": "Der Zählpunkt mp_1 ist ein Verbrauchszählpunkt. Die Frage „Wie viel erzeugt mp_1 jetzt gerade?“ ist daher fachlich nicht passend, da für mp_1 keine Erzeugung, sondern Verbrauch gemessen wird. Wenn du möchtest, kann ich dir stattdessen den aktuellen Verbrauch von mp_1 nennen."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.6984554000009666,
+                "runtime_seconds": 1.828127400000085,
                 "input_tokens": 4739,
-                "output_tokens": 58,
-                "total_tokens": 4797
+                "output_tokens": 88,
+                "total_tokens": 4827
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.698,
+        "runtime_seconds": 1.828,
         "input_tokens": 4739,
-        "output_tokens": 58,
-        "total_tokens": 4797
+        "output_tokens": 88,
+        "total_tokens": 4827
     }
 }

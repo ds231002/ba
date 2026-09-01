@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Die Anfrage „Wie viel verbrauche ich gerade?“ ist ohne weitere Angabe nicht eindeutig, da du zwei eigene Verbrauchszählpunkte hast (mp_1 und mp_2). Bitte nenne den gewünschten Zählpunkt oder bestätige, dass ich beide Verbrauchszählpunkte gemeinsam betrachten soll."
+                        "message": "Die Anfrage ist mehrdeutig: Mit „ich“ und „gerade“ ist nicht eindeutig, welcher Ihrer Verbrauchszählpunkte gemeint ist. Ihnen sind folgende Verbrauchszählpunkte zugeordnet: mp_1 und mp_2. Bitte nennen Sie den gewünschten Zählpunkt oder sagen Sie, ob ich beide Verbrauchszählpunkte gemeinsam betrachten soll."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.8313087999995332,
+                "runtime_seconds": 1.931455999998434,
                 "input_tokens": 4736,
-                "output_tokens": 79,
-                "total_tokens": 4815
+                "output_tokens": 90,
+                "total_tokens": 4826
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.831,
+        "runtime_seconds": 1.931,
         "input_tokens": 4736,
-        "output_tokens": 79,
-        "total_tokens": 4815
+        "output_tokens": 90,
+        "total_tokens": 4826
     }
 }

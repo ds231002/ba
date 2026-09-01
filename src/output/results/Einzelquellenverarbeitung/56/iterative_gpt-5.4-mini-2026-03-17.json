@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Für den angefragten Zeitraum kann ich keine Daten abrufen: Es sind nur Energiedaten bis einschließlich 31.12.2025 verfügbar, und der 02.01.2026 liegt darüber. Außerdem ist mp_4 nicht in den zugeordneten Zählpunkten enthalten. Wenn du möchtest, kann ich dir helfen, die Anfrage auf einen verfügbaren Zeitraum oder einen deiner zugeordneten Zählpunkte (mp_1, mp_2, mp_3) anzupassen."
+                        "message": "Bitte präzisiere den Zählpunkt: mp_4 ist in deinem Benutzerkontext nicht aufgeführt. Verfügbar sind mp_1 und mp_2 als Verbrauchszählpunkte sowie mp_3 als Erzeugungszählpunkt. Außerdem ist der Zeitraum 'letztes Monat' grundsätzlich auswertbar, sofern er bis spätestens 31.12.2025 reicht."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 3.26778710000508,
+                "runtime_seconds": 1.9048942000008537,
                 "input_tokens": 4742,
-                "output_tokens": 120,
-                "total_tokens": 4862
+                "output_tokens": 97,
+                "total_tokens": 4839
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 3.268,
+        "runtime_seconds": 1.905,
         "input_tokens": 4742,
-        "output_tokens": 120,
-        "total_tokens": 4862
+        "output_tokens": 97,
+        "total_tokens": 4839
     }
 }

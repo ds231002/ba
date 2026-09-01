@@ -16,7 +16,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 7.308224099999734,
+                "runtime_seconds": 7.44155039999896,
                 "input_tokens": 5405,
                 "output_tokens": 547,
                 "total_tokens": 5952
@@ -32,23 +32,23 @@
                         "result_ids": [
                             "i1_r1"
                         ],
-                        "message": "Ihr Teilnahmefaktor mit mp_2 an der Energiegemeinschaft beträgt 0.7."
+                        "message": "Ihr Teilnahmefaktor mit mp_2 beträgt 0.7 (70%)."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 11.034129599999687,
-                "input_tokens": 5462,
-                "output_tokens": 1150,
-                "total_tokens": 6612
+                "runtime_seconds": 7.915457999999489,
+                "input_tokens": 5473,
+                "output_tokens": 609,
+                "total_tokens": 6082
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 18.342,
-        "input_tokens": 10867,
-        "output_tokens": 1697,
-        "total_tokens": 12564
+        "runtime_seconds": 15.357,
+        "input_tokens": 10878,
+        "output_tokens": 1156,
+        "total_tokens": 12034
     }
 }

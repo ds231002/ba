@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Die Anfrage ist ohne weitere Angaben nicht eindeutig. Meinst du die Vergütung für deinen erzeugten Strom an deinem Erzeugungs-Zählpunkt mp_3, oder möchtest du eine Berechnung für einen bestimmten Zeitraum? Bitte nenne ggf. auch den Zeitraum."
+                        "message": "Die Anfrage ist ohne weitere Angaben nicht eindeutig beantwortbar. Bitte nenne den konkreten Erzeugungs-Zählpunkt oder den Zeitraum, für den du wissen möchtest, wie viel du für deinen erzeugten Strom bekommst. Dir ist aktuell der Erzeugungs-Zählpunkt mp_3 zugeordnet."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.847682799998438,
+                "runtime_seconds": 2.2726695999990625,
                 "input_tokens": 4739,
-                "output_tokens": 77,
-                "total_tokens": 4816
+                "output_tokens": 78,
+                "total_tokens": 4817
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.848,
+        "runtime_seconds": 2.273,
         "input_tokens": 4739,
-        "output_tokens": 77,
-        "total_tokens": 4816
+        "output_tokens": 78,
+        "total_tokens": 4817
     }
 }

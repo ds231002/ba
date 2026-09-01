@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Meinst du mit „über das letzte Monat“ den Zeitraum vom 01.12.2025 00:00:00 bis 01.01.2026 00:00:00? Für mp_3 (Erzeugungszählpunkt) kann ich nur Daten bis einschließlich 31.12.2025 abrufen. Wenn du diesen Zeitraum meinst, kann ich die maximale produzierte Leistung für mp_3 bestimmen."
+                        "message": "Rückfrage: Meinst du mit „das letzte Monat“ den Zeitraum 01.12.2025 00:00:00 bis 01.01.2026 00:00:00? Für diesen Zeitraum sind nur Daten bis einschließlich 31.12.2025 verfügbar. Wenn du möchtest, kann ich stattdessen den maximalen Produktionswert von mp_3 für den verfügbaren Teil des letzten Monats (01.12.2025 bis 31.12.2025) anfragen."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.008712100003322,
+                "runtime_seconds": 2.0198271999979625,
                 "input_tokens": 4742,
-                "output_tokens": 116,
-                "total_tokens": 4858
+                "output_tokens": 130,
+                "total_tokens": 4872
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.009,
+        "runtime_seconds": 2.02,
         "input_tokens": 4742,
-        "output_tokens": 116,
-        "total_tokens": 4858
+        "output_tokens": 130,
+        "total_tokens": 4872
     }
 }

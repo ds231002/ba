@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Für Wetterfragen stehen keine passenden Tools zur Verfügung. Ich kann dazu keine verlässliche Auskunft aus den verfügbaren Daten geben."
+                        "message": "Die Anfrage betrifft das Wetter morgen. Dafür stehen keine passenden Tools zur Verfügung. Bitte stelle die Frage an einen Wetterdienst oder gib mir eine energiebezogene Anfrage."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.659940600002301,
+                "runtime_seconds": 1.8296811999971396,
                 "input_tokens": 4734,
-                "output_tokens": 45,
-                "total_tokens": 4779
+                "output_tokens": 51,
+                "total_tokens": 4785
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.66,
+        "runtime_seconds": 1.83,
         "input_tokens": 4734,
-        "output_tokens": 45,
-        "total_tokens": 4779
+        "output_tokens": 51,
+        "total_tokens": 4785
     }
 }

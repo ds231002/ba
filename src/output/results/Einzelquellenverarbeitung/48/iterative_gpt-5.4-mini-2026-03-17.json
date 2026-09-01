@@ -9,25 +9,44 @@
             "tool_calls": [
                 {
                     "id": "i1_r1",
+                    "tool": "get_measured_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_1",
+                        "start": "2025-12-22 00:00:00",
+                        "end": "2025-12-29 00:00:00"
+                    }
+                },
+                {
+                    "id": "i1_r2",
+                    "tool": "get_statistical_value",
+                    "arguments": {
+                        "statistic_type": "avg",
+                        "energy_data": {
+                            "result_id": "__pending_get_measured_energy_mp_1_last_week__"
+                        }
+                    }
+                },
+                {
+                    "id": "i1_r3",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Meinst du mit „letzte Woche“ den Zeitraum von Montag bis Sonntag der Vorwoche relativ zu heute (02.01.2026), also 22.12.2025 00:00:00 bis 29.12.2025 00:00:00? Für diesen Zeitraum sind Daten verfügbar. Wenn ja, kann ich den Durchschnittsverbrauch von mp_1 berechnen."
+                        "message": "Bitte zuerst die gemessene Energie von mp_1 für letzte Woche abrufen und daraus den Durchschnitt berechnen. Danach die Antwort mit dem berechneten Durchschnittswert ausgeben."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.0737329999974463,
+                "runtime_seconds": 2.1885366999995313,
                 "input_tokens": 4743,
-                "output_tokens": 111,
-                "total_tokens": 4854
+                "output_tokens": 140,
+                "total_tokens": 4883
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.074,
+        "runtime_seconds": 2.189,
         "input_tokens": 4743,
-        "output_tokens": 111,
-        "total_tokens": 4854
+        "output_tokens": 140,
+        "total_tokens": 4883
     }
 }

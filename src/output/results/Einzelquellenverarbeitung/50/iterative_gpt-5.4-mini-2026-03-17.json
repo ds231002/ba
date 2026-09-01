@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Ich kann die Frage so noch nicht eindeutig beantworten, weil „mein Zählpunkt“ nicht eindeutig ist: Dir sind zwei Verbrauchszählpunkte zugeordnet (mp_1 und mp_2). Bitte nenne den gewünschten Zählpunkt oder bestätige, ob ich beide Verbrauchszählpunkte getrennt auswerten soll. Außerdem ist „letztes Jahr“ hier als 01.01.2025 bis 31.12.2025 interpretierbar; dafür sind Daten verfügbar."
+                        "message": "Rückfrage: Mit „meines Zählpunktes“ ist nicht eindeutig, welcher Ihrer Verbrauchszählpunkte gemeint ist. Ihnen sind die Verbrauchszählpunkte mp_1 und mp_2 zugeordnet. Bitte nennen Sie den gewünschten Zählpunkt (mp_1 oder mp_2)."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.0744145000062417,
+                "runtime_seconds": 1.8155325000006997,
                 "input_tokens": 4743,
-                "output_tokens": 124,
-                "total_tokens": 4867
+                "output_tokens": 86,
+                "total_tokens": 4829
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.074,
+        "runtime_seconds": 1.816,
         "input_tokens": 4743,
-        "output_tokens": 124,
-        "total_tokens": 4867
+        "output_tokens": 86,
+        "total_tokens": 4829
     }
 }

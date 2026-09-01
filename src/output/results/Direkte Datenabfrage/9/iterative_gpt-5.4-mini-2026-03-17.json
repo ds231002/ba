@@ -18,23 +18,23 @@
                     "id": "i1_r2",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Bitte gib mir den Teilnahmefaktor für mp_2 aus und antworte anschließend direkt mit dem Wert bzw. einer kurzen Einordnung."
+                        "message": "Bitte beantworte die Frage mit dem Teilnahmefaktor von mp_2 an der Energiegemeinschaft. Falls zusätzlich eine Einordnung gewünscht ist, nenne den Wert als Zahl zwischen 0 und 1."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.6566869000016595,
+                "runtime_seconds": 2.2398259000001417,
                 "input_tokens": 4744,
-                "output_tokens": 67,
-                "total_tokens": 4811
+                "output_tokens": 83,
+                "total_tokens": 4827
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.657,
+        "runtime_seconds": 2.24,
         "input_tokens": 4744,
-        "output_tokens": 67,
-        "total_tokens": 4811
+        "output_tokens": 83,
+        "total_tokens": 4827
     }
 }

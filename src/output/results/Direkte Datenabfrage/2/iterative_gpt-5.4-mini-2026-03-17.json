@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Die Anfrage ist mehrdeutig: Mit „mein Verbrauch“ sind zwei eigene Verbrauchszählpunkte zugeordnet (mp_1 und mp_2). Bitte nenne den gewünschten Zählpunkt oder bestätige, ob ich beide Verbrauchszählpunkte gemeinsam betrachten soll."
+                        "message": "Die Anfrage ist mehrdeutig: Mit „mein Verbrauch“ sind die eigenen Verbrauchszählpunkte des Teilnehmers gemeint, und es ist nicht eindeutig, ob der Teilnahmefaktor eines bestimmten Zählpunkts oder der Verbrauch insgesamt gemeint ist. Deine zugeordneten Verbrauchszählpunkte sind mp_1 und mp_2. Bitte nenne den gewünschten Zählpunkt (mp_1 oder mp_2), damit ich den Teilnahmefaktor bestimmen kann."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.7189118000023882,
+                "runtime_seconds": 1.9806676000007428,
                 "input_tokens": 4739,
-                "output_tokens": 72,
-                "total_tokens": 4811
+                "output_tokens": 113,
+                "total_tokens": 4852
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.719,
+        "runtime_seconds": 1.981,
         "input_tokens": 4739,
-        "output_tokens": 72,
-        "total_tokens": 4811
+        "output_tokens": 113,
+        "total_tokens": 4852
     }
 }

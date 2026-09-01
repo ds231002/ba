@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Meinst du mit „im Laufe des letzten Monats“ den Zeitraum 01.12.2025 00:00:00 bis 01.01.2026 00:00:00? Für mp_2 kann ich nur Verbrauchswerte bis einschließlich 31.12.2025 abrufen. Wenn du diesen Zeitraum meinst, kann ich die Frage beantworten."
+                        "message": "Rückfrage: Meinst du mit „im Laufe des letzten Monats“ den gesamten letzten Kalendermonat (01.12.2025 bis 31.12.2025) für den Zählpunkt mp_2? Bitte bestätige den Zeitraum, dann kann ich die Anfrage passend beantworten."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.2131458000003477,
+                "runtime_seconds": 2.04065669999909,
                 "input_tokens": 4752,
-                "output_tokens": 104,
-                "total_tokens": 4856
+                "output_tokens": 87,
+                "total_tokens": 4839
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.213,
+        "runtime_seconds": 2.041,
         "input_tokens": 4752,
-        "output_tokens": 104,
-        "total_tokens": 4856
+        "output_tokens": 87,
+        "total_tokens": 4839
     }
 }

@@ -23,7 +23,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 8.182677199999489,
+                "runtime_seconds": 8.715995400001702,
                 "input_tokens": 5409,
                 "output_tokens": 785,
                 "total_tokens": 6194
@@ -31,20 +31,32 @@
             "finish_reason": "stop"
         },
         {
-            "tool_calls": null,
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "generate_answer",
+                    "arguments": {
+                        "result_ids": [
+                            "i1_r1",
+                            "i1_r2"
+                        ],
+                        "message": "Ihr Verbrauch für mp_1 beträgt 3.21 kW und Ihr Teilnahmefaktor ist 0.7."
+                    }
+                }
+            ],
             "usage": {
-                "runtime_seconds": 120.05387640000026,
-                "input_tokens": null,
-                "output_tokens": null,
-                "total_tokens": null
+                "runtime_seconds": 8.493715100001282,
+                "input_tokens": 5544,
+                "output_tokens": 673,
+                "total_tokens": 6217
             },
-            "finish_reason": "timeout"
+            "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 128.237,
-        "input_tokens": 5409,
-        "output_tokens": 785,
-        "total_tokens": 6194
+        "runtime_seconds": 17.21,
+        "input_tokens": 10953,
+        "output_tokens": 1458,
+        "total_tokens": 12411
     }
 }

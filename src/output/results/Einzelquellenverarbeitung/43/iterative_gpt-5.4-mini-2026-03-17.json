@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Meinst du mit „meine Energiegemeinschaft insgesamt verbraucht“ den Gesamtverbrauch der Energiegemeinschaft aller Teilnehmer im Kalenderjahr 2025? Bitte bestätige den Zeitraum, damit ich die passende Auswertung liefern kann."
+                        "message": "Rückfrage/Information: Der angefragte Zeitraum 'letztes Jahr' bezieht sich auf 2025. Für Daten der Energiegemeinschaft sind nur Zeiträume bis einschließlich 31.12.2025 verfügbar, daher kann die Anfrage grundsätzlich bearbeitet werden. Bitte bestätige, ob mit 'insgesamt verbraucht' der Gesamtverbrauch der Energiegemeinschaft für das Kalenderjahr 2025 (01.01.2025 00:00:00 bis 01.01.2026 00:00:00) gemeint ist. Falls ja, kann ich die Berechnung durchführen."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.7825783000007505,
+                "runtime_seconds": 2.2170678000002226,
                 "input_tokens": 4746,
-                "output_tokens": 71,
-                "total_tokens": 4817
+                "output_tokens": 145,
+                "total_tokens": 4891
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.783,
+        "runtime_seconds": 2.217,
         "input_tokens": 4746,
-        "output_tokens": 71,
-        "total_tokens": 4817
+        "output_tokens": 145,
+        "total_tokens": 4891
     }
 }

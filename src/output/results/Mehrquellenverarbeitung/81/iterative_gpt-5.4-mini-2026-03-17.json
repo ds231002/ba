@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Die Anfrage ist ohne weitere Präzisierung nicht eindeutig: Für „meine Eigenabdeckung“ müsste klar sein, welcher Ihrer Verbrauchszählpunkte gemeint ist. Ihnen sind die Verbrauchszählpunkte mp_1 und mp_2 zugeordnet. Bitte nennen Sie den gewünschten Zählpunkt oder bestätigen Sie, ob beide Verbrauchszählpunkte gemeinsam betrachtet werden sollen."
+                        "message": "Rückfrage: Mit „meine Eigenabdeckung“ ist ohne weitere Angabe nicht eindeutig, welcher deiner Verbrauchszählpunkte gemeint ist. Dir sind die Verbrauchszählpunkte mp_1 und mp_2 zugeordnet. Bitte nenne den gewünschten Zählpunkt oder bestätige, dass beide Verbrauchszählpunkte gemeinsam betrachtet werden sollen."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.9135798000061186,
+                "runtime_seconds": 1.8868541000010737,
                 "input_tokens": 4739,
-                "output_tokens": 98,
-                "total_tokens": 4837
+                "output_tokens": 89,
+                "total_tokens": 4828
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.914,
+        "runtime_seconds": 1.887,
         "input_tokens": 4739,
-        "output_tokens": 98,
-        "total_tokens": 4837
+        "output_tokens": 89,
+        "total_tokens": 4828
     }
 }

@@ -16,34 +16,47 @@
                 },
                 {
                     "id": "i1_r2",
-                    "tool": "get_measured_energy",
+                    "tool": "get_current_energy",
                     "arguments": {
-                        "metering_point_id": "mp_1",
-                        "start": "2025-12-31 00:00:00",
-                        "end": "2026-01-01 00:00:00"
-                    }
-                },
-                {
-                    "id": "i1_r3",
-                    "tool": "generate_answer",
-                    "arguments": {
-                        "message": "Die Anfrage bezieht sich auf den Verbrauch von mp_1 und den Teilnahmefaktor. Da der Zeitraum nicht angegeben wurde, liefere ich den aktuellen bzw. verfügbaren Verbrauchswert nicht ohne Zeitbezug. Bitte präzisiere den gewünschten Zeitraum für den Verbrauch von mp_1. Der Teilnahmefaktor von mp_1 wird separat ermittelt."
+                        "metering_point_id": "mp_1"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.9929922000010265,
+                "runtime_seconds": 1.8413461999989522,
                 "input_tokens": 4747,
-                "output_tokens": 166,
-                "total_tokens": 4913
+                "output_tokens": 52,
+                "total_tokens": 4799
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "generate_answer",
+                    "arguments": {
+                        "result_ids": [
+                            "i1_r1",
+                            "i1_r2"
+                        ],
+                        "message": "Beantworte die Benutzerfrage mit den bereits verfügbaren Ergebnissen für mp_1. Gib den Verbrauch von mp_1 und den Teilnahmefaktor an. Falls sinnvoll, weise kurz darauf hin, dass der aktuelle Verbrauch 3.21 kW beträgt und der Teilnahmefaktor 0.7 ist."
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 2.2203294999999343,
+                "input_tokens": 4882,
+                "output_tokens": 103,
+                "total_tokens": 4985
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.993,
-        "input_tokens": 4747,
-        "output_tokens": 166,
-        "total_tokens": 4913
+        "runtime_seconds": 4.062,
+        "input_tokens": 9629,
+        "output_tokens": 155,
+        "total_tokens": 9784
     }
 }

@@ -13,28 +13,42 @@
                     "arguments": {
                         "metering_point_id": "mp_2"
                     }
-                },
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 1.927531600002112,
+                "input_tokens": 4740,
+                "output_tokens": 28,
+                "total_tokens": 4768
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
                 {
-                    "id": "i1_r2",
+                    "id": "i2_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Bitte liefere den Teilnahmefaktor für den Zählpunkt mp_2."
+                        "result_ids": [
+                            "i1_r1"
+                        ],
+                        "message": "Der Teilnahmefaktor von mp_2 beträgt 0.7."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.6381031999990228,
-                "input_tokens": 4740,
-                "output_tokens": 55,
-                "total_tokens": 4795
+                "runtime_seconds": 1.7675139000020863,
+                "input_tokens": 4809,
+                "output_tokens": 42,
+                "total_tokens": 4851
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.638,
-        "input_tokens": 4740,
-        "output_tokens": 55,
-        "total_tokens": 4795
+        "runtime_seconds": 3.695,
+        "input_tokens": 9549,
+        "output_tokens": 70,
+        "total_tokens": 9619
     }
 }

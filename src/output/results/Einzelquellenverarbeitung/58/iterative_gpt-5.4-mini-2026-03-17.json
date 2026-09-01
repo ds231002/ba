@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Ich kann die gewünschte Grafik für „letzte Woche“ nicht direkt erstellen, weil Energiedaten nur bis einschließlich 31.12.2025 verfügbar sind und der heutige Zeitpunkt 02.01.2026 ist. Der Zeitraum „letzte Woche“ läge damit teilweise oder vollständig außerhalb der verfügbaren Daten. Bitte nenne einen Zeitraum, der spätestens am 31.12.2025 endet."
+                        "message": "Ich kann die gewünschte Grafik für „letzte Woche“ nicht erstellen, weil Energiedaten nur bis einschließlich 31.12.2025 verfügbar sind. Da heute der 02.01.2026 ist, liegt letzte Woche teilweise in einem nicht verfügbaren Zeitraum. Bitte nenne einen Zeitraum, der vollständig bis 31.12.2025 reicht."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.126717200000712,
+                "runtime_seconds": 1.8573692999998457,
                 "input_tokens": 4750,
-                "output_tokens": 108,
-                "total_tokens": 4858
+                "output_tokens": 98,
+                "total_tokens": 4848
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.127,
+        "runtime_seconds": 1.857,
         "input_tokens": 4750,
-        "output_tokens": 108,
-        "total_tokens": 4858
+        "output_tokens": 98,
+        "total_tokens": 4848
     }
 }

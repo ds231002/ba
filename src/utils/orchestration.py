@@ -201,6 +201,7 @@ def _create_available_results(results: dict) -> list[dict]:
 
         if status == "error":
             available_results.append({
+                "result_id": result_id,
                 "tool": tool,
                 "arguments": arguments,
                 "error": result_data["error"]
@@ -230,6 +231,7 @@ def _create_available_results(results: dict) -> list[dict]:
             })
         else:
             available_results.append({
+                "result_id": result_id,
                 "tool": tool,
                 "arguments": arguments,
                 "result": {
@@ -287,6 +289,7 @@ def generate_result_for_task_with_method_3(
         tool_calls = None
 
         try:
+            # print(f"iteration {current_iteration}: {available_results}")
             system_prompt = create_system_prompt_for_method_3(available_results)
             response = generate_response(task, system_prompt, model)
 

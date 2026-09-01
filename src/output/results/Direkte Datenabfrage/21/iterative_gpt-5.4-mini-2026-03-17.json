@@ -9,25 +9,64 @@
             "tool_calls": [
                 {
                     "id": "i1_r1",
-                    "tool": "generate_answer",
+                    "tool": "get_current_energy",
                     "arguments": {
-                        "message": "Die Anfrage ist mehrdeutig: Mit „mein Verbrauch gerade“ ist nicht eindeutig, ob du den aktuellen Verbrauch eines einzelnen deiner Verbrauchszählpunkte meinst oder den Gesamtverbrauch über alle deine Verbrauchszählpunkte. Dir sind die Verbrauchszählpunkte mp_1 und mp_2 zugeordnet. Bitte nenne den gewünschten Zählpunkt oder bestätige, dass beide Verbrauchszählpunkte gemeinsam gemeint sind. Den Teilnahmefaktor kann ich dann ebenfalls für den passenden Zählpunkt bestimmen."
+                        "metering_point_id": "mp_1"
+                    }
+                },
+                {
+                    "id": "i1_r2",
+                    "tool": "get_participation_factor",
+                    "arguments": {
+                        "metering_point_id": "mp_1"
+                    }
+                },
+                {
+                    "id": "i1_r3",
+                    "tool": "get_current_energy",
+                    "arguments": {
+                        "metering_point_id": "mp_2"
+                    }
+                },
+                {
+                    "id": "i1_r4",
+                    "tool": "get_participation_factor",
+                    "arguments": {
+                        "metering_point_id": "mp_2"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.968313900004432,
+                "runtime_seconds": 2.1860338999977103,
                 "input_tokens": 4743,
-                "output_tokens": 123,
-                "total_tokens": 4866
+                "output_tokens": 90,
+                "total_tokens": 4833
+            },
+            "finish_reason": "stop"
+        },
+        {
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "generate_answer",
+                    "arguments": {
+                        "message": "Die Anfrage kann mit den bereits verfügbaren Ergebnissen beantwortet werden. Verwende für 'mein Verbrauch gerade' die aktuellen Werte der beiden zugeordneten Verbrauchszählpunkte mp_1 und mp_2, die jeweils 3.21 kW liefern. Der Teilnahmefaktor ist für beide Zählpunkte 0.7. Gib die Antwort kurz und direkt auf Deutsch aus."
+                    }
+                }
+            ],
+            "usage": {
+                "runtime_seconds": 2.0153815999983635,
+                "input_tokens": 5012,
+                "output_tokens": 96,
+                "total_tokens": 5108
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.968,
-        "input_tokens": 4743,
-        "output_tokens": 123,
-        "total_tokens": 4866
+        "runtime_seconds": 4.201,
+        "input_tokens": 9755,
+        "output_tokens": 186,
+        "total_tokens": 9941
     }
 }

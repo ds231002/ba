@@ -16,7 +16,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 6.087559200000214,
+                "runtime_seconds": 6.545390299997962,
                 "input_tokens": 5396,
                 "output_tokens": 405,
                 "total_tokens": 5801
@@ -24,20 +24,31 @@
             "finish_reason": "stop"
         },
         {
-            "tool_calls": null,
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "generate_answer",
+                    "arguments": {
+                        "result_ids": [
+                            "i1_r1"
+                        ],
+                        "message": "mp2 verbraucht gerade 3.21 kW."
+                    }
+                }
+            ],
             "usage": {
-                "runtime_seconds": 120.04577060000065,
-                "input_tokens": null,
-                "output_tokens": null,
-                "total_tokens": null
+                "runtime_seconds": 7.1694877999980235,
+                "input_tokens": 5463,
+                "output_tokens": 493,
+                "total_tokens": 5956
             },
-            "finish_reason": "timeout"
+            "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 126.133,
-        "input_tokens": 5396,
-        "output_tokens": 405,
-        "total_tokens": 5801
+        "runtime_seconds": 13.715,
+        "input_tokens": 10859,
+        "output_tokens": 898,
+        "total_tokens": 11757
     }
 }

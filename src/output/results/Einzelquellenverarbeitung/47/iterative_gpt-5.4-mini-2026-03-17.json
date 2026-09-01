@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Mit „mein Verbrauch“ ist hier nicht eindeutig, ob du den Verbrauch von einem einzelnen deiner Verbrauchszählpunkte oder den Gesamtverbrauch deiner eigenen Verbrauchszählpunkte meinst. Dir sind die Verbrauchszählpunkte mp_1 und mp_2 zugeordnet. Bitte sag mir, ob ich mp_1, mp_2 oder beide zusammen auswerten soll."
+                        "message": "Rückfrage: Mit „mein Verbrauch“ sind bei dir zwei Verbrauchszählpunkte zugeordnet (mp_1 und mp_2). Meinst du den Durchschnittsverbrauch von mp_1, von mp_2 oder den Durchschnitt über beide Verbrauchszählpunkte zusammen?"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.85603059999994,
+                "runtime_seconds": 1.8420261000028404,
                 "input_tokens": 4741,
-                "output_tokens": 101,
-                "total_tokens": 4842
+                "output_tokens": 74,
+                "total_tokens": 4815
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.856,
+        "runtime_seconds": 1.842,
         "input_tokens": 4741,
-        "output_tokens": 101,
-        "total_tokens": 4842
+        "output_tokens": 74,
+        "total_tokens": 4815
     }
 }

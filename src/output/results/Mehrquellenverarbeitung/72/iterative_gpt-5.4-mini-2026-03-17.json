@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Meinst du mit „meine gewichtete Erzeugung“ den Erzeugungs-Zählpunkt mp_3? Falls ja, kann ich die gewichtete Erzeugung für den verfügbaren Zeitraum bis einschließlich 31.12.2025 darstellen. Bitte bestätige den Zählpunkt oder nenne einen anderen eigenen Erzeugungs-Zählpunkt, falls vorhanden."
+                        "message": "Rückfrage: Mit „meine gewichtete Erzeugung“ ist bei dir nur ein eigener Erzeugungszählpunkt zugeordnet: mp_3. Soll ich die gewichtete Erzeugung für mp_3 über das letzte Jahr anzeigen? Hinweis: Daten sind nur bis einschließlich 31.12.2025 verfügbar; für das letzte Jahr ab heute (02.01.2026) wäre der Zeitraum 01.01.2025 bis 31.12.2025 möglich."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.009038399999554,
+                "runtime_seconds": 2.4406479999997828,
                 "input_tokens": 4743,
-                "output_tokens": 103,
-                "total_tokens": 4846
+                "output_tokens": 125,
+                "total_tokens": 4868
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.009,
+        "runtime_seconds": 2.441,
         "input_tokens": 4743,
-        "output_tokens": 103,
-        "total_tokens": 4846
+        "output_tokens": 125,
+        "total_tokens": 4868
     }
 }

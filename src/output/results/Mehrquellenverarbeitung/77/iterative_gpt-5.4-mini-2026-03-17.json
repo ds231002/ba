@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Meinst du mit „letzten Monat“ den Zeitraum 01.12.2025 00:00:00 bis 01.01.2026 00:00:00? Für diesen Zeitraum sind nur Daten bis einschließlich 31.12.2025 verfügbar. Ich kann daher den Zeitraum 01.12.2025 00:00:00 bis 01.01.2026 00:00:00 nicht vollständig berechnen. Wenn du möchtest, berechne ich das Gemeinschaftspotential für den verfügbaren Teilzeitraum 01.12.2025 00:00:00 bis 01.01.2026 00:00:00 unter Berücksichtigung der Datenverfügbarkeit bis 31.12.2025, also effektiv bis 31.12.2025 24:00:00."
+                        "message": "Rückfrage: Meinst du mit „letzten Monat“ den Zeitraum 01.12.2025 00:00:00 bis 01.01.2026 00:00:00? Für diesen Zeitraum sind nur Daten bis einschließlich 31.12.2025 verfügbar, daher wäre der Zeitraum teilweise nicht abrufbar. Bitte bestätige einen verfügbaren Zeitraum im Dezember 2025 oder nenne einen anderen Zeitraum."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.6340980000022682,
+                "runtime_seconds": 1.9528171999991173,
                 "input_tokens": 4744,
-                "output_tokens": 202,
-                "total_tokens": 4946
+                "output_tokens": 114,
+                "total_tokens": 4858
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.634,
+        "runtime_seconds": 1.953,
         "input_tokens": 4744,
-        "output_tokens": 202,
-        "total_tokens": 4946
+        "output_tokens": 114,
+        "total_tokens": 4858
     }
 }

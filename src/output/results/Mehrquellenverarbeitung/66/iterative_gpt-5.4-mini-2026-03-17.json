@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Rückfrage: Mit „mein Verbrauch“ sind bei dir zwei Verbrauchszählpunkte zugeordnet (mp_1 und mp_2). Welchen Zählpunkt soll ich für den gewichteten Verbrauch über das letzte Monat verwenden? Wenn du beide meinst, kann ich den Gesamtverbrauch deiner beiden Verbrauchszählpunkte berechnen."
+                        "message": "Rückfrage: Mit „mein Verbrauch“ sind in deinem Kontext zwei Verbrauchszählpunkte zugeordnet (mp_1 und mp_2). Bitte gib an, ob du den gewichteten Verbrauch für mp_1, mp_2 oder für beide Verbrauchszählpunkte zusammen meinst. Falls du möchtest, kann ich auch den Gesamtwert über beide Verbrauchszählpunkte berechnen."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.9556488999951398,
+                "runtime_seconds": 1.8929874999994354,
                 "input_tokens": 4740,
-                "output_tokens": 84,
-                "total_tokens": 4824
+                "output_tokens": 101,
+                "total_tokens": 4841
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.956,
+        "runtime_seconds": 1.893,
         "input_tokens": 4740,
-        "output_tokens": 84,
-        "total_tokens": 4824
+        "output_tokens": 101,
+        "total_tokens": 4841
     }
 }

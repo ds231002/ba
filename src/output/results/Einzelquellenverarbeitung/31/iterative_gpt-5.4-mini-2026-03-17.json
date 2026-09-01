@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Die Anfrage ist eindeutig als Gesamtverbrauch der Energiegemeinschaft zu verstehen. Bitte erstelle eine Grafik des Gesamtverbrauchs der Energiegemeinschaft für einen sinnvollen Zeitraum. Da kein Zeitraum genannt wurde, frage nach dem gewünschten Zeitraum (z. B. ein bestimmter Tag, Monat oder Jahr)."
+                        "message": "Die Anfrage ist mehrdeutig: Mit „Verbrauch meiner Energiegemeinschaft“ kann entweder der Gesamtverbrauch der Energiegemeinschaft oder dein eigener Verbrauch gemeint sein. Für deinen eigenen Verbrauch stehen dir die Verbrauchszählpunkte mp_1 und mp_2 zur Verfügung. Bitte präzisiere, ob ich den Gesamtverbrauch der Energiegemeinschaft oder deinen eigenen Verbrauch (mp_1, mp_2 oder beide zusammen) darstellen soll."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.9481058999954257,
+                "runtime_seconds": 1.925592299998243,
                 "input_tokens": 4741,
-                "output_tokens": 85,
-                "total_tokens": 4826
+                "output_tokens": 110,
+                "total_tokens": 4851
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.948,
+        "runtime_seconds": 1.926,
         "input_tokens": 4741,
-        "output_tokens": 85,
-        "total_tokens": 4826
+        "output_tokens": 110,
+        "total_tokens": 4851
     }
 }

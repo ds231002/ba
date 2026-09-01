@@ -17,7 +17,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 15.34249329999966,
+                "runtime_seconds": 15.789827900000091,
                 "input_tokens": 5409,
                 "output_tokens": 1749,
                 "total_tokens": 7158
@@ -36,7 +36,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 14.830528299999969,
+                "runtime_seconds": 15.272231000002648,
                 "input_tokens": 5507,
                 "output_tokens": 1666,
                 "total_tokens": 7173
@@ -44,28 +44,9 @@
             "finish_reason": "stop"
         },
         {
-            "tool_calls": [
-                {
-                    "id": "i3_r1",
-                    "tool": "get_statistical_value",
-                    "arguments": {
-                        "statistic_type": "min",
-                        "energy_data": "i1_r1"
-                    }
-                }
-            ],
-            "usage": {
-                "runtime_seconds": 12.960295400000177,
-                "input_tokens": 5562,
-                "output_tokens": 1398,
-                "total_tokens": 6960
-            },
-            "finish_reason": "stop"
-        },
-        {
             "tool_calls": null,
             "usage": {
-                "runtime_seconds": 120.0481077000004,
+                "runtime_seconds": 120.05351119999978,
                 "input_tokens": null,
                 "output_tokens": null,
                 "total_tokens": null
@@ -74,9 +55,9 @@
         }
     ],
     "total_usage": {
-        "runtime_seconds": 163.181,
-        "input_tokens": 16478,
-        "output_tokens": 4813,
-        "total_tokens": 21291
+        "runtime_seconds": 151.116,
+        "input_tokens": 10916,
+        "output_tokens": 3415,
+        "total_tokens": 14331
     }
 }

@@ -17,7 +17,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 15.043398100000559,
+                "runtime_seconds": 15.859763399999792,
                 "input_tokens": 5406,
                 "output_tokens": 1705,
                 "total_tokens": 7111
@@ -38,7 +38,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 12.09085899999991,
+                "runtime_seconds": 12.616415700002108,
                 "input_tokens": 5503,
                 "output_tokens": 1277,
                 "total_tokens": 6780
@@ -47,7 +47,7 @@
         }
     ],
     "total_usage": {
-        "runtime_seconds": 27.134,
+        "runtime_seconds": 28.476,
         "input_tokens": 10909,
         "output_tokens": 2982,
         "total_tokens": 13891

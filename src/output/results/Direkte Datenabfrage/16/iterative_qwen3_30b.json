@@ -16,7 +16,7 @@
                 }
             ],
             "usage": {
-                "runtime_seconds": 8.230148700000427,
+                "runtime_seconds": 8.448068199999398,
                 "input_tokens": 5397,
                 "output_tokens": 693,
                 "total_tokens": 6090
@@ -24,20 +24,31 @@
             "finish_reason": "stop"
         },
         {
-            "tool_calls": null,
+            "tool_calls": [
+                {
+                    "id": "i2_r1",
+                    "tool": "generate_answer",
+                    "arguments": {
+                        "result_ids": [
+                            "i1_r1"
+                        ],
+                        "message": "mp_3 ist ein Erzeugungszählpunkt, daher wird hier die aktuelle Erzeugungsleistung von 3.21 kW angezeigt, nicht der Verbrauch. Der Verbrauch wird für Erzeugungszählpunkte nicht gemessen."
+                    }
+                }
+            ],
             "usage": {
-                "runtime_seconds": 120.04268900000079,
-                "input_tokens": null,
-                "output_tokens": null,
-                "total_tokens": null
+                "runtime_seconds": 11.531755500000145,
+                "input_tokens": 5465,
+                "output_tokens": 1086,
+                "total_tokens": 6551
             },
-            "finish_reason": "timeout"
+            "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 128.273,
-        "input_tokens": 5397,
-        "output_tokens": 693,
-        "total_tokens": 6090
+        "runtime_seconds": 19.98,
+        "input_tokens": 10862,
+        "output_tokens": 1779,
+        "total_tokens": 12641
     }
 }

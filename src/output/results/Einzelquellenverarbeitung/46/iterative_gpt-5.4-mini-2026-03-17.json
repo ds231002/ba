@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Ich kann die durchschnittliche Produktion der Energiegemeinschaft für letztes Jahr nicht direkt berechnen, weil dafür ein Zeitraum bis einschließlich 31.12.2025 benötigt wird und die Anfrage sich auf das Jahr 2025 bezieht. Bitte bestätige den gewünschten Zeitraum, z. B. 01.01.2025 00:00:00 bis 01.01.2026 00:00:00. Dann kann ich die durchschnittliche Gemeinschaftserzeugung berechnen."
+                        "message": "Rückfrage: Meinst du mit „meiner Energiegemeinschaft“ die **Gesamterzeugung der Energiegemeinschaft** oder die **Produktion deiner eigenen Erzeugungs-Zählpunkte**? Außerdem ist „letztes Jahr“ hier als **01.01.2025 bis 31.12.2025** interpretierbar. Bitte bestätige kurz, welche Variante du meinst."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.0007188000017777,
+                "runtime_seconds": 2.160294799999974,
                 "input_tokens": 4744,
-                "output_tokens": 125,
-                "total_tokens": 4869
+                "output_tokens": 109,
+                "total_tokens": 4853
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.001,
+        "runtime_seconds": 2.16,
         "input_tokens": 4744,
-        "output_tokens": 125,
-        "total_tokens": 4869
+        "output_tokens": 109,
+        "total_tokens": 4853
     }
 }

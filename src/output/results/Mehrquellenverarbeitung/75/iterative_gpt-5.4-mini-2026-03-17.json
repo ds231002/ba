@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Für den angefragten Zeitraum 'letztes Jahr' (01.01.2025 00:00:00 bis 01.01.2026 00:00:00) sind Daten nur bis einschließlich 31.12.2025 verfügbar. Ich kann daher die gewichtete Erzeugung für mp_3 für das letzte Jahr nicht vollständig abrufen. Wenn du möchtest, kann ich stattdessen die gewichtete Erzeugung für den verfügbaren Zeitraum 01.01.2025 00:00:00 bis 31.12.2025 24:00:00 bzw. bis 31.12.2025 23:59:59 berechnen."
+                        "message": "Für den angefragten Zeitraum 'letztes Jahr' (01.01.2025 bis 31.12.2025) sind Daten verfügbar. Bitte lade die gemessene Erzeugung von mp_3 für diesen Zeitraum und multipliziere sie anschließend mit dem Teilnahmefaktor von mp_3, um die gewichtete Erzeugung zu berechnen. Danach soll das Ergebnis als Liniendiagramm dargestellt werden."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.240566599997692,
+                "runtime_seconds": 1.9938827000005404,
                 "input_tokens": 4746,
-                "output_tokens": 167,
-                "total_tokens": 4913
+                "output_tokens": 113,
+                "total_tokens": 4859
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.241,
+        "runtime_seconds": 1.994,
         "input_tokens": 4746,
-        "output_tokens": 167,
-        "total_tokens": 4913
+        "output_tokens": 113,
+        "total_tokens": 4859
     }
 }

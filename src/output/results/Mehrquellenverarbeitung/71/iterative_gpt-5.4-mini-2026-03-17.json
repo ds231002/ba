@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Ich kann die Anfrage nicht direkt ausführen, weil der angegebene Zählpunkt mp_03 nicht zu den dir zugeordneten Zählpunkten gehört. Dir sind mp_1, mp_2 (Verbrauch) und mp_3 (Erzeugung) zugeordnet. Bitte bestätige, ob du mp_3 meinst, und ich zeige dir dann die gewichtete Erzeugung für den letzten Monat (01.12.2025 bis 31.12.2025)."
+                        "message": "Ich kann die Anfrage nicht direkt ausführen, weil der angegebene Zählpunkt mp_03 nicht zu den dir zugeordneten Zählpunkten gehört. Dir sind mp_1 und mp_2 als Verbrauchszählpunkte sowie mp_3 als Erzeugungszählpunkt zugeordnet. Bitte bestätige, ob du mp_3 meinst. Außerdem ist 'letzten Monat' bezogen auf heute (02.01.2026) der Zeitraum 01.12.2025 bis 31.12.2025, für den Daten verfügbar sind."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.074407299995073,
+                "runtime_seconds": 2.5048635999992257,
                 "input_tokens": 4746,
-                "output_tokens": 126,
-                "total_tokens": 4872
+                "output_tokens": 139,
+                "total_tokens": 4885
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.074,
+        "runtime_seconds": 2.505,
         "input_tokens": 4746,
-        "output_tokens": 126,
-        "total_tokens": 4872
+        "output_tokens": 139,
+        "total_tokens": 4885
     }
 }

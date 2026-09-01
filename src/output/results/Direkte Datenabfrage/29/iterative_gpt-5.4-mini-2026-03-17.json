@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Die Anfrage ist allgemein und bezieht sich nicht auf verfügbare Energiedaten oder einen konkreten Zählpunkt. Mit den vorhandenen Tools kann ich keine allgemeine Preisberatung für PV-Anlagen berechnen. Wenn du möchtest, kann ich dir aber helfen, eine konkrete Energiedaten-Auswertung für deine Zählpunkte zu erstellen."
+                        "message": "Die Anfrage betrifft keine verfügbaren Energiedaten oder Zählpunkte und kann mit den vorhandenen Tools nicht fachlich beantwortet werden. Bitte präzisieren Sie Ihre Frage, z. B. zur Leistung, zum Standort oder zu einem konkreten Angebot."
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 1.965395899998839,
+                "runtime_seconds": 1.854156099998363,
                 "input_tokens": 4735,
-                "output_tokens": 87,
-                "total_tokens": 4822
+                "output_tokens": 88,
+                "total_tokens": 4823
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 1.965,
+        "runtime_seconds": 1.854,
         "input_tokens": 4735,
-        "output_tokens": 87,
-        "total_tokens": 4822
+        "output_tokens": 88,
+        "total_tokens": 4823
     }
 }

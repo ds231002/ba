@@ -11,23 +11,23 @@
                     "id": "i1_r1",
                     "tool": "generate_answer",
                     "arguments": {
-                        "message": "Ich kann die Anfrage so nicht direkt ausführen, weil der Zeitraum „letzte Monat“ bis in den Januar 2026 reicht und Energiedaten nur bis einschließlich 31.12.2025 verfügbar sind. Bitte nenne einen Zeitraum, der vollständig vor dem 01.01.2026 liegt, dann kann ich den summierten Verlauf aller deiner Verbrauchszählpunkte (mp_1 und mp_2) berechnen und darstellen."
+                        "message": "Rückfrage: Mit „letztes Monat“ ist der Zeitraum 01.12.2025 00:00:00 bis 01.01.2026 00:00:00 gemeint. Für Datenzugriff sind jedoch nur Daten bis einschließlich 31.12.2025 verfügbar. Soll ich stattdessen den Zeitraum 01.12.2025 00:00:00 bis 01.01.2026 00:00:00 auf die verfügbaren Daten bis 31.12.2025 begrenzen, also 01.12.2025 00:00:00 bis 01.01.2026 00:00:00 nicht vollständig auswerten, oder möchtest du den Zeitraum 01.12.2025 00:00:00 bis 31.12.2025 24:00:00 betrachten?"
                     }
                 }
             ],
             "usage": {
-                "runtime_seconds": 2.0081462999951327,
+                "runtime_seconds": 2.3183038999995915,
                 "input_tokens": 4745,
-                "output_tokens": 114,
-                "total_tokens": 4859
+                "output_tokens": 206,
+                "total_tokens": 4951
             },
             "finish_reason": "stop"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 2.008,
+        "runtime_seconds": 2.318,
         "input_tokens": 4745,
-        "output_tokens": 114,
-        "total_tokens": 4859
+        "output_tokens": 206,
+        "total_tokens": 4951
     }
 }
