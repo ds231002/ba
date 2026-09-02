@@ -21,3 +21,6 @@ def read_csv(path):
     sep= ";",
     encoding="utf-8"
 )
+
+def load_xlsx(path: str) -> pd.DataFrame:
+    return pd.read_excel(path)
