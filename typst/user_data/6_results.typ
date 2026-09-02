@@ -10,14 +10,6 @@
 
 // 4-6 Seite
 
-Richtige Tools gewählt - ja/nein
-optimal (keine unnötigen Tools) - ja/nein
-Parameter (automatisch nein wenn fasche Tools) - ja/nein
-Antwort (richtige Results oder Info übergeben) - ja/nein
-
-- korrekte Aufgabe = Toolaufrufe korrekt, Parameter korrekt, Antwort korrekt
-- Erfolgsrate = korrekte Aufgaben/alle Aufgaben
-
 == Gesamtvergleich der Methoden
 
 #figure(
@@ -31,7 +23,7 @@ Antwort (richtige Results oder Info übergeben) - ja/nein
       [*Effizienz*],
       [*Laufzeit [s]*],
       [*Tokens*],
-      [*Fehlerquote*]
+      [*Fehlerrate*]
     ),
 
     [Deterministisch], [0,72], [0,65], [7,67], [4019], [0.15],
@@ -55,7 +47,7 @@ Antwort (richtige Results oder Info übergeben) - ja/nein
       [*Effizienz*],
       [*Laufzeit [s]*],
       [*Tokens*],
-      [*Fehlerquote*]
+      [*Fehlerrate*]
     ),
 
     [Direkte Datenabfrage], [0,75], [0,72], [8,43], [6102], [0,11],
@@ -78,7 +70,7 @@ Antwort (richtige Results oder Info übergeben) - ja/nein
       [*Effizienz*],
       [*Laufzeit [s]*],
       [*Tokens*],
-      [*Fehlerquote*]
+      [*Fehlerrate*]
     ),
 
     [gpt-5.4-mini], [0,73], [0,57], [2,14], [4351], [0,00],
@@ -102,7 +94,7 @@ Antwort (richtige Results oder Info übergeben) - ja/nein
       [*Effizienz*],
       [*Laufzeit [s]*],
       [*Tokens*],
-      [*Fehlerquote*]
+      [*Fehlerrate*]
     ),
 
     table.cell(rowspan: 3)[gpt-5.4-mini],

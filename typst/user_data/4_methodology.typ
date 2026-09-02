@@ -486,45 +486,162 @@ Ein Teil der Aufgaben wurde bewusst so gestaltet, dass die Anfrage mit den zum j
 
 Mit diesen Aufgaben wird untersucht, ob das Modell die fehlenden oder widersprüchlichen Informationen erkennt und angemessen darauf reagiert. Ist für eine Bearbeitung eine zusätzliche Information erforderlich, wird eine entsprechende Rückfrage erwartet. Ist die Anfrage mit den verfügbaren Werkzeugen nicht bearbeitbar, soll das Modell dies erkennen, anstatt eigenständig Annahmen zu treffen oder einen nicht passenden Toolaufruf auszuführen. Ein unpassender Toolaufruf beziehungsweise eine darauf basierende falsche Bearbeitung wird als Fehler bewertet.
 
-== Bewertungskrieterien
+== Bewertungskriterien
+
+Für den Vergleich der Orchestrierungsmethoden werden mehrere Bewertungskriterien herangezogen. Im Mittelpunkt stehen die beiden Qualitätsdimensionen *Korrektheit* und *Effizienz*. Ergänzend werden die *Fehlerrate*, die *Laufzeit* und der *Tokenverbrauch* erfasst. Die Bewertung erfolgt auf Ebene eines vollständigen Durchlaufs einer Nutzeranfrage und berücksichtigt damit nicht nur einzelne Toolaufrufe, sondern die gesamte für die Bearbeitung erforderliche Toolnutzung.
+
+Die Unterscheidung zwischen der Entscheidung für oder gegen eine Toolnutzung und der Auswahl der benötigten Werkzeuge ist auch in bestehenden Arbeiten zur Evaluation von Tool Use relevant. METATOOL untersucht sowohl die allgemeine Bewusstheit darüber, ob ein Tool benötigt wird, als auch die Auswahl eines oder mehrerer geeigneter Werkzeuge @huangMetaToolBenchmarkLarge2024. WTU-EVAL betrachtet ebenfalls explizit Situationen, in denen ein Modell entscheiden muss, ob ein Tool benötigt wird. Dabei werden sowohl Aufgaben betrachtet, die den Einsatz eines Werkzeugs erfordern, als auch Aufgaben, die ohne Werkzeug beantwortet werden können @liuWTUEVALWhetherorNotTool2025. Für die vorliegende Untersuchung wird diese Perspektive auf die Bewertung vollständiger Orchestrierungsdurchläufe übertragen.
 
 #figure(
   table(
-    columns: (1fr, 2fr),
-    align: (left, left),
+    columns: (auto, 1fr),
+    align: (left),
 
-    table.header([*Kriterium*], [*Beschreibung*],),
+    table.header([*Kriterium*], [*Bedeutung*]),
 
-    // korrekt
-    [Toolauswahl korrekt], [Wurden die korrekten Tools ausgewählt?],
-    [Argumente korrekt], [Wurden die Argumente korrekt übergeben?\ Trifft nicht zu, wenn Toolauswahl falsch ist.],
-    [Korrekt], [Sind Toolauswahl, Argumente und Informationen für die Antwort korrekt?],
-    
-    // effizient
-    [Toolauswahl effizient], [Wurden ausschließlich notwendige Toolaufrufe ausgewählt?\ Trifft nicht zu, wenn Toolauswahl falsch ist. Ausschließlich auf Toolauswahl beschränkt. Keine etwaigen Token durch Toolaufrufe selbst enthalten.],
-    [Antwort effizient], [War die Antwort effizient],
-    [Effizienz], [Sind Toolauswahl und Antwort effizient?],
+    // Korrektheit
+    [Korrektheit], [Wurden die für die Aufgabe erforderlichen Tools und Argumente korrekt verwendet und die notwendigen Ergebnisse für die weitere Verarbeitung bereitgestellt?],
 
-    // usage
-    [Gesamttokenverbrauch], [Wie viele Token sind instgesamt verbraucht worden? (Input + Output)],
-    [Laufzeit], [Wie lange hat ausschließlich das Erstellen der Toolauswahl gedauert? Toolausführungszeit ist nicht enthalten.],
-
-    // aggregierte Werte
-    [Erfolgsrate], [korrekte gelöste Aufgaben / alle Aufgaben], // Precision?
-    [Effizienzrate], [Effizient gelöste Aufgaben / alle Aufgaben],
+    // Effizienz
+    [Effizienz], [Wurde die Aufgabe korrekt und ohne unnötige Toolaufrufe oder unnötige Argumente bearbeitet?],
 
     // Error
-    [Error], [Timeout, Strukturfehler, anderer Fehler]
+    [Fehlerrate], [Anteil der Durchläufe mit einem technischen Fehler oder Timeout.],
+
+    // Ressourcen
+    [Laufzeit], [LLM-Laufzeit eines Durchlaufs in Sekunden; Toolausführung, Speicherung und sonstige Abläufe außerhalb der LLM-Aufrufe werden nicht berücksichtigt.],
+
+    [Tokenverbrauch], [Gesamter Verbrauch an Input- und Outputtokens eines Durchlaufs.]
   ),
   caption: [Bewertungskriterien],
-) <tab:evaluation>
+) <tab:evaluation_criteria>
 
-- Jede Orchestrierungsmethode hat die Möglichkeit kein Tool auszuwählen was auch teilweise die korrekt Toolauswahl darstellt @liuWTUEVALWhetherorNotTool2025.
-- Der mehrfache Durchlauf der selben Aufgabe kann vor allem bei kleineren Modellen zu unterschiedlichen Ergebnissen führen. Das messe ich hier aber nicht. Stattdessen werden einige ähnliche Aufgaben erstellt wobei sich die Inkonsistenz über mehrere Aufgaben verteilt und so direkten Einfluss auf die Erfolgsrate hat.
+=== Korrektheit
+
+Die Korrektheit bewertet, ob ein vollständiger Orchestrierungsdurchlauf die für die jeweilige Aufgabe erforderlichen Schritte korrekt ausführt. Dabei wird nicht ausschließlich betrachtet, ob ein einzelner Toolaufruf formal korrekt ist, sondern ob die für die Bearbeitung erforderliche Toolauswahl, die zugehörigen Argumente und die Verarbeitung der daraus resultierenden Informationen korrekt erfolgen. Die Betrachtung vollständiger Toolsequenzen ist insbesondere für Aufgaben mit mehreren aufeinander aufbauenden Toolaufrufen relevant. Auch BFCL unterscheidet bei komplexeren Aufgaben zwischen der Korrektheit einzelner Funktionsaufrufe und der Korrektheit der für eine Anfrage erforderlichen Sequenz @patilBerkeleyFunctionCalling2025.
+
+==== Toolauswahlkorrektheit
+
+Die Toolauswahl wird danach bewertet, ob die für die Bearbeitung einer Aufgabe erforderlichen Werkzeuge ausgewählt und aufgerufen werden. Dabei kann eine Aufgabe auch korrekt ohne Toolaufruf bearbeitet werden, wenn für ihre Bearbeitung kein verfügbares Tool erforderlich ist. Die Möglichkeit, dass die korrekte Entscheidung in der Nichtverwendung eines Werkzeugs besteht, wird auch in METATOOL und WTU-EVAL berücksichtigt @huangMetaToolBenchmarkLarge2024 @liuWTUEVALWhetherorNotTool2025.
+
+Bei Aufgaben, für deren Bearbeitung mehrere Werkzeuge erforderlich sind, müssen sämtliche notwendigen Werkzeuge verwendet werden. Wird ein erforderliches Werkzeug nicht aufgerufen oder ein falsches Werkzeug verwendet, gilt die Toolauswahl als nicht korrekt. Ein zusätzlich verwendetes, für die Bearbeitung nicht notwendiges Werkzeug führt dagegen nicht unmittelbar zu einer inkorrekten Toolauswahl. Ein solcher zusätzlicher Aufruf wird im Rahmen der Effizienz bewertet.
+
+Auch die Reihenfolge von Toolaufrufen kann für die Korrektheit relevant sein. Bestehen Abhängigkeiten zwischen mehreren Aufrufen, muss die Reihenfolge eingehalten werden. Ein nachfolgender Toolaufruf kann beispielsweise auf ein Ergebnis eines vorherigen Aufrufs angewiesen sein. Wird eine solche erforderliche Abhängigkeit durch eine falsche Reihenfolge verletzt, wird der Durchlauf als nicht korrekt bewertet. Die Bewertung vollständiger Werkzeugausführungssequenzen ist auch in bestehenden Ansätzen zur Evaluation komplexerer Toolnutzung vorgesehen @luOrchDAGComplexTool2025.
+
+Eine besondere Situation stellt die Rückfrage an den Nutzer dar. Kann der korrekte Toolaufruf aus den vorliegenden Informationen eindeutig abgeleitet werden, wird eine stattdessen gestellte Rückfrage als korrekt, jedoch nicht effizient bewertet. Ist eine zusätzliche Information dagegen tatsächlich erforderlich, um eine nicht begründbare Spekulation zu vermeiden, gilt die Rückfrage als korrekt und effizient.
+
+==== Argumentkorrektheit
+
+Neben der Auswahl der Werkzeuge wird bewertet, ob die für deren Ausführung erforderlichen Argumente korrekt übergeben werden. Ein Toolaufruf mit falschen Argumentwerten wird als nicht korrekt bewertet. Dies gilt auch dann, wenn das grundsätzlich richtige Tool ausgewählt wurde. Die Bewertung von Funktionsaufrufen umfasst damit neben der Auswahl der Funktion auch die zugehörigen Parameter. Eine entsprechende Berücksichtigung von Funktionsnamen und Parameterwerten findet sich auch bei BFCL @patilBerkeleyFunctionCalling2025.
+
+Argumente werden dabei auf ihre inhaltliche Korrektheit bezogen auf die jeweilige Aufgabe bewertet. Werden beispielsweise ein falscher Zeitraum, eine falsche Kennung oder ein anderer für die Aufgabe nicht zutreffender Wert übergeben, gilt die Argumentauswahl als nicht korrekt.
+
+==== Weitergabe von Toolergebnissen
+
+Bei einer mehrstufigen Orchestrierung müssen die für die weitere Verarbeitung erforderlichen Ergebnisse der vorherigen Toolaufrufe korrekt weitergegeben werden. Werden notwendige Ergebnisse nicht an den nachfolgenden Verarbeitungsschritt übermittelt und kann die Aufgabe dadurch nicht korrekt weiterbearbeitet werden, gilt der Durchlauf als nicht korrekt.
+
+Die Bewertung bezieht sich dabei auf die für die Orchestrierung erforderliche Verarbeitung der Toolergebnisse. Die sprachliche Ausgestaltung der finalen Antwort wird nicht als eigenständiges Bewertungskriterium erfasst. Entscheidend ist, dass die für die Beantwortung notwendigen Informationen aus den Toolaufrufen korrekt für die Antwortgenerierung bereitgestellt werden.
+
+==== Aggregation der Korrektheit
+
+Die Korrektheit eines einzelnen Durchlaufs wird binär bewertet. Ein korrekter Durchlauf erhält den Wert `1`, ein nicht korrekter Durchlauf den Wert `0`. Aus den Bewertungen aller Durchläufe wird anschließend der Mittelwert gebildet. Dieser entspricht dem Anteil der korrekten Durchläufe und wird als Korrektheitsrate angegeben.
+
+$
+text("Korrektheitsrate") =
+frac(
+  text("Anzahl korrekter Durchläufe"),
+  text("Anzahl aller Durchläufe")
+)
+$
+
+Ein technischer Fehler oder Timeout führt dabei zu keiner korrekten Ausführung und wird entsprechend mit `0` bewertet.
+
+=== Effizienz
+
+Die Effizienz bewertet, ob eine Aufgabe nicht nur korrekt, sondern auch ohne unnötige Toolnutzung bearbeitet wurde. Dabei wird zwischen der Korrektheit und der Effizienz bewusst unterschieden. Ein zusätzlicher oder wiederholter Toolaufruf kann daher zu einem korrekten, aber ineffizienten Durchlauf führen.
+
+Ein Durchlauf wird als effizient bewertet, wenn er korrekt ist und keine für die Aufgabenbearbeitung unnötigen Toolaufrufe oder Argumente verwendet. Der Tokenverbrauch wird nicht unmittelbar als Bestandteil der Effizienzbewertung berücksichtigt. Insbesondere bei iterativen Orchestrierungsmethoden kann ein höherer Tokenverbrauch durch zusätzliche erfolgreiche Verarbeitungsschritte entstehen und stellt daher für sich genommen keinen Beleg für eine ineffiziente Orchestrierung dar.
+
+==== Toolauswahleffizienz
+
+Die Toolauswahleffizienz bewertet, ob ausschließlich die für die Bearbeitung der Aufgabe notwendigen Tools aufgerufen werden. Werden alle erforderlichen Tools korrekt verwendet, zusätzlich jedoch ein nicht benötigtes Tool aufgerufen, bleibt der Durchlauf hinsichtlich der Korrektheit korrekt, wird jedoch als nicht effizient bewertet.
+
+Gleiches gilt für wiederholte Aufrufe eines bereits korrekt ausgeführten Tools, sofern der zusätzliche Aufruf keinen für die Aufgabenbearbeitung erforderlichen Zweck erfüllt.
+
+Wird dagegen ein notwendiges Tool überhaupt nicht aufgerufen oder ein falsches Tool verwendet, ist der Durchlauf sowohl nicht korrekt als auch nicht effizient.
+
+Die Unterscheidung zwischen notwendiger und unnötiger Toolnutzung ist insbesondere deshalb relevant, weil ein Toolaufruf nicht allein aufgrund seiner formalen Korrektheit als sinnvoll bewertet werden kann. WTU-EVAL zeigt beispielsweise, dass eine unangemessene bzw. unnötige Toolnutzung die Leistung eines Modells beeinträchtigen kann @liuWTUEVALWhetherorNotTool2025.
+
+==== Argumenteffizienz
+
+Die Argumenteffizienz bewertet, ob nur die für die jeweilige Aufgabe notwendigen und angemessenen Argumente verwendet werden. Ein Argument kann dabei inhaltlich korrekt sein, aber dennoch über den für die Aufgabe erforderlichen Umfang hinausgehen. Dies wird als ineffizient bewertet.
+
+Beispielsweise kann ein unnötig großer abgefragter Zeitraum oder eine unnötig große Menge an für die Antwortgenerierung bereitgestellten Ergebnissen zu einer korrekten, aber ineffizienten Ausführung führen.
+
+Davon zu unterscheiden sind tatsächlich falsche Argumente. Wird ein falscher Parameterwert übergeben, ist der Toolaufruf nicht korrekt und damit auch nicht effizient.
+
+==== Rückfragen
+
+Rückfragen werden hinsichtlich ihrer Notwendigkeit bewertet. Kann die erforderliche Toolauswahl aus den vorhandenen Informationen eindeutig abgeleitet werden, stellt eine zusätzliche Rückfrage einen vermeidbaren Verarbeitungsschritt dar. Der Durchlauf wird in diesem Fall als korrekt, aber nicht effizient bewertet.
+
+Ist die für eine korrekte Bearbeitung notwendige Information dagegen nicht vorhanden und müsste das Modell ohne Rückfrage spekulieren, stellt die Rückfrage einen erforderlichen Verarbeitungsschritt dar. In diesem Fall wird der Durchlauf als korrekt und effizient bewertet.
+
+==== Aggregation der Effizienz
+
+Auch die Effizienz eines einzelnen Durchlaufs wird binär bewertet. Ein effizienter Durchlauf erhält den Wert `1`, ein ineffizienter Durchlauf den Wert `0`. Voraussetzung für eine effiziente Bewertung ist zunächst die Korrektheit des Durchlaufs.
+
+Die Effizienzrate wird analog zur Korrektheitsrate als Mittelwert der binären Einzelbewertungen berechnet:
+
+$
+text("Effizienzrate") =
+frac(
+  text("Anzahl effizienter Durchläufe"),
+  text("Anzahl aller Durchläufe") 
+)
+$
+
+Ein nicht korrekter Durchlauf kann somit unabhängig von der Ursache nicht als effizient bewertet werden.
+
+=== Fehlerrate
+
+Neben der inhaltlichen Bewertung wird erfasst, ob die technische Ausführung eines Durchlaufs erfolgreich abgeschlossen werden konnte. Als Fehler werden Timeouts, Strukturfehler und sonstige technische Fehler erfasst.
+
+Für jeden LLM-Aufruf gilt ein Timeout von zwei Minuten. Wird dieses Zeitlimit überschritten, wird der betreffende Aufruf abgebrochen und der Durchlauf als Fehler bewertet. Bei der iterativen Methode gilt das Zeitlimit für jeden einzelnen LLM-Aufruf innerhalb einer Iteration. Dadurch kann ein iterativer Durchlauf mehrere Aufrufe mit jeweils einem eigenen Zeitlimit enthalten.
+
+Der überwiegende Teil der beobachteten Fehler wird durch Timeouts verursacht. Die konkrete Verteilung der Fehlerarten wird in der Evaluation ausgewertet.
+
+Als Strukturfehler werden Ausgaben bezeichnet, die nicht der für die weitere Verarbeitung vorgegebenen Struktur entsprechen und deshalb nicht von der Orchestrierung verarbeitet werden können. Dazu zählen beispielsweise Ausgaben, bei denen die erwartete Struktur nicht in eine verarbeitbare Datenstruktur überführt oder anschließend nicht korrekt ausgelesen werden kann.
+
+Technische Fehler innerhalb der Orchestrierung werden von Fehlern unterschieden, die durch die vom LLM erzeugte Toolauswahl oder Argumentierung verursacht werden. Tritt beispielsweise aufgrund einer fehlerhaften Implementierung ein technischer Fehler auf, obwohl das LLM einen korrekten Toolaufruf mit korrekten Argumenten erzeugt hat, wird dieser Fehler behoben und der Durchlauf erneut ausgeführt. Ein dadurch verursachter technischer Fehler wird somit nicht als Fehlleistung des LLM bewertet. Führt dagegen ein vom LLM erzeugtes falsches Argument zu einem Fehler bei der Toolausführung, wird dies als Fehler des Durchlaufs gewertet.
+
+Die Fehlerrate wird als Anteil der fehlerhaften Durchläufe an allen durchgeführten Durchläufen berechnet:
+
+$
+text("Fehlerrate") =
+frac(
+  text("Anzahl fehlerhafter Durchläufe"),
+  text("Anzahl aller Durchläufe")
+)  
+$
 
 
-// Korrektheit: Hat der Orchestrator alle für die korrekte Beantwortung notwendigen Informationen beschafft und korrekt verarbeitet?
-// Effizienz: Hat er dies mit möglichst wenigen bzw. möglichst passenden Toolaufrufen und Parametern getan?
+Fehlerhafte Durchläufe werden zusätzlich als nicht korrekt und nicht effizient bewertet.
+
+=== Laufzeit
+
+Als Laufzeit wird ausschließlich die Zeit berücksichtigt, die für die Verarbeitung durch das jeweilige Large Language Model benötigt wird. Die Ausführung der Tools, die Speicherung von Ergebnissen sowie sonstige Abläufe außerhalb der LLM-Aufrufe werden nicht berücksichtigt.
+
+Die Laufzeit wird in Sekunden erfasst und für die aggregierte Auswertung als arithmetischer Mittelwert über die jeweils erfassten Durchläufe angegeben.
+
+Bei der Interpretation der Laufzeit ist zu berücksichtigen, dass unterschiedliche Modelle auf unterschiedlichen technischen Infrastrukturen beziehungsweise über unterschiedliche Schnittstellen ausgeführt werden. Die gemessene Laufzeit dient daher primär dem Vergleich der Orchestrierungsmethoden innerhalb der jeweiligen Modellbedingungen. Ein direkter Vergleich der absoluten Laufzeiten verschiedener Modelle ist nur eingeschränkt aussagekräftig.
+
+=== Tokenverbrauch
+
+Als Tokenverbrauch wird die Summe aus Input- und Outputtokens eines Durchlaufs erfasst. Für die aggregierte Darstellung wird der arithmetische Mittelwert des Gesamtverbrauchs berechnet.
+
+Der Tokenverbrauch wird nicht als eigenständiges Kriterium in die binäre Effizienzbewertung einbezogen. Insbesondere bei der iterativen Methode hängt der Gesamtverbrauch wesentlich von der Anzahl der durchgeführten Iterationen ab. Mit jeder zusätzlichen Iteration können weitere Informationen in den Kontext aufgenommen werden, wodurch der Umfang der folgenden LLM-Aufrufe steigt.
+
+Ein niedriger Tokenverbrauch ist daher nicht grundsätzlich als besser zu bewerten. Ein Durchlauf, der aufgrund eines frühen Fehlers oder Abbruchs nur wenige Iterationen durchführt, kann beispielsweise deutlich weniger Tokens verbrauchen als ein erfolgreicher Durchlauf, der mehrere Iterationen benötigt. Der Tokenverbrauch wird deshalb als deskriptive Ressourcengröße verwendet und bei der Interpretation der Ergebnisse gemeinsam mit Korrektheit, Effizienz und Fehlerrate betrachtet.
 
 == Versuchsablauf
 
