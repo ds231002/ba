@@ -1,0 +1,811 @@
+task_type,task_id,method,model,tools_correct,arguments_correct,tools_efficient,answer_efficient,correct,efficient,error,runtime_seconds,input_tokens,output_tokens,total_tokens
+Direkte Datenabfrage,1,deterministic,qwen3:8b,1,1,1,1,1,1,,22.775164299999233,3572,1299,4871
+Direkte Datenabfrage,1,deterministic,qwen3:30b,1,1,1,1,1,1,,11.542764899997564,3572,1054,4626
+Direkte Datenabfrage,1,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.7244664000027115,3128,68,3196
+Direkte Datenabfrage,1,plan-based,qwen3:8b,1,1,1,1,1,1,,15.319668299998739,4974,940,5914
+Direkte Datenabfrage,1,plan-based,qwen3:30b,1,1,1,1,1,1,,11.839646600004926,4974,994,5968
+Direkte Datenabfrage,1,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.0950063000054797,4369,84,4453
+Direkte Datenabfrage,1,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,1,iterative,qwen3:30b,1,1,1,1,1,1,,23.05,5396,1245,6641
+Direkte Datenabfrage,1,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.985,4736,118,4854
+Direkte Datenabfrage,2,deterministic,qwen3:8b,1,1,1,1,1,1,,11.095906200000172,3577,699,4276
+Direkte Datenabfrage,2,deterministic,qwen3:30b,1,1,1,1,1,1,,12.294464299993706,3577,1332,4909
+Direkte Datenabfrage,2,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,2.314429999998538,3131,61,3192
+Direkte Datenabfrage,2,plan-based,qwen3:8b,1,1,1,1,1,1,,11.188433900000746,4979,704,5683
+Direkte Datenabfrage,2,plan-based,qwen3:30b,1,1,1,1,1,1,,10.620307400000456,4979,1066,6045
+Direkte Datenabfrage,2,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.87311580000096,4372,97,4469
+Direkte Datenabfrage,2,iterative,qwen3:8b,1,1,1,1,1,1,,10.779,5401,605,6006
+Direkte Datenabfrage,2,iterative,qwen3:30b,1,1,1,1,1,1,,10.851,5401,1066,6467
+Direkte Datenabfrage,2,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.981,4739,113,4852
+Direkte Datenabfrage,3,deterministic,qwen3:8b,1,1,1,1,1,1,,6.354030499998771,3581,275,3856
+Direkte Datenabfrage,3,deterministic,qwen3:30b,1,1,1,1,1,1,,6.044615999999223,3581,421,4002
+Direkte Datenabfrage,3,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.5746729000020423,3135,28,3163
+Direkte Datenabfrage,3,plan-based,qwen3:8b,1,1,1,1,1,1,,6.907933799999228,4983,332,5315
+Direkte Datenabfrage,3,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,3,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.9619787999981781,4376,75,4451
+Direkte Datenabfrage,3,iterative,qwen3:8b,1,1,1,1,1,1,,12.087,10878,477,11355
+Direkte Datenabfrage,3,iterative,qwen3:30b,1,1,1,1,1,1,,11.779,10878,687,11565
+Direkte Datenabfrage,3,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.777,4743,67,4810
+Direkte Datenabfrage,4,deterministic,qwen3:8b,0,0,0,0,0,0,,12.703122400000211,3574,862,4436
+Direkte Datenabfrage,4,deterministic,qwen3:30b,1,1,1,1,1,1,,6.028310599998804,3574,428,4002
+Direkte Datenabfrage,4,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,1.739161099998455,3130,71,3201
+Direkte Datenabfrage,4,plan-based,qwen3:8b,1,1,1,1,1,1,,5.733499699999811,4976,217,5193
+Direkte Datenabfrage,4,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,4,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.8205711000045994,4371,77,4448
+Direkte Datenabfrage,4,iterative,qwen3:8b,1,1,1,1,1,1,,10.698,10864,328,11192
+Direkte Datenabfrage,4,iterative,qwen3:30b,1,1,1,1,1,1,,15.907,10863,1217,12080
+Direkte Datenabfrage,4,iterative,gpt-5.4-mini,1,1,1,1,1,1,,2.122,4738,94,4832
+Direkte Datenabfrage,5,deterministic,qwen3:8b,1,1,1,1,1,1,,7.665012600000409,3576,404,3980
+Direkte Datenabfrage,5,deterministic,qwen3:30b,1,1,1,1,1,1,,5.355951899997308,3576,319,3895
+Direkte Datenabfrage,5,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.7245067999974708,3132,28,3160
+Direkte Datenabfrage,5,plan-based,qwen3:8b,1,1,1,1,1,1,,5.64536009999938,4978,217,5195
+Direkte Datenabfrage,5,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,5,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.765155400004005,4373,80,4453
+Direkte Datenabfrage,5,iterative,qwen3:8b,1,1,1,1,1,1,,11.045,10868,366,11234
+Direkte Datenabfrage,5,iterative,qwen3:30b,1,1,1,1,1,1,,12.367,10868,759,11627
+Direkte Datenabfrage,5,iterative,gpt-5.4-mini,1,1,1,1,1,1,,3.695,9549,70,9619
+Direkte Datenabfrage,6,deterministic,qwen3:8b,1,1,1,1,1,1,,5.734996600000159,3577,226,3803
+Direkte Datenabfrage,6,deterministic,qwen3:30b,1,1,1,1,1,1,,5.708141700000851,3577,384,3961
+Direkte Datenabfrage,6,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.4654267000005348,3133,28,3161
+Direkte Datenabfrage,6,plan-based,qwen3:8b,1,1,1,1,1,1,,6.0447107999989385,4979,259,5238
+Direkte Datenabfrage,6,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,6,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.7837963999991189,4374,83,4457
+Direkte Datenabfrage,6,iterative,qwen3:8b,1,1,1,1,1,1,,12.74,10870,497,11367
+Direkte Datenabfrage,6,iterative,qwen3:30b,1,1,1,1,1,1,,13.002,10870,832,11702
+Direkte Datenabfrage,6,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.042,4741,68,4809
+Direkte Datenabfrage,7,deterministic,qwen3:8b,1,1,1,1,1,1,,15.684384800000771,3573,1144,4717
+Direkte Datenabfrage,7,deterministic,qwen3:30b,1,1,1,1,1,1,,12.767268200004764,3573,1446,5019
+Direkte Datenabfrage,7,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,1.7270939999943948,3129,28,3157
+Direkte Datenabfrage,7,plan-based,qwen3:8b,1,1,1,1,1,1,,8.730979100000695,4975,496,5471
+Direkte Datenabfrage,7,plan-based,qwen3:30b,1,1,1,1,1,1,,10.728310400001646,4975,1091,6066
+Direkte Datenabfrage,7,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,1.8440627999952994,4370,119,4489
+Direkte Datenabfrage,7,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,7,iterative,qwen3:30b,1,1,1,1,1,1,,12.958,5397,1311,6708
+Direkte Datenabfrage,7,iterative,gpt-5.4-mini,1,1,1,1,1,1,,2.178,4737,108,4845
+Direkte Datenabfrage,8,deterministic,qwen3:8b,1,1,1,1,1,1,,6.220807599998807,3572,268,3840
+Direkte Datenabfrage,8,deterministic,qwen3:30b,1,1,1,1,1,1,,5.780876400000125,3572,376,3948
+Direkte Datenabfrage,8,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,1.608274900005199,3127,67,3194
+Direkte Datenabfrage,8,plan-based,qwen3:8b,1,1,1,1,1,1,,5.726033900000402,4974,228,5202
+Direkte Datenabfrage,8,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,8,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,1.8002611999982037,4368,68,4436
+Direkte Datenabfrage,8,iterative,qwen3:8b,1,1,1,1,1,1,,10.213,10860,332,11192
+Direkte Datenabfrage,8,iterative,qwen3:30b,1,1,1,1,1,1,,13.356,10860,942,11802
+Direkte Datenabfrage,8,iterative,gpt-5.4-mini,1,1,0,0,1,0,,1.952,4735,66,4801
+Direkte Datenabfrage,9,deterministic,qwen3:8b,1,1,1,1,1,1,,7.5305761999989045,3581,399,3980
+Direkte Datenabfrage,9,deterministic,qwen3:30b,1,1,1,1,1,1,,6.521562599999015,3581,497,4078
+Direkte Datenabfrage,9,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.4759174999999232,3136,28,3164
+Direkte Datenabfrage,9,plan-based,qwen3:8b,1,1,1,1,1,1,,9.265454000000318,4983,547,5530
+Direkte Datenabfrage,9,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,9,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.4587300999992294,4377,98,4475
+Direkte Datenabfrage,9,iterative,qwen3:8b,1,1,1,1,1,1,,28.835,10878,1983,12861
+Direkte Datenabfrage,9,iterative,qwen3:30b,1,1,1,1,1,1,,15.357,10878,1156,12034
+Direkte Datenabfrage,9,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.24,4744,83,4827
+Direkte Datenabfrage,10,deterministic,qwen3:8b,1,1,1,1,1,1,,7.818588599999202,3583,428,4011
+Direkte Datenabfrage,10,deterministic,qwen3:30b,1,1,1,1,1,1,,8.658227400002943,3583,838,4421
+Direkte Datenabfrage,10,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.6180652999973972,3134,48,3182
+Direkte Datenabfrage,10,plan-based,qwen3:8b,1,1,1,1,1,1,,8.564162499998929,4985,490,5475
+Direkte Datenabfrage,10,plan-based,qwen3:30b,1,1,1,1,1,1,,14.453142500002286,4985,1645,6630
+Direkte Datenabfrage,10,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.3609328999955324,4375,111,4486
+Direkte Datenabfrage,10,iterative,qwen3:8b,1,1,1,1,1,1,,14.57,10949,681,11630
+Direkte Datenabfrage,10,iterative,qwen3:30b,1,1,1,1,1,1,,14.438,10949,1009,11958
+Direkte Datenabfrage,10,iterative,gpt-5.4-mini,0,0,0,0,0,0,,1.818,4742,89,4831
+Direkte Datenabfrage,11,deterministic,qwen3:8b,1,1,1,1,1,1,,11.828787899999952,3571,787,4358
+Direkte Datenabfrage,11,deterministic,qwen3:30b,1,1,1,1,1,1,,13.046335999999428,3571,1497,5068
+Direkte Datenabfrage,11,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.8382186999951955,3128,60,3188
+Direkte Datenabfrage,11,plan-based,qwen3:8b,1,1,1,1,1,1,,17.64380589999928,4973,1277,6250
+Direkte Datenabfrage,11,plan-based,qwen3:30b,1,1,1,1,1,1,,12.043501000000106,4973,1301,6274
+Direkte Datenabfrage,11,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.8460285999972257,4369,105,4474
+Direkte Datenabfrage,11,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,11,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,11,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.931,4736,90,4826
+Direkte Datenabfrage,12,deterministic,qwen3:8b,0,0,0,0,0,0,,15.57475930000146,3573,1112,4685
+Direkte Datenabfrage,12,deterministic,qwen3:30b,1,1,1,1,1,1,,5.909898600002634,3573,404,3977
+Direkte Datenabfrage,12,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.4494742000024416,3130,26,3156
+Direkte Datenabfrage,12,plan-based,qwen3:8b,1,1,1,1,1,1,,7.061358299999483,4975,337,5312
+Direkte Datenabfrage,12,plan-based,qwen3:30b,1,1,1,1,1,1,,13.913675600000715,4975,1561,6536
+Direkte Datenabfrage,12,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.7972087000016472,4371,103,4474
+Direkte Datenabfrage,12,iterative,qwen3:8b,1,1,1,1,1,1,,13.525,10862,638,11500
+Direkte Datenabfrage,12,iterative,qwen3:30b,1,1,1,1,1,1,,12.193,10862,757,11619
+Direkte Datenabfrage,12,iterative,gpt-5.4-mini,0,0,0,0,0,0,,1.818,4738,54,4792
+Direkte Datenabfrage,13,deterministic,qwen3:8b,1,1,1,1,1,1,,6.811552099999972,3572,318,3890
+Direkte Datenabfrage,13,deterministic,qwen3:30b,1,1,1,1,1,1,,5.895521299993561,3572,397,3969
+Direkte Datenabfrage,13,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.5429404000024078,3129,26,3155
+Direkte Datenabfrage,13,plan-based,qwen3:8b,1,1,1,1,1,1,,10.889177899998685,4974,686,5660
+Direkte Datenabfrage,13,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,13,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.785216500000388,4370,98,4468
+Direkte Datenabfrage,13,iterative,qwen3:8b,1,1,1,1,1,1,,14.409,10860,686,11546
+Direkte Datenabfrage,13,iterative,qwen3:30b,1,1,1,1,1,1,,13.715,10859,898,11757
+Direkte Datenabfrage,13,iterative,gpt-5.4-mini,0,0,0,0,0,0,,1.766,4737,62,4799
+Direkte Datenabfrage,14,deterministic,qwen3:8b,1,1,1,1,1,1,,6.798900300000241,3573,323,3896
+Direkte Datenabfrage,14,deterministic,qwen3:30b,1,1,1,1,1,1,,5.863067400001455,3573,390,3963
+Direkte Datenabfrage,14,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.4778521999978693,3129,26,3155
+Direkte Datenabfrage,14,plan-based,qwen3:8b,1,1,1,1,1,1,,7.278723600000376,4975,361,5336
+Direkte Datenabfrage,14,plan-based,qwen3:30b,1,1,1,1,1,1,,15.585002499996335,4975,1765,6740
+Direkte Datenabfrage,14,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.829530100003467,4370,112,4482
+Direkte Datenabfrage,14,iterative,qwen3:8b,1,1,1,1,1,1,,12.977,10862,551,11413
+Direkte Datenabfrage,14,iterative,qwen3:30b,1,1,1,1,1,1,,12.919,10862,839,11701
+Direkte Datenabfrage,14,iterative,gpt-5.4-mini,0,0,0,0,0,0,,1.975,4737,86,4823
+Direkte Datenabfrage,15,deterministic,qwen3:8b,1,1,1,1,1,1,,7.117065599999478,3571,359,3930
+Direkte Datenabfrage,15,deterministic,qwen3:30b,1,1,1,1,1,1,,6.223815300007118,3571,441,4012
+Direkte Datenabfrage,15,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.5530338999960804,3127,26,3153
+Direkte Datenabfrage,15,plan-based,qwen3:8b,1,1,1,1,1,1,,7.502713699999731,4973,388,5361
+Direkte Datenabfrage,15,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,15,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.789909599996463,4368,103,4471
+Direkte Datenabfrage,15,iterative,qwen3:8b,1,1,1,1,1,1,,16.787,10858,905,11763
+Direkte Datenabfrage,15,iterative,qwen3:30b,1,1,1,1,1,1,,14.685,10858,1090,11948
+Direkte Datenabfrage,15,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.921,4735,68,4803
+Direkte Datenabfrage,16,deterministic,qwen3:8b,1,1,1,1,1,1,,8.547228200000973,3573,486,4059
+Direkte Datenabfrage,16,deterministic,qwen3:30b,1,1,1,1,1,1,,7.2978180999998585,3573,602,4175
+Direkte Datenabfrage,16,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.50714390000212,3130,26,3156
+Direkte Datenabfrage,16,plan-based,qwen3:8b,1,1,1,1,1,1,,13.23534810000092,4975,897,5872
+Direkte Datenabfrage,16,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,16,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.822476999994251,4371,103,4474
+Direkte Datenabfrage,16,iterative,qwen3:8b,0,0,0,0,0,0,,24.474,10862,1577,12439
+Direkte Datenabfrage,16,iterative,qwen3:30b,1,1,1,1,1,1,,19.98,10862,1779,12641
+Direkte Datenabfrage,16,iterative,gpt-5.4-mini,0,0,0,0,0,0,,1.781,4738,68,4806
+Direkte Datenabfrage,17,deterministic,qwen3:8b,0,0,0,0,0,0,,7.518893299999036,3573,399,3972
+Direkte Datenabfrage,17,deterministic,qwen3:30b,0,0,0,0,0,0,,8.011509500000102,3573,720,4293
+Direkte Datenabfrage,17,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,1.4175112000011723,3129,26,3155
+Direkte Datenabfrage,17,plan-based,qwen3:8b,0,0,0,0,0,0,,16.88538829999925,4975,1216,6191
+Direkte Datenabfrage,17,plan-based,qwen3:30b,1,1,1,1,1,1,,11.511132600004203,4975,1189,6164
+Direkte Datenabfrage,17,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.755978299996059,4370,96,4466
+Direkte Datenabfrage,17,iterative,qwen3:8b,0,0,0,0,0,0,,23.054,10862,1418,12280
+Direkte Datenabfrage,17,iterative,qwen3:30b,1,1,1,1,1,1,,10.181,5397,936,6333
+Direkte Datenabfrage,17,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.884,4737,87,4824
+Direkte Datenabfrage,18,deterministic,qwen3:8b,1,1,1,1,1,1,,8.742168000000675,3582,501,4083
+Direkte Datenabfrage,18,deterministic,qwen3:30b,1,1,1,1,1,1,,7.554430799995316,3582,654,4236
+Direkte Datenabfrage,18,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,3.5197465000019292,3132,44,3176
+Direkte Datenabfrage,18,plan-based,qwen3:8b,1,1,1,1,1,1,,13.74276060000011,4984,939,5923
+Direkte Datenabfrage,18,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,18,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,1.9524938999966253,4373,74,4447
+Direkte Datenabfrage,18,iterative,qwen3:8b,1,1,1,1,1,1,,21.356,10947,1249,12196
+Direkte Datenabfrage,18,iterative,qwen3:30b,1,1,1,1,1,1,,20.892,10947,1983,12930
+Direkte Datenabfrage,18,iterative,gpt-5.4-mini,1,1,0,0,1,0,,1.906,4740,74,4814
+Direkte Datenabfrage,19,deterministic,qwen3:8b,0,0,0,0,0,0,,12.256625600000916,3574,820,4394
+Direkte Datenabfrage,19,deterministic,qwen3:30b,0,0,0,0,0,0,,9.806268799999089,3574,985,4559
+Direkte Datenabfrage,19,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,1.4587065999949118,3131,26,3157
+Direkte Datenabfrage,19,plan-based,qwen3:8b,0,0,0,0,0,0,,7.240378899999996,4976,357,5333
+Direkte Datenabfrage,19,plan-based,qwen3:30b,1,1,0,0,1,0,,14.031812599998375,4976,1568,6544
+Direkte Datenabfrage,19,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.6808797000048799,4372,91,4463
+Direkte Datenabfrage,19,iterative,qwen3:8b,1,1,0,0,1,0,,41.262,16397,2613,19010
+Direkte Datenabfrage,19,iterative,qwen3:30b,1,1,1,1,1,1,,10.232,5398,922,6320
+Direkte Datenabfrage,19,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.828,4739,88,4827
+Direkte Datenabfrage,20,deterministic,qwen3:8b,0,0,0,0,0,0,,10.64701690000038,3578,657,4235
+Direkte Datenabfrage,20,deterministic,qwen3:30b,0,0,0,0,0,0,,6.897036399997887,3578,557,4135
+Direkte Datenabfrage,20,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,1.4320249000011245,3134,26,3160
+Direkte Datenabfrage,20,plan-based,qwen3:8b,0,0,0,0,0,0,,17.264542200000506,4980,1231,6211
+Direkte Datenabfrage,20,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,20,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.8733519000015804,4375,102,4477
+Direkte Datenabfrage,20,iterative,qwen3:8b,0,0,0,0,0,0,,23.978,10872,1472,12344
+Direkte Datenabfrage,20,iterative,qwen3:30b,1,1,0,0,1,0,,15.112,10872,1166,12038
+Direkte Datenabfrage,20,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.946,4742,71,4813
+Direkte Datenabfrage,21,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,21,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,21,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.790392700000666,3135,93,3228
+Direkte Datenabfrage,21,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,21,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,21,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.834301900002174,4376,104,4480
+Direkte Datenabfrage,21,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,21,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,21,iterative,gpt-5.4-mini,1,0,0,0,0,0,,4.201,9755,186,9941
+Direkte Datenabfrage,22,deterministic,qwen3:8b,1,1,1,1,1,1,,8.195972699999402,3585,400,3985
+Direkte Datenabfrage,22,deterministic,qwen3:30b,1,1,1,1,1,1,,8.165545999996539,3585,733,4318
+Direkte Datenabfrage,22,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,1.6825337000045693,3139,83,3222
+Direkte Datenabfrage,22,plan-based,qwen3:8b,1,1,1,1,1,1,,8.700510000000577,4987,488,5475
+Direkte Datenabfrage,22,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,22,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.608864399997401,4380,215,4595
+Direkte Datenabfrage,22,iterative,qwen3:8b,1,1,1,1,1,1,,15.213,10953,760,11713
+Direkte Datenabfrage,22,iterative,qwen3:30b,1,1,1,1,1,1,,17.21,10953,1458,12411
+Direkte Datenabfrage,22,iterative,gpt-5.4-mini,1,1,1,1,1,1,,4.062,9629,155,9784
+Direkte Datenabfrage,23,deterministic,qwen3:8b,1,1,1,1,1,1,,8.0213119,3590,439,4029
+Direkte Datenabfrage,23,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,23,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.51164350000181,3144,46,3190
+Direkte Datenabfrage,23,plan-based,qwen3:8b,1,1,1,1,1,1,,8.748776299999008,4992,500,5492
+Direkte Datenabfrage,23,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,23,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.911260199995013,4385,132,4517
+Direkte Datenabfrage,23,iterative,qwen3:8b,1,1,1,1,1,1,,16.236,10963,819,11782
+Direkte Datenabfrage,23,iterative,qwen3:30b,1,1,1,1,1,1,,20.298,10963,1867,12830
+Direkte Datenabfrage,23,iterative,gpt-5.4-mini,1,1,1,1,1,1,,4.164,9639,115,9754
+Direkte Datenabfrage,24,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,24,deterministic,qwen3:30b,1,1,1,1,1,1,,8.37388700000156,3584,776,4360
+Direkte Datenabfrage,24,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,1.627047699999821,3135,62,3197
+Direkte Datenabfrage,24,plan-based,qwen3:8b,1,1,1,1,1,1,,11.86153970000123,4986,798,5784
+Direkte Datenabfrage,24,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,24,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.0287882999982685,4376,125,4501
+Direkte Datenabfrage,24,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,24,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,24,iterative,gpt-5.4-mini,0,0,0,0,0,0,,4.825,4743,115,4858
+Direkte Datenabfrage,25,deterministic,qwen3:8b,1,1,1,1,1,1,,7.273616200000106,3581,383,3964
+Direkte Datenabfrage,25,deterministic,qwen3:30b,1,1,1,1,1,1,,7.665115899995726,3581,677,4258
+Direkte Datenabfrage,25,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.9385192000045208,3136,68,3204
+Direkte Datenabfrage,25,plan-based,qwen3:8b,1,1,1,1,1,1,,8.754102000000785,4983,506,5489
+Direkte Datenabfrage,25,plan-based,qwen3:30b,1,1,1,1,1,1,,15.610818600005587,4983,1827,6810
+Direkte Datenabfrage,25,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.0172304999941844,4377,154,4531
+Direkte Datenabfrage,25,iterative,qwen3:8b,1,1,1,1,1,1,,16.849,11012,896,11908
+Direkte Datenabfrage,25,iterative,qwen3:30b,1,1,1,1,1,1,,15.86,11012,1309,12321
+Direkte Datenabfrage,25,iterative,gpt-5.4-mini,1,0,1,0,0,0,,3.545,9693,134,9827
+Direkte Datenabfrage,26,deterministic,qwen3:8b,1,1,1,1,1,1,,6.609982699999819,3572,319,3891
+Direkte Datenabfrage,26,deterministic,qwen3:30b,1,1,1,1,1,1,,7.155078299998422,3572,605,4177
+Direkte Datenabfrage,26,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.6228709999995772,3127,53,3180
+Direkte Datenabfrage,26,plan-based,qwen3:8b,1,1,1,1,1,1,,7.802650199999334,4974,426,5400
+Direkte Datenabfrage,26,plan-based,qwen3:30b,1,1,1,1,1,1,,7.012315899999521,4974,557,5531
+Direkte Datenabfrage,26,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.8421918000021833,4368,90,4458
+Direkte Datenabfrage,26,iterative,qwen3:8b,0,0,0,0,0,0,,42.424,32376,2082,34458
+Direkte Datenabfrage,26,iterative,qwen3:30b,1,1,1,1,1,1,,8.446,5396,714,6110
+Direkte Datenabfrage,26,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.898,4735,74,4809
+Direkte Datenabfrage,27,deterministic,qwen3:8b,0,0,0,0,0,0,,9.672913599999447,3576,609,4185
+Direkte Datenabfrage,27,deterministic,qwen3:30b,1,1,1,1,1,1,,6.862294799997471,3576,548,4124
+Direkte Datenabfrage,27,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.7015257000020938,3131,77,3208
+Direkte Datenabfrage,27,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,27,plan-based,qwen3:30b,1,1,1,1,1,1,,13.850777499996184,4978,1559,6537
+Direkte Datenabfrage,27,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.013284799999383,4372,95,4467
+Direkte Datenabfrage,27,iterative,qwen3:8b,1,1,1,1,1,1,,134.44,5400,987,6387
+Direkte Datenabfrage,27,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Direkte Datenabfrage,27,iterative,gpt-5.4-mini,1,1,1,1,1,1,,2.273,4739,78,4817
+Direkte Datenabfrage,28,deterministic,qwen3:8b,1,1,1,1,1,1,,6.225056199999017,3571,278,3849
+Direkte Datenabfrage,28,deterministic,qwen3:30b,1,1,1,1,1,1,,7.047777399995539,3571,554,4125
+Direkte Datenabfrage,28,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.583351200002653,3126,43,3169
+Direkte Datenabfrage,28,plan-based,qwen3:8b,0,0,0,0,0,0,,6.180112099998951,4973,276,5249
+Direkte Datenabfrage,28,plan-based,qwen3:30b,1,1,1,1,1,1,,5.924520300002769,4973,396,5369
+Direkte Datenabfrage,28,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.5536075000054552,4367,48,4415
+Direkte Datenabfrage,28,iterative,qwen3:8b,1,1,1,1,1,1,,30.78,32370,1080,33450
+Direkte Datenabfrage,28,iterative,qwen3:30b,1,1,1,1,1,1,,6.009,5395,395,5790
+Direkte Datenabfrage,28,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.83,4734,51,4785
+Direkte Datenabfrage,29,deterministic,qwen3:8b,1,1,1,1,1,1,,7.000651299998935,3571,359,3930
+Direkte Datenabfrage,29,deterministic,qwen3:30b,1,1,1,1,1,1,,8.29136329999892,3571,767,4338
+Direkte Datenabfrage,29,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.6016969000047538,3127,48,3175
+Direkte Datenabfrage,29,plan-based,qwen3:8b,1,1,1,1,1,1,,7.3397772000007535,4973,389,5362
+Direkte Datenabfrage,29,plan-based,qwen3:30b,1,1,1,1,1,1,,6.53556500000559,4973,487,5460
+Direkte Datenabfrage,29,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.9132191999960924,4368,99,4467
+Direkte Datenabfrage,29,iterative,qwen3:8b,1,1,1,1,1,1,,7.654,5395,410,5805
+Direkte Datenabfrage,29,iterative,qwen3:30b,1,1,1,1,1,1,,5.55,5395,366,5761
+Direkte Datenabfrage,29,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.854,4735,88,4823
+Direkte Datenabfrage,30,deterministic,qwen3:8b,1,1,1,1,1,1,,5.710544499999742,3578,233,3811
+Direkte Datenabfrage,30,deterministic,qwen3:30b,1,1,1,1,1,1,,5.714043899999524,3578,373,3951
+Direkte Datenabfrage,30,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.508437700002105,3130,37,3167
+Direkte Datenabfrage,30,plan-based,qwen3:8b,1,1,1,1,1,1,,7.770305599999119,4980,424,5404
+Direkte Datenabfrage,30,plan-based,qwen3:30b,1,1,1,1,1,1,,10.157403200006229,4980,1033,6013
+Direkte Datenabfrage,30,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.820846900001925,4371,96,4467
+Direkte Datenabfrage,30,iterative,qwen3:8b,1,1,1,1,1,1,,7.639,5402,403,5805
+Direkte Datenabfrage,30,iterative,qwen3:30b,1,1,1,1,1,1,,7.193,5402,604,6006
+Direkte Datenabfrage,30,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.838,4738,70,4808
+Einzelquellenverarbeitung,31,deterministic,qwen3:8b,0,0,0,0,0,0,,10.061506199999712,3580,647,4227
+Einzelquellenverarbeitung,31,deterministic,qwen3:30b,1,1,1,1,1,1,,11.693001999999979,3580,1289,4869
+Einzelquellenverarbeitung,31,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,2.182261899994046,3133,64,3197
+Einzelquellenverarbeitung,31,plan-based,qwen3:8b,1,1,0,0,1,0,,20.50835569999981,4982,1570,6552
+Einzelquellenverarbeitung,31,plan-based,qwen3:30b,1,1,1,1,1,1,,10.921196600000258,4982,1126,6108
+Einzelquellenverarbeitung,31,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.770370099999127,4374,96,4470
+Einzelquellenverarbeitung,31,iterative,qwen3:8b,1,1,0,0,1,0,,22.923,5404,1724,7128
+Einzelquellenverarbeitung,31,iterative,qwen3:30b,1,1,1,1,1,1,,14.624,5404,1687,7091
+Einzelquellenverarbeitung,31,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.926,4741,110,4851
+Einzelquellenverarbeitung,32,deterministic,qwen3:8b,1,1,1,1,1,1,,9.474524700000984,3583,575,4158
+Einzelquellenverarbeitung,32,deterministic,qwen3:30b,1,1,1,1,1,1,,7.613169199998083,3583,659,4242
+Einzelquellenverarbeitung,32,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,1.7959424999935436,3135,109,3244
+Einzelquellenverarbeitung,32,plan-based,qwen3:8b,1,1,1,1,1,1,,18.715423600000577,4985,1396,6381
+Einzelquellenverarbeitung,32,plan-based,qwen3:30b,1,1,1,1,1,1,,16.59528030000365,4985,1945,6930
+Einzelquellenverarbeitung,32,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,1.8673916000043391,4376,101,4477
+Einzelquellenverarbeitung,32,iterative,qwen3:8b,0,0,0,0,0,0,,13.356,5407,904,6311
+Einzelquellenverarbeitung,32,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,32,iterative,gpt-5.4-mini,1,1,0,0,1,0,,2.163,4743,162,4905
+Einzelquellenverarbeitung,33,deterministic,qwen3:8b,1,1,1,1,1,1,,28.339200500000516,3582,2284,5866
+Einzelquellenverarbeitung,33,deterministic,qwen3:30b,1,1,1,1,1,1,,13.49311740000121,3582,1549,5131
+Einzelquellenverarbeitung,33,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.5873310000024503,3136,48,3184
+Einzelquellenverarbeitung,33,plan-based,qwen3:8b,1,0,0,0,0,0,,15.151901999999609,4984,1056,6040
+Einzelquellenverarbeitung,33,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,33,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,1.850452899998345,4377,83,4460
+Einzelquellenverarbeitung,33,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,33,iterative,qwen3:30b,1,1,1,1,1,1,,28.476,10909,2982,13891
+Einzelquellenverarbeitung,33,iterative,gpt-5.4-mini,0,0,0,0,0,0,,1.934,4744,96,4840
+Einzelquellenverarbeitung,34,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,34,deterministic,qwen3:30b,1,1,0,0,1,0,,14.251219400000991,3577,1657,5234
+Einzelquellenverarbeitung,34,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,1.6257467999967048,3133,48,3181
+Einzelquellenverarbeitung,34,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,34,plan-based,qwen3:30b,1,1,1,1,1,1,,12.712281100000837,4979,1386,6365
+Einzelquellenverarbeitung,34,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,1.9424548000024515,4374,145,4519
+Einzelquellenverarbeitung,34,iterative,qwen3:8b,1,1,0,0,1,0,,32.057,10899,2105,13004
+Einzelquellenverarbeitung,34,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,34,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.949,4741,87,4828
+Einzelquellenverarbeitung,35,deterministic,qwen3:8b,1,1,0,0,1,0,,21.392626600001677,3577,1554,5131
+Einzelquellenverarbeitung,35,deterministic,qwen3:30b,1,1,1,1,1,1,,11.831331900000805,3577,1301,4878
+Einzelquellenverarbeitung,35,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.7635660000014468,3131,59,3190
+Einzelquellenverarbeitung,35,plan-based,qwen3:8b,1,1,0,0,1,0,,12.792369900000267,4979,815,5794
+Einzelquellenverarbeitung,35,plan-based,qwen3:30b,1,1,1,1,1,1,,13.743175099996733,4979,1536,6515
+Einzelquellenverarbeitung,35,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.9177997000006144,4372,80,4452
+Einzelquellenverarbeitung,35,iterative,qwen3:8b,1,1,1,1,1,1,,17.229,5401,1195,6596
+Einzelquellenverarbeitung,35,iterative,qwen3:30b,1,1,1,1,1,1,,12.427,5401,1272,6673
+Einzelquellenverarbeitung,35,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.956,4739,87,4826
+Einzelquellenverarbeitung,36,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,36,deterministic,qwen3:30b,1,1,1,1,1,1,,14.36963200000173,3581,1691,5272
+Einzelquellenverarbeitung,36,deterministic,gpt-5.4-mini,1,0,0,0,0,0,,1.6127156000002287,3135,57,3192
+Einzelquellenverarbeitung,36,plan-based,qwen3:8b,1,1,1,1,1,1,,16.572164999999586,4983,1130,6113
+Einzelquellenverarbeitung,36,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,36,plan-based,gpt-5.4-mini,1,0,0,0,0,0,,2.0763913999981014,4376,164,4540
+Einzelquellenverarbeitung,36,iterative,qwen3:8b,0,0,0,0,0,0,,29.895,10920,2019,12939
+Einzelquellenverarbeitung,36,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,36,iterative,gpt-5.4-mini,0,0,0,0,0,0,,3.402,4743,120,4863
+Einzelquellenverarbeitung,37,deterministic,qwen3:8b,1,1,0,0,1,0,,18.86740009999994,3578,1370,4948
+Einzelquellenverarbeitung,37,deterministic,qwen3:30b,1,1,1,1,1,1,,14.199702500001877,3578,1648,5226
+Einzelquellenverarbeitung,37,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.7568308999980218,3130,67,3197
+Einzelquellenverarbeitung,37,plan-based,qwen3:8b,1,1,0,0,1,0,,24.70026390000021,4980,1837,6817
+Einzelquellenverarbeitung,37,plan-based,qwen3:30b,1,1,1,1,1,1,,12.778627499996219,4980,1409,6389
+Einzelquellenverarbeitung,37,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.059796699999424,4371,94,4465
+Einzelquellenverarbeitung,37,iterative,qwen3:8b,1,1,1,1,1,1,,22.518,5402,1646,7048
+Einzelquellenverarbeitung,37,iterative,qwen3:30b,1,1,1,1,1,1,,15.157,5402,1648,7050
+Einzelquellenverarbeitung,37,iterative,gpt-5.4-mini,1,1,1,1,1,1,,2.042,4738,104,4842
+Einzelquellenverarbeitung,38,deterministic,qwen3:8b,1,1,1,1,1,1,,16.429537100000744,3577,1164,4741
+Einzelquellenverarbeitung,38,deterministic,qwen3:30b,1,1,1,1,1,1,,18.472268000004988,3577,2289,5866
+Einzelquellenverarbeitung,38,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,1.889356300001964,3133,79,3212
+Einzelquellenverarbeitung,38,plan-based,qwen3:8b,1,1,1,1,1,1,,26.176992099999552,4979,1976,6955
+Einzelquellenverarbeitung,38,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,38,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,1.79109829999652,4374,90,4464
+Einzelquellenverarbeitung,38,iterative,qwen3:8b,0,0,0,0,0,0,,16.357,5401,1156,6557
+Einzelquellenverarbeitung,38,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,38,iterative,gpt-5.4-mini,1,1,0,0,1,0,,2.113,4741,98,4839
+Einzelquellenverarbeitung,39,deterministic,qwen3:8b,1,1,1,1,1,1,,10.95673700000043,3581,690,4271
+Einzelquellenverarbeitung,39,deterministic,qwen3:30b,1,1,1,1,1,1,,8.250707699997292,3581,735,4316
+Einzelquellenverarbeitung,39,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,1.6313926000002539,3137,63,3200
+Einzelquellenverarbeitung,39,plan-based,qwen3:8b,1,1,1,1,1,1,,9.772788299998865,4983,575,5558
+Einzelquellenverarbeitung,39,plan-based,qwen3:30b,1,1,1,1,1,1,,8.872688399998879,4983,828,5811
+Einzelquellenverarbeitung,39,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.1126067000004696,4378,154,4532
+Einzelquellenverarbeitung,39,iterative,qwen3:8b,1,1,1,1,1,1,,11.805,5405,757,6162
+Einzelquellenverarbeitung,39,iterative,qwen3:30b,1,1,1,1,1,1,,11.793,5405,1138,6543
+Einzelquellenverarbeitung,39,iterative,gpt-5.4-mini,0,0,0,0,0,0,,3.709,9586,122,9708
+Einzelquellenverarbeitung,40,deterministic,qwen3:8b,1,1,1,1,1,1,,9.018438199998855,3579,524,4103
+Einzelquellenverarbeitung,40,deterministic,qwen3:30b,1,0,1,0,0,0,,15.672380700001668,3579,1904,5483
+Einzelquellenverarbeitung,40,deterministic,gpt-5.4-mini,1,0,1,0,0,0,,1.602107499995327,3135,57,3192
+Einzelquellenverarbeitung,40,plan-based,qwen3:8b,0,0,0,0,0,0,,8.957805399999415,4981,504,5485
+Einzelquellenverarbeitung,40,plan-based,qwen3:30b,1,0,1,0,0,0,,17.04079189999902,4981,2031,7012
+Einzelquellenverarbeitung,40,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,1.8124161000014283,4376,85,4461
+Einzelquellenverarbeitung,40,iterative,qwen3:8b,0,0,0,0,0,0,,33.447,10916,2334,13250
+Einzelquellenverarbeitung,40,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,40,iterative,gpt-5.4-mini,0,0,0,0,0,0,,1.788,4743,76,4819
+Einzelquellenverarbeitung,41,deterministic,qwen3:8b,1,1,1,1,1,1,,15.799141199999212,3579,1193,4772
+Einzelquellenverarbeitung,41,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,41,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.6706999999951222,3133,54,3187
+Einzelquellenverarbeitung,41,plan-based,qwen3:8b,1,1,1,1,1,1,,17.587696299999152,4981,1326,6307
+Einzelquellenverarbeitung,41,plan-based,qwen3:30b,1,0,0,0,0,0,,16.912519899997278,4981,1991,6972
+Einzelquellenverarbeitung,41,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.033390699994925,4374,148,4522
+Einzelquellenverarbeitung,41,iterative,qwen3:8b,1,1,1,1,1,1,,10.459,5403,607,6010
+Einzelquellenverarbeitung,41,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,41,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.767,4741,77,4818
+Einzelquellenverarbeitung,42,deterministic,qwen3:8b,1,0,1,0,0,0,,20.288413500000388,3583,1572,5155
+Einzelquellenverarbeitung,42,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,42,deterministic,gpt-5.4-mini,1,0,1,0,0,0,,1.6247183000014047,3136,63,3199
+Einzelquellenverarbeitung,42,plan-based,qwen3:8b,1,0,1,0,0,0,,15.042985199999748,4985,1062,6047
+Einzelquellenverarbeitung,42,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,42,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.199888399998599,4377,169,4546
+Einzelquellenverarbeitung,42,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,42,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,42,iterative,gpt-5.4-mini,1,1,1,1,1,1,,2.236,4744,133,4877
+Einzelquellenverarbeitung,43,deterministic,qwen3:8b,0,0,0,0,0,0,,10.076137300000482,3583,625,4208
+Einzelquellenverarbeitung,43,deterministic,qwen3:30b,0,0,0,0,0,0,,10.389885599994159,3583,1096,4679
+Einzelquellenverarbeitung,43,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,1.6776820000013686,3138,49,3187
+Einzelquellenverarbeitung,43,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,43,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,43,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.1929680000030203,4379,159,4538
+Einzelquellenverarbeitung,43,iterative,qwen3:8b,1,0,1,0,0,0,,92.678,33767,6303,40070
+Einzelquellenverarbeitung,43,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,43,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.217,4746,145,4891
+Einzelquellenverarbeitung,44,deterministic,qwen3:8b,0,0,0,0,0,0,,9.17776749999939,3582,559,4141
+Einzelquellenverarbeitung,44,deterministic,qwen3:30b,0,0,0,0,0,0,,8.665918900005636,3582,829,4411
+Einzelquellenverarbeitung,44,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,1.6354117000009865,3135,48,3183
+Einzelquellenverarbeitung,44,plan-based,qwen3:8b,1,1,1,1,1,1,,11.939075199999934,4984,801,5785
+Einzelquellenverarbeitung,44,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,44,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.205860699999903,4376,180,4556
+Einzelquellenverarbeitung,44,iterative,qwen3:8b,0,0,0,0,0,0,,108.936,34031,7602,41633
+Einzelquellenverarbeitung,44,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,44,iterative,gpt-5.4-mini,0,0,0,0,0,0,,3.62,9570,124,9694
+Einzelquellenverarbeitung,45,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,45,deterministic,qwen3:30b,0,0,0,0,0,0,,11.453968499998155,3583,1246,4829
+Einzelquellenverarbeitung,45,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.7985981999954674,3135,79,3214
+Einzelquellenverarbeitung,45,plan-based,qwen3:8b,1,1,1,1,1,1,,12.763173800000004,4985,807,5792
+Einzelquellenverarbeitung,45,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,45,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,1.86499499999627,4376,111,4487
+Einzelquellenverarbeitung,45,iterative,qwen3:8b,0,0,0,0,0,0,,179.14,28087,3599,31686
+Einzelquellenverarbeitung,45,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,45,iterative,gpt-5.4-mini,0,0,0,0,0,0,,3.474,4743,132,4875
+Einzelquellenverarbeitung,46,deterministic,qwen3:8b,0,0,0,0,0,0,,15.524919399998907,3583,1165,4748
+Einzelquellenverarbeitung,46,deterministic,qwen3:30b,1,1,1,1,1,1,,13.39832039999601,3583,1557,5140
+Einzelquellenverarbeitung,46,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.7795439000037732,3136,58,3194
+Einzelquellenverarbeitung,46,plan-based,qwen3:8b,1,1,1,1,1,1,,11.33871199999885,4985,760,5745
+Einzelquellenverarbeitung,46,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,46,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,1.9002825999996276,4377,91,4468
+Einzelquellenverarbeitung,46,iterative,qwen3:8b,0,0,0,0,0,0,,10.615,5407,667,6074
+Einzelquellenverarbeitung,46,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,46,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.16,4744,109,4853
+Einzelquellenverarbeitung,47,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,47,deterministic,qwen3:30b,1,1,1,1,1,1,,13.466331299998274,3582,1591,5173
+Einzelquellenverarbeitung,47,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,2.0249156999998377,3133,82,3215
+Einzelquellenverarbeitung,47,plan-based,qwen3:8b,1,1,1,1,1,1,,19.007942999998704,4984,1485,6469
+Einzelquellenverarbeitung,47,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,47,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.9830968999958714,4374,105,4479
+Einzelquellenverarbeitung,47,iterative,qwen3:8b,0,0,0,0,0,0,,23.662,11031,1568,12599
+Einzelquellenverarbeitung,47,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,47,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.842,4741,74,4815
+Einzelquellenverarbeitung,48,deterministic,qwen3:8b,1,1,1,1,1,1,,8.371661200000744,3583,485,4068
+Einzelquellenverarbeitung,48,deterministic,qwen3:30b,1,0,1,0,0,0,,15.257681199997023,3583,1818,5401
+Einzelquellenverarbeitung,48,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.833768999997119,3135,63,3198
+Einzelquellenverarbeitung,48,plan-based,qwen3:8b,1,1,1,1,1,1,,13.708163600000262,4985,974,5959
+Einzelquellenverarbeitung,48,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,48,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.0900639000028605,4376,132,4508
+Einzelquellenverarbeitung,48,iterative,qwen3:8b,0,0,0,0,0,0,,14.945,5407,1055,6462
+Einzelquellenverarbeitung,48,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,48,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.189,4743,140,4883
+Einzelquellenverarbeitung,49,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,49,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,49,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.7601711000024807,3136,77,3213
+Einzelquellenverarbeitung,49,plan-based,qwen3:8b,1,1,1,1,1,1,,11.268836900000679,4987,753,5740
+Einzelquellenverarbeitung,49,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,49,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.063972800002375,4377,125,4502
+Einzelquellenverarbeitung,49,iterative,qwen3:8b,0,0,0,0,0,0,,15.602,5409,1146,6555
+Einzelquellenverarbeitung,49,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,49,iterative,gpt-5.4-mini,0,0,0,0,0,0,,3.686,4744,124,4868
+Einzelquellenverarbeitung,50,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,50,deterministic,qwen3:30b,1,1,1,1,1,1,,9.444312899999204,3583,955,4538
+Einzelquellenverarbeitung,50,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,1.6135855999964406,3135,63,3198
+Einzelquellenverarbeitung,50,plan-based,qwen3:8b,1,1,1,1,1,1,,19.438833399999567,4985,1517,6502
+Einzelquellenverarbeitung,50,plan-based,qwen3:30b,1,1,1,1,1,1,,9.242453700004262,4985,913,5898
+Einzelquellenverarbeitung,50,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.220982200000435,4376,146,4522
+Einzelquellenverarbeitung,50,iterative,qwen3:8b,1,1,1,1,1,1,,20.186,5407,1546,6953
+Einzelquellenverarbeitung,50,iterative,qwen3:30b,1,1,1,1,1,1,,10.965,5407,1026,6433
+Einzelquellenverarbeitung,50,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.816,4743,86,4829
+Einzelquellenverarbeitung,51,deterministic,qwen3:8b,1,1,1,1,1,1,,9.845276800000647,3580,632,4212
+Einzelquellenverarbeitung,51,deterministic,qwen3:30b,1,1,1,1,1,1,,8.973191100005351,3580,887,4467
+Einzelquellenverarbeitung,51,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,2.0110817000022507,3134,63,3197
+Einzelquellenverarbeitung,51,plan-based,qwen3:8b,1,1,1,1,1,1,,10.648243800000273,4982,693,5675
+Einzelquellenverarbeitung,51,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,51,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.155826200003503,4375,154,4529
+Einzelquellenverarbeitung,51,iterative,qwen3:8b,0,0,0,0,0,0,,10.228,5404,651,6055
+Einzelquellenverarbeitung,51,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,51,iterative,gpt-5.4-mini,0,0,0,0,0,0,,3.566,4742,135,4877
+Einzelquellenverarbeitung,52,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,52,deterministic,qwen3:30b,1,1,1,1,1,1,,12.224191700006486,3582,1367,4949
+Einzelquellenverarbeitung,52,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,1.6153707999983453,3135,63,3198
+Einzelquellenverarbeitung,52,plan-based,qwen3:8b,0,0,0,0,0,0,,120.05131549999896,,,
+Einzelquellenverarbeitung,52,plan-based,qwen3:30b,1,1,1,1,1,1,,12.057473200002278,4984,1308,6292
+Einzelquellenverarbeitung,52,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,2.0541231999959564,4376,148,4524
+Einzelquellenverarbeitung,52,iterative,qwen3:8b,1,1,1,1,1,1,,11.705,5406,785,6191
+Einzelquellenverarbeitung,52,iterative,qwen3:30b,1,1,1,1,1,1,,12.316,5406,1244,6650
+Einzelquellenverarbeitung,52,iterative,gpt-5.4-mini,0,0,0,0,0,0,,4.659,9650,178,9828
+Einzelquellenverarbeitung,53,deterministic,qwen3:8b,1,1,1,1,1,1,,13.256859500001156,3585,928,4513
+Einzelquellenverarbeitung,53,deterministic,qwen3:30b,1,1,1,1,1,1,,13.198231700000179,3585,1517,5102
+Einzelquellenverarbeitung,53,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.9221418000015547,3136,108,3244
+Einzelquellenverarbeitung,53,plan-based,qwen3:8b,1,1,1,1,1,1,,18.549482299999,4987,1389,6376
+Einzelquellenverarbeitung,53,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,53,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.9681391999984044,4377,117,4494
+Einzelquellenverarbeitung,53,iterative,qwen3:8b,0,0,0,0,0,0,,12.004,5409,800,6209
+Einzelquellenverarbeitung,53,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,53,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.059,4744,139,4883
+Einzelquellenverarbeitung,54,deterministic,qwen3:8b,1,1,1,1,1,1,,8.971409900001163,3585,530,4115
+Einzelquellenverarbeitung,54,deterministic,qwen3:30b,1,1,1,1,1,1,,8.825548500004516,3585,864,4449
+Einzelquellenverarbeitung,54,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.856245000002673,3138,63,3201
+Einzelquellenverarbeitung,54,plan-based,qwen3:8b,1,1,1,1,1,1,,14.455551699998978,4987,1020,6007
+Einzelquellenverarbeitung,54,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,54,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.452570800000103,4379,191,4570
+Einzelquellenverarbeitung,54,iterative,qwen3:8b,0,0,0,0,0,0,,10.346,5409,649,6058
+Einzelquellenverarbeitung,54,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,54,iterative,gpt-5.4-mini,0,0,0,0,0,0,,10.852,4746,118,4864
+Einzelquellenverarbeitung,55,deterministic,qwen3:8b,1,1,1,1,1,1,,13.749223599999823,3581,988,4569
+Einzelquellenverarbeitung,55,deterministic,qwen3:30b,1,1,1,1,1,1,,10.941240100000869,3581,1200,4781
+Einzelquellenverarbeitung,55,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.8057381999969948,3134,63,3197
+Einzelquellenverarbeitung,55,plan-based,qwen3:8b,1,1,1,1,1,1,,12.208521600001404,4983,838,5821
+Einzelquellenverarbeitung,55,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,55,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,1.8860164000070654,4375,94,4469
+Einzelquellenverarbeitung,55,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,55,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,55,iterative,gpt-5.4-mini,1,1,0,0,1,0,,2.02,4742,130,4872
+Einzelquellenverarbeitung,56,deterministic,qwen3:8b,1,1,1,1,1,1,,7.383931200000006,3581,388,3969
+Einzelquellenverarbeitung,56,deterministic,qwen3:30b,1,1,1,1,1,1,,6.4017883999986225,3581,481,4062
+Einzelquellenverarbeitung,56,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.8525205999976606,3134,60,3194
+Einzelquellenverarbeitung,56,plan-based,qwen3:8b,1,1,1,1,1,1,,7.694362100000944,4983,416,5399
+Einzelquellenverarbeitung,56,plan-based,qwen3:30b,1,1,1,1,1,1,,6.927331200000481,4983,558,5541
+Einzelquellenverarbeitung,56,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.0100927999956184,4375,105,4480
+Einzelquellenverarbeitung,56,iterative,qwen3:8b,1,1,1,1,1,1,,8.071,5405,425,5830
+Einzelquellenverarbeitung,56,iterative,qwen3:30b,1,1,1,1,1,1,,6.996,5405,485,5890
+Einzelquellenverarbeitung,56,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.905,4742,97,4839
+Einzelquellenverarbeitung,57,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,57,deterministic,qwen3:30b,1,1,1,1,1,1,,11.949820000001637,3591,1363,4954
+Einzelquellenverarbeitung,57,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.700617800001055,3145,60,3205
+Einzelquellenverarbeitung,57,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,57,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,57,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.3356535999992047,4386,206,4592
+Einzelquellenverarbeitung,57,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,57,iterative,qwen3:30b,0,0,0,0,0,0,,7.61,5415,635,6050
+Einzelquellenverarbeitung,57,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.269,4753,172,4925
+Einzelquellenverarbeitung,58,deterministic,qwen3:8b,1,1,1,1,1,1,,11.644474300001093,3588,783,4371
+Einzelquellenverarbeitung,58,deterministic,qwen3:30b,1,0,1,0,0,0,,9.683915699999488,3588,1009,4597
+Einzelquellenverarbeitung,58,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.9208426999975927,3142,60,3202
+Einzelquellenverarbeitung,58,plan-based,qwen3:8b,1,1,1,1,1,1,,28.07547159999922,4990,2292,7282
+Einzelquellenverarbeitung,58,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,58,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.811539800000901,4383,197,4580
+Einzelquellenverarbeitung,58,iterative,qwen3:8b,0,0,0,0,0,0,structure,,,,
+Einzelquellenverarbeitung,58,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,58,iterative,gpt-5.4-mini,0,0,0,0,0,0,,1.857,4750,98,4848
+Einzelquellenverarbeitung,59,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,59,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,59,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.8811748000007356,3139,67,3206
+Einzelquellenverarbeitung,59,plan-based,qwen3:8b,1,1,0,0,1,0,,23.018121499999324,4989,1844,6833
+Einzelquellenverarbeitung,59,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,59,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.9931534999996074,4380,96,4476
+Einzelquellenverarbeitung,59,iterative,qwen3:8b,1,1,1,1,1,1,,12.987,5411,933,6344
+Einzelquellenverarbeitung,59,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,59,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.975,4747,104,4851
+Einzelquellenverarbeitung,60,deterministic,qwen3:8b,1,1,0,0,1,0,,18.00204070000109,3591,1377,4968
+Einzelquellenverarbeitung,60,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,60,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,1.7593991000030655,3143,62,3205
+Einzelquellenverarbeitung,60,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,60,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,60,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,2.305113499998697,4384,206,4590
+Einzelquellenverarbeitung,60,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,60,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Einzelquellenverarbeitung,60,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.854,4751,72,4823
+Mehrquellenverarbeitung,61,deterministic,qwen3:8b,1,1,1,1,1,1,,18.472715800000515,3589,1445,5034
+Mehrquellenverarbeitung,61,deterministic,qwen3:30b,1,1,1,1,1,1,,12.466492200001085,3589,1401,4990
+Mehrquellenverarbeitung,61,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,1.8168445999981486,3137,67,3204
+Mehrquellenverarbeitung,61,plan-based,qwen3:8b,1,1,1,1,1,1,,26.898272899999938,4991,2158,7149
+Mehrquellenverarbeitung,61,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,61,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,2.5630401999951573,4378,232,4610
+Mehrquellenverarbeitung,61,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,61,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,61,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.318,4745,206,4951
+Mehrquellenverarbeitung,62,deterministic,qwen3:8b,1,1,1,1,1,1,,18.248309500000687,3596,1393,4989
+Mehrquellenverarbeitung,62,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,62,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.636342699996021,3145,69,3214
+Mehrquellenverarbeitung,62,plan-based,qwen3:8b,1,1,1,1,1,1,,17.317643100001078,4998,1270,6268
+Mehrquellenverarbeitung,62,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,62,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.5932308999981615,4386,264,4650
+Mehrquellenverarbeitung,62,iterative,qwen3:8b,0,0,0,0,0,0,,45.836,17310,3228,20538
+Mehrquellenverarbeitung,62,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,62,iterative,gpt-5.4-mini,0,0,0,0,0,0,,4.307,4753,89,4842
+Mehrquellenverarbeitung,63,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,63,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,63,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.9087579000042751,3136,95,3231
+Mehrquellenverarbeitung,63,plan-based,qwen3:8b,1,1,1,1,1,1,,26.351462200000242,4987,1975,6962
+Mehrquellenverarbeitung,63,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,63,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.997585800003435,4377,101,4478
+Mehrquellenverarbeitung,63,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,63,iterative,qwen3:30b,1,1,1,1,1,1,,13.941,5409,1523,6932
+Mehrquellenverarbeitung,63,iterative,gpt-5.4-mini,1,1,1,1,1,1,,3.206,4744,164,4908
+Mehrquellenverarbeitung,64,deterministic,qwen3:8b,1,1,1,1,1,1,,11.750938399998631,3593,790,4383
+Mehrquellenverarbeitung,64,deterministic,qwen3:30b,1,1,1,1,1,1,,9.307973699993454,3593,955,4548
+Mehrquellenverarbeitung,64,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.9597119000027305,3144,72,3216
+Mehrquellenverarbeitung,64,plan-based,qwen3:8b,1,1,1,1,1,1,,20.928425899999638,4995,1635,6630
+Mehrquellenverarbeitung,64,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,64,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,1.9820160000017495,4385,111,4496
+Mehrquellenverarbeitung,64,iterative,qwen3:8b,0,0,0,0,0,0,,20.204,5417,1567,6984
+Mehrquellenverarbeitung,64,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,64,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.081,4752,109,4861
+Mehrquellenverarbeitung,65,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,65,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,65,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,1.9675772000045981,3143,98,3241
+Mehrquellenverarbeitung,65,plan-based,qwen3:8b,1,1,0,0,1,0,,21.355278299999554,4997,1681,6678
+Mehrquellenverarbeitung,65,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,65,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.226962699998694,4384,153,4537
+Mehrquellenverarbeitung,65,iterative,qwen3:8b,0,0,0,0,0,0,,17.64,5419,1325,6744
+Mehrquellenverarbeitung,65,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,65,iterative,gpt-5.4-mini,1,1,1,1,1,1,,2.38,4751,188,4939
+Mehrquellenverarbeitung,66,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,66,deterministic,qwen3:30b,1,1,1,1,1,1,,11.508731300004001,3580,1245,4825
+Mehrquellenverarbeitung,66,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.9663438999996288,3132,76,3208
+Mehrquellenverarbeitung,66,plan-based,qwen3:8b,1,1,0,0,1,0,,22.852281600000424,4982,1837,6819
+Mehrquellenverarbeitung,66,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,66,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.9553241999965394,4373,110,4483
+Mehrquellenverarbeitung,66,iterative,qwen3:8b,0,0,0,0,0,0,,155.343,11161,2592,13753
+Mehrquellenverarbeitung,66,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,66,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.893,4740,101,4841
+Mehrquellenverarbeitung,67,deterministic,qwen3:8b,1,1,1,1,1,1,,11.487443600000915,3584,757,4341
+Mehrquellenverarbeitung,67,deterministic,qwen3:30b,1,1,1,1,1,1,,7.973789700001362,3584,701,4285
+Mehrquellenverarbeitung,67,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.7720796000066912,3136,59,3195
+Mehrquellenverarbeitung,67,plan-based,qwen3:8b,1,1,1,1,1,1,,18.6663195000001,4986,1407,6393
+Mehrquellenverarbeitung,67,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,67,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.730311500003154,4377,257,4634
+Mehrquellenverarbeitung,67,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,67,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,67,iterative,gpt-5.4-mini,1,1,0,0,1,0,,2.404,4744,197,4941
+Mehrquellenverarbeitung,68,deterministic,qwen3:8b,1,1,1,1,1,1,,13.986658599998918,3591,1000,4591
+Mehrquellenverarbeitung,68,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,68,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.8213005000070552,3143,110,3253
+Mehrquellenverarbeitung,68,plan-based,qwen3:8b,1,1,1,1,1,1,,21.689408400001412,4993,1662,6655
+Mehrquellenverarbeitung,68,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,68,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,1.7873714000015752,4384,70,4454
+Mehrquellenverarbeitung,68,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,68,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,68,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.867,4751,118,4869
+Mehrquellenverarbeitung,69,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,69,deterministic,qwen3:30b,1,1,1,1,1,1,,17.605717999998888,3590,2254,5844
+Mehrquellenverarbeitung,69,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.8184842999980901,3138,110,3248
+Mehrquellenverarbeitung,69,plan-based,qwen3:8b,1,1,1,1,1,1,,22.653613999998925,4992,1683,6675
+Mehrquellenverarbeitung,69,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,69,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,1.9540201999989222,4379,97,4476
+Mehrquellenverarbeitung,69,iterative,qwen3:8b,0,0,0,0,0,0,,36.116,11181,2666,13847
+Mehrquellenverarbeitung,69,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,69,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.467,4746,183,4929
+Mehrquellenverarbeitung,70,deterministic,qwen3:8b,1,1,1,1,1,1,,15.492744099999982,3586,1097,4683
+Mehrquellenverarbeitung,70,deterministic,qwen3:30b,1,1,1,1,1,1,,11.906899200002954,3586,1371,4957
+Mehrquellenverarbeitung,70,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.6467933999956585,3138,59,3197
+Mehrquellenverarbeitung,70,plan-based,qwen3:8b,1,1,1,1,1,1,,22.263254400000733,4988,1667,6655
+Mehrquellenverarbeitung,70,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,70,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.5956546000015805,4379,238,4617
+Mehrquellenverarbeitung,70,iterative,qwen3:8b,0,0,0,0,0,0,,35.79,10997,2583,13580
+Mehrquellenverarbeitung,70,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,70,iterative,gpt-5.4-mini,0,0,0,0,0,0,,3.818,9656,178,9834
+Mehrquellenverarbeitung,71,deterministic,qwen3:8b,1,0,1,0,0,0,,9.179529299999558,3584,566,4150
+Mehrquellenverarbeitung,71,deterministic,qwen3:30b,1,1,1,1,1,1,,9.863839800003916,3584,1036,4620
+Mehrquellenverarbeitung,71,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,1.8160117000006721,3138,73,3211
+Mehrquellenverarbeitung,71,plan-based,qwen3:8b,0,0,0,0,0,0,,20.71390699999938,4986,1619,6605
+Mehrquellenverarbeitung,71,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,71,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.151176799998211,4379,122,4501
+Mehrquellenverarbeitung,71,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,71,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,71,iterative,gpt-5.4-mini,1,1,1,1,1,1,,2.505,4746,139,4885
+Mehrquellenverarbeitung,72,deterministic,qwen3:8b,1,1,1,1,1,1,,9.688028200002009,3580,597,4177
+Mehrquellenverarbeitung,72,deterministic,qwen3:30b,1,1,1,1,1,1,,18.401863600003708,3580,2285,5865
+Mehrquellenverarbeitung,72,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,2.1965046000041184,3135,97,3232
+Mehrquellenverarbeitung,72,plan-based,qwen3:8b,1,1,1,1,1,1,,12.571883200002048,4982,850,5832
+Mehrquellenverarbeitung,72,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,72,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,2.0871791999961715,4376,125,4501
+Mehrquellenverarbeitung,72,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,72,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,72,iterative,gpt-5.4-mini,1,1,0,0,1,0,,2.441,4743,125,4868
+Mehrquellenverarbeitung,73,deterministic,qwen3:8b,1,1,1,1,1,1,,10.006341300002532,3587,627,4214
+Mehrquellenverarbeitung,73,deterministic,qwen3:30b,1,1,1,1,1,1,,12.779998500001966,3587,1468,5055
+Mehrquellenverarbeitung,73,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,2.020915799999784,3142,78,3220
+Mehrquellenverarbeitung,73,plan-based,qwen3:8b,1,1,1,1,1,1,,16.653688500002318,4989,1202,6191
+Mehrquellenverarbeitung,73,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,73,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.524352100001124,4383,166,4549
+Mehrquellenverarbeitung,73,iterative,qwen3:8b,0,0,0,0,0,0,,23.259,11075,1536,12611
+Mehrquellenverarbeitung,73,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,73,iterative,gpt-5.4-mini,1,1,0,0,1,0,,2.268,4750,195,4945
+Mehrquellenverarbeitung,74,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,74,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,74,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.9751718000043184,3133,70,3203
+Mehrquellenverarbeitung,74,plan-based,qwen3:8b,0,0,0,0,0,0,,18.456103799999255,4979,1290,6269
+Mehrquellenverarbeitung,74,plan-based,qwen3:30b,1,1,1,1,1,1,,11.992665900004795,4979,1297,6276
+Mehrquellenverarbeitung,74,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.1359035999994376,4374,102,4476
+Mehrquellenverarbeitung,74,iterative,qwen3:8b,1,1,1,1,1,1,,14.346,5401,1010,6411
+Mehrquellenverarbeitung,74,iterative,qwen3:30b,1,1,1,1,1,1,,11.919,5401,1270,6671
+Mehrquellenverarbeitung,74,iterative,gpt-5.4-mini,1,1,1,1,1,1,,2.314,4741,94,4835
+Mehrquellenverarbeitung,75,deterministic,qwen3:8b,1,1,1,1,1,1,,18.711926199997833,3583,1453,5036
+Mehrquellenverarbeitung,75,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,75,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.908601600000111,3138,59,3197
+Mehrquellenverarbeitung,75,plan-based,qwen3:8b,1,1,1,1,1,1,,17.02656179999758,4985,1274,6259
+Mehrquellenverarbeitung,75,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,75,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.2688866999960737,4379,146,4525
+Mehrquellenverarbeitung,75,iterative,qwen3:8b,0,0,0,0,0,0,,38.959,10991,2959,13950
+Mehrquellenverarbeitung,75,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,75,iterative,gpt-5.4-mini,0,0,0,0,0,0,,1.994,4746,113,4859
+Mehrquellenverarbeitung,76,deterministic,qwen3:8b,1,1,1,1,1,1,,17.52048179999838,3575,1328,4903
+Mehrquellenverarbeitung,76,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,76,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,3.169515699999465,3129,52,3181
+Mehrquellenverarbeitung,76,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,76,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,76,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.068724300006579,4370,94,4464
+Mehrquellenverarbeitung,76,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,76,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,76,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.99,4737,97,4834
+Mehrquellenverarbeitung,77,deterministic,qwen3:8b,1,1,1,1,1,1,,8.662182399999438,3583,522,4105
+Mehrquellenverarbeitung,77,deterministic,qwen3:30b,1,1,1,1,1,1,,7.512155399999756,3583,631,4214
+Mehrquellenverarbeitung,77,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.6201614999954472,3136,58,3194
+Mehrquellenverarbeitung,77,plan-based,qwen3:8b,0,0,0,0,0,0,,23.170320999997784,4985,1850,6835
+Mehrquellenverarbeitung,77,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,77,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.351283299998613,4377,159,4536
+Mehrquellenverarbeitung,77,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,77,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,77,iterative,gpt-5.4-mini,0,0,0,0,0,0,,1.953,4744,114,4858
+Mehrquellenverarbeitung,78,deterministic,qwen3:8b,1,1,1,1,1,1,,31.431877899998653,3588,2565,6153
+Mehrquellenverarbeitung,78,deterministic,qwen3:30b,1,1,1,1,1,1,,9.421621299996332,3588,944,4532
+Mehrquellenverarbeitung,78,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.881575300001714,3144,68,3212
+Mehrquellenverarbeitung,78,plan-based,qwen3:8b,1,1,1,1,1,1,,11.454588500000682,4990,733,5723
+Mehrquellenverarbeitung,78,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,78,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.0250823000023956,4385,69,4454
+Mehrquellenverarbeitung,78,iterative,qwen3:8b,0,0,0,0,0,0,,19.405,10934,1067,12001
+Mehrquellenverarbeitung,78,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,78,iterative,gpt-5.4-mini,1,1,1,1,1,1,,2.041,4752,87,4839
+Mehrquellenverarbeitung,79,deterministic,qwen3:8b,1,1,0,0,1,0,,19.832102100001066,3583,1498,5081
+Mehrquellenverarbeitung,79,deterministic,qwen3:30b,1,1,0,0,1,0,,15.973625999999058,3583,2007,5590
+Mehrquellenverarbeitung,79,deterministic,gpt-5.4-mini,1,1,0,0,1,0,,1.9800589000005857,3133,108,3241
+Mehrquellenverarbeitung,79,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,79,plan-based,qwen3:30b,1,1,1,1,1,1,,12.592663799994625,4985,1443,6428
+Mehrquellenverarbeitung,79,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,2.0676670000029844,4374,93,4467
+Mehrquellenverarbeitung,79,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,79,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,79,iterative,gpt-5.4-mini,1,1,0,0,1,0,,1.846,4741,95,4836
+Mehrquellenverarbeitung,80,deterministic,qwen3:8b,1,1,1,1,1,1,,14.444933499999024,3587,1084,4671
+Mehrquellenverarbeitung,80,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,80,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.8432671999980812,3137,108,3245
+Mehrquellenverarbeitung,80,plan-based,qwen3:8b,0,0,0,0,0,0,,21.881633000000875,4989,1746,6735
+Mehrquellenverarbeitung,80,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,80,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.1663039999984903,4378,134,4512
+Mehrquellenverarbeitung,80,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,80,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,80,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.286,4745,103,4848
+Mehrquellenverarbeitung,81,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,81,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,81,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,2.0856002000000444,3131,79,3210
+Mehrquellenverarbeitung,81,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,81,plan-based,qwen3:30b,1,1,1,1,1,1,,12.810810200004198,4977,1356,6333
+Mehrquellenverarbeitung,81,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,1.9237451999943005,4372,96,4468
+Mehrquellenverarbeitung,81,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,81,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,81,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.887,4739,89,4828
+Mehrquellenverarbeitung,82,deterministic,qwen3:8b,1,1,1,1,1,1,,7.94174700000076,3579,436,4015
+Mehrquellenverarbeitung,82,deterministic,qwen3:30b,1,1,1,1,1,1,,8.223337700001139,3579,724,4303
+Mehrquellenverarbeitung,82,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.6434472999972058,3135,58,3193
+Mehrquellenverarbeitung,82,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,82,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,82,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.8983242999966023,4376,359,4735
+Mehrquellenverarbeitung,82,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,82,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,82,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.564,4743,125,4868
+Mehrquellenverarbeitung,83,deterministic,qwen3:8b,1,1,1,1,1,1,,17.72037459999774,3585,1400,4985
+Mehrquellenverarbeitung,83,deterministic,qwen3:30b,1,1,1,1,1,1,,14.743744200000947,3585,1709,5294
+Mehrquellenverarbeitung,83,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.797817300001043,3136,108,3244
+Mehrquellenverarbeitung,83,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,83,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,83,plan-based,gpt-5.4-mini,0,0,0,0,0,0,,2.171579000001657,4377,137,4514
+Mehrquellenverarbeitung,83,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,83,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,83,iterative,gpt-5.4-mini,0,0,0,0,0,0,,5.183,4744,113,4857
+Mehrquellenverarbeitung,84,deterministic,qwen3:8b,1,1,1,1,1,1,,15.52231639999809,3583,1190,4773
+Mehrquellenverarbeitung,84,deterministic,qwen3:30b,1,1,1,1,1,1,,12.998591600000509,3583,1542,5125
+Mehrquellenverarbeitung,84,deterministic,gpt-5.4-mini,0,0,0,0,0,0,,1.7099670000025071,3137,58,3195
+Mehrquellenverarbeitung,84,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,84,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,84,plan-based,gpt-5.4-mini,1,1,1,1,1,1,,2.220666200002597,4378,96,4474
+Mehrquellenverarbeitung,84,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,84,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,84,iterative,gpt-5.4-mini,1,1,1,1,1,1,,1.941,4745,96,4841
+Mehrquellenverarbeitung,85,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,85,deterministic,qwen3:30b,1,1,1,1,1,1,,20.995193499999004,3590,2664,6254
+Mehrquellenverarbeitung,85,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,1.657993799999531,3140,58,3198
+Mehrquellenverarbeitung,85,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,85,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,85,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,2.5143727000031504,4381,193,4574
+Mehrquellenverarbeitung,85,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,85,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,85,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.562,4748,188,4936
+Mehrquellenverarbeitung,86,deterministic,qwen3:8b,1,1,1,1,1,1,,20.061334300000453,3595,1617,5212
+Mehrquellenverarbeitung,86,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,86,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,2.387819199997466,3146,150,3296
+Mehrquellenverarbeitung,86,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,86,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,86,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,2.4210998000053223,4387,147,4534
+Mehrquellenverarbeitung,86,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,86,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,86,iterative,gpt-5.4-mini,1,1,0,0,1,0,,2.332,4754,127,4881
+Mehrquellenverarbeitung,87,deterministic,qwen3:8b,1,1,1,1,1,1,,17.973354100002325,3597,1421,5018
+Mehrquellenverarbeitung,87,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,87,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,2.4411191000035615,3148,210,3358
+Mehrquellenverarbeitung,87,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,87,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,87,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,2.1796069000047282,4389,97,4486
+Mehrquellenverarbeitung,87,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,87,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,87,iterative,gpt-5.4-mini,0,0,0,0,0,0,,1.988,4756,120,4876
+Mehrquellenverarbeitung,88,deterministic,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,88,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,88,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,2.5274961999966763,3145,208,3353
+Mehrquellenverarbeitung,88,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,88,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,88,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,3.2353156999961357,4386,124,4510
+Mehrquellenverarbeitung,88,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,88,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,88,iterative,gpt-5.4-mini,0,0,0,0,0,0,,2.104,4753,143,4896
+Mehrquellenverarbeitung,89,deterministic,qwen3:8b,1,1,1,1,1,1,,18.78748479999922,3595,1488,5083
+Mehrquellenverarbeitung,89,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,89,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,2.1863080999974045,3147,158,3305
+Mehrquellenverarbeitung,89,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,89,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,89,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,2.0883935000019846,4388,125,4513
+Mehrquellenverarbeitung,89,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,89,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,89,iterative,gpt-5.4-mini,1,1,0,0,1,0,,1.97,4755,114,4869
+Mehrquellenverarbeitung,90,deterministic,qwen3:8b,1,1,1,1,1,1,,16.934655199998815,3594,1329,4923
+Mehrquellenverarbeitung,90,deterministic,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,90,deterministic,gpt-5.4-mini,1,1,1,1,1,1,,2.430639500002144,3141,208,3349
+Mehrquellenverarbeitung,90,plan-based,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,90,plan-based,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,90,plan-based,gpt-5.4-mini,1,1,0,0,1,0,,2.355729100003373,4382,166,4548
+Mehrquellenverarbeitung,90,iterative,qwen3:8b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,90,iterative,qwen3:30b,0,0,0,0,0,0,timeout,,,,
+Mehrquellenverarbeitung,90,iterative,gpt-5.4-mini,1,1,0,0,1,0,,1.928,4749,116,4865
