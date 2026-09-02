@@ -497,14 +497,12 @@ Mit diesen Aufgaben wird untersucht, ob das Modell die fehlenden oder widersprü
 
     // korrekt
     [Toolauswahl korrekt], [Wurden die korrekten Tools ausgewählt?],
-    [Parameterauswahl korrekt], [Wurden die Parameter korrekt übergeben?\ Trifft nicht zu, wenn Toolauswahl falsch ist.],
-    [Antwort korrekt], [Wurden alle notwendigen Informationen für die Antwort übergeben worden?],
-    [Korrekt], [Sind Toolauswahl, Parameterauswahl und Informationen für die Antwort korrekt?],
+    [Argumente korrekt], [Wurden die Argumente korrekt übergeben?\ Trifft nicht zu, wenn Toolauswahl falsch ist.],
+    [Korrekt], [Sind Toolauswahl, Argumente und Informationen für die Antwort korrekt?],
     
     // effizient
     [Toolauswahl effizient], [Wurden ausschließlich notwendige Toolaufrufe ausgewählt?\ Trifft nicht zu, wenn Toolauswahl falsch ist. Ausschließlich auf Toolauswahl beschränkt. Keine etwaigen Token durch Toolaufrufe selbst enthalten.],
-    [Parmeter effizient], [Wurden nur notwendige Zeitfenster abgefragt?],
-    [Antwort effizient], [Wurden ausschließlich notwendige Informationen für die Antwort übergeben?],
+    [Antwort effizient], [War die Antwort effizient],
     [Effizienz], [Sind Toolauswahl und Antwort effizient?],
 
     // usage

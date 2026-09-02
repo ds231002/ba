@@ -39,7 +39,7 @@ def adapt_evaluation_df(df: pd.DataFrame) -> pd.DataFrame:
     )
 
     # convert float to int
-    for column in ["task_id", "tools_correct", "arguments_correct", "tools_efficient", "answer_efficient"]:
+    for column in ["task_id", "tools_correct", "arguments_correct", "tools_efficient", "arguments_efficient"]:
         df[column] = df[column].astype(int)
 
     return df
@@ -109,7 +109,8 @@ def group_by(df: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
         error_ratio=("error", lambda x: x.notna().mean()),
     )
 
-    columns_float = ["correct", "efficient", "runtime_seconds", "total_tokens", "error_ratio"]
+    columns_float = ["correct", "efficient", "runtime_seconds", "error_ratio"]
     df[columns_float] = df[columns_float].round(2)
+    df["total_tokens"] = df["total_tokens"].round(0)
 
     return df
