@@ -173,7 +173,7 @@ Die beiden Größen werden in der Testumgebung als Basisdaten bereitgestellt, ob
 
 ==== Teilnahmefaktor und gewichtete Messwerte
 
-Der Teilnahmefaktor bestimmt, mit welchem Anteil der gemessene Verbrauch bzw. die gemessene Erzeugung für die Energiegemeinschaft berücksichtigt wird. Für die Evaluation wird der Teilnahmefaktor als zeitlich konstanter Wert pro Zählpunkt modelliert und als dimensionsloser Faktor zwischen 0 und 1 angegeben.
+Der Teilnahmefaktor bestimmt den Anteil mit dem der gemessene Verbrauch oder die gemessene Erzeugung berücksichtigt wird. Für die Evaluation wird der Teilnahmefaktor als zeitlich konstanter Wert pro Zählpunkt modelliert und als dimensionsloser Faktor zwischen 0 und 1 angegeben.
 
 Der gewichtete Verbrauch eines Verbrauchszählpunkts ergibt sich aus der Multiplikation des gemessenen Verbrauchs mit dem jeweiligen Teilnahmefaktor:
 
@@ -212,7 +212,7 @@ Beispielsweise gilt bei einem Referenzdatum von 02.01.2026:
 - verfügbar: bis einschließlich 31.12.2025
 - nicht verfügbar: 01.01.2026 und 02.01.2026
 
-Diese Einschränkung wird dem Sprachmodell als Teil der Systembeschreibung mitgeteilt. Ein separater Toolaufruf zur Ermittlung des verfügbaren Datenzeitraums ist daher nicht vorgesehen. Fordert das Sprachmodell dennoch über ein Werkzeug Daten für einen nicht verfügbaren Zeitraum an, wird dies im Rahmen der Evaluation als fehlerhafter Toolaufruf bewertet.
+Diese Einschränkung wird dem Sprachmodell als Teil der Systembeschreibung mitgeteilt. Ein separater Toolaufruf zur Ermittlung des verfügbaren Datenzeitraums ist daher nicht vorgesehen.
 
 Die Untersuchung der Verarbeitung tatsächlich fehlender oder lückenhafter Messdaten ist nicht Bestandteil der Evaluation. Dadurch bleibt die Datenverfügbarkeit für alle Orchestrierungsstrategien identisch und die Untersuchung konzentriert sich auf die Auswahl und Kombination der verfügbaren Werkzeuge.
 
@@ -222,7 +222,7 @@ Das Toolset wurde mit dem Ziel entwickelt, dem Sprachmodell einen kontrollierten
 
 === Struktur der Werkzeuge
 
-Die verfügbaren Werkzeuge werden als strukturierte Funktionsdefinitionen bereitgestellt. Für jedes Werkzeug werden eine eindeutige Bezeichnung, eine Beschreibung seiner Funktion sowie die erwarteten Parameter und deren Eigenschaften definiert. Die Struktur orientiert sich an der von OpenAI beschriebenen Schnittstelle für Tool-Aufrufe @UsingToolsOpenAI. Auf Grundlage dieser Definitionen kann das Sprachmodell ein geeignetes Werkzeug auswählen und einen strukturierten Aufruf mit den erforderlichen Argumenten erzeugen. Die umgebende Anwendung führt den Aufruf aus und stellt das Ergebnis anschließend wieder dem Sprachmodell zur Verfügung. Die konkrete Implementierung der Werkzeuge bleibt dabei vom Sprachmodell getrennt. Das Modell interagiert somit ausschließlich über die definierten Werkzeugschnittstellen.
+Die verfügbaren Werkzeuge werden als strukturierte Funktionsdefinitionen bereitgestellt. Für jedes Werkzeug werden eine eindeutige Bezeichnung, eine Beschreibung seiner Funktion sowie die erwarteten Parameter und deren Eigenschaften definiert. Die Struktur orientiert sich an der von OpenAI beschriebenen Schnittstelle für Tool-Aufrufe @UsingToolsOpenAI. Auf Grundlage dieser Definitionen kann das Sprachmodell ein geeignetes Werkzeug auswählen und mit den erforderlichen Argumenten einen strukturierten Aufruf erzeugen. Die umgebende Anwendung führt den Aufruf aus und stellt das Ergebnis anschließend wieder dem Sprachmodell zur Verfügung. Die konkrete Implementierung der Werkzeuge bleibt dabei vom Sprachmodell getrennt. Das Modell interagiert somit ausschließlich über die definierten Werkzeugschnittstellen.
 
 Die für die Evaluation bereitgestellten Werkzeuge sind in @tab:tools zusammengefasst.
 

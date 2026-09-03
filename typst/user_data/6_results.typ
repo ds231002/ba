@@ -44,7 +44,7 @@ Die deterministische Methode erreicht mit 0,72 die höchste Korrektheit und mit 
 
 Ein vergleichbares Muster zeigt sich bei der Fehlerrate. Diese steigt von 0,15 bei der deterministischen über 0,29 bei der planbasierten auf 0,31 bei der iterativen Methode. Über die betrachteten Gesamtmetriken hinweg zeigt die deterministische Methode damit die günstigsten Ergebnisse hinsichtlich Korrektheit, Effizienz, Ressourcenbedarf und Fehlerrate.
 
-Die Ergebnisse deuten somit darauf hin, dass ein höherer Autonomiegrad in der untersuchten Konfiguration mit einer geringeren Ausführungsqualität und einem höheren Ressourcenbedarf verbunden ist. Ein Vorteil der autonomeren Methoden zeigt sich im Gesamtvergleich dagegen nicht.
+Somit deuten die Ergebnisse darauf hin, dass ein höherer Autonomiegrad in der untersuchten Konfiguration mit geringerer Ausführungsqualität und höherem Ressourcenbedarf verbunden ist. Ein Vorteil der autonomeren Methoden zeigt sich im Gesamtvergleich dagegen nicht.
 
 == Analyse der Korrektheits- und Effizienzkomponenten
 

@@ -12,7 +12,7 @@
 
 == Large Language Models
 
-Large Language Models (LLMs) sind Modelle der künstlichen Intelligenz, die auf großen Datensätzen trainiert werden und natürliche Sprache verarbeiten und erzeugen können. Moderne LLMs basieren überwiegend auf der Transformer-Architektur, die mithilfe des Attention-Mechanismus Zusammenhänge zwischen verschiedenen Teilen eines Eingabekontexts berücksichtigen kann @kelbertWieFunktionierenLLMs2024.
+Large Language Models (LLMs) sind KI-Modelle, die auf großen Datensätzen trainiert wurden und natürliche Sprache verarbeiten und erzeugen. Moderne LLMs basieren überwiegend auf der Transformer-Architektur, die mithilfe des Attention-Mechanismus Zusammenhänge zwischen verschiedenen Teilen eines Eingabekontexts berücksichtigen kann @kelbertWieFunktionierenLLMs2024.
 
 Bei der Verarbeitung wird ein Text zunächst in kleinere Einheiten, sogenannte Tokens, zerlegt. Diese werden anschließend in numerische Vektorrepräsentationen überführt und vom Modell verarbeitet. Während der Inferenz erzeugt das Modell seine Ausgabe schrittweise, indem es auf Grundlage des bisherigen Kontexts Wahrscheinlichkeiten für mögliche nächste Tokens berechnet und daraus das jeweils nächste Token bestimmt. Die erzeugte Ausgabe entsteht somit nicht durch das Ausführen einer fest vorgegebenen Programmabfolge, sondern durch die schrittweise Vorhersage von Tokens @kelbertWieFunktionierenLLMs2024.
 
