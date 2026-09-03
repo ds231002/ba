@@ -431,7 +431,7 @@ Für die Evaluation werden drei Modelle ausgewählt, die unterschiedliche Voraus
     [Ausführung], [lokal], [lokal], [API]
 
   ),
-  caption: [Modellauswahl für Orchestrierung],
+  caption: [Modellauswahl],
 ) <tab:modelselection>
 
 *Anmerkung:* n. v. = nicht veröffentlicht.
@@ -544,7 +544,7 @@ Die Bewertung bezieht sich dabei auf die für die Orchestrierung erforderliche V
 
 ==== Aggregation der Korrektheit
 
-Die Korrektheit eines einzelnen Durchlaufs wird binär bewertet. Ein korrekter Durchlauf erhält den Wert `1`, ein nicht korrekter Durchlauf den Wert `0`. Aus den Bewertungen aller Durchläufe wird anschließend der Mittelwert gebildet. Dieser entspricht dem Anteil der korrekten Durchläufe und wird als Korrektheitsrate angegeben.
+Die Korrektheit eines einzelnen Durchlaufs wird binär bewertet. Ein korrekter Durchlauf erhält den Wert `1`, ein nicht korrekter Durchlauf den Wert `0`. Aus den Bewertungen aller Durchläufe wird anschließend der Mittelwert gebildet. Dieser entspricht dem Anteil der korrekten Durchläufe und wird als Korrektheitsrate angegeben. Ein technischer Fehler oder Timeout führt zu einer nicht korrekten Ausführung und wird entsprechend mit `0` bewertet.
 
 $
 text("Korrektheitsrate") =
@@ -553,8 +553,6 @@ frac(
   text("Anzahl aller Durchläufe")
 )
 $
-
-Ein technischer Fehler oder Timeout führt dabei zu keiner korrekten Ausführung und wird entsprechend mit `0` bewertet.
 
 === Effizienz
 
@@ -574,21 +572,15 @@ Die Unterscheidung zwischen notwendiger und unnötiger Toolnutzung ist insbesond
 
 ==== Argumenteffizienz
 
-Die Argumenteffizienz bewertet, ob nur die für die jeweilige Aufgabe notwendigen und angemessenen Argumente verwendet werden. Ein Argument kann dabei inhaltlich korrekt sein, aber dennoch über den für die Aufgabe erforderlichen Umfang hinausgehen. Dies wird als ineffizient bewertet.
-
-Beispielsweise kann ein unnötig großer abgefragter Zeitraum oder eine unnötig große Menge an für die Antwortgenerierung bereitgestellten Ergebnissen zu einer korrekten, aber ineffizienten Ausführung führen.
-
-Davon zu unterscheiden sind tatsächlich falsche Argumente. Wird ein falscher Parameterwert übergeben, ist der Toolaufruf nicht korrekt und damit auch nicht effizient.
+Die Argumenteffizienz bewertet, ob nur die für die jeweilige Aufgabe notwendigen und angemessenen Argumente verwendet werden. Ein Argument kann dabei inhaltlich korrekt sein, aber dennoch über den für die Aufgabe erforderlichen Umfang hinausgehen. Dies wird als ineffizient bewertet. Beispielsweise kann ein unnötig großer abgefragter Zeitraum oder eine unnötig große Menge an für die Antwortgenerierung bereitgestellten Ergebnissen zu einer korrekten, aber ineffizienten Ausführung führen. Davon zu unterscheiden sind tatsächlich falsche Argumente. Wird ein falscher Parameterwert übergeben, ist der Toolaufruf nicht korrekt und damit auch nicht effizient.
 
 ==== Rückfragen
 
-Rückfragen werden hinsichtlich ihrer Notwendigkeit bewertet. Kann die erforderliche Toolauswahl aus den vorhandenen Informationen eindeutig abgeleitet werden, stellt eine zusätzliche Rückfrage einen vermeidbaren Verarbeitungsschritt dar. Der Durchlauf wird in diesem Fall als korrekt, aber nicht effizient bewertet.
-
-Ist die für eine korrekte Bearbeitung notwendige Information dagegen nicht vorhanden und müsste das Modell ohne Rückfrage spekulieren, stellt die Rückfrage einen erforderlichen Verarbeitungsschritt dar. In diesem Fall wird der Durchlauf als korrekt und effizient bewertet.
+Rückfragen werden hinsichtlich ihrer Notwendigkeit bewertet. Kann die erforderliche Toolauswahl aus den vorhandenen Informationen eindeutig abgeleitet werden, stellt eine zusätzliche Rückfrage einen vermeidbaren Verarbeitungsschritt dar. Der Durchlauf wird in diesem Fall als korrekt, aber nicht effizient bewertet. Ist die für eine korrekte Bearbeitung notwendige Information dagegen nicht vorhanden und müsste das Modell ohne Rückfrage spekulieren, stellt die Rückfrage einen erforderlichen Verarbeitungsschritt dar. In diesem Fall wird der Durchlauf als korrekt und effizient bewertet.
 
 ==== Aggregation der Effizienz
 
-Auch die Effizienz eines einzelnen Durchlaufs wird binär bewertet. Ein effizienter Durchlauf erhält den Wert `1`, ein ineffizienter Durchlauf den Wert `0`. Voraussetzung für eine effiziente Bewertung ist zunächst die Korrektheit des Durchlaufs.
+Auch die Effizienz eines einzelnen Durchlaufs wird binär bewertet. Ein effizienter Durchlauf erhält den Wert `1`, ein ineffizienter Durchlauf den Wert `0`. Voraussetzung für eine effiziente Bewertung ist zunächst die Korrektheit des Durchlaufs. Ein nicht korrekter Durchlauf kann unabhängig von der Ursache nicht als effizient bewertet werden.
 
 Die Effizienzrate wird analog zur Korrektheitsrate als Mittelwert der binären Einzelbewertungen berechnet:
 
@@ -600,19 +592,15 @@ frac(
 )
 $
 
-Ein nicht korrekter Durchlauf kann somit unabhängig von der Ursache nicht als effizient bewertet werden.
-
 === Fehlerrate
 
 Neben der inhaltlichen Bewertung wird erfasst, ob die technische Ausführung eines Durchlaufs erfolgreich abgeschlossen werden konnte. Als Fehler werden Timeouts, Strukturfehler und sonstige technische Fehler erfasst.
 
 Für jeden LLM-Aufruf gilt ein Timeout von zwei Minuten. Wird dieses Zeitlimit überschritten, wird der betreffende Aufruf abgebrochen und der Durchlauf als Fehler bewertet. Bei der iterativen Methode gilt das Zeitlimit für jeden einzelnen LLM-Aufruf innerhalb einer Iteration. Dadurch kann ein iterativer Durchlauf mehrere Aufrufe mit jeweils einem eigenen Zeitlimit enthalten.
 
-Der überwiegende Teil der beobachteten Fehler wird durch Timeouts verursacht. Die konkrete Verteilung der Fehlerarten wird in der Evaluation ausgewertet.
-
 Als Strukturfehler werden Ausgaben bezeichnet, die nicht der für die weitere Verarbeitung vorgegebenen Struktur entsprechen und deshalb nicht von der Orchestrierung verarbeitet werden können. Dazu zählen beispielsweise Ausgaben, bei denen die erwartete Struktur nicht in eine verarbeitbare Datenstruktur überführt oder anschließend nicht korrekt ausgelesen werden kann.
 
-Technische Fehler innerhalb der Orchestrierung werden von Fehlern unterschieden, die durch die vom LLM erzeugte Toolauswahl oder Argumentierung verursacht werden. Tritt beispielsweise aufgrund einer fehlerhaften Implementierung ein technischer Fehler auf, obwohl das LLM einen korrekten Toolaufruf mit korrekten Argumenten erzeugt hat, wird dieser Fehler behoben und der Durchlauf erneut ausgeführt. Ein dadurch verursachter technischer Fehler wird somit nicht als Fehlleistung des LLM bewertet. Führt dagegen ein vom LLM erzeugtes falsches Argument zu einem Fehler bei der Toolausführung, wird dies als Fehler des Durchlaufs gewertet.
+Technische Fehler innerhalb der Orchestrierung werden von Fehlern unterschieden, die durch die vom LLM erzeugte Toolauswahl oder Argumentierung verursacht werden. Tritt beispielsweise aufgrund einer fehlerhaften Implementierung ein technischer Fehler auf, obwohl das LLM einen korrekten Toolaufruf mit korrekten Argumenten erzeugt hat, wird dieser Fehler behoben und der Durchlauf erneut ausgeführt. Ein dadurch verursachter technischer Fehler wird somit nicht als Fehlleistung des LLM bewertet. Führt dagegen ein vom LLM erzeugtes falsches Argument zu einem Fehler bei der Toolausführung, wird dies als Fehler des Durchlaufs gewertet. Fehlerhafte Durchläufe werden als nicht korrekt und nicht effizient bewertet.
 
 Die Fehlerrate wird als Anteil der fehlerhaften Durchläufe an allen durchgeführten Durchläufen berechnet:
 
@@ -623,9 +611,6 @@ frac(
   text("Anzahl aller Durchläufe")
 )  
 $
-
-
-Fehlerhafte Durchläufe werden zusätzlich als nicht korrekt und nicht effizient bewertet.
 
 === Laufzeit
 
@@ -658,4 +643,3 @@ Bei der iterativen Orchestrierung kann die Aufgabe hingegen mehrere LLM-Aufrufe 
 Während jedes Durchlaufs werden die Ergebnisse der Modell- und Toolinteraktionen sowie die für die spätere Evaluation relevanten Messwerte protokolliert. Die Erfassung der Laufzeit und des Tokenverbrauchs beschränkt sich dabei ausdrücklich auf die LLM-Aufrufe. Die Laufzeit von Toolaufrufen sowie weitere Verarbeitungsschritte der Orchestrierung werden nicht in diese Messwerte einbezogen. Bei den einstufigen Orchestrierungsmethoden entspricht die gemessene LLM-Laufzeit daher der Dauer des jeweiligen einzelnen LLM-Aufrufs. Beim iterativen Verfahren werden Laufzeit und Tokenverbrauch jedes einzelnen LLM-Aufrufs erfasst und anschließend zu einer Gesamtnutzung (`total_usage`) aggregiert. Der Ablauf entspricht somit konzeptionell einer Folge aus LLM-Aufruf, Toolausführung und erneuter LLM-Verarbeitung, bis keine weiteren Toolaufrufe erforderlich sind und die relevanten Ergebnisse für die abschließende Antwort bestimmt wurden.
 
 Tritt während eines Durchlaufs ein technischer Fehler auf, wird die Bearbeitung der jeweiligen Aufgabe abgebrochen. Der Fehler wird für die spätere manuelle Bewertung protokolliert. Eine erneute Ausführung derselben Kombination aus Aufgabe, Modell und Orchestrierungsmethode erfolgt nicht.
-

@@ -102,6 +102,10 @@ def add_usage_to_evaluation(df: pd.DataFrame) -> pd.DataFrame:
 
 def group_by(df: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
     df = df.groupby(columns, as_index=True).agg(
+        tools_correct=("tools_correct", "mean"),
+        arguments_correct=("arguments_correct", "mean"),
+        tools_efficient=("tools_efficient", "mean"),
+        arguments_efficient=("arguments_efficient", "mean"),
         correct=("correct", "mean"),
         efficient=("efficient", "mean"),
         runtime_seconds=("runtime_seconds", "mean"),
@@ -109,7 +113,16 @@ def group_by(df: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
         error_ratio=("error", lambda x: x.notna().mean()),
     )
 
-    columns_float = ["correct", "efficient", "runtime_seconds", "error_ratio"]
+    columns_float = [
+        "correct",
+        "efficient",
+        "runtime_seconds",
+        "error_ratio",
+        "tools_correct",
+        "tools_efficient",
+        "arguments_correct",
+        "arguments_efficient"
+    ]
     df[columns_float] = df[columns_float].round(2)
     df["total_tokens"] = df["total_tokens"].round(0)
 

@@ -503,24 +503,24 @@
     // Appendix ---------------------------------------------------------------------------------------------------------#
 
     //----------------------------- Acronyms ----------------------------------------#
-    [
-        #set page(..emptypagestyle)
-        #pagebreak(to:"odd", weak:true)
-        #set page(..defaultpagestyle)
-        #context {
-            if text.lang == "en" {
-                heading(level: 1, numbering: none, bookmarked:true, [Acronyms])
-            } else if text.lang == "de" {
-                heading(level: 1, numbering: none, bookmarked:true, [Akronyme])
-            } else {
-              "[ERROR] Unknown language: '"+lang+"'"
-            }
-        }
-        <sec_acronyms>
-        #print-glossary(
-            glossary_entries
-        )
-    ]
+    // [
+    //     #set page(..emptypagestyle)
+    //     #pagebreak(to:"odd", weak:true)
+    //     #set page(..defaultpagestyle)
+    //     #context {
+    //         if text.lang == "en" {
+    //             heading(level: 1, numbering: none, bookmarked:true, [Acronyms])
+    //         } else if text.lang == "de" {
+    //             heading(level: 1, numbering: none, bookmarked:true, [Akronyme])
+    //         } else {
+    //           "[ERROR] Unknown language: '"+lang+"'"
+    //         }
+    //     }
+    //     <sec_acronyms>
+    //     #print-glossary(
+    //         glossary_entries
+    //     )
+    // ]
 
     ////--------------------------- List of Figures -----------------------------------#
     [
@@ -567,26 +567,26 @@
     ]
 
     //--------------------------- List of Listings ----------------------------------#
-    [
-        #set page(..emptypagestyle)
-        #pagebreak(to:"odd", weak:true)
-        #set page(..defaultpagestyle)
-        #context {
-            if text.lang == "en" {
-                heading(level: 1, numbering: none, bookmarked:true, [List of Listings])
-            } else if text.lang == "de" {
-                heading(level: 1, numbering: none, bookmarked:true, [Source Code Verzeichnis])
-            } else {
-              "[ERROR] Unknown language: '"+lang+"'"
-            }
-        }
-        <sec_listings>
-        #text(size: 0.8em)[
-        #outline(
-          title: none,
-          target: figure.where(kind: raw),
-        )]
-    ]
+    // [
+    //     #set page(..emptypagestyle)
+    //     #pagebreak(to:"odd", weak:true)
+    //     #set page(..defaultpagestyle)
+    //     #context {
+    //         if text.lang == "en" {
+    //             heading(level: 1, numbering: none, bookmarked:true, [List of Listings])
+    //         } else if text.lang == "de" {
+    //             heading(level: 1, numbering: none, bookmarked:true, [Source Code Verzeichnis])
+    //         } else {
+    //           "[ERROR] Unknown language: '"+lang+"'"
+    //         }
+    //     }
+    //     <sec_listings>
+    //     #text(size: 0.8em)[
+    //     #outline(
+    //       title: none,
+    //       target: figure.where(kind: raw),
+    //     )]
+    // ]
 
     //-------------------------- List of References ---------------------------------#
     [

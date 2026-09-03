@@ -8,21 +8,8 @@
     <sec:future_work>
 ]
 
-== Brainstorming
+Aufbauend auf den Ergebnissen bieten sich mehrere Ansätze für weiterführende Untersuchungen an. Dazu zählen die Evaluation weiterer Modelle und Modellgrößen sowie eine systematische Variation der Systemprompts. Darüber hinaus sollte untersucht werden, wie unterschiedliche Zustandsrepräsentationen, Terminierungsstrategien, Iterationsgrenzen und Timeout-Werte die Korrektheit und den Ressourcenbedarf beeinflussen.
 
-// cloud Modelle
-- Untersuchung weiterer Modellgrößen.
-- Vergleich weiterer lokaler LLMs.
-- Untersuchung des Einflusses verschiedener Systemprompt-Formulierungen.
-- Untersuchung expliziterer Zustandsrepräsentationen.
-- Untersuchung einer deterministischen Duplikaterkennung für Tool Calls.
-- Untersuchung unterschiedlicher Terminierungsstrategien.
-- Vergleich eines vollständig LLM-gesteuerten Ansatzes mit einem hybriden Ansatz.
-- Untersuchung des Einflusses des Iterationslimits.
-- Untersuchung des Einflusses verschiedener Timeout-Werte.
-- Untersuchung des Verhältnisses zwischen Modellgröße, Zuverlässigkeit und Laufzeit.
-- Untersuchung des Einflusses der Aufgabenkomplexität auf die benötigte Modellgröße.
-- Untersuchung, ob größere Modelle zwar zuverlässiger, aufgrund ihrer höheren Laufzeit aber weniger effizient sind.
+Besonders interessant ist ein direkter Vergleich zwischen vollständig LLM-gesteuerter und hybrider Orchestrierung. Dabei könnte untersucht werden, ob sich der zusätzliche Entscheidungsspielraum autonomer Verfahren mit deterministischen Kontrollmechanismen kombinieren lässt. Insbesondere die Erkennung redundanter Toolaufrufe, die Begrenzung der Iterationsanzahl und die Behandlung von Timeouts bieten hierfür konkrete Ansatzpunkte.
 
-
-- Zuverlässigkeit bei fehlenden Tools oder Nachfragen separat betrachten
+Weiterführend wäre außerdem eine gezielte Untersuchung der Kombination aus Aufgabentyp und Orchestrierungsmethode sinnvoll. Dadurch könnte geprüft werden, ob höhere Autonomie bei bestimmten komplexen Aufgaben tatsächlich einen Vorteil gegenüber stärker deterministischen Verfahren bietet. Ebenso könnte untersucht werden, in welchem Verhältnis die durch höhere Autonomie entstehende Flexibilität zu den damit verbundenen zusätzlichen Ressourcenanforderungen und Fehlerquellen steht.
