@@ -24,3 +24,12 @@ def read_csv(path):
 
 def load_xlsx(path: str) -> pd.DataFrame:
     return pd.read_excel(path)
+
+def save_plot(plot, plotname: str):
+    path = f"output/plots/{plotname}.png"
+    plot.figure.savefig(
+        path,
+        dpi=300,
+    )
+
+    return path

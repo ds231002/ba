@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 from utils.files import load_json
 
 def create_result_path(
@@ -100,30 +101,92 @@ def add_usage_to_evaluation(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
-def group_by(df: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
-    df = df.groupby(columns, as_index=True).agg(
-        tools_correct=("tools_correct", "mean"),
-        arguments_correct=("arguments_correct", "mean"),
-        tools_efficient=("tools_efficient", "mean"),
-        arguments_efficient=("arguments_efficient", "mean"),
-        correct=("correct", "mean"),
-        efficient=("efficient", "mean"),
-        runtime_seconds=("runtime_seconds", "mean"),
-        total_tokens=("total_tokens", "mean"),
-        error_ratio=("error", lambda x: x.notna().mean()),
-    )
+def group_by(df: pd.DataFrame, columns: list[str], subcriterions: bool = True) -> pd.DataFrame:
+    if subcriterions == True:
+        df = df.groupby(columns, as_index=True).agg(
+            tools_correct=("tools_correct", "mean"),
+            arguments_correct=("arguments_correct", "mean"),
+            tools_efficient=("tools_efficient", "mean"),
+            arguments_efficient=("arguments_efficient", "mean"),
+            correct=("correct", "mean"),
+            efficient=("efficient", "mean"),
+            runtime_seconds=("runtime_seconds", "mean"),
+            total_tokens=("total_tokens", "mean"),
+            error_ratio=("error", lambda x: x.notna().mean()),
+        )
 
-    columns_float = [
-        "correct",
-        "efficient",
-        "runtime_seconds",
-        "error_ratio",
-        "tools_correct",
-        "tools_efficient",
-        "arguments_correct",
-        "arguments_efficient"
-    ]
+        columns_float = [
+            "correct",
+            "efficient",
+            "runtime_seconds",
+            "error_ratio",
+            "tools_correct",
+            "tools_efficient",
+            "arguments_correct",
+            "arguments_efficient"
+        ]
+    else:
+        df = df.groupby(columns, as_index=True).agg(
+            correct=("correct", "mean"),
+            efficient=("efficient", "mean"),
+            runtime_seconds=("runtime_seconds", "mean"),
+            total_tokens=("total_tokens", "mean"),
+            error_ratio=("error", lambda x: x.notna().mean()),
+        )
+
+        columns_float = [
+            "correct",
+            "efficient",
+            "runtime_seconds",
+            "error_ratio",
+        ]
+
     df[columns_float] = df[columns_float].round(2)
     df["total_tokens"] = df["total_tokens"].round(0)
 
     return df
+
+def create_plot_correct_efficient_error_ratio_by_task_type(df: pd.DataFrame):
+    plot = df.groupby("task_type", as_index=True).agg(
+        correct=("correct", "mean"),
+        efficient=("efficient", "mean"),
+        error_ratio=("error", lambda x: x.notna().mean()),
+    )
+
+    ax = plot.plot(
+        kind="bar",
+        figsize=(10, 6),
+    )
+
+    ax.set_xlabel("Aufgabentyp")
+    ax.set_ylabel("Anteil")
+    ax.set_title("Korrektheit, Effizienz und Fehlerrate nach Aufgabentyp")
+
+    ax.set_ylim(0, 1)
+    ax.legend(["Korrekt", "Effizient", "Fehlerrate"])
+
+    plt.xticks(rotation=0)
+    plt.tight_layout()
+
+    return ax
+
+def create_plot_correct_by_method_and_task_type(df: pd.DataFrame):
+    method_order = ["deterministic", "plan-based", "iterative"]
+    plot = df.groupby(["task_type", "method"])["correct"].mean().unstack().reindex(columns=method_order)
+
+    ax = plot.plot(
+        kind="bar",
+        figsize=(10, 6),
+    )
+
+    ax.set_xlabel("Aufgabentyp")
+    ax.set_ylabel("Anteil korreker gelöster Aufgaben")
+    ax.set_title("Korrektheit nach Methode und Aufgabentyp")
+
+    ax.set_ylim(0, 1)
+    ax.legend(["Deterministisch", "Planbasiert", "Iterativ"])
+
+    plt.xticks(rotation=0)
+    plt.tight_layout()
+
+    return ax
