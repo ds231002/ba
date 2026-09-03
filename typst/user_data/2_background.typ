@@ -28,7 +28,11 @@ Damit ein LLM ein Werkzeug verwenden kann, wird dieses über eine strukturierte 
 
 Der erzeugte Tool Call wird anschließend von einer ausführenden Umgebung verarbeitet. Diese übernimmt die tatsächliche Ausführung des Werkzeugs und stellt das daraus resultierende Ergebnis wieder für das LLM bereit. Das Ergebnis kann beispielsweise aus Text, strukturierten Daten oder einer Fehlermeldung bestehen. Es kann anschließend als neue Information in die weitere Verarbeitung einbezogen werden @huangMetaToolBenchmarkLarge2024.
 
-Der grundlegende Ablauf lässt sich damit vereinfacht als *Anfrage → Toolauswahl → Argumenterzeugung → Toolausführung → Ergebnis → weitere Verarbeitung* beschreiben. Bei Aufgaben, für deren Bearbeitung mehrere Werkzeuge benötigt werden, kann dieser Ablauf wiederholt werden. Die einzelnen Werkzeugaufrufe können dabei voneinander abhängig sein, wenn das Ergebnis eines vorherigen Aufrufs als Eingabe für einen nachfolgenden Aufruf benötigt wird.
+Der grundlegende Ablauf lässt sich damit vereinfacht wie folgt beschreiben:
+
+*Anfrage > Toolauswahl > Argumenterzeugung > Toolausführung > Ergebnis > weitere Verarbeitung*
+
+Bei Aufgaben, für deren Bearbeitung mehrere Werkzeuge benötigt werden, kann dieser Ablauf wiederholt werden. Die einzelnen Werkzeugaufrufe können dabei voneinander abhängig sein, wenn das Ergebnis eines vorherigen Aufrufs als Eingabe für einen nachfolgenden Aufruf benötigt wird.
 
 Für die Zuverlässigkeit eines solchen Systems sind daher mehrere Entscheidungen relevant. Neben der grundsätzlichen Entscheidung für oder gegen die Verwendung eines Werkzeugs muss das LLM das passende Werkzeug auswählen und dessen Parameter korrekt bestimmen. Bei mehreren aufeinanderfolgenden Aufrufen muss zusätzlich der bisherige Verarbeitungszustand berücksichtigt und das Ergebnis vorheriger Aufrufe korrekt in weitere Entscheidungen einbezogen werden. Die Forschung zur Toolnutzung betrachtet entsprechend nicht nur die Erzeugung einzelner Funktionsaufrufe, sondern zunehmend auch deren Verwendung in mehrstufigen und zustandsbehafteten Abläufen @huangMetaToolBenchmarkLarge2024, @patilBerkeleyFunctionCalling2025.
 
