@@ -5,6 +5,8 @@ import math
 import random
 import csv
 
+# KI (ChatGPT): Funktionen für die Erzeugung von Beispielzeitreihen wurden mit HIlfe von KI erstellt.
+
 EnergyType = Literal["consumption", "generation"]
 
 def generate_consumption_profile(

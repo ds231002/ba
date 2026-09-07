@@ -70,9 +70,6 @@ def calc_statistical_value(
     end: str,
     statistic_type: str
 ) -> str:
-    """
-    Calculate a statistical value from an energy time series.
-    """
 
     allowed_statistics = ["sum", "avg", "min", "max"]
 

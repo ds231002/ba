@@ -2,6 +2,8 @@ from utils.files import load_json
 from utils.data_access import get_metering_point_ids_for_user_id
 import json
 
+# KI (ChatGPT): Systeminformationen wurden mit KI erzeugt und an die eigenen Anforderungen und Einschränkungen angepasst.
+
 metering_points = get_metering_point_ids_for_user_id("user")
 
 tools_1_path = "tools/tools_m1.json"

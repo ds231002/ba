@@ -4,6 +4,8 @@ from utils.data_access import load_energy_data
 import matplotlib.pyplot as plt
 import pandas as pd
 
+# KI (ChatGPT): Hilfe bei der Erstellung der zusammengefassten Funktionen auf Basis von tools_m1.py
+
 # ==== Basic Data ====
 
 def get_participation_factor(metering_point_id: str) -> float:
