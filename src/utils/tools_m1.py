@@ -22,6 +22,8 @@ from utils.tools import (
 import matplotlib.pyplot as plt
 import pandas as pd
 
+# KI (ChatGPT): Hilfe bei der Erstellung der zusammengefassten Funktionen auf Basis von tools.py
+
 # ==== Plot ====
 
 def _create_plot(energy_data: pd.DataFrame) -> plt.Figure: # Hilfsfunktion, soll nicht in Toolbeschreibung

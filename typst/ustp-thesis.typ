@@ -609,6 +609,20 @@
             "user_data/0_X_literature.bib"
         )
     ]
+
+        //-------------------------- KI-Nutzung -------------------------------------#
+    [
+        #set page(..emptypagestyle)
+        // #pagebreak(to:"odd", weak:true)
+        #set page(..defaultpagestyle)
+        #heading(
+            level: 1,
+            numbering: none,
+            bookmarked: true,
+            [KI-Nutzung]
+        )
+        <sec_ai_references>
+    ]
     set page(..emptypagestyle)
     pagebreak(to:"odd", weak:true)
     set page(..defaultpagestyle)
