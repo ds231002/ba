@@ -1,0 +1,418 @@
+@inproceedings{alazrakiMetaReasoningImprovesTool2025,
+  title = {Meta-{{Reasoning Improves Tool Use}} in {{Large Language Models}}},
+  booktitle = {Findings of the {{Association}} for {{Computational Linguistics}}: {{NAACL}} 2025},
+  author = {Alazraki, Lisa and Rei, Marek},
+  editor = {Chiruzzo, Luis and Ritter, Alan and Wang, Lu},
+  year = 2025,
+  month = apr,
+  pages = {7900--7912},
+  publisher = {Association for Computational Linguistics},
+  address = {Albuquerque, New Mexico},
+  doi = {10.18653/v1/2025.findings-naacl.440},
+  url = {https://aclanthology.org/2025.findings-naacl.440/},
+  abstract = {External tools help large language models succeed at tasks where they would otherwise typically fail. In existing frameworks, choosing tools at test time relies on naive greedy decoding, regardless of whether the model has been fine-tuned on tool-annotated data or prompted with in-context examples. In contrast, we find that gathering and choosing among a suitable set of candidate tools has greater potential to lead to an optimal selection. We present Tool selECTion via meta-reasONing (TECTON), a two-phase system that first *reasons* over a task and outputs candidate tools using a custom fine-tuned language modelling head. Then, with the custom head disabled, it *meta-reasons* (i.e., it reasons over the previous reasoning process) to make a final choice. We show that TECTON results in substantial gains---both in-distribution and out-of-distribution---on a range of math reasoning datasets.},
+  isbn = {979-8-89176-195-7},
+  keywords = {Evaluation,Orchestration},
+  file = {C:\Users\david\Zotero\storage\A4NFYE8M\Alazraki und Rei - 2025 - Meta-Reasoning Improves Tool Use in Large Language Models.pdf}
+}
+
+@inproceedings{chenFortifyShortestStave2024,
+  title = {Fortify the Shortest Stave in Attention: {{Enhancing}} Context Awareness of Large Language Models for Effective Tool Use},
+  booktitle = {Proceedings of the 62nd {{Annual Meeting}} of the {{Association}} for {{Computational Linguistics}} ({{Volume}} 1: {{Long Papers}})},
+  author = {Chen, Yuhan and Lv, Ang and Lin, Ting-En and Chen, Changyu and Wu, Yuchuan and Huang, Fei and Li, Yongbin and Yan, Rui},
+  year = 2024,
+  pages = {11160--11174},
+  keywords = {Orchestration},
+  file = {C:\Users\david\Zotero\storage\DH57B5VU\Chen et al. - 2024 - Fortify the shortest stave in attention Enhancing context awareness of large language models for ef.pdf}
+}
+
+@inproceedings{chenToolUseAlignment2024,
+  title = {Towards {{Tool Use Alignment}} of {{Large Language Models}}},
+  booktitle = {Proceedings of the 2024 {{Conference}} on {{Empirical Methods}} in {{Natural Language Processing}}},
+  author = {Chen, Zhi-Yuan and Shen, Shiqi and Shen, Guangyao and Zhi, Gong and Chen, Xu and Lin, Yankai},
+  editor = {{Al-Onaizan}, Yaser and Bansal, Mohit and Chen, Yun-Nung},
+  year = 2024,
+  month = nov,
+  pages = {1382--1400},
+  publisher = {Association for Computational Linguistics},
+  address = {Miami, Florida, USA},
+  doi = {10.18653/v1/2024.emnlp-main.82},
+  url = {https://aclanthology.org/2024.emnlp-main.82/},
+  abstract = {Recently, tool use with LLMs has become one of the primary research topics as it can help LLM generate truthful and helpful responses. Existing studies on tool use with LLMs primarily focus on enhancing the tool-calling ability of LLMs. In practice, like chat assistants, LLMs are also required to align with human values in the context of tool use. Specifically, LLMs should refuse to answer unsafe tool use relevant instructions and insecure tool responses to ensure their reliability and harmlessness. At the same time, LLMs should demonstrate autonomy in tool use to reduce the costs associated with tool calling. To tackle this issue, we first introduce the principle that LLMs should follow in tool use scenarios: H2A. The goal of H2A is to align LLMs with **helpfulness**, **harmlessness**, and **autonomy**. In addition, we propose ToolAlign, a dataset comprising instruction-tuning data and preference data to align LLMs with the H2A principle for tool use. Based on ToolAlign, we develop LLMs by supervised fine-tuning and preference learning, and experimental results demonstrate that the LLMs exhibit remarkable tool-calling capabilities, while also refusing to engage with harmful content, and displaying a high degree of autonomy in tool utilization. The code and datasets are available at: https://github.com/zhiyuanc2001/ToolAlign.},
+  keywords = {Evaluation,Orchestration},
+  file = {C:\Users\david\Zotero\storage\JKEWQ3BY\Chen et al. - 2024 - Towards Tool Use Alignment of Large Language Models.pdf}
+}
+
+@misc{costaEnhancingAccuracyMaintainability2025,
+  title = {Enhancing {{Accuracy}} and {{Maintainability}} in {{Nuclear Plant Data Retrieval}}: {{A Function-Calling LLM Approach Over NL-to-SQL}}},
+  shorttitle = {Enhancing {{Accuracy}} and {{Maintainability}} in {{Nuclear Plant Data Retrieval}}},
+  author = {de Costa, Mishca and Anwar, Muhammad and Mercier, Dave and Randall, Mark and Hammad, Issam},
+  year = 2025,
+  month = jun,
+  number = {arXiv:2506.08757},
+  eprint = {2506.08757},
+  primaryclass = {cs.CL},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2506.08757},
+  url = {http://arxiv.org/abs/2506.08757},
+  urldate = {2026-08-15},
+  abstract = {Retrieving operational data from nuclear power plants requires exceptional accuracy and transparency due to the criticality of the decisions it supports. Traditionally, natural language to SQL (NL-to-SQL) approaches have been explored for querying such data. While NL-to-SQL promises ease of use, it poses significant risks: end-users cannot easily validate generated SQL queries, and legacy nuclear plant databases -- often complex and poorly structured -- complicate query generation due to decades of incremental modifications. These challenges increase the likelihood of inaccuracies and reduce trust in the approach. In this work, we propose an alternative paradigm: leveraging function-calling large language models (LLMs) to address these challenges. Instead of directly generating SQL queries, we define a set of pre-approved, purpose-specific functions representing common use cases. Queries are processed by invoking these functions, which encapsulate validated SQL logic. This hybrid approach mitigates the risks associated with direct NL-to-SQL translations by ensuring that SQL queries are reviewed and optimized by experts before deployment. While this strategy introduces the upfront cost of developing and maintaining the function library, we demonstrate how NL-to-SQL tools can assist in the initial generation of function code, allowing experts to focus on validation rather than creation. Our study includes a performance comparison between direct NL-to-SQL generation and the proposed function-based approach, highlighting improvements in accuracy and maintainability. This work underscores the importance of balancing user accessibility with operational safety and provides a novel, actionable framework for robust data retrieval in critical systems.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning,Tooldesign},
+  file = {C\:\\Users\\david\\Zotero\\storage\\AS9HHDBH\\Costa et al. - 2025 - Enhancing Accuracy and Maintainability in Nuclear Plant Data Retrieval A Function-Calling LLM Appro.pdf;C\:\\Users\\david\\Zotero\\storage\\HI47TRAA\\2506.html}
+}
+
+@inproceedings{duanMultitoolIntegrationApplication2024,
+  title = {Multi-Tool {{Integration Application}} for {{Math Reasoning Using Large Language Model}}},
+  booktitle = {2024 {{IEEE}} 10th {{International Conference}} on {{Edge Computing}} and {{Scalable Cloud}} ({{EdgeCom}})},
+  author = {Duan, Zhihua and Wang, Jialin},
+  year = 2024,
+  pages = {106--109},
+  doi = {10.1109/EdgeCom62867.2024.00024},
+  keywords = {Accuracy,Codes,Cognition,CoT,ERNIE-4.0,FewShot,Iterative methods,Large Language Model,Large language models,Orchestration,Reliability,Syntactics},
+  file = {C:\Users\david\Zotero\storage\QHYCDMQN\Duan and Wang - 2024 - Multi-tool Integration Application for Math Reasoning Using Large Language Model.pdf}
+}
+
+@misc{energiegemeinschaftenRechtsgrundlagenFurEnergiegemeinschaften,
+  title = {Rechtsgrundlagen F\"ur {{Energiegemeinschaften}}},
+  author = {f{\"u}r Energiegemeinschaften, {\"O}sterreichische Koordinationsstelle},
+  url = {https://energiegemeinschaften.gv.at/rechtsgrundlagen/},
+  urldate = {2026-03-10}
+}
+
+@misc{fengLevelsAutonomyAI2025,
+  title = {Levels of {{Autonomy}} for {{AI Agents}}},
+  author = {Feng, K. J. Kevin and McDonald, David W. and Zhang, Amy X.},
+  year = 2025,
+  month = jul,
+  number = {arXiv:2506.12469},
+  eprint = {2506.12469},
+  primaryclass = {cs.HC},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2506.12469},
+  url = {http://arxiv.org/abs/2506.12469},
+  urldate = {2026-08-11},
+  abstract = {Autonomy is a double-edged sword for AI agents, simultaneously unlocking transformative possibilities and serious risks. How can agent developers calibrate the appropriate levels of autonomy at which their agents should operate? We argue that an agent's level of autonomy can be treated as a deliberate design decision, separate from its capability and operational environment. In this work, we define five levels of escalating agent autonomy, characterized by the roles a user can take when interacting with an agent: operator, collaborator, consultant, approver, and observer. Within each level, we describe the ways by which a user can exert control over the agent and open questions for how to design the nature of user-agent interaction. We then highlight a potential application of our framework towards AI autonomy certificates to govern agent behavior in single- and multi-agent systems. We conclude by proposing early ideas for evaluating agents' autonomy. Our work aims to contribute meaningful, practical steps towards responsibly deployed and useful AI agents in the real world.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Human-Computer Interaction,Orchestration},
+  file = {C:\Users\david\Zotero\storage\2Z2Z86XJ\Feng et al. - 2025 - Levels of Autonomy for AI Agents.pdf}
+}
+
+@misc{gmbhWasSindEnergiegemeinschaften,
+  title = {Was Sind {{Energiegemeinschaften}} Und Wie Funktionieren Sie?},
+  author = {GmbH, Next Kraftwerke AT},
+  url = {https://www.next-kraftwerke.at/wissen/energiegemeinschaften},
+  urldate = {2026-03-10}
+}
+
+@misc{GPT54MiniModel,
+  title = {{{GPT-5}}.4 {{Mini Model}} \textbar{} {{OpenAI API}}},
+  journal = {OpenAI Developers},
+  url = {https://developers.openai.com/api/docs/models/gpt-5.4-mini},
+  urldate = {2026-08-31},
+  langid = {english},
+  file = {C:\Users\david\Zotero\storage\DWHLU423\gpt-5.html}
+}
+
+@misc{HandlingBigModels,
+  title = {Handling Big Models for Inference {$\cdot$} {{Hugging Face}}},
+  url = {https://huggingface.co/docs/accelerate/v0.32.0/concept_guides/big_model_inference},
+  urldate = {2026-08-13},
+  abstract = {We're on a journey to advance and democratize artificial intelligence through open source and open science.},
+  file = {C:\Users\david\Zotero\storage\T5KKW3PZ\big_model_inference.html}
+}
+
+@misc{HardwareSoftwareEnvironment,
+  title = {Hardware/{{Software Environment}} for {{Performance Measurements}} --- {{NVIDIA TensorRT}}},
+  url = {https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/performance/hw-sw-environment.html?utm_source=chatgpt.com},
+  urldate = {2026-08-13},
+  file = {C:\Users\david\Zotero\storage\3IZ3CYIM\hw-sw-environment.html}
+}
+
+@article{hernandezReActModularAgent2025,
+  title = {{{ReAct Modular Agent}}: {{Orchestrating Tool-Use}} and {{Retrieval}} for {{Financial Workflows}}},
+  shorttitle = {{{ReAct Modular Agent}}},
+  author = {Hernandez, Armando and Sabbia, Victor and Perez, Santiago},
+  year = 2025,
+  month = dec,
+  journal = {Proceedings of International Conference on Intelligent Systems and New Applications},
+  pages = {1},
+  issn = {3023-6193},
+  doi = {10.58190/icisna.2025.138},
+  url = {https://proceedings.icisna.org/conf/index.php/ICISNA/article/view/116},
+  urldate = {2026-03-17},
+  abstract = {The financial advisory profession demands extreme precision and speed in decision-making, compounded by the complexity of modern capital markets software. This often leads to high training overhead and reduces the time financial advisors can dedicate to client relations. This paper introduces an Agentic AI Co-Pilot designed as a significant architectural advancement beyond traditional Retrieval-Augmented Generation (RAG) systems. The core framework leverages a specialized Enterprise AI Flow to orchestrate a modular, decoupled agent architecture.},
+  langid = {english},
+  keywords = {Orchestration},
+  file = {C:\Users\david\Zotero\storage\N6SJ6LQT\Hernandez et al. - 2025 - ReAct Modular Agent Orchestrating Tool-Use and Retrieval for Financial Workflows.pdf}
+}
+
+@article{hongNextGenerationDatabaseInterfaces2025,
+  title = {Next-{{Generation Database Interfaces}}: {{A Survey}} of {{LLM-Based Text-to-SQL}}},
+  shorttitle = {Next-{{Generation Database Interfaces}}},
+  author = {Hong, Zijin and Yuan, Zheng and Zhang, Qinggang and Chen, Hao and Dong, Junnan and Huang, Feiran and Huang, Xiao},
+  year = 2025,
+  month = dec,
+  journal = {IEEE Transactions on Knowledge and Data Engineering},
+  volume = {37},
+  number = {12},
+  pages = {7328--7345},
+  issn = {1558-2191},
+  doi = {10.1109/TKDE.2025.3609486},
+  url = {https://ieeexplore.ieee.org/document/11160657},
+  urldate = {2026-08-15},
+  abstract = {Generating accurate SQL from users' natural language questions (text-to-SQL) remains a long-standing challenge due to the complexities involved in user question understanding, database schema comprehension, and SQL generation. Traditional text-to-SQL systems, which combine human engineering and deep neural networks, have made significant progress. Subsequently, pre-trained language models (PLMs) have been developed for text-to-SQL tasks, achieving promising results. However, as modern databases and user questions grow more complex, PLMs with a limited parameter size often produce incorrect SQL. This necessitates more sophisticated and tailored optimization methods, which restrict the application of PLM-based systems. Recently, large language models (LLMs) have shown significant capabilities in natural language understanding as model scale increases. Thus, integrating LLM-based solutions can bring unique opportunities, improvements, and solutions to text-to-SQL research. In this survey, we provide a comprehensive review of existing LLM-based text-to-SQL studies. Specifically, we offer a brief overview of the technical challenges and evolutionary process of text-to-SQL. Next, we introduce the datasets and metrics designed to evaluate text-to-SQL systems. Subsequently, we present a systematic analysis of recent advances in LLM-based text-to-SQL. Finally, we make a summary and discuss the remaining challenges in this field and suggest expectations for future research directions.},
+  keywords = {Accuracy,Complexity theory,database,Databases,large language models,Large language models,Measurement,Natural language processing,natural language understanding,Structured Query Language,Surveys,Taxonomy,Text-to-SQL,Tooldesign,Training},
+  file = {C:\Users\david\Zotero\storage\3IN92E28\11160657.html}
+}
+
+@misc{huangMetaToolBenchmarkLarge2024,
+  title = {{{MetaTool Benchmark}} for {{Large Language Models}}: {{Deciding Whether}} to {{Use Tools}} and {{Which}} to {{Use}}},
+  author = {Huang, Yue and Shi, Jiawen and Li, Yuan and Fan, Chenrui and Wu, Siyuan and Zhang, Qihui and Liu, Yixin and Zhou, Pan and Wan, Yao and Gong, Neil Zhenqiang and Sun, Lichao},
+  year = 2024,
+  url = {https://arxiv.org/abs/2310.03128},
+  keywords = {Evaluation},
+  file = {C:\Users\david\Zotero\storage\4ZXM8KY7\Huang et al. - 2024 - MetaTool Benchmark for Large Language Models Deciding Whether to Use Tools and Which to Use.pdf}
+}
+
+@misc{kelbertWieFunktionierenLLMs2024,
+  title = {{Wie funktionieren LLMs? Ein Blick ins Innere gro\ss er Sprachmodelle - Blog des Fraunhofer IESE}},
+  shorttitle = {{Wie funktionieren LLMs?}},
+  author = {Kelbert, Patricia, Dr Julien Siebert},
+  year = 2024,
+  month = jun,
+  journal = {Fraunhofer IESE},
+  url = {https://www.iese.fraunhofer.de/blog/wie-funktionieren-llms/},
+  urldate = {2026-09-03},
+  abstract = {Woraus bestehen gro\ss e Sprachmodelle (Large Language Models)? KI-Experten und Expertinnen erkl\"aren die Funktionsweise von LLMs.},
+  langid = {ngerman},
+  file = {C:\Users\david\Zotero\storage\EM8NIB32\wie-funktionieren-llms.html}
+}
+
+@article{liuPictureWorthThousand,
+  title = {A {{Picture}} Is {{Worth A Thousand Numbers}}: {{Enabling LLMs Reason}} about {{Time Series}} via {{Visualization}}},
+  author = {Liu, Haoxin and Liu, Chenghao and Prakash, B Aditya},
+  abstract = {Large language models (LLMs), with demonstrated reasoning abilities across multiple domains, have been largely underexplored for time-series reasoning (TsR), which is ubiquitous in the real world. In this work, we propose TimerBed, the first comprehensive testbed for evaluating LLMs' TsR performance. Specifically, TimerBed includes stratified reasoning patterns with real-world tasks, diverse combinations of LLMs and reasoning strategies, and various supervised models as comparison anchors. We perform extensive experiments with TimerBed, test multiple current beliefs, and observe the initial failures of LLMs in TsR, as evidenced by the ineffectiveness of zero shot (ZST) and performance degradation of few shot in-context learning (ICL). Further, we identify one possible root cause: the numerical modeling of data. To address this, we propose a prompt-based solution VL-Time, with visualization-modeled data and language-guided reasoning. Experimental results demonstrate that VL-Time enables multimodal LLMs to be non-trivial ZST and powerful ICL reasoners for time series, achieving about 140\% average performance improvement and 99\% average token costs reduction. TimerBed and VL-Time are available at https: //github.com/AdityaLab/DeepTime/.},
+  langid = {english},
+  keywords = {context,Orchestration,Tooldesign,ts},
+  file = {C:\Users\david\Zotero\storage\N4C52QZJ\Liu et al. - A Picture is Worth A Thousand Numbers Enabling LLMs Reason about Time Series via Visualization.pdf}
+}
+
+@misc{liuUtilityGuidedAgentOrchestration2026,
+  title = {Utility-{{Guided Agent Orchestration}} for {{Efficient LLM Tool Use}}},
+  author = {Liu, Boyan and Zhao, Gongming and Xu, Hongli},
+  year = 2026,
+  month = mar,
+  number = {arXiv:2603.19896},
+  eprint = {2603.19896},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2603.19896},
+  url = {http://arxiv.org/abs/2603.19896},
+  urldate = {2026-04-09},
+  abstract = {Tool-using large language model (LLM) agents often face a fundamental tension between answer quality and execution cost. Fixed workflows are stable but inflexible, while free-form multi-step reasoning methods such as ReAct may improve task performance at the expense of excessive tool calls, longer trajectories, higher token consumption, and increased latency. In this paper, we study agent orchestration as an explicit decision problem rather than leaving it entirely to prompt-level behavior. We propose a utility-guided orchestration policy that selects among actions such as respond, retrieve, tool call, verify, and stop by balancing estimated gain, step cost, uncertainty, and redundancy. Our goal is not to claim universally best task performance, but to provide a controllable and analyzable policy framework for studying quality-cost trade-offs in tool-using LLM agents. Experiments across direct answering, threshold control, fixed workflows, ReAct, and several policy variants show that explicit orchestration signals substantially affect agent behavior. Additional analyses on cost definitions, workflow fairness, and redundancy control further demonstrate that lightweight utility design can provide a defensible and practical mechanism for agent control.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Orchestration,Tooldesign},
+  file = {C:\Users\david\Zotero\storage\TTADKBA3\Liu et al. - 2026 - Utility-Guided Agent Orchestration for Efficient LLM Tool Use.pdf}
+}
+
+@inproceedings{liuWTUEVALWhetherorNotTool2025,
+  title = {{{WTU-EVAL}}: {{A Whether-or-Not Tool Usage Evaluation Benchmark}} for {{Large Language Models}}},
+  booktitle = {{{ICASSP}} 2025 - 2025 {{IEEE International Conference}} on {{Acoustics}}, {{Speech}} and {{Signal Processing}} ({{ICASSP}})},
+  author = {Liu, Jian and Ning, Kangyun and Su, Yisong and Han, Wenjuan and Xu, Jinan and Zhang, Yuanzhe},
+  year = 2025,
+  pages = {1--5},
+  doi = {10.1109/ICASSP49660.2025.10889153},
+  keywords = {Ability Boundary,Acoustics,Benchmark testing,Chatbots,Evaluation,Large language models,Large Language Models,Orchestration,Signal processing,Speech processing,Tool Usage},
+  file = {C:\Users\david\Zotero\storage\JDETACIT\Liu et al. - 2025 - WTU-EVAL A Whether-or-Not Tool Usage Evaluation Benchmark for Large Language Models.pdf}
+}
+
+@misc{luOrchDAGComplexTool2025,
+  title = {{{OrchDAG}}: {{Complex Tool Orchestration}} in {{Multi-Turn Interactions}} with {{Plan DAGs}}},
+  shorttitle = {{{OrchDAG}}},
+  author = {Lu, Yifu and Liu, Shengjie and Dong, Li},
+  year = 2025,
+  month = oct,
+  number = {arXiv:2510.24663},
+  eprint = {2510.24663},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2510.24663},
+  url = {http://arxiv.org/abs/2510.24663},
+  urldate = {2026-04-16},
+  abstract = {Agentic tool use has gained traction with the rise of agentic tool calling, yet most existing work overlooks the complexity of multi-turn tool interactions. We introduce OrchDAG, a synthetic data generation pipeline that models tool execution as directed acyclic graphs (DAGs) with controllable complexity. Using this dataset, we benchmark model performance and propose a graph-based reward to enhance RLVR training. Experiments show that the dataset presents a challenging but solvable benchmark, and the proposed reward is effective when combined with GRPO-style algorithms, highlighting the importance of leveraging topological structure and data complexity in multi-turn tool use.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Evaluation,Orchestration,training},
+  file = {C:\Users\david\Zotero\storage\ZLB3TXKM\Lu et al. - 2025 - OrchDAG Complex Tool Orchestration in Multi-Turn Interactions with Plan DAGs.pdf}
+}
+
+@misc{luProactiveAgentShifting2024,
+  title = {Proactive {{Agent}}: {{Shifting LLM Agents}} from {{Reactive Responses}} to {{Active Assistance}}},
+  shorttitle = {Proactive {{Agent}}},
+  author = {Lu, Yaxi and Yang, Shenzhi and Qian, Cheng and Chen, Guirong and Luo, Qinyu and Wu, Yesai and Wang, Huadong and Cong, Xin and Zhang, Zhong and Lin, Yankai and Liu, Weiwen and Wang, Yasheng and Liu, Zhiyuan and Liu, Fangming and Sun, Maosong},
+  year = 2024,
+  month = dec,
+  number = {arXiv:2410.12361},
+  eprint = {2410.12361},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2410.12361},
+  url = {http://arxiv.org/abs/2410.12361},
+  urldate = {2026-03-18},
+  abstract = {Agents powered by large language models have shown remarkable abilities in solving complex tasks. However, most agent systems remain reactive, limiting their effectiveness in scenarios requiring foresight and autonomous decision-making. In this paper, we tackle the challenge of developing proactive agents capable of anticipating and initiating tasks without explicit human instructions. We propose a novel data-driven approach for this problem. Firstly, we collect real-world human activities to generate proactive task predictions. These predictions are then labeled by human annotators as either accepted or rejected. The labeled data is used to train a reward model that simulates human judgment and serves as an automatic evaluator of the proactiveness of LLM agents. Building on this, we develop a comprehensive data generation pipeline to create a diverse dataset, ProactiveBench, containing 6,790 events. Finally, we demonstrate that fine-tuning models with the proposed ProactiveBench can significantly elicit the proactiveness of LLM agents. Experimental results show that our fine-tuned model achieves an F1-Score of 66.47\% in proactively offering assistance, outperforming all open-source and close-source models. These results highlight the potential of our method in creating more proactive and effective agent systems, paving the way for future advancements in human-agent collaboration.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {less relevant,Orchestration,training},
+  file = {C:\Users\david\Zotero\storage\TR7SWGH8\Lu et al. - 2024 - Proactive Agent Shifting LLM Agents from Reactive Responses to Active Assistance.pdf}
+}
+
+@misc{paranjapeARTAutomaticMultistep2023,
+  title = {{{ART}}: {{Automatic}} Multi-Step Reasoning and Tool-Use for Large Language Models},
+  author = {Paranjape, Bhargavi and Lundberg, Scott and Singh, Sameer and Hajishirzi, Hannaneh and Zettlemoyer, Luke and Ribeiro, Marco Tulio},
+  year = 2023,
+  url = {https://arxiv.org/abs/2303.09014},
+  file = {C:\Users\david\Zotero\storage\FQNMBP4S\Paranjape et al. - 2023 - ART Automatic multi-step reasoning and tool-use for large language models.pdf}
+}
+
+@inproceedings{patilBerkeleyFunctionCalling2025,
+  title = {The {{Berkeley Function Calling Leaderboard}} ({{BFCL}}): {{From Tool Use}} to {{Agentic Evaluation}} of {{Large Language Models}}},
+  booktitle = {Forty-Second {{International Conference}} on {{Machine Learning}}},
+  author = {Patil, Shishir G. and Mao, Huanzhi and Yan, Fanjia and Ji, Charlie Cheng-Jie and Suresh, Vishnu and Stoica, Ion and Gonzalez, Joseph E.},
+  year = 2025,
+  url = {https://openreview.net/forum?id=2GmDdhBdDk},
+  keywords = {Evaluation},
+  file = {C:\Users\david\Zotero\storage\EIN2ZBW9\Patil et al. - 2025 - The Berkeley Function Calling Leaderboard (BFCL) From Tool Use to Agentic Evaluation of Large Langu.pdf}
+}
+
+@misc{schickToolformerLanguageModels2023,
+  title = {Toolformer: {{Language Models Can Teach Themselves}} to {{Use Tools}}},
+  shorttitle = {Toolformer},
+  author = {Schick, Timo and {Dwivedi-Yu}, Jane and Dess{\`i}, Roberto and Raileanu, Roberta and Lomeli, Maria and Zettlemoyer, Luke and Cancedda, Nicola and Scialom, Thomas},
+  year = 2023,
+  month = feb,
+  number = {arXiv:2302.04761},
+  eprint = {2302.04761},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2302.04761},
+  url = {http://arxiv.org/abs/2302.04761},
+  urldate = {2026-03-24},
+  abstract = {Language models (LMs) exhibit remarkable abilities to solve new tasks from just a few examples or textual instructions, especially at scale. They also, paradoxically, struggle with basic functionality, such as arithmetic or factual lookup, where much simpler and smaller models excel. In this paper, we show that LMs can teach themselves to use external tools via simple APIs and achieve the best of both worlds. We introduce Toolformer, a model trained to decide which APIs to call, when to call them, what arguments to pass, and how to best incorporate the results into future token prediction. This is done in a self-supervised way, requiring nothing more than a handful of demonstrations for each API. We incorporate a range of tools, including a calculator, a Q\&A system, a search engine, a translation system, and a calendar. Toolformer achieves substantially improved zero-shot performance across a variety of downstream tasks, often competitive with much larger models, without sacrificing its core language modeling abilities.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Tooldesign,training},
+  file = {C:\Users\david\Zotero\storage\HI8DF89T\Schick et al. - 2023 - Toolformer Language Models Can Teach Themselves to Use Tools.pdf}
+}
+
+@article{singhComprehensiveReviewLLMbased2026,
+  title = {A {{Comprehensive Review}} of {{LLM-based Text-to-SQL Systems}}: {{Methods}}, {{Datasets}}, and {{Trends}}},
+  shorttitle = {A {{Comprehensive Review}} of {{LLM-based Text-to-SQL Systems}}},
+  author = {Singh, Garima and Chhabra, Prachi and Banerjee, Tathagat},
+  year = 2026,
+  month = feb,
+  journal = {Computational Systems and Artificial Intelligence},
+  volume = {2},
+  number = {1},
+  pages = {1--6},
+  issn = {3108-4079},
+  doi = {10.69882/adba.csai.2026011},
+  url = {https://journals.adbascientific.com/csai/article/view/135},
+  urldate = {2026-08-15},
+  abstract = {Translation of Natural Language to SQL queries (i.e. Text-to-SQL or NL2SQL) helps the user to easily access the relational database. It also helps in various commercial applications. In recent years, the development of Large Language has increased the performance of the NL2SQL system. It enhances the semantic understanding, schema linking, and SQL generation, even for complex and crossdomain queries. This paper reviews recently published research papers between 2018 - 2025, focusing on LLM-based methods for Text-to-SQL tasks. We examine the system pipelines covering pre-processing, translation, and post-processing stages, along with commonly used datasets and tools. We also discuss advances in schema linking, reasoning-based query generation, and the use of retrieval-augmented generation for providing additional context. Based on the surveyed literature, we summarize key trends, challenges, and future directions, aiming to provide an accessible overview for students and researchers interested in LLM-based NL2SQL systems.},
+  copyright = {https://creativecommons.org/licenses/by-nc/4.0/},
+  langid = {english},
+  keywords = {LLM,Natural language processing (NLP),Relational database,SQL,Tooldesign},
+  file = {C:\Users\david\Zotero\storage\4CM6PFFE\Singh et al. - 2026 - A Comprehensive Review of LLM-based Text-to-SQL Systems Methods, Datasets, and Trends.pdf}
+}
+
+@misc{UsingToolsOpenAI,
+  title = {Using Tools \textbar{} {{OpenAI API}}},
+  journal = {OpenAI Developers},
+  url = {https://developers.openai.com/api/docs/guides/tools},
+  urldate = {2026-08-03},
+  abstract = {Use powerful tools like remote MCP servers, or built-in tools like web search and file search to extend the model's capabilities.},
+  langid = {english},
+  file = {C:\Users\david\Zotero\storage\S8UIF33N\tools.html}
+}
+
+@misc{WasIstKIInferenz,
+  type = {{Glossar}},
+  title = {{Was ist KI-Inferenz?}},
+  author = {{Akamai Technologies}},
+  journal = {Akamai},
+  url = {https://www.akamai.com/de/glossary/what-is-ai-inferencing},
+  urldate = {2026-08-13},
+  abstract = {Erfahren Sie mehr \"uber KI-Inferenz, ihre Relevanz und dar\"uber, wie sie sich vom KI-Training unterscheidet. Erhalten Sie Einblicke in Inferenzarten, Ma\ss nahmen und Optimierungen f\"ur KI-Anwendungen in Echtzeit.},
+  langid = {ngerman},
+  file = {C:\Users\david\Zotero\storage\TRSYRN58\what-is-ai-inferencing.html}
+}
+
+@misc{xuEvolutionToolUse2026,
+  title = {The {{Evolution}} of {{Tool Use}} in {{LLM Agents}}: {{From Single-Tool Call}} to {{Multi-Tool Orchestration}}},
+  shorttitle = {The {{Evolution}} of {{Tool Use}} in {{LLM Agents}}},
+  author = {Xu, Haoyuan and Li, Chang and Ma, Xinyan and Ou, Xianhao and Zhang, Zihan and He, Tao and Liu, Xiangyu and Wang, Zixiang and Liang, Jiafeng and Chu, Zheng and Liu, Runxuan and Mu, Rongchuan and Tu, Dandan and Liu, Ming and Qin, Bing},
+  year = 2026,
+  month = apr,
+  number = {arXiv:2603.22862},
+  eprint = {2603.22862},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2603.22862},
+  url = {http://arxiv.org/abs/2603.22862},
+  urldate = {2026-04-10},
+  abstract = {Tool use enables large language models (LLMs) to access external information, invoke software systems, and act in digital environments beyond what can be solved from model parameters alone. Early research mainly studied whether a model could select and execute a correct single tool call. As agent systems evolve, however, the central problem has shifted from isolated invocation to multi-tool orchestration over long trajectories with intermediate state, execution feedback, changing environments, and practical constraints such as safety, cost, and verifiability. We comprehensively review recent progress in multi-tool LLM agents and analyzes the state of the art in this rapidly developing area. First, we unify task formulations and distinguish single-call tool use from long-horizon orchestration. Then, we organize the literature around six core dimensions: inference-time planning and execution, training and trajectory construction, safety and control, efficiency under resource constraints, capability completeness in open environments, and benchmark design and evaluation. We further summarize representative applications in software engineering, enterprise workflows, graphical user interfaces, and mobile systems. Finally, we discuss major challenges and outline future directions for building reliable, scalable, and verifiable multi-tool agents.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computation and Language,Computer Science - Software Engineering,Tooldesign},
+  file = {C:\Users\david\Zotero\storage\4VE3AEFQ\Xu et al. - 2026 - The Evolution of Tool Use in LLM Agents From Single-Tool Call to Multi-Tool Orchestration.pdf}
+}
+
+@inproceedings{yangGPT4ToolsTeachingLarge2023,
+  title = {{{GPT4Tools}}: {{Teaching Large Language Model}} to {{Use Tools}} via {{Self-instruction}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Yang, Rui and Song, Lin and Li, Yanwei and Zhao, Sijie and Ge, Yixiao and Li, Xiu and Shan, Ying},
+  editor = {Oh, A. and Naumann, T. and Globerson, A. and Saenko, K. and Hardt, M. and Levine, S.},
+  year = 2023,
+  volume = {36},
+  pages = {71995--72007},
+  publisher = {Curran Associates, Inc.},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2023/file/e393677793767624f2821cec8bdd02f1-Paper-Conference.pdf},
+  keywords = {Evaluation,Tooldesign,training},
+  file = {C:\Users\david\Zotero\storage\C9HQ9MBP\Yang et al. - 2023 - GPT4Tools Teaching Large Language Model to Use Tools via Self-instruction.pdf}
+}
+
+@article{zhangGeospatialLargeLanguage2025,
+  title = {Geospatial Large Language Model Trained with a Simulated Environment for Generating Tool-Use Chains Autonomously},
+  author = {Zhang, Yifan and Li, Jingxuan and Wang, Zhiyun and He, Zhengting and Guan, Qingfeng and Lin, Jianfeng and Yu, Wenhao},
+  year = 2025,
+  journal = {International Journal of Applied Earth Observation and Geoinformation},
+  volume = {136},
+  pages = {104312},
+  issn = {1569-8432},
+  doi = {10.1016/j.jag.2024.104312},
+  url = {https://www.sciencedirect.com/science/article/pii/S1569843224006708},
+  abstract = {Solving geospatial tasks generally requires multiple geospatial tools and steps, i.e., tool-use chains. Automating the geospatial task solving process can effectively enhance the efficiency of GIS users. Traditionally, researchers tend to design rule-based systems to autonomously solve similar geospatial tasks, which is inflexible and difficult to adapt to different tasks. With the development of Large Language Models (LLMs), some research suggests that LLMs have the potential for intelligent task solving with their tool-use ability, which means LLMs can invoke externally provided tools for specific tasks. However, most studies rely on closed-source commercial LLMs like ChatGPT and GPT-4, whose limited API accessibility restricts their deployment on local private devices. Some researchers in the general domain proposed using instruction tuning to improve the tool-use ability of open-source LLMs. However, the requirement of tool-use chains to solve geospatial tasks, including multiple data input and output processes, poses challenges for collecting effective instruction tuning data. To solve these challenges, we propose a framework for training a Geospatial large language model to generate Tool-use Chains autonomously (GTChain). Specifically, we design a seed task-guided self-instruct strategy to generate a geospatial tool-use instruction tuning dataset within a simulated environment, encompassing diverse geospatial task production and corresponding tool-use chain generation. Subsequently, an open-source general-domain LLM, LLaMA-2-7B, is fine-tuned on the collected instruction data to understand geospatial tasks and learn how to generate geospatial tool-use chains. Finally, we also collect an evaluation dataset to serve as a benchmark for assessing the geospatial tool-use ability of LLMs. Experimental results on the evaluation dataset demonstrate that the fine-tuned GTChain can effectively solve geospatial tasks using the provided tools, achieving 32.5\% and 27.5\% higher accuracy in the percentage of correctly solved tasks compared to GPT-4 and Gemini 1.5 Pro, respectively.},
+  keywords = {GIS,Large language model,Tool-use chain},
+  file = {C:\Users\david\Zotero\storage\JLVZ5BJ6\Zhang et al. - 2025 - Geospatial large language model trained with a simulated environment for generating tool-use chains.pdf}
+}
+
+@misc{zheRobustEfficientTool2026,
+  title = {Robust and {{Efficient Tool Orchestration}} via {{Layered Execution Structures}} with {{Reflective Correction}}},
+  author = {Zhe, Tao and Wang, Haoyu and Luo, Bo and Wu, Min and Fan, Wei and Luo, Xiao and Yao, Zijun and Chen, Haifeng and Wang, Dongjie},
+  year = 2026,
+  month = feb,
+  number = {arXiv:2602.18968},
+  eprint = {2602.18968},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2602.18968},
+  url = {http://arxiv.org/abs/2602.18968},
+  urldate = {2026-03-26},
+  abstract = {Tool invocation is a core capability of agentic systems, yet failures often arise not from individual tool calls but from how multiple tools are organized and executed together. Existing approaches tightly couple tool execution with stepwise language reasoning or explicit planning, leading to brittle behavior and high execution overhead. To overcome these limitations, we revisit tool invocation from the perspective of tool orchestration. Our key insight is that effective orchestration does not require precise dependency graphs or fine-grained planning. Instead, a coarsegrained layer structure suffices to provide global guidance, while execution-time errors can be corrected locally. Specifically, we model tool orchestration as learning a layered execution structure that captures high-level tool dependencies, inducing layer-wise execution through context constraints. To handle execution-time failures, we introduce a schema-aware reflective correction mechanism that detects and repairs errors locally. This design confines errors to individual tool calls and avoids re-planning entire execution trajectories. This structured execution paradigm enables a lightweight and reusable orchestration component for agentic systems. Experimental results show that our approach achieves robust tool execution while reducing execution complexity and overhead. Code will be made publicly available.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Orchestration},
+  file = {C:\Users\david\Zotero\storage\MUNQHC6I\Zhe et al. - 2026 - Robust and Efficient Tool Orchestration via Layered Execution Structures with Reflective Correction.pdf}
+}
