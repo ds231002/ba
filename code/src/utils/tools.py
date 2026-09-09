@@ -245,7 +245,7 @@ def create_energy_plot(
 def save_plot(
     plot: plt.Figure,
     filename: str,
-    path: str = "output/00_plots",
+    path: str = "../output/plots",
 ) -> None:
     """
     Save a matplotlib plot to a file.

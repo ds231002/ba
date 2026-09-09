@@ -4,7 +4,7 @@ from utils.create_system_prompts import (
     create_system_prompt_for_method_3
 )
 from utils.llm import generate_response
-from utils.files import load_json, save_json
+from utils.files import save_json
 from utils.tools import execute_tool_calls
 import json
 import matplotlib.pyplot as plt
@@ -17,7 +17,7 @@ def save_result_as_json(
     method: str,
     model: str
 ):
-    path = f"output/results/{task_type}/{task_id}/{method}_{model.replace(':', '_')}.json"
+    path = f"../output/results/{task_type}/{task_id}/{method}_{model.replace(':', '_')}.json"
     return save_json(result, path)
 
 # ==== Methode 1 ====

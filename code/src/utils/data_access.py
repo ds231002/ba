@@ -4,7 +4,7 @@ import pandas as pd
 
 def get_metering_point_ids_for_user_id(
     user_id: str,
-    data_dir: str = "energy_data",
+    data_dir: str = "../energy_data",
 ) -> list[dict]:
 
     file_path = Path(data_dir) / f"{user_id}.csv"
@@ -45,7 +45,7 @@ def load_energy_data(
     metering_point_id: str,
     start: str | None = None,
     end: str | None = None,
-    data_dir: str = "energy_data",
+    data_dir: str = "../energy_data",
 ) -> pd.DataFrame:
 
     file_path = Path(data_dir) / f"{user_id}.csv"
