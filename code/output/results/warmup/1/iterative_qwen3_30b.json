@@ -1,14 +1,14 @@
 {
     "task_id": "1",
     "task_type": "warmup",
-    "task": "Zeige mir meinen Verbrauch über das letzte Monat abzüglich meiner Erzeugung.",
+    "task": "Wie viel verbrauche ich gerade?",
     "method": "iterative",
     "model": "qwen3:30b",
     "iterations": [
         {
             "tool_calls": null,
             "usage": {
-                "runtime_seconds": 120.04767839999977,
+                "runtime_seconds": 120.05493149999995,
                 "input_tokens": null,
                 "output_tokens": null,
                 "total_tokens": null
@@ -17,7 +17,7 @@
         }
     ],
     "total_usage": {
-        "runtime_seconds": 120.048,
+        "runtime_seconds": 120.055,
         "input_tokens": 0,
         "output_tokens": 0,
         "total_tokens": 0

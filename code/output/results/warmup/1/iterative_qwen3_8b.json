@@ -1,59 +1,25 @@
 {
     "task_id": "1",
     "task_type": "warmup",
-    "task": "Generiere mir eine Grafik vom Verbrauch meiner Energiegemeinschaft letzten Monat.",
+    "task": "Wie viel verbrauche ich gerade?",
     "method": "iterative",
     "model": "qwen3:8b",
     "iterations": [
         {
-            "tool_calls": [
-                {
-                    "id": "i1_r1",
-                    "tool": "get_community_consumption",
-                    "arguments": {
-                        "start": "2025-12-01 00:00:00",
-                        "end": "2025-12-31 23:59:59"
-                    }
-                },
-                {
-                    "id": "i1_r2",
-                    "tool": "create_energy_plot",
-                    "arguments": {
-                        "title": "Gesamtverbrauch der Energiegemeinschaft - Dezember 2025",
-                        "labels": [
-                            "Gesamtverbrauch"
-                        ],
-                        "energy_data": [
-                            {
-                                "result_id": "get_community_consumption_2025-12"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "id": "i1_r3",
-                    "tool": "generate_answer",
-                    "arguments": {
-                        "result_ids": [
-                            "create_energy_plot_2025-12"
-                        ],
-                        "message": "Hier ist die Grafik des Gesamtverbrauchs der Energiegemeinschaft für Dezember 2025:"
-                    }
-                }
-            ],
+            "tool_calls": null,
             "usage": {
-                "runtime_seconds": 24.41595319999942,
-                "input_tokens": 5512,
-                "output_tokens": 1416,
-                "total_tokens": 6928
+                "runtime_seconds": 120.0509419,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null
             },
-            "finish_reason": "stop"
+            "finish_reason": "timeout"
         }
     ],
     "total_usage": {
-        "runtime_seconds": 24.41595319999942,
-        "input_tokens": 5512,
-        "output_tokens": 1416,
-        "total_tokens": 6928
+        "runtime_seconds": 120.051,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
     }
 }
